@@ -54,6 +54,9 @@ html,
 
 #image
   background-color: black
+  //background-image: url("../../assets/images/black_logo.png")
+  //background-size: 100%
+  //background-repeat: no-repeat
   border-style: solid
   border-width: 0.5pt
   height: 40%
@@ -125,9 +128,6 @@ html,
 .btn.active:focus
   outline: 0 none
 
-.btn-primary.raised
-  box-shadow: 0 5px 0 0 #536192
-
 .btn-primary.raised:active, .btn-primary.raised.active
   background: #33a6cc
   box-shadow: none
@@ -135,7 +135,12 @@ html,
   margin-top: 3px
 
 .btn.btn-primary.raised
-  background-color: #172557
+  background-color: navy
+  box-shadow: 0 5px 0 0 #172557
+
+.btn.btn-primary.raised:hover
+  background-color: #536192
+  box-shadow: 0 5px 0 0 navy
 
 #file
   visibility: hidden
