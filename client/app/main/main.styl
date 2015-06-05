@@ -29,7 +29,7 @@ html,
     margin-left: 1pt
     text-align: left
     color: white
-    position: fixed
+    position: absolute
     margin-top: 15pt
     margin-bottom: 0
 
@@ -54,6 +54,7 @@ html,
   min-height: 40%
   cursor: pointer
   float: left
+  overflow: visible
 
 #imgButtons
   width: 50%
@@ -65,8 +66,9 @@ html,
   padding: 1em
   text-shadow: none
 
-#imgList
+#imgsList
   background-color: #172557
+  text-align: left
   width: 45%
   height: 85%
   min-height: 85%
@@ -74,18 +76,26 @@ html,
   overflow: auto
   float: left
 
-#fabList,
-#catList
+#imgsList p
+  margin-top: 0.5em
+  margin-left: 5pt
+  width: 100%
+  font-size: 12pt
+  font-style: italic
+  text-shadow: none
+
+#fabsList,
+#catsList
   width: 95%
   height: 85%
   min-height: 85%
   margin-left: 3%
   overflow: auto
 
-#fabList
+#fabsList
   background-color: #07123A
 
-#catList
+#catsList
   background-color: #172557
 
 .btn
@@ -98,13 +108,24 @@ html,
 .btn:focus,
 .btn:active:focus,
 .btn.active:focus
-    outline: 0 none
+  outline: 0 none
 
 .btn-primary.raised
-  box-shadow: 0 3px 0 0 #007299
+  box-shadow: 0 5px 0 0 #536192
 
 .btn-primary.raised:active, .btn-primary.raised.active
   background: #33a6cc
   box-shadow: none
   margin-bottom: -3px
   margin-top: 3px
+
+.btn.btn-primary.raised
+  background-color: #172557
+
+#file
+  visibility: hidden
+
+.alert
+  color: red
+  text-align: left
+  font-weight: bolder

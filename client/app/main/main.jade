@@ -7,15 +7,17 @@ div.container-fluid
       hr
       div#image
       div#imgButtons
-        button.btn.btn-primary.raised Upload New Image
-      div#imgList
+        button.btn.btn-primary.raised(ng-click="clickUpload()") Upload New Image
+        input#file(type="file")
+      div#imgsList
+        //p images in /client/assets/images. . . .
     div.col-md-3
       hr
       p Fabrication
       hr
-      div#fabList
+      div#fabsList
     div.col-md-3
       hr
       p Category
       hr
-      div#catList
+      div#catsList
