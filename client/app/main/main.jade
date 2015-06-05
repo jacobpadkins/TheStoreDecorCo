@@ -10,14 +10,16 @@ div.container-fluid
         button.btn.btn-primary.raised(ng-click="clickUpload()") Upload New Image
         input#file(type="file")
       div#imgsList
-        //p images in /client/assets/images. . . .
+        p(ng-repeat="each in imgs") {{ each }}
     div.col-md-3
       hr
       p Fabrication
       hr
       div#fabsList
+        p(ng-repeat="each in fabs") {{ each }}
     div.col-md-3
       hr
       p Category
       hr
       div#catsList
+        p(ng-repeat="each in cats") {{ each }}

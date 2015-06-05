@@ -13,6 +13,7 @@ html,
   p
     margin-top: -15pt
     margin-bottom: -15pt
+    height: auto
 
   .col-md-6 p,
   .col-md-6 hr
@@ -37,6 +38,12 @@ html,
     height: 100%
     min-height: 100%
     text-align: center
+
+    div
+      p
+        margin: auto
+        cursor: pointer
+        padding-left: 10pt
 
   div:nth-of-type(1)
     background-color: #07123A
@@ -84,6 +91,14 @@ html,
   font-style: italic
   text-shadow: none
 
+#imgsList p:hover,
+#fabsList p:hover,
+#catsList p:hover
+  background-color: #536192
+
+#imgsList p:nth-of-type(1)
+  margin-top: 1em
+
 #fabsList,
 #catsList
   width: 95%
@@ -127,5 +142,7 @@ html,
 
 .alert
   color: red
-  text-align: left
+  font-size: 10pt
   font-weight: bolder
+  text-shadow: none
+  margin-top: -0.1em
