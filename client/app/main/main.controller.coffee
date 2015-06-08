@@ -47,12 +47,13 @@ angular.module 'cmsApp'
     # INLINE #
     $scope.clickUpload = () ->
       $("#file").click()
-      return true
+      return
 
     # LOCAL #
 
-    $scope.uploadFile = ->
+    uploadFile = () ->
       file = $scope.myFile
+      $scope.myFile = ''
       console.log 'file is ' + JSON.stringify(file)
       uploadUrl = 'api/images'
       fileUpload.uploadFileToUrl file, uploadUrl
@@ -89,5 +90,8 @@ angular.module 'cmsApp'
       populateImgs()
       populateFabs()
       populateCats()
+      $('#file').on 'change', () ->
+        console.log "HERE" + $('#file').val()
+
     init()
 ]

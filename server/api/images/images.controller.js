@@ -5,6 +5,7 @@ var Images = require('./images.model');
 var Busboy = require('busboy');
 var http = require('http')
 var inspect = require('util').inspect;
+var fs = require('fs');
 
 // Get list of images
 exports.index = function(req, res) {
@@ -28,6 +29,13 @@ exports.create = function(req, res) {
   var busboy = new Busboy({ headers: req.headers });
   busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
     console.log('File [' + fieldname + ']: filename: ' + filename + ', encoding: ' + encoding + ', mimetype: ' + mimetype);
+    // upload file
+    var fstream = fs.createWriteStream(__dirname + '/../../../client/assets/images/' + filename);
+    file.pipe(fstream);
+    fstream.on('close', function() {
+      //res.redirect('back');
+      console.log("Finished Upload!");
+    });
     file.on('data', function(data) {
       console.log('File [' + fieldname + '] got ' + data.length + ' bytes');
     });

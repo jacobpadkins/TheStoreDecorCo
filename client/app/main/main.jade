@@ -8,7 +8,6 @@ div.container-fluid
       div#image
       div#imgButtons
         button.btn.btn-primary.raised(ng-click="clickUpload()") Upload New Image
-        button.btn.btn-primary.raised(ng-click="uploadFile()") Debugger
         input#file(type="file" file-model="myFile")
       div#imgsList
         p(ng-repeat="each in imgs") {{ each }}
