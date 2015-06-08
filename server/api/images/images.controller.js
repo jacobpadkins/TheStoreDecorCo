@@ -2,6 +2,9 @@
 
 var _ = require('lodash');
 var Images = require('./images.model');
+var Busboy = require('busboy');
+var http = require('http')
+var inspect = require('util').inspect;
 
 // Get list of images
 exports.index = function(req, res) {
@@ -22,11 +25,30 @@ exports.show = function(req, res) {
 
 // Creates a new images in the DB.
 exports.create = function(req, res) {
-  Images.create(req.body, function(err, images) {
+  var busboy = new Busboy({ headers: req.headers });
+  busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+    console.log('File [' + fieldname + ']: filename: ' + filename + ', encoding: ' + encoding + ', mimetype: ' + mimetype);
+    file.on('data', function(data) {
+      console.log('File [' + fieldname + '] got ' + data.length + ' bytes');
+    });
+    file.on('end', function() {
+      console.log('File [' + fieldname + '] Finished');
+    });
+  });
+  busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated) {
+    console.log('Field [' + fieldname + ']: value: ' + inspect(val));
+  });
+  busboy.on('finish', function() {
+    console.log('Done parsing form!');
+    res.writeHead(303, { Connection: 'close', Location: '/' });
+    res.end();
+  });
+  req.pipe(busboy);
+  /*Images.create(req.body, function(err, images) {
     if(err) { return handleError(res, err); }
     console.log(images);
     return res.json(201, images);
-  });
+  });*/
 };
 
 // Updates an existing images in the DB.
