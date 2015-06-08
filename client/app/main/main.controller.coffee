@@ -52,17 +52,19 @@ angular.module 'cmsApp'
     # LOCAL #
 
     uploadFile = () ->
-      file = $scope.myFile
-      $scope.myFile = ''
-      console.log 'file is ' + JSON.stringify(file)
-      uploadUrl = 'api/images'
-      fileUpload.uploadFileToUrl file, uploadUrl
+      if $scope.myFile != undefined
+        file = $scope.myFile
+        $scope.myFile = undefined
+        console.log 'file is ' + JSON.stringify(file)
+        uploadUrl = 'api/images'
+        fileUpload.uploadFileToUrl file, uploadUrl
       return
 
     getImgs = () ->
       # populate imgs array
       $scope.imgs.push "an image url"
       $scope.imgs.push "another image url"
+      return
 
     getFabs = () ->
       # populate fabs array
@@ -74,24 +76,29 @@ angular.module 'cmsApp'
       getImgs()
       if $scope.imgs.length == 0
         $("#imgsList").append("<h6 class=\"alert\">No Images Found!</h6>")
+        return
 
     populateFabs = () ->
       getFabs()
       if $scope.fabs.length == 0
         $("#fabsList").append("<h6 class=\"alert\">No Methods Found!</h6>")
+        return
 
     populateCats = () ->
       getCats()
       if $scope.cats.length == 0
         $("#catsList").append("<h6 class=\"alert\">No Categories Found!</h6>")
+        return
 
     # RUN AT PAGE LOAD #
     init = () ->
       populateImgs()
       populateFabs()
       populateCats()
-      $('#file').on 'change', () ->
-        console.log "HERE" + $('#file').val()
+      $('#file').on 'click', () ->
+        $('#file').on 'change', () ->
+          uploadFile()
+      return
 
     init()
 ]
