@@ -6,25 +6,30 @@ var Busboy = require('busboy');
 var http = require('http')
 var inspect = require('util').inspect;
 var fs = require('fs');
+var path = require('path');
 
-// Get list of images
+// Returns a list of the names of the files in the assets folder
 exports.index = function(req, res) {
-  Images.find(function (err, images) {
-    if(err) { return handleError(res, err); }
-    return res.json(200, images);
+  var p = __dirname + '/../../../client/assets/images/';
+  var names = [];
+  fs.readdir(p, function(err, files) {
+    if (err) {
+      throw err;
+    }
+    files.map(function(file) {
+      return path.join(p, file);
+    }).filter(function(file) {
+      return fs.statSync(file).isFile();
+    }).forEach(function(file) {
+      names.push(baseName(file) + path.extname(file));
+      console.log(baseName(file) + path.extname(file));
+    });
+    console.log('Files: ' + names);
+    return res.send(200, JSON.stringify(names));
   });
 };
 
-// Get a single images
-exports.show = function(req, res) {
-  Images.findById(req.params.id, function (err, images) {
-    if(err) { return handleError(res, err); }
-    if(!images) { return res.send(404); }
-    return res.json(images);
-  });
-};
-
-// Creates a new images in the DB.
+// Uploads a multipart/image file to assets folder
 exports.create = function(req, res) {
   var busboy = new Busboy({ headers: req.headers });
   busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
@@ -52,28 +57,9 @@ exports.create = function(req, res) {
     res.end();
   });
   req.pipe(busboy);
-  /*Images.create(req.body, function(err, images) {
-    if(err) { return handleError(res, err); }
-    console.log(images);
-    return res.json(201, images);
-  });*/
 };
 
-// Updates an existing images in the DB.
-exports.update = function(req, res) {
-  if(req.body._id) { delete req.body._id; }
-  Images.findById(req.params.id, function (err, images) {
-    if (err) { return handleError(res, err); }
-    if(!images) { return res.send(404); }
-    var updated = _.merge(images, req.body);
-    updated.save(function (err) {
-      if (err) { return handleError(res, err); }
-      return res.json(200, images);
-    });
-  });
-};
-
-// Deletes a images from the DB.
+// Delete Image
 exports.destroy = function(req, res) {
   Images.findById(req.params.id, function (err, images) {
     if(err) { return handleError(res, err); }
@@ -87,4 +73,12 @@ exports.destroy = function(req, res) {
 
 function handleError(res, err) {
   return res.send(500, err);
+}
+
+// Thanks Stack Overflow
+function baseName(str) {
+  var base = new String(str).substring(str.lastIndexOf('/') + 1);
+  if(base.lastIndexOf(".") != -1)
+    base = base.substring(0, base.lastIndexOf("."));
+  return base;
 }

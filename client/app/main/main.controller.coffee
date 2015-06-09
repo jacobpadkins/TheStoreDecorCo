@@ -36,11 +36,14 @@ angular.module 'cmsApp'
 ]
 
 .controller 'MainCtrl', [
-  '$scope', 'fileUpload'
-  ($scope, fileUpload) ->
+  '$scope', 'fileUpload', '$http'
+  ($scope, fileUpload, $http) ->
+
+    $http.get('api/images').success (imgNames) ->
+      $scope.imgs = imgNames
 
     # VARIABLES #
-    $scope.imgs = []
+    # $scope.imgs = []
     $scope.fabs = []
     $scope.cats = []
 
@@ -60,23 +63,11 @@ angular.module 'cmsApp'
         fileUpload.uploadFileToUrl file, uploadUrl
       return
 
-    getImgs = () ->
-      # populate imgs array
-      $scope.imgs.push "an image url"
-      $scope.imgs.push "another image url"
-      return
-
     getFabs = () ->
       # populate fabs array
 
     getCats = () ->
       # populate cats array
-
-    populateImgs = () ->
-      getImgs()
-      if $scope.imgs.length == 0
-        $("#imgsList").append("<h6 class=\"alert\">No Images Found!</h6>")
-        return
 
     populateFabs = () ->
       getFabs()
@@ -92,7 +83,6 @@ angular.module 'cmsApp'
 
     # RUN AT PAGE LOAD #
     init = () ->
-      populateImgs()
       populateFabs()
       populateCats()
       $('#file').on 'click', () ->
