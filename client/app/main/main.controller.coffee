@@ -46,6 +46,7 @@ angular.module 'cmsApp'
     # $scope.imgs = []
     $scope.fabs = []
     $scope.cats = []
+    stickyClick = false;
 
     # INLINE #
     $scope.clickUpload = () ->
@@ -61,7 +62,12 @@ angular.module 'cmsApp'
         console.log 'file is ' + JSON.stringify(file)
         uploadUrl = 'api/images'
         fileUpload.uploadFileToUrl file, uploadUrl
+      getImgs()
       return
+
+    getImgs = () ->
+      $http.get('api/images').success (imgNames) ->
+        $scope.imgs = imgNames
 
     getFabs = () ->
       # populate fabs array
@@ -81,13 +87,23 @@ angular.module 'cmsApp'
         $("#catsList").append("<h6 class=\"alert\">No Categories Found!</h6>")
         return
 
+    setImage = (image) ->
+      path = 'url("../../assets/images/' + image + '")'
+      $('#image').css('background-image', path)
+
     # RUN AT PAGE LOAD #
     init = () ->
       populateFabs()
       populateCats()
+      # image upload
       $('#file').on 'click', () ->
         $('#file').on 'change', () ->
           uploadFile()
+      # image hover preview
+      $(document).on 'mouseover', '#imgsList p', () ->
+        setImage($(this).text())
+      $(document).on 'mouseout', '#imgsList p', () ->
+        $('#image').css('background-image', '')
       return
 
     init()
