@@ -1,0 +1,26 @@
+div.container-fluid
+  div.row
+    div.col-md-6
+      p#title Welcome to The SDC CMS
+      hr
+      p Image
+      hr
+      div#image
+      div#imgButtons
+        button.btn.btn-primary.raised(ng-click="clickUpload()") Add Image
+        button.btn.btn-primary.raised(ng-click="deleteImage()") Delete Image
+        input#file(type="file" file-model="myFile")
+      div#imgsList
+        p(ng-repeat="each in imgs") {{ each }} 
+    div.col-md-3
+      hr
+      p Fabrication
+      hr
+      div#fabsList
+        p(ng-repeat="each in fabs") {{ each }}
+    div.col-md-3
+      hr
+      p Category
+      hr
+      div#catsList
+        p(ng-repeat="each in cats") {{ each }}
