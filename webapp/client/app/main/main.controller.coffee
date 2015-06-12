@@ -11,6 +11,7 @@ angular.module 'webappApp'
 
   ### VARIABLES ###
   $scope.whichPage = 0 # 0 = home, 1 = capa., 2 = prod., 3 = serv.
+  loopBool = 0
 
   ### FUNCTIONS ###
   moveIcons = () ->
@@ -58,6 +59,14 @@ angular.module 'webappApp'
           moveIcons()
           setPage()
     $('.topOption').on 'click', () ->
-      
+
+    # slide options right
+    $('#rightArrow h1').on 'click', () ->
+      if loopBool == 0
+        $('#wrapper div div').animate {'left':'+=50%'}, 'slow'
+    #slide options left
+    $('#leftArrow h1').on 'click', () ->
+      if loopBool == 0
+        $('#wrapper div div').animate {'left':'-=50%'}, 'slow'
 
   $scope.init()

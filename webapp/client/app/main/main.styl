@@ -31,7 +31,7 @@ body
   border: 5px solid
   height: 15em
   width: 20em
-  margin: 2em
+  //margin: 2em
   text-align: center
   position: relative
 
@@ -69,17 +69,40 @@ h2
   padding: 5px
   height: 53em
   overflow: auto
+  //background-color: red
 
 #leftList .menu
   border: 2px solid
   padding: 10px
-  background-color: red
+  //background-color: white
+
+#leftList .menu:hover
+  background-color: blue
 
 .pics
   border: 2px solid
   padding: 10px
   height: 20em
+  //background-color: white
 
 .pics:hover
   border-color: blue
   border-width: 10px
+
+#leftArrow,
+#rightArrow
+  position: relative
+
+  h1
+    position: absolute
+    display: inline-block
+    cursor: pointer
+
+#rightArrow h1
+  right: 0
+
+#wrapper
+  margin-left: -1em
+
+.col-md-6
+  overflow: hidden
