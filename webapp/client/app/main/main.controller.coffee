@@ -17,9 +17,9 @@ angular.module 'webappApp'
   ### FUNCTIONS ###
   moveIcons = () ->
     $('.topOption').fadeIn 'slow'
-    $('.row hr').css('margin-top', '0em')
+    $('.row hr').css('margin-top', '3em')
   setPage = () ->
-    $('#slideshow').animate {'bottom':'2%'}, 1000, ->
+    $('#slideshow').animate {'bottom':'-20%'}, 1000, ->
       $('#down').empty().removeClass('container').addClass('container-fluid')
       html = '<div class=\"col-md-2\" id=\"leftList\"></div>'
       $(html).hide().appendTo('#down').fadeIn(1000)
@@ -38,7 +38,7 @@ angular.module 'webappApp'
       $(html).hide().appendTo('#rightList').fadeIn(1000)
       html = '<div class="pics">Picture Here</div>'
       i = 0
-      while i < 4
+      while i < 10
         $(html).hide().appendTo('#picCol1').fadeIn(1000)
         $(html).hide().appendTo('#picCol2').fadeIn(1000)
         $(html).hide().appendTo('#picCol3').fadeIn(1000)
