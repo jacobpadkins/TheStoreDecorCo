@@ -1,143 +1,62 @@
-html,
-body,
-.ng-scope
-  height: 100%
-  min-height: 100%
+// centered navbar
+@media (min-width: 768px) {
+    .navbar-centered .navbar-nav {
+        float: none;
+        text-align: center;
+    }
+    .navbar-centered .navbar-nav > li {
+        float: none;
+    }
+    .navbar-centered .nav > li {
+        display: inline;
+    }
+    .navbar-centered .nav > li > a {
+        display: inline-block;
+    }
+}
+
+#wrapper {
   position: relative
+}
 
-.row
-  //min-height: 95%
+#colCapa,
+#colServ,
+#colProd {
+  height: 350px
 
-  hr
-    border: 2.5px solid
-    border-color: black
-    margin-top: 35em
+  h3 {
+    margin-top: -348.8px
+    color: white
+    font-weight: bolder
+    background: rgba(0,0,0,.5)
+    position: relative
+    border-radius: 3px
+  }
 
-  #logo
-    //
-    //border: 5px solid
-    height: 14.3em
-    width: 21em
-    margin: 2em
-    margin-left: 1.7%
-    text-align: center
+  img {
+    margin-top: 10px
+    height: 100%
+    width: 100%
+    border: 1px solid
+    position: relative
+  }
+
+  img:hover {
+    opacity: 0.5
     cursor: pointer
-    //background-color: white
-    background-image: url("../../../assets/images/logo.png")
-    background-size: stretch no-repeat center
+  }
+}
 
-    h1
-      font-size: 64px
-      cursor: pointer
-
-.col-md-4
-  height: 100%
-  min-height: 100%
-
-.option
-  border: 5px solid
-  height: 30em
-  width: 100%
-  //margin: 2em
-  text-align: center
-  position: relative
-
-.option:hover,
-.topOption:hover,
-.menu:hover
-  background-color: #003B92
-  cursor: pointer
-  color: white
-
-  h1, h2
-    cursor: pointer
-
-.topOption
-  border: 5px solid
-  height: 10em
-  width: 10em
-  margin: 2em
-  margin-left: 0
-  text-align: center
-  border-color: white
-  color: white
-
-.topOption:hover
-  border: 10px solid
-
-#up
-  margin-top: -19em
-  margin-right: -17em
-  position: relative
-
-h1, h2
-  cursor: default
-
-h2
-  margin-top: 2.5em
-  font-size: 12pt
-
-#leftList,
-#rightList
-  border: 4px solid
-  padding: 5px
-  height: 52.3em
-  overflow: auto
-  //background-color: red
-
-#leftList .menu
-  border: 2px solid
-  padding: 10px
-  //background-color: white
-
-#leftList .menu:hover
-  background-color: #003B92
-
-.pics
-  border: 2px solid
-  padding: 10px
-  height: 20em
-  //background-color: white
-
-.pics:hover
-  border-color: #003B92
-  border-width: 10px
-
-#leftArrow,
-#rightArrow
-  position: relative
-
-  h1
-    position: absolute
-    display: inline-block
-    cursor: pointer
-
-#rightArrow h1
-  right: 0
-
-#wrapper
-  //margin-left: -1em
-
-.col-md-6
-  overflow: hidden
-
-#slideshow
-  width: 190%
-  height: 35em
+#slide {
   background-image: url("../../../assets/images/slide1.jpg")
-  background-size: 100% auto
-  position: absolute
-  left: -100%
-  z-index:-1
-  text-align: center
+  background-size: cover
+  height: 300px
+}
 
-#footer
-  font-size: 12pt
-  text-align: center
-  color: white
-  font-weight: bolder
-  width: 100%
-  background-color: red
-  position: fixed
-  left: 0
-  bottom:0
+#logo {
+  margin-top: 15px
+}
+
+#footer {
+  border: hidden
+}
