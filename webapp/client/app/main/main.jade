@@ -2,7 +2,6 @@
 div.container-fluid#wrapper
   div.row.clearfix
     div.col-md-12.column#slide
-      img#logo(alt="main image" src="../../../assets/images/logo.png")
 div.container
   div.row.clearfix
     div.col-md-4.column#colCapa
@@ -17,24 +16,19 @@ div.container
         
   div.row.clearfix
     .col-md-12.column
-      nav.navbar.navbar-default.navbar-fixed-bottom(role='navigation')#footer
+      nav.navbar.navbar-default.navbar-fixed-top.navbar-custom(role='navigation')#footer
         .navbar-header
           button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse-1')
             span.sr-only Toggle navigation
             span.icon-bar
             span.icon-bar
             span.icon-bar
-        #navbar-collapse-1.collapse.navbar-collapse.navbar-centered
+        #navbar-collapse-1.collapse.navbar-collapse.navbar-left
+          ul.nav.navbar-nav
+              li.active
+                a(href="#") Capabilities
+              div.circle
+                img.img-rounded#logo(alt="main image" src="../../../assets/images/logo_small.png")
+        #navbar-collapse-1.collapse.navbar-collapse.navbar-right
           ul.nav.navbar-nav
             li.active
-              a(href='#') Contact
-            li.active
-              a(href='#') About
-            li.active
-              a(href='#') Facebook
-            li.active
-              a(href='#') Twitter
-            li.active
-              a(href='#') Instagram
-            li.active
-              a(href='#') LinkedIn
