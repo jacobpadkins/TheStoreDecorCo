@@ -5,10 +5,16 @@ angular.module 'webappApp'
   $scope.message = 'Hello'
 
   init = () ->
-      $('#colCapa').on 'click', () ->
-        console.log 'you clicked Capabilities'
-      $('#colServ').on 'click', () ->
-        console.log 'you clicked Services'
-      $('#colProd').on 'click', () ->
-        console.log 'you clicked Products'
+      $('#colCapa img').on 'mouseover', () ->
+        #
+        $('#colCapa img').on 'mouseleave', () ->
+          #
+      $('#colServ img').on 'mouseover', () ->
+        #
+        $('#colCapa img').on 'mouseleave', () ->
+          #
+      $('#colProd img').on 'mouseover', () ->
+        #
+        $('#colCapa img').on 'mouseleave', () ->
+          #
   init()

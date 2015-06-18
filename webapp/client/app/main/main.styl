@@ -25,6 +25,7 @@
   height: 350px
 
   img {
+    background: black
     margin-top: 10px
     height: 100%
     width: 100%
@@ -32,11 +33,11 @@
     border-radius: 2pt
     position: relative
   }
+}
 
-  img:hover {
-    opacity: 0.5
-    cursor: pointer
-  }
+#colCapa,
+#colProd {
+  margin-top: -10px
 }
 
 #slide {
@@ -45,7 +46,7 @@
   height: 500px
 }
 
-h1 {
+#tagline {
   font-size: 40px
   font-style: italic
   color: white
@@ -107,7 +108,7 @@ h1 {
 }
 
 .wBorder {
-  margin-top: 5px
+  margin-top: 6px
   border: 2px solid
   border-color: white
   border-radius: 20pt
@@ -118,4 +119,73 @@ h1 {
     margin-left: 2.5%
     margin-bottom: 3%
   }
+}
+
+.blueShadows {
+  font-size: 32px
+  color: white
+  text-shadow: 2px 2px black
+  background: rgba(0,0,0,0.5)
+  border-radius: 10px
+}
+
+.blueShadows:hover {
+  cursor: pointer
+  opacity: 0.5
+}
+
+.darken {
+  position: relative
+  display: inline-block;
+  background: black;
+  padding: 0;
+  height: 90%
+
+  img {
+    display: block
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -ms-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+    bottom: 10px
+    position: relative
+  }
+
+  p {
+    position: absolute
+    top: 0
+    visibility: hidden
+    font-size: 24px
+    font-weight: bolder
+    left: 10%
+    right: 10%
+    top: 20%
+  }
+}
+
+.darken:hover {
+  img {
+    opacity: 0.5
+  }
+  p {
+    color:#fff;
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -ms-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+    visibility: visible
+  }
+}
+
+#copyText {
+  font-weight: bolder
+  font-size: 16px
+  margin-right: 10%
+  margin-left: 10%
+  margin-top: 10px
+  border: 2px solid
+  padding: 10px
+  border-radius: 10px
 }
