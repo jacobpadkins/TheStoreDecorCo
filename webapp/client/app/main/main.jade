@@ -3,17 +3,25 @@ div.container-fluid#wrapper
   div.row.clearfix#top
     div.col-md-12.column#slide
   h1.text-center#tagline Your Brand. Your Vision.
-  p.text-center#copyText
-    | We are <b>The Store Decor Company!</b> Focused on fulfilling your vision for that "extraordinary customer experience".
-    | Our experienced team understands the challenges you face in a competitive sales environment. We promise to integrate our knowledge and ability into your brand communication strategy to maximize your profitability goals.
-    | We specialize in the conquering the impossible! Here's just some of what we can do:
+  div.row.clearfix#copyText
+    div.col-md-1
+    div.col-md-10
+      p.text-center
+        | We are <b>The Store Decor Company!</b> <br><span id="smallFont">Focused on fulfilling your vision for that "extraordinary customer experience".
+        | <br>Our experienced team understands the challenges you face in a competitive sales environment. We promise to integrate our knowledge and ability into your brand communication strategy to maximize your profitability goals.
+        | <br>We specialize in the conquering the impossible! Here's just some of what we can do:</span>
+    div.col-md-1
   div.row.clearfix#middle
+    div.col-md-2
     div.col-md-4.column#colCapa
       h3.blueShadows.text-center Capabilities
       img.img-rounded(alt="capa. image" src="../../../assets/images/home1.jpg")
+    div.col-md-6
+  div.row.clearfix#middle
     div.col-md-4.column#colServ
       img.img-rounded(alt="serv. image" src="../../../assets/images/home2.jpg")
       h3.blueShadows.text-center Services
+  div.row.clearfix#middle
     div.col-md-4.column#colProd
       h3.blueShadows.text-center Products
       img.img-rounded(alt="prod. image" src="../../../assets/images/home3.jpg")
