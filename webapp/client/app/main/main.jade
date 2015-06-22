@@ -11,24 +11,39 @@ div.container-fluid#wrapper
         | <br>Our experienced team understands the challenges you face in a competitive sales environment. We promise to integrate our knowledge and ability into your brand communication strategy to maximize your profitability goals.
         | <br>We specialize in the conquering the impossible! Here's just some of what we can do:</span>
     div.col-md-1
-  div.row.clearfix#rowCapa
-    div.col-md-2
-    div.col-md-4.column#colCapa
-      h3.blueShadows.text-center Capabilities
-      img.img-rounded(alt="capa. image" src="../../../assets/images/home1.jpg")
-    div.col-md-6
-  div.row.clearfix#rowServ
-    div.col-md-6
-    div.col-md-4.column#colServ
-      h3.blueShadows.text-center Services
-      img.img-rounded(alt="serv. image" src="../../../assets/images/home2.jpg")
-    div.col-md-2
-  div.row.clearfix#rowProd
-    div.col-md-2
-    div.col-md-4.column#colProd
-      h3.blueShadows.text-center Products
-      img.img-rounded(alt="prod. image" src="../../../assets/images/home3.jpg")
-    div.col-md-6
+  div.row.clearfix#middle
+    div.col-md-1
+    div.col-md-10
+      div.row.clearfix
+        div.col-md-4#sections
+          div.row.clearfix#rowCapa
+            h1.text-center.sectionText Capabilities
+          div.row.clearfix#rowServ
+            h1.text-center.sectionText Services
+          div.row.clearfix#rowProd
+            h1.text-center.sectionText Products
+        div.col-md-8#sectionInfo
+          div#sectionImage
+    div.col-md-1
+  //  
+    div.row.clearfix#rowCapa
+      div.col-md-2
+      div.col-md-4.column#colCapa
+        h3.blueShadows.text-center Capabilities
+        img.img-rounded(alt="capa. image" src="../../../assets/images/home1.jpg")
+      div.col-md-6
+    div.row.clearfix#rowServ
+      div.col-md-6
+      div.col-md-4.column#colServ
+        h3.blueShadows.text-center Services
+        img.img-rounded(alt="serv. image" src="../../../assets/images/home2.jpg")
+      div.col-md-2
+    div.row.clearfix#rowProd
+      div.col-md-2
+      div.col-md-4.column#colProd
+        h3.blueShadows.text-center Products
+        img.img-rounded(alt="prod. image" src="../../../assets/images/home3.jpg")
+      div.col-md-6
   div.row.clearfix#bottom
         div.col-md-4
         div.col-md-4#quote
@@ -59,7 +74,7 @@ div.container-fluid#wrapper
               li.active
                 h3 Contact
               div.circle
-                img.img-rounded#logo(alt="main image" src="../../../assets/images/logo_small.png")
+                img.img-rounded#logo(alt="main image" src="../../../assets/images/logo.png")
         #navbar-collapse-1.collapse.navbar-collapse.navbar-right
           ul.nav.navbar-nav.rightBar
             li.active
