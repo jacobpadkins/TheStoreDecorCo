@@ -1,40 +1,74 @@
 
 div.container-fluid#wrapper
-  div.row.clearfix
+  div.row.clearfix#top
     div.col-md-12.column#slide
-      img#logo(alt="main image" src="../../../assets/images/logo.png")
-div.container
-  div.row.clearfix
+  h1.text-center#tagline Your Brand. Your Vision.
+  div.row.clearfix#copyText
+    div.col-md-1
+    div.col-md-10
+      p.text-center
+        | We are <b>The Store Decor Company!</b> <br><span id="smallFont">Focused on fulfilling your vision for that "extraordinary customer experience".
+        | <br>Our experienced team understands the challenges you face in a competitive sales environment. We promise to integrate our knowledge and ability into your brand communication strategy to maximize your profitability goals.
+        | <br>We specialize in the conquering the impossible! Here's just some of what we can do:</span>
+    div.col-md-1
+  div.row.clearfix#middle
+    div.col-md-2
     div.col-md-4.column#colCapa
+      h3.blueShadows.text-center Capabilities
       img.img-rounded(alt="capa. image" src="../../../assets/images/home1.jpg")
-      h3.text-center Capabilities
+    div.col-md-6
+  div.row.clearfix#middle
+    div.col-md-6
     div.col-md-4.column#colServ
+      h3.blueShadows.text-center Services
       img.img-rounded(alt="serv. image" src="../../../assets/images/home2.jpg")
-      h3.text-center Services
+    div.col-md-2
+  div.row.clearfix#middle
+    div.col-md-2
     div.col-md-4.column#colProd
+      h3.blueShadows.text-center Products
       img.img-rounded(alt="prod. image" src="../../../assets/images/home3.jpg")
-      h3.text-center Products
+    div.col-md-6
+  div.row.clearfix#bottom
+        div.col-md-4
+        div.col-md-4#quote
+          div.wBorder.hundredPercent
+            h3.text-center Request A Quote
+            textarea.hundredPercent 
+        div.col-md-4
         
   div.row.clearfix
     .col-md-12.column
-      nav.navbar.navbar-default.navbar-fixed-bottom(role='navigation')#footer
+      nav.navbar.navbar-default.navbar-fixed-top.navbar-custom(role='navigation')
         .navbar-header
           button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse-1')
             span.sr-only Toggle navigation
             span.icon-bar
             span.icon-bar
             span.icon-bar
-        #navbar-collapse-1.collapse.navbar-collapse.navbar-centered
-          ul.nav.navbar-nav
+        #navbar-collapse-1.collapse.navbar-collapse.navbar-left.nav
+          ul.nav.navbar-nav.leftBar
+              li.active
+                h3 Capabilities
+              li.active
+                h3 Services
+              li.active
+                h3 Products
+              li.active
+                h3 About Us
+              li.active
+                h3 Contact
+              div.circle
+                img.img-rounded#logo(alt="main image" src="../../../assets/images/logo_small.png")
+        #navbar-collapse-1.collapse.navbar-collapse.navbar-right
+          ul.nav.navbar-nav.rightBar
             li.active
-              a(href='#') Contact
+              h3 Facebook
             li.active
-              a(href='#') About
+              h3 Twitter
             li.active
-              a(href='#') Facebook
+              h3 Instagram
             li.active
-              a(href='#') Twitter
+              h3 LinkedIn
             li.active
-              a(href='#') Instagram
-            li.active
-              a(href='#') LinkedIn
+              h3 Google+
