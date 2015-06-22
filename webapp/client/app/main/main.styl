@@ -1,9 +1,10 @@
 //color variables
-color1 = #152F40
-color2 = #0A4A59
-color4 = #D1F2E9//#06828C
-color3 = #FFFFFF//#D1F2E9
-color5 = #F23D08
+color1 = #1352A5 //#152F40
+color2 = #CBC7B7
+color4 = #F1EFE6 //#D1F2E9
+color3 = #FFFFFF //#D1F2E9
+color5 = #C1061B
+color6 = #BCC2C4
 
 // centered navbar
 @media (min-width: 768px) {
@@ -54,6 +55,24 @@ body {
   margin-top: -10px
 }
 
+#rowCapa,
+#rowServ,
+#rowProd {
+  height: 450px
+}
+
+#rowCapa {
+  background-color: color4
+}
+
+#rowServ {
+  background-color: color5
+}
+
+#rowProd {
+  background-color: color4
+}
+
 #slide {
   background-image: url("../../../assets/images/slide1.jpg")
   background-size: cover
@@ -76,7 +95,7 @@ body {
 }
 
 #logo {
-  background-color: color3
+  background-color: color5
   //border: 2px solid color4
   position: absolute
   padding: 7px
@@ -97,13 +116,13 @@ body {
 	border-radius: 10%
 	width: 160px
 	height: 170px
-	background-color: color3
+	background-color: color5
   position: absolute
 }
 
 .navbar-custom {
   border-style: none
-  background-color: color3
+  background-color: color5
   font-family: 'Oswald', sans-serif;
 }
 
@@ -116,13 +135,9 @@ body {
 
 #bottom {
   color: white
-  margin-top: 90px
-  background-color: color2
+  //margin-top: 90px
+  background-color: color5
   height: 300px
-}
-
-#middle {
-  margin-top: 10px
 }
 
 .hundredPercent {
@@ -154,10 +169,9 @@ body {
 .blueShadows {
   font-size: 32px
   font-family: 'Oswald', sans-serif;
-  color: color5
+  color: color3
   //text-shadow: 2px 2px black
-  background-color: color4
-  //background: rgba(0,0,0,0.5)
+  background-color: color5
   border-radius: 10px
 }
 
@@ -179,7 +193,7 @@ body {
 }
 
 li.active h3 {
-  color: color5
+  color: color3
   padding: 3px
   margin-left: 3px
   margin-right: 3px
@@ -206,4 +220,5 @@ li.active h3:hover {
 
 span#smallFont {
   font-size: 24px
+  color: black
 }
