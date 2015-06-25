@@ -3,10 +3,10 @@ color1 = #1352A5
 color2 = #CBC7B7
 color4 = #F1EFE6
 color3 = #5C5C5C
-color5 = #C1061B
-color6 = #A3A3A3
-color7 = #CFCFCF
+color5 = #D85703
+color6 = #0C3265
 color8 = #707070
+color9 = #B07D40
 
 // centered navbar
 @media (min-width: 768px) {
@@ -26,7 +26,7 @@ color8 = #707070
 }
 
 body {
-  background: black
+  background: color6
 }
 
 #wrapper {
@@ -59,6 +59,7 @@ body {
 }
 
 #slide {
+  margin-top: 55px
   background-image: url("../../../assets/images/slide1.jpg")
   background-size: cover
   height: 500px
@@ -102,9 +103,10 @@ body {
 }
 
 .navbar-custom {
+  height: 50px
   border-style: none
-  background-color: black
-  font-family: 'Oswald', sans-serif;
+  background-color: color4
+  font-family: 'Nunito', sans-serif;
 }
 
 .bottom-column
@@ -117,7 +119,7 @@ body {
 #bottom {
   bottom: 0
   color: color4
-  background-color: #404040
+  background-color: color5
   height: 300px
 }
 
@@ -131,7 +133,7 @@ body {
   border: 2px solid
   border-color: color4
   border-radius: 20pt
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Nunito', sans-serif;
 
   h3 {
     color: color4
@@ -147,43 +149,30 @@ body {
   }
 }
 
-.blueShadows {
-  font-size: 32px
-  font-family: 'Oswald', sans-serif;
-  color: color3
-  //text-shadow: 2px 2px black
-  background-color: color5
-  border-radius: 10px
-}
-
-.blueShadows:hover {
-  cursor: pointer
-  opacity: 0.5
-}
-
 #copyText {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Nunito', sans-serif;
   color: color1
   font-weight: 400
-  font-size: 35px
-  margin-top: 10px
-  height: 350px
+  font-size: 45px
+  margin-top: 5px
+  height: 300px
   background: color4
   overflow: hidden
 
   p#topP {
-    margin-top: 70px
+    margin-top: 35px
   }
 }
 
 li.active h3 {
-  color: color4
+  color: color1
+  font-family: 'Nunito', sans-serif
   padding: 3px
   margin-left: 15px
   margin-right: 15px
   margin-top: 10px
-  font-size: 16px;
-  font-weight: bolder
+  font-size: 24px
+  font-weight: 700
 }
 
 li.active h3:hover {
@@ -201,19 +190,19 @@ li.active h3:hover {
 
 span#smallFont {
   p {
-    font-size: 24px
+    font-size: 28px
     color: black
   }
 }
 
 #middle {
   height: 450px
-  background-color: color7
-  margin-bottom: 10px
+  background-color: color4
+  margin-bottom: 5px
   overflow: hidden;
 
   .col-md-10 {
-    background-color: color7
+    background-color: color4
     height: 400px
     margin-top: 25px
   }
@@ -228,47 +217,31 @@ span#smallFont {
 
 #rowCapa {
   margin-top: 7px
-  background-color: color6
 }
 
 #rowServ {
   margin-top: 5px
-  background-color: color3
 }
 
 #rowProd {
   margin-top: 5px
-  background-color: color8
 }
 
 #rowCapa:hover,
 #rowServ:hover,
 #rowProd:hover {
-  background-color: color1
   cursor: pointer
-  h1 {
-    color: color4
-  }
-}
-
-.sectionText {
-  font-size: 64px
-  font-family: 'Oswald', sans-serif
-  color: color1
-}
-
-#sectionImage {
-  margin-top: 7px
-  height: 385px
-  background-size: cover
 }
 
 #divider {
   height: 75px
-  background-color: color1
-  font-size: 32px
+  background-color: color5
   color: color4
-  font-family: 'Oswald', sans-serif
+  font-family: 'Nunito', sans-serif
+
+  h3 {
+    font-size: 32px
+  }
 }
 
 #capaPage,
@@ -284,7 +257,7 @@ span#smallFont {
 }
 
 #backButton {
-  font-family: 'Oswald', sans-serif
+  font-family: 'Nunito', sans-serif
   color: color4
   margin-top: 60px
 
@@ -317,7 +290,7 @@ span#smallFont {
   border: 2px solid
   border-color: color4
   border-radius: 20pt
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Nunito', sans-serif;
 
   h3 {
     color: color4
@@ -335,22 +308,20 @@ span#smallFont {
 
 #slider1_container {
   position: relative
-  top: 0px
-  left: 0px
-  width: 600px
-  height: 300px
+  width: 100%
+  height: 100%
+  margin-left: 0 auto
+  margin-right: 0 auto
+  left: 0%
+  right: 0%
 }
 
 #slider1 {
   cursor: move
   position: absolute
   overflow: hidden
-  left: 0px
-  top: 0px
-  width: 600px
+  width: 100%
   height: 385px
-  margin-top: 7px
-  margin-left: 10%
 }
 
 #capaCopy,
@@ -359,7 +330,7 @@ span#smallFont {
   background: rgba(0,0,0,0.6)
   padding: 10px
   margin-top: -8px
-  width: 600px
+  width: 100%
   height: 400px
   color: color4
   z-index: 10
@@ -367,7 +338,12 @@ span#smallFont {
 
   h3 {
     margin-left: 30px
+    margin-right: 30px
     font-weight: bolder
     font-size: 40px
   }
+}
+
+#sectionInfo {
+  margin-left: 50px
 }

@@ -21,19 +21,19 @@ div.container-fluid#wrapper
     div.col-md-12#divider
       h3.text-center We specialize in the conquering the impossible! Here's just some of what we can do:
   div.row.clearfix#middle
-    span#homePage
+    span#homePage.visible-lg
       div.col-md-1
       div.col-md-10
         div.row.clearfix
           div.col-md-2
-          div.col-md-3#sections
+          div.col-md-1#sections
             div.row.clearfix#rowCapa
-              h1.text-center.sectionText Capabilities
+              img.sectionText(src="../../../assets/images/capaIcon.jpg")
             div.row.clearfix#rowProd
-              h1.text-center.sectionText Products
+              img.sectionText(src="../../../assets/images/prodIcon.jpg")
             div.row.clearfix#rowServ
-              h1.text-center.sectionText Services
-          div.col-md-3#sectionInfo
+              img.sectionText(src="../../../assets/images/servIcon.jpg")
+          div.col-md-6#sectionInfo
             div#slider1_container
               div#slider1(u="slides")
                 div
@@ -48,7 +48,7 @@ div.container-fluid#wrapper
                   div#servCopy
                     h3 We endeavor to understand your needs and eliminate your worries. Utilize our Services to increase your probability of success.
                   img(u="image" src="../../../assets/images/home3.jpg")
-          div.col-md-2
+          //div.col-md-2
           div.col-md-2
       div.col-md-1
     span#capaPage.hidden
@@ -73,17 +73,17 @@ div.container-fluid#wrapper
         
   div.row.clearfix#bottom
         div.col-md-1
-        div.col-md-1 Social Media
+        div.col-md-1 
         div.col-md-8
           div.wBorder.hundredPercent
             h3.text-center Request A Quote
             //textarea.hundredPercent
-        div.col-md-1 More Soc. Media 
+        div.col-md-1 
         div.col-md-1
           
   div.row.clearfix#bottomSmall.hidden
         div.col-md-2
-        div.col-md-4 Social Media Here
+        div.col-md-4 
         div.col-md-4
           div#wBorderSmall.hundredPercent
             h3.text-center Request A Quote
@@ -94,13 +94,13 @@ div.container-fluid#wrapper
     .col-md-12.column
       nav.navbar.navbar-default.navbar-fixed-top.navbar-custom(role='navigation')
         .navbar-header
-          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse-1')
+          button.navbar-toggle.visible-sm.visible-xs(type='button', data-toggle='collapse', data-target='#navbar-collapse-1')
             span.sr-only Toggle navigation
             span.icon-bar
             span.icon-bar
             span.icon-bar
         #navbar-collapse-1.collapse.navbar-collapse.navbar-left.nav
-          ul.nav.navbar-nav.leftBar
+          ul.nav.navbar-nav.leftBar.visible-lg.visible-md
               li.active#navHome
                 h3 Home
               li.active#navAbout
@@ -110,7 +110,7 @@ div.container-fluid#wrapper
               div.circle
                 img.img-rounded#logo(alt="main image" src="../../../assets/images/logo.png")
         #navbar-collapse-1.collapse.navbar-collapse.navbar-right
-          ul.nav.navbar-nav.rightBar
+          ul.nav.navbar-nav.rightBar.visible-lg.visible-md
             li.active#navCapa
               h3 Capabilities
             li.active#navProd
