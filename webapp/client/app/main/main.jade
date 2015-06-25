@@ -3,7 +3,7 @@ div.container-fluid#wrapper
   div.row.clearfix#top
     div.col-md-12.column#slide
       div#backButton
-        h2 Back to Home
+        h2 What Can We Do For You?
   h1.text-center#tagline Your Brand. Your Vision.
   div.row.clearfix#copyText
     div.col-md-1
@@ -54,14 +54,23 @@ div.container-fluid#wrapper
       div.col-md-1
     span#servPage.hidden
       div.col-md-12
+        h1 Services Page
+    span#abouPage.hidden
+      div.col-md-12
+        h1 About Us Page
+    span#contPage.hidden
+      div.col-md-12
+        h1 Contact Page
         
   div.row.clearfix#bottom
-        div.col-md-4
-        div.col-md-4
+        div.col-md-1
+        div.col-md-1 Social Media
+        div.col-md-8
           div.wBorder.hundredPercent
             h3.text-center Request A Quote
-            textarea.hundredPercent 
-        div.col-md-4
+            //textarea.hundredPercent
+        div.col-md-1 More Soc. Media 
+        div.col-md-1
           
   div.row.clearfix#bottomSmall.hidden
         div.col-md-2
@@ -83,19 +92,19 @@ div.container-fluid#wrapper
             span.icon-bar
         #navbar-collapse-1.collapse.navbar-collapse.navbar-left.nav
           ul.nav.navbar-nav.leftBar
-              li.active
+              li.active#navHome
                 h3 Home
-              li.active
+              li.active#navAbout
                 h3 About Us
-              li.active
+              li.active#navContact
                 h3 Contact
               div.circle
                 img.img-rounded#logo(alt="main image" src="../../../assets/images/logo.png")
         #navbar-collapse-1.collapse.navbar-collapse.navbar-right
           ul.nav.navbar-nav.rightBar
-            li.active
+            li.active#navCapa
               h3 Capabilities
-            li.active
+            li.active#navProd
               h3 Products
-            li.active
+            li.active#navServ
               h3 Services
