@@ -32,8 +32,8 @@ angular.module 'webappApp'
     if onHome == true
       onHome = false
       $('html, body').animate {scrollTop: 0}, 500, () ->
-        $('#slide').animate {'height':'135px'}, 1000
-        $('#tagline, #copyText, #divider, #middle, #bottom').fadeOut 1000, () ->
+        $('#slide').animate {'height':'135px'}, 800
+        $('#tagline, #copyText, #divider, #middle, #bottom').fadeOut 800, () ->
           $('#homePage').addClass 'hidden'
           $('#middle').css 'margin-top', '10px'
           if which == 0
@@ -46,13 +46,13 @@ angular.module 'webappApp'
             $('#abouPage').removeClass 'hidden'
           else if which == 4
             $('#contPage').removeClass 'hidden'
-          $('#middle, #bottom').fadeIn 1000
-          $back.fadeIn 1000
+          $('#middle, #bottom').fadeIn 800
+          $back.fadeIn 800
 
     # transition from sub-page
     else
       $('html, body').animate {scrollTop: 0}, 500, () ->
-        $('#middle, #bottom').fadeOut 1000, () ->
+        $('#middle, #bottom').fadeOut 500, () ->
           $('#middle').css 'margin-top', '10px'
           clearPage()
           if which == 0
@@ -65,18 +65,18 @@ angular.module 'webappApp'
             $('#abouPage').removeClass 'hidden'
           else if which == 4
             $('#contPage').removeClass 'hidden'
-          $('#middle, #bottom').fadeIn 1000
+          $('#middle, #bottom').fadeIn 500
 
   home = () ->
     if onHome == false
       $('html, body').animate {scrollTop: 0}, 500, () ->
-        $('#slide').animate {'height':'500px'}, 1000
-        $('#middle, #bottom').fadeOut 1000, () ->
+        $('#slide').animate {'height':'500px'}, 800
+        $('#middle, #bottom').fadeOut 800, () ->
           $('#middle').css 'margin-top', ''
           $('#capaPage, #prodPage, #servPage, #abouPage, #contPage').addClass 'hidden'
           $('#homePage').removeClass 'hidden'
-          $('#tagline, #copyText, #divider, #middle, #bottom').fadeIn 1000
-          $back.fadeOut 1000
+          $('#tagline, #copyText, #divider, #middle, #bottom').fadeIn 800
+          $back.fadeOut 800
           onHome = true
 
   # $(document).ready()
@@ -99,7 +99,7 @@ angular.module 'webappApp'
       if $window.scrollTop() > 10
         $logo.fadeOut()
       else
-        $logo.fadeIn()
+        $logo.fadeIn 'fast'
 
     # navbar listeners
     $logo.on 'click', () ->
