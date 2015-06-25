@@ -67,7 +67,7 @@ angular.module 'webappApp'
   home = () ->
     $('html, body').animate {scrollTop: 0}, 500, () ->
       $('#slide').animate {'height':'500px'}, 1000
-      $('#middle').fadeOut 1000, () ->
+      $('#middle, #bottom').fadeOut 1000, () ->
         $('#middle').css('margin-top', '')
         $('#capaPage, #prodPage, #servPage, #abouPage, #contPage').addClass 'hidden'
         $('#homePage').removeClass 'hidden'
