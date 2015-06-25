@@ -17,6 +17,9 @@ angular.module 'webappApp'
   $navCapa = $('#navCapa')
   $navProd = $('#navProd')
   $navServ = $('#navServ')
+  $capaCopy = $('#capaCopy')
+  $prodCopy = $('#prodCopy')
+  $servCopy = $('#servCopy')
 
   # other variables
   onHome = true
@@ -32,7 +35,7 @@ angular.module 'webappApp'
         $('#slide').animate {'height':'135px'}, 1000
         $('#tagline, #copyText, #divider, #middle, #bottom').fadeOut 1000, () ->
           $('#homePage').addClass 'hidden'
-          $('#middle').css('margin-top', '10px')
+          $('#middle').css 'margin-top', '10px'
           if which == 0
             $('#capaPage').removeClass 'hidden'
           else if which == 1
@@ -50,7 +53,7 @@ angular.module 'webappApp'
     else
       $('html, body').animate {scrollTop: 0}, 500, () ->
         $('#middle, #bottom').fadeOut 1000, () ->
-          $('#middle').css('margin-top', '10px')
+          $('#middle').css 'margin-top', '10px'
           clearPage()
           if which == 0
             $('#capaPage').removeClass 'hidden'
@@ -65,21 +68,25 @@ angular.module 'webappApp'
           $('#middle, #bottom').fadeIn 1000
 
   home = () ->
-    $('html, body').animate {scrollTop: 0}, 500, () ->
-      $('#slide').animate {'height':'500px'}, 1000
-      $('#middle, #bottom').fadeOut 1000, () ->
-        $('#middle').css('margin-top', '')
-        $('#capaPage, #prodPage, #servPage, #abouPage, #contPage').addClass 'hidden'
-        $('#homePage').removeClass 'hidden'
-        $('#tagline, #copyText, #divider, #middle, #bottom').fadeIn 1000
-        $back.fadeOut 1000
-        onHome = true
+    if onHome == false
+      $('html, body').animate {scrollTop: 0}, 500, () ->
+        $('#slide').animate {'height':'500px'}, 1000
+        $('#middle, #bottom').fadeOut 1000, () ->
+          $('#middle').css 'margin-top', ''
+          $('#capaPage, #prodPage, #servPage, #abouPage, #contPage').addClass 'hidden'
+          $('#homePage').removeClass 'hidden'
+          $('#tagline, #copyText, #divider, #middle, #bottom').fadeIn 1000
+          $back.fadeOut 1000
+          onHome = true
 
   # $(document).ready()
   init = () ->
     # initially hide
     $secImg.fadeOut 0
     $back.fadeOut 0
+    $capaCopy.fadeOut 0
+    $prodCopy.fadeOut 0
+    $servCopy.fadeOut 0
 
     ### # # # # # # # # # # # HOME PAGE # # # # # # # # # # # ###
 
@@ -95,6 +102,8 @@ angular.module 'webappApp'
         $logo.fadeIn()
 
     # navbar listeners
+    $logo.on 'click', () ->
+      home()
     $navHome.on 'click', () ->
       home()
     $navAbout.on 'click', () ->
@@ -110,28 +119,22 @@ angular.module 'webappApp'
     # section image display
 
     $rowCapa.on 'mouseover', () ->
-      jssor_slider1.$PlayTo 0, 700
-      # display Capabilities image
-      #$secImg.css 'background-image', 'url("../../../assets/images/home1.jpg")'
-      #$secImg.stop().fadeIn 'fast'
+      jssor_slider1.$PlayTo 0
+      $capaCopy.stop().fadeIn 500
     $rowCapa.on 'mouseleave', () ->
-      #$secImg.fadeOut 0
+      $capaCopy.stop().fadeOut 500
 
     $rowProd.on 'mouseover', () ->
-      jssor_slider1.$PlayTo 1, 700
-      # display Products image
-      #$secImg.css 'background-image', 'url("../../../assets/images/home2.jpg")'
-      #$secImg.stop().fadeIn 'fast'
+      jssor_slider1.$PlayTo 1
+      $prodCopy.stop().fadeIn 500
     $rowProd.on 'mouseleave', () ->
-      #$secImg.fadeOut 0
+      $prodCopy.stop().fadeOut 500
 
     $rowServ.on 'mouseover', () ->
-      jssor_slider1.$PlayTo 2, 700
-      # display Services image
-      #$secImg.css 'background-image', 'url("../../../assets/images/home3.jpg")'
-      #$secImg.stop().fadeIn 'fast'
+      jssor_slider1.$PlayTo 2
+      $servCopy.stop().fadeIn 500
     $rowServ.on 'mouseleave', () ->
-      #$secImg.fadeOut 0
+      $servCopy.stop().fadeOut 500
 
     # change page on click
     $rowCapa.on 'click', () ->
