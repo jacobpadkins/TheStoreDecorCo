@@ -20,64 +20,68 @@ angular.module 'webappApp'
   $capaCopy = $('#capaCopy')
   $prodCopy = $('#prodCopy')
   $servCopy = $('#servCopy')
+  $middle = $('#middle')
 
   # other variables
-  onHome = true
+  whichPage = 0
   # functions
   clearPage = () ->
     $('#capaPage, #prodPage, #servPage, #abouPage, #contPage').addClass 'hidden'
 
   setPage = (which) ->
-    # transition from home
-    if onHome == true
-      onHome = false
-      $('html, body').animate {scrollTop: 0}, 500, () ->
-        $('#slide').animate {'height':'135px'}, 800
-        $('#tagline, #copyText, #divider, #middle, #bottom').fadeOut 800, () ->
-          $('#homePage').addClass 'hidden'
-          $('#middle').css 'margin-top', '10px'
-          if which == 0
-            $('#capaPage').removeClass 'hidden'
-          else if which == 1
-            $('#prodPage').removeClass 'hidden'
-          else if which == 2
-            $('#servPage').removeClass 'hidden'
-          else if which == 3
-            $('#abouPage').removeClass 'hidden'
-          else if which == 4
-            $('#contPage').removeClass 'hidden'
-          $('#middle, #bottom').fadeIn 800
-          $back.fadeIn 800
+    if whichPage != which
+      # transition from home
+      if whichPage == 0
+        whichPage = which
+        $('html, body').animate {scrollTop: 0}, 500, () ->
+          $('#slide').animate {'height':'135px'}, 800
+          $('#tagline, #copyText, #divider, #middle, #bottom').fadeOut 800, () ->
+            $('#homePage').addClass 'hidden'
+            $middle.css 'margin-top', '10px'
+            $middle.css 'height', '1000px'
+            if which == 1
+              $('#capaPage').removeClass 'hidden'
+            else if which == 2
+              $('#prodPage').removeClass 'hidden'
+            else if which == 3
+              $('#servPage').removeClass 'hidden'
+            else if which == 4
+              $('#abouPage').removeClass 'hidden'
+            else if which == 5
+              $('#contPage').removeClass 'hidden'
+            $('#middle, #bottom').fadeIn 800
+            $back.fadeIn 800
 
-    # transition from sub-page
-    else
-      $('html, body').animate {scrollTop: 0}, 500, () ->
-        $('#middle, #bottom').fadeOut 500, () ->
-          $('#middle').css 'margin-top', '10px'
-          clearPage()
-          if which == 0
-            $('#capaPage').removeClass 'hidden'
-          else if which == 1
-            $('#prodPage').removeClass 'hidden'
-          else if which == 2
-            $('#servPage').removeClass 'hidden'
-          else if which == 3
-            $('#abouPage').removeClass 'hidden'
-          else if which == 4
-            $('#contPage').removeClass 'hidden'
-          $('#middle, #bottom').fadeIn 500
+      # transition from sub-page
+      else
+        $('html, body').animate {scrollTop: 0}, 500, () ->
+          $('#middle, #bottom').fadeOut 500, () ->
+            clearPage()
+            if which == 1
+              $('#capaPage').removeClass 'hidden'
+            else if which == 2
+              $('#prodPage').removeClass 'hidden'
+            else if which == 3
+              $('#servPage').removeClass 'hidden'
+            else if which == 4
+              $('#abouPage').removeClass 'hidden'
+            else if which == 5
+              $('#contPage').removeClass 'hidden'
+            $('#middle, #bottom').fadeIn 500
+      whichPage = which
 
   home = () ->
-    if onHome == false
+    if whichPage != 0
       $('html, body').animate {scrollTop: 0}, 500, () ->
         $('#slide').animate {'height':'500px'}, 800
         $('#middle, #bottom').fadeOut 800, () ->
-          $('#middle').css 'margin-top', ''
+          $middle.css 'margin-top', ''
+          $middle.css 'height', '450px'
           $('#capaPage, #prodPage, #servPage, #abouPage, #contPage').addClass 'hidden'
           $('#homePage').removeClass 'hidden'
           $('#tagline, #copyText, #divider, #middle, #bottom').fadeIn 800
           $back.fadeOut 800
-          onHome = true
+          whichPage = 0
 
   # $(document).ready()
   init = () ->
@@ -107,15 +111,15 @@ angular.module 'webappApp'
     $navHome.on 'click', () ->
       home()
     $navAbout.on 'click', () ->
-      setPage 3
-    $navContact.on 'click', () ->
       setPage 4
+    $navContact.on 'click', () ->
+      setPage 5
     $navCapa.on 'click', () ->
-      setPage 0
-    $navProd.on 'click', () ->
       setPage 1
-    $navServ.on 'click', () ->
+    $navProd.on 'click', () ->
       setPage 2
+    $navServ.on 'click', () ->
+      setPage 3
     # section image display
 
     $rowCapa.on 'mouseover', () ->
@@ -138,11 +142,11 @@ angular.module 'webappApp'
 
     # change page on click
     $rowCapa.on 'click', () ->
-      setPage 0
-    $rowProd.on 'click', () ->
       setPage 1
-    $rowServ.on 'click', () ->
+    $rowProd.on 'click', () ->
       setPage 2
+    $rowServ.on 'click', () ->
+      setPage 3
 
     ### # # # # # # # # # # # CAPA PAGE # # # # # # # # # # # ###
 
