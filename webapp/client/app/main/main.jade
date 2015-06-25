@@ -21,15 +21,27 @@ div.container-fluid#wrapper
       div.col-md-1
       div.col-md-10
         div.row.clearfix
-          div.col-md-4#sections
+          div.col-md-1
+          div.col-md-3#sections
             div.row.clearfix#rowCapa
               h1.text-center.sectionText Capabilities
             div.row.clearfix#rowProd
               h1.text-center.sectionText Products
             div.row.clearfix#rowServ
               h1.text-center.sectionText Services
-          div.col-md-8#sectionInfo
-            div#sectionImage
+          div.col-md-1
+          div.col-md-3#sectionInfo
+            //div#sectionImage
+            div#slider1_container
+              div#slider1(u="slides")
+                div
+                  img(u="image" src="../../../assets/images/home1.jpg")
+                div
+                  img(u="image" src="../../../assets/images/home2.jpg")
+                div
+                  img(u="image" src="../../../assets/images/home3.jpg")
+          div.col-md-1
+          div.col-md-3
       div.col-md-1
     span#capaPage.hidden
       div.col-md-1
@@ -46,11 +58,20 @@ div.container-fluid#wrapper
         
   div.row.clearfix#bottom
         div.col-md-4
-        div.col-md-4#quote
+        div.col-md-4
           div.wBorder.hundredPercent
             h3.text-center Request A Quote
             textarea.hundredPercent 
         div.col-md-4
+          
+  div.row.clearfix#bottomSmall.hidden
+        div.col-md-2
+        div.col-md-4 Social Media Here
+        div.col-md-4
+          div#wBorderSmall.hundredPercent
+            h3.text-center Request A Quote
+            textarea.hundredPercent 
+        div.col-md-2
         
   div.row.clearfix
     .col-md-12.column
@@ -64,11 +85,7 @@ div.container-fluid#wrapper
         #navbar-collapse-1.collapse.navbar-collapse.navbar-left.nav
           ul.nav.navbar-nav.leftBar
               li.active
-                h3 Capabilities
-              li.active
-                h3 Services
-              li.active
-                h3 Products
+                h3 Home
               li.active
                 h3 About Us
               li.active
@@ -78,12 +95,8 @@ div.container-fluid#wrapper
         #navbar-collapse-1.collapse.navbar-collapse.navbar-right
           ul.nav.navbar-nav.rightBar
             li.active
-              h3 Facebook
+              h3 Capabilities
             li.active
-              h3 Twitter
+              h3 Products
             li.active
-              h3 Instagram
-            li.active
-              h3 LinkedIn
-            li.active
-              h3 Google+
+              h3 Services

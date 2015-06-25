@@ -10,7 +10,7 @@ angular.module 'webappApp'
   $rowProd = $('#rowProd')
   $rowServ = $('#rowServ')
   $secImg = $('#sectionImage')
-  $back = $('#backButton')
+  $back = $('#backButton h2')
 
   # other variables
 
@@ -48,6 +48,10 @@ angular.module 'webappApp'
 
     ### # # # # # # # # # # # HOME PAGE # # # # # # # # # # # ###
 
+    # slider
+    options = { $AutoPlay: true }
+    jssor_slider1 = new $JssorSlider$ 'slider1_container', options
+
     # hide/show logo on scroll
     $(window).scroll () ->
       if $window.scrollTop() > 10
@@ -55,28 +59,34 @@ angular.module 'webappApp'
       else
         $logo.fadeIn()
 
+    # navbar listeners
+
+
     # section image display
-    
+
     $rowCapa.on 'mouseover', () ->
+      jssor_slider1.$PlayTo 0, 700
       # display Capabilities image
-      $secImg.css 'background-image', 'url("../../../assets/images/home1.jpg")'
-      $secImg.stop().fadeIn 'fast'
+      #$secImg.css 'background-image', 'url("../../../assets/images/home1.jpg")'
+      #$secImg.stop().fadeIn 'fast'
     $rowCapa.on 'mouseleave', () ->
-      $secImg.fadeOut 0
+      #$secImg.fadeOut 0
 
     $rowProd.on 'mouseover', () ->
+      jssor_slider1.$PlayTo 1, 700
       # display Products image
-      $secImg.css 'background-image', 'url("../../../assets/images/home2.jpg")'
-      $secImg.stop().fadeIn 'fast'
+      #$secImg.css 'background-image', 'url("../../../assets/images/home2.jpg")'
+      #$secImg.stop().fadeIn 'fast'
     $rowProd.on 'mouseleave', () ->
-      $secImg.fadeOut 0
+      #$secImg.fadeOut 0
 
     $rowServ.on 'mouseover', () ->
+      jssor_slider1.$PlayTo 2, 700
       # display Services image
-      $secImg.css 'background-image', 'url("../../../assets/images/home3.jpg")'
-      $secImg.stop().fadeIn 'fast'
+      #$secImg.css 'background-image', 'url("../../../assets/images/home3.jpg")'
+      #$secImg.stop().fadeIn 'fast'
     $rowServ.on 'mouseleave', () ->
-      $secImg.fadeOut 0
+      #$secImg.fadeOut 0
 
     # change page on click
     $rowCapa.on 'click', () ->
