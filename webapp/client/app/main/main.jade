@@ -96,6 +96,7 @@ div.container-fluid#wrapper
             span.icon-bar
             span.icon-bar
             span.icon-bar
+        
         #navbar-collapse-1.collapse.navbar-collapse.navbar-left.nav
           ul.nav.navbar-nav.leftBar.visible-lg.visible-md
               li.active#navHome
@@ -105,7 +106,7 @@ div.container-fluid#wrapper
               li.active#navContact
                 h3 Contact
               div.circle
-                img.img-rounded#logo(alt="main image" src="../../../assets/images/logo_orng.png")
+                img.img-rounded.logo(alt="main image" src="../../../assets/images/logo_orng.png")
         #navbar-collapse-1.collapse.navbar-collapse.navbar-right
           ul.nav.navbar-nav.rightBar.visible-lg.visible-md
             li.active#navCapa
@@ -114,3 +115,11 @@ div.container-fluid#wrapper
               h3 Products
             li.active#navServ
               h3 Services
+        #navbar-collapse-1.navbar-left.nav
+          ul.nav.navbar-nav.leftBar.visible-sm
+            div.circle
+              img.img-rounded.logo(alt="main image" src="../../../assets/images/logo_orng.png")
+        #navbar-collapse-1.navbar-left.nav
+          ul.nav.navbar-nav.leftBar.visible-xs
+            div.circle
+              img.img-rounded.logo.moveUp(alt="main image" src="../../../assets/images/logo_orng.png")

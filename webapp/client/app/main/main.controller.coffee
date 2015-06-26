@@ -5,7 +5,7 @@ angular.module 'webappApp'
 
   # cached jQuery variables
   $window = $(window)
-  $logo = $('#logo')
+  $logo = $('.logo')
   $rowCapa = $('#rowCapa')
   $rowProd = $('#rowProd')
   $rowServ = $('#rowServ')
