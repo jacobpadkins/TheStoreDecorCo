@@ -6,20 +6,13 @@ angular.module 'webappApp'
   # cached jQuery variables
   $window = $(window)
   $logo = $('.logo')
-  $rowCapa = $('#rowCapa')
-  $rowProd = $('#rowProd')
-  $rowServ = $('#rowServ')
-  $secImg = $('#sectionImage')
-  $back = $('#backButton h2')
+  $back = $('.backButton h2')
   $navHome = $('#navHome')
   $navAbout = $('#navAbout')
   $navContact = $('#navContact')
   $navCapa = $('#navCapa')
   $navProd = $('#navProd')
   $navServ = $('#navServ')
-  $capaCopy = $('#capaCopy')
-  $prodCopy = $('#prodCopy')
-  $servCopy = $('#servCopy')
   $middle = $('#middle')
 
   # other variables
@@ -35,7 +28,7 @@ angular.module 'webappApp'
         whichPage = which
         $('html, body').animate {scrollTop: 0}, 500, () ->
           $('#slide').animate {'height':'135px'}, 800
-          $('#tagline, #copyText, #divider, #middle, #bottom').fadeOut 800, () ->
+          $('#tagline, #taglineSM, #copyText, #copyTextSM, #divider, #middle, #bottom').fadeOut 800, () ->
             $('#homePage').addClass 'hidden'
             $middle.css 'margin-top', '5px'
             $middle.css 'height', '1000px'
@@ -77,26 +70,18 @@ angular.module 'webappApp'
         $('#middle, #bottom').fadeOut 800, () ->
           $middle.css 'margin-top', ''
           $middle.css 'height', '450px'
-          $('#capaPage, #prodPage, #servPage, #abouPage, #contPage').addClass 'hidden'
+          clearPage()
           $('#homePage').removeClass 'hidden'
-          $('#tagline, #copyText, #divider, #middle, #bottom').fadeIn 800
+          $('#tagline, #copyText, #copyTextSM, #divider, #middle, #bottom').fadeIn 800
           $back.fadeOut 800
           whichPage = 0
 
   # $(document).ready()
   init = () ->
     # initially hide
-    $secImg.fadeOut 0
     $back.fadeOut 0
-    $capaCopy.fadeOut 0
-    $prodCopy.fadeOut 0
-    $servCopy.fadeOut 0
 
     ### # # # # # # # # # # # HOME PAGE # # # # # # # # # # # ###
-
-    # slider
-    options = { $AutoPlay: true }
-    jssor_slider1 = new $JssorSlider$ 'slider1_container', options
 
     # hide/show logo on scroll
     $(window).scroll () ->
@@ -119,33 +104,6 @@ angular.module 'webappApp'
     $navProd.on 'click', () ->
       setPage 2
     $navServ.on 'click', () ->
-      setPage 3
-    # section image display
-
-    $rowCapa.on 'mouseover', () ->
-      jssor_slider1.$PlayTo 0
-      $capaCopy.stop().fadeIn 500
-    $rowCapa.on 'mouseleave', () ->
-      $capaCopy.stop().fadeOut 500
-
-    $rowProd.on 'mouseover', () ->
-      jssor_slider1.$PlayTo 1
-      $prodCopy.stop().fadeIn 500
-    $rowProd.on 'mouseleave', () ->
-      $prodCopy.stop().fadeOut 500
-
-    $rowServ.on 'mouseover', () ->
-      jssor_slider1.$PlayTo 2
-      $servCopy.stop().fadeIn 500
-    $rowServ.on 'mouseleave', () ->
-      $servCopy.stop().fadeOut 500
-
-    # change page on click
-    $rowCapa.on 'click', () ->
-      setPage 1
-    $rowProd.on 'click', () ->
-      setPage 2
-    $rowServ.on 'click', () ->
       setPage 3
 
     ### # # # # # # # # # # # CAPA PAGE # # # # # # # # # # # ###

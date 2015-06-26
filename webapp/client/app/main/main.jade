@@ -1,32 +1,40 @@
 
 div.container-fluid#wrapper
   div.row.clearfix#top
-    div.col-md-12.column.visible-lg.visible-md#slide
-      div#backButton
-        h2 What Can We Do For You?
-    div.col-md-12.column.visible-sm.visible-xs#slideSM
-      div#backButton
-        h2 What Can We Do For You?
-  h1.text-center.visible-lg.visible-md#tagline Your Brand. Your Vision.
-  h1.text-center.visible-sm.visible-xs#taglineSM Your Brand. Your Vision.
-  div.row.clearfix.copyText.visible-sm.visible-md.visible-lg
-    div.col-md-1
-    div.col-md-10
-      p#topP.text-center
-        | We are <b>The Store Decor Company!</b> 
-      span#smallFont
-        p.text-center
-          | Focused on fulfilling your vision for that "extraordinary customer experience". Our experienced team understands the challenges you face in a competitive sales environment. We promise to integrate our knowledge and ability into your brand communication strategy to maximize your profitability goals.
-    div.col-md-1
-  div.row.clearfix.copyText.visible-xs
-    div.col-md-1
-    div.col-md-10
-      p#topPSM.text-center
-        | We are <b>The Store Decor Company!</b> 
-      span#smallFontSM
-        p.text-center
-          | Focused on fulfilling your vision for that "extraordinary customer experience". Our experienced team understands the challenges you face in a competitive sales environment. We promise to integrate our knowledge and ability into your brand communication strategy to maximize your profitability goals.
-    div.col-md-1
+    .column.visible-lg.visible-md
+      div.col-md-12#slide
+        div.backButton
+          h2 What Can We Do For You?
+    .visible-sm.visible-xs
+      div.col-md-12.column#slideSM
+        div.backButton
+          h2 What Can We Do For You?
+  div.text-center.visible-lg.visible-md
+    #tagline 
+      h1 Your Brand. Your Vision.
+  div.text-center.visible-sm.visible-xs
+    #taglineSM
+      h1 Your Brand. Your Vision.
+  .visible-sm.visible-md.visible-lg
+    div.row.clearfix#copyText
+      div.col-md-1
+      div.col-md-10
+        p#topP.text-center
+          | We are <b>The Store Decor Company!</b> 
+        span#smallFont
+          p.text-center
+            | Focused on fulfilling your vision for that "extraordinary customer experience". Our experienced team understands the challenges you face in a competitive sales environment. We promise to integrate our knowledge and ability into your brand communication strategy to maximize your profitability goals.
+      div.col-md-1
+  .visible-xs
+    div.row.clearfix#copyTextSM
+      div.col-md-1
+      div.col-md-10
+        p#topPSM.text-center
+          | We are <b>The Store Decor Company!</b> 
+        span#smallFontSM
+          p.text-center
+            | Focused on fulfilling your vision for that "extraordinary customer experience". Our experienced team understands the challenges you face in a competitive sales environment. We promise to integrate our knowledge and ability into your brand communication strategy to maximize your profitability goals.
+      div.col-md-1
   div.row.clearfix
     div.col-md-12#divider
       h3.text-center.visible-lg We specialize in the conquering the impossible! Here's just some of what we can do:
@@ -34,32 +42,6 @@ div.container-fluid#wrapper
     span#homePage
       div.col-md-1
       div.col-md-10
-        div.row.clearfix
-          div.col-md-2
-          div.col-md-1#sections.hidden
-            div.row.clearfix#rowCapa
-              img.sectionText(src="../../../assets/images/capaIcon.jpg")
-            div.row.clearfix#rowProd
-              img.sectionText(src="../../../assets/images/prodIcon.jpg")
-            div.row.clearfix#rowServ
-              img.sectionText(src="../../../assets/images/servIcon.jpg")
-          div.col-md-6#sectionInfo.hidden
-            div#slider1_container
-              div#slider1(u="slides")
-                div
-                  div#capaCopy
-                    h3 Our general attitude is there's nothing we can't create. Challenge us! Our Capabilities are unbounded.
-                  img(u="image" src="../../../assets/images/home1.jpg")
-                div
-                  div#prodCopy
-                    h3 We make Products that set the industry standard for quality, durability and effect!
-                  img(u="image" src="../../../assets/images/home2.jpg")
-                div
-                  div#servCopy
-                    h3 We endeavor to understand your needs and eliminate your worries. Utilize our Services to increase your probability of success.
-                  img(u="image" src="../../../assets/images/home3.jpg")
-          //div.col-md-2
-          div.col-md-2
       div.col-md-1
     span#capaPage.hidden
       div.col-md-1

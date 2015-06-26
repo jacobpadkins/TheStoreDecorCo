@@ -82,7 +82,7 @@ body {
   height: 500px
 }
 
-#tagline {
+#tagline h1 {
   font-size: 40px
   font-style: italic
   font-weight: bolder
@@ -97,7 +97,7 @@ body {
   position: absolute
 }
 
-#taglineSM {
+#taglineSM h1 {
   font-size: 40px
   font-style: italic
   font-weight: bolder
@@ -181,7 +181,7 @@ body {
   }
 }
 
-.copyText {
+#copyText {
   font-family: 'Montserrat', sans-serif;
   color: black
   font-weight: 400
@@ -201,8 +201,24 @@ body {
   }
 }
 
-.copyText.visible-xs {
+#copyTextSM {
+  font-family: 'Montserrat', sans-serif;
+  color: black
+  font-weight: 400
+  font-size: 40px
+  margin-top: 5px
   height: 600px
+  background: color4
+  overflow: hidden
+
+  p#topP {
+    margin-top: 70px
+  }
+
+  p#topPSM {
+    margin-top: 40px
+    font-size: 40px
+  }
 }
 
 li.active h3 {
@@ -257,31 +273,6 @@ span#smallFontSM {
   }
 }
 
-#rowCapa,
-#rowServ,
-#rowProd {
-  height: 125px
-  margin-left: -7px
-}
-
-#rowCapa {
-  margin-top: 7px
-}
-
-#rowServ {
-  margin-top: 5px
-}
-
-#rowProd {
-  margin-top: 5px
-}
-
-#rowCapa:hover,
-#rowServ:hover,
-#rowProd:hover {
-  cursor: pointer
-}
-
 #divider {
   height: 75px
   background-color: color5
@@ -307,16 +298,16 @@ span#smallFontSM {
   }
 }
 
-#backButton {
+.backButton {
   font-family: 'Montserrat', sans-serif
   color: color4
   margin-top: 10px
 
   h2 {
     padding: 10px
-    width: 320px
-    font-size: 24px
-    background: black
+    width: 290px
+    font-size: 20px
+    background: color3
   }
 
   h2:hover {
