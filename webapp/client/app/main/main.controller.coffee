@@ -37,7 +37,7 @@ angular.module 'webappApp'
           $('#slide').animate {'height':'135px'}, 800
           $('#tagline, #copyText, #divider, #middle, #bottom').fadeOut 800, () ->
             $('#homePage').addClass 'hidden'
-            $middle.css 'margin-top', '10px'
+            $middle.css 'margin-top', '5px'
             $middle.css 'height', '1000px'
             if which == 1
               $('#capaPage').removeClass 'hidden'
