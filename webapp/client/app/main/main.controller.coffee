@@ -5,25 +5,25 @@ angular.module 'webappApp'
 
   # cached jQuery variables
   $window = $(window)
-  $logo = $('#logo')
-  $rowCapa = $('#rowCapa')
-  $rowProd = $('#rowProd')
-  $rowServ = $('#rowServ')
-  $secImg = $('#sectionImage')
-  $back = $('#backButton h2')
+  $logo = $('.logo')
+  $back = $('.backButton h2')
   $navHome = $('#navHome')
   $navAbout = $('#navAbout')
   $navContact = $('#navContact')
   $navCapa = $('#navCapa')
   $navProd = $('#navProd')
   $navServ = $('#navServ')
-  $capaCopy = $('#capaCopy')
-  $prodCopy = $('#prodCopy')
-  $servCopy = $('#servCopy')
   $middle = $('#middle')
+  $img0 = $('#img0')
+  $img1 = $('#img1')
+  $img2 = $('#img2')
+  $img3 = $('#img3')
+  $allImgs = $('#img0, #img1, #img2, #img3')
 
   # other variables
   whichPage = 0
+  whichSlide = 0
+  maxSlide = 7
   # functions
   clearPage = () ->
     $('#capaPage, #prodPage, #servPage, #abouPage, #contPage').addClass 'hidden'
@@ -32,44 +32,46 @@ angular.module 'webappApp'
     if whichPage != which
       # transition from home
       if whichPage == 0
-        whichPage = which
         $('html, body').animate {scrollTop: 0}, 500, () ->
           $('#slide').animate {'height':'135px'}, 800
-          $('#tagline, #copyText, #divider, #middle, #bottom').fadeOut 800, () ->
-            $('#homePage').addClass 'hidden'
-            $middle.css 'margin-top', '5px'
-            $middle.css 'height', '1000px'
-            if which == 1
-              $('#capaPage').removeClass 'hidden'
-            else if which == 2
-              $('#prodPage').removeClass 'hidden'
-            else if which == 3
-              $('#servPage').removeClass 'hidden'
-            else if which == 4
-              $('#abouPage').removeClass 'hidden'
-            else if which == 5
-              $('#contPage').removeClass 'hidden'
-            $('#middle, #bottom').fadeIn 800
-            $back.fadeIn 800
+          $('#tagline, #taglineSM, #copyText, #copyTextSM, #divider, #middle, #bottom').fadeOut 800, () ->
+            if $('#tagline:animated, #taglineSM:animated, #copyText:animated, #copyTextSM:animated, #divider:animated, #middle:animated, #bottom:animated').length == 0
+              $('#homePage').addClass 'hidden'
+              $middle.css 'margin-top', '5px'
+              $middle.css 'height', '1000px'
+              if which == 1
+                $('#capaPage').removeClass 'hidden'
+              else if which == 2
+                $('#prodPage').removeClass 'hidden'
+              else if which == 3
+                $('#servPage').removeClass 'hidden'
+              else if which == 4
+                $('#abouPage').removeClass 'hidden'
+              else if which == 5
+                $('#contPage').removeClass 'hidden'
+              $('#middle, #bottom').fadeIn 800
+              $back.fadeIn 800
 
       # transition from sub-page
       else
         $('html, body').animate {scrollTop: 0}, 500, () ->
           $('#middle, #bottom').fadeOut 500, () ->
-            clearPage()
-            if which == 1
-              $('#capaPage').removeClass 'hidden'
-            else if which == 2
-              $('#prodPage').removeClass 'hidden'
-            else if which == 3
-              $('#servPage').removeClass 'hidden'
-            else if which == 4
-              $('#abouPage').removeClass 'hidden'
-            else if which == 5
-              $('#contPage').removeClass 'hidden'
-            $('#middle, #bottom').fadeIn 500
+            if $('#middle:animated, #bottom:animated').length == 0
+              clearPage()
+              if which == 1
+                $('#capaPage').removeClass 'hidden'
+              else if which == 2
+                $('#prodPage').removeClass 'hidden'
+              else if which == 3
+                $('#servPage').removeClass 'hidden'
+              else if which == 4
+                $('#abouPage').removeClass 'hidden'
+              else if which == 5
+                $('#contPage').removeClass 'hidden'
+              $('#middle, #bottom').fadeIn 500
       whichPage = which
 
+  # transition back to home page
   home = () ->
     if whichPage != 0
       $('html, body').animate {scrollTop: 0}, 500, () ->
@@ -77,26 +79,55 @@ angular.module 'webappApp'
         $('#middle, #bottom').fadeOut 800, () ->
           $middle.css 'margin-top', ''
           $middle.css 'height', '450px'
-          $('#capaPage, #prodPage, #servPage, #abouPage, #contPage').addClass 'hidden'
+          clearPage()
           $('#homePage').removeClass 'hidden'
-          $('#tagline, #copyText, #divider, #middle, #bottom').fadeIn 800
+          $('#tagline, #copyText, #copyTextSM, #divider, #middle, #bottom').fadeIn 800
           $back.fadeOut 800
           whichPage = 0
+
+  # cycle through slideshow
+  slideShow = () ->
+    $allImgs.stop().fadeOut 1000, () ->
+      if $('#img0:animated, #img1:animated, #img2:animated, #img3:animated').length == 0
+        # switch pics
+        if whichSlide <= maxSlide - 4
+          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 1) + '.jpg'
+          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 2) + '.jpg'
+          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 3) + '.jpg'
+          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 4) + '.jpg'
+          whichSlide += 1
+        else if whichSlide == maxSlide - 3
+          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 1) + '.jpg'
+          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 2) + '.jpg'
+          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 3) + '.jpg'
+          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + 1 + '.jpg'
+          whichSlide += 1
+        else if whichSlide == maxSlide - 2
+          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 1) + '.jpg'
+          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 2) + '.jpg'
+          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + 1 + '.jpg'
+          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + 2 + '.jpg'
+          whichSlide += 1
+        else if whichSlide == maxSlide - 1
+          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 1) + '.jpg'
+          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + 1 + '.jpg'
+          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + 2 + '.jpg'
+          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + 3 + '.jpg'
+          whichSlide += 1
+        else if whichSlide == maxSlide
+          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + 1 + '.jpg'
+          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + 2 + '.jpg'
+          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + 3 + '.jpg'
+          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + 4 + '.jpg'
+          whichSlide = 0
+        $allImgs.stop().fadeIn 1000
 
   # $(document).ready()
   init = () ->
     # initially hide
-    $secImg.fadeOut 0
     $back.fadeOut 0
-    $capaCopy.fadeOut 0
-    $prodCopy.fadeOut 0
-    $servCopy.fadeOut 0
 
     ### # # # # # # # # # # # HOME PAGE # # # # # # # # # # # ###
-
-    # slider
-    options = { $AutoPlay: true }
-    jssor_slider1 = new $JssorSlider$ 'slider1_container', options
 
     # hide/show logo on scroll
     $(window).scroll () ->
@@ -120,33 +151,10 @@ angular.module 'webappApp'
       setPage 2
     $navServ.on 'click', () ->
       setPage 3
-    # section image display
 
-    $rowCapa.on 'mouseover', () ->
-      jssor_slider1.$PlayTo 0
-      $capaCopy.stop().fadeIn 500
-    $rowCapa.on 'mouseleave', () ->
-      $capaCopy.stop().fadeOut 500
-
-    $rowProd.on 'mouseover', () ->
-      jssor_slider1.$PlayTo 1
-      $prodCopy.stop().fadeIn 500
-    $rowProd.on 'mouseleave', () ->
-      $prodCopy.stop().fadeOut 500
-
-    $rowServ.on 'mouseover', () ->
-      jssor_slider1.$PlayTo 2
-      $servCopy.stop().fadeIn 500
-    $rowServ.on 'mouseleave', () ->
-      $servCopy.stop().fadeOut 500
-
-    # change page on click
-    $rowCapa.on 'click', () ->
-      setPage 1
-    $rowProd.on 'click', () ->
-      setPage 2
-    $rowServ.on 'click', () ->
-      setPage 3
+    # slideshow
+    slideShow()
+    window.setInterval slideShow, 5000
 
     ### # # # # # # # # # # # CAPA PAGE # # # # # # # # # # # ###
 

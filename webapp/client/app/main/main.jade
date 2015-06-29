@@ -1,23 +1,40 @@
 
 div.container-fluid#wrapper
   div.row.clearfix#top
-    div.col-md-12.column#slide
-      div#backButton
-        h2 What Can We Do For You?
-  h1.text-center#tagline Your Brand. Your Vision.
-  div.row.clearfix#copyText
-    div.col-md-1
-    div.col-md-10.visible-lg
-      p#topP.text-center
-        | We are <b>The Store Decor Company!</b> 
-      span#smallFont
-        p.text-center
-          | Focused on fulfilling your vision for that "extraordinary customer experience".
-        p.text-center
-          | Our experienced team understands the challenges you face in a competitive sales environment. 
-        p.text-center
-          | We promise to integrate our knowledge and ability into your brand communication strategy to maximize your profitability goals.
-    div.col-md-1
+    .column.visible-lg.visible-md
+      div.col-md-12#slide
+        div.backButton
+          h2 What Can We Do For You?
+    .visible-sm.visible-xs
+      div.col-md-12.column#slideSM
+        div.backButton
+          h2 What Can We Do For You?
+  div.text-center.visible-lg.visible-md
+    #tagline 
+      h1 Your Brand. Your Vision.
+  div.text-center.visible-sm.visible-xs
+    #taglineSM
+      h1 Your Brand. Your Vision.
+  .visible-sm.visible-md.visible-lg
+    div.row.clearfix#copyText
+      div.col-md-1
+      div.col-md-10
+        p#topP.text-center
+          | We are <b>The Store Decor Company!</b> 
+        span#smallFont
+          p.text-center
+            | Focused on fulfilling your vision for that "extraordinary customer experience". Our experienced team understands the challenges you face in a competitive sales environment. We promise to integrate our knowledge and ability into your brand communication strategy to maximize your profitability goals.
+      div.col-md-1
+  .visible-xs
+    div.row.clearfix#copyTextSM
+      div.col-md-1
+      div.col-md-10
+        p#topPSM.text-center
+          | We are <b>The Store Decor Company!</b> 
+        span#smallFontSM
+          p.text-center
+            | Focused on fulfilling your vision for that "extraordinary customer experience". Our experienced team understands the challenges you face in a competitive sales environment. We promise to integrate our knowledge and ability into your brand communication strategy to maximize your profitability goals.
+      div.col-md-1
   div.row.clearfix
     div.col-md-12#divider
       h3.text-center.visible-lg We specialize in the conquering the impossible! Here's just some of what we can do:
@@ -25,32 +42,27 @@ div.container-fluid#wrapper
     span#homePage
       div.col-md-1
       div.col-md-10
-        div.row.clearfix
-          div.col-md-2
-          div.col-md-1#sections
-            div.row.clearfix#rowCapa
-              img.sectionText(src="../../../assets/images/capaIcon.jpg")
-            div.row.clearfix#rowProd
-              img.sectionText(src="../../../assets/images/prodIcon.jpg")
-            div.row.clearfix#rowServ
-              img.sectionText(src="../../../assets/images/servIcon.jpg")
-          div.col-md-6#sectionInfo
-            div#slider1_container
-              div#slider1(u="slides")
-                div
-                  div#capaCopy
-                    h3 Our general attitude is there's nothing we can't create. Challenge us! Our Capabilities are unbounded.
-                  img(u="image" src="../../../assets/images/home1.jpg")
-                div
-                  div#prodCopy
-                    h3 We make Products that set the industry standard for quality, durability and effect!
-                  img(u="image" src="../../../assets/images/home2.jpg")
-                div
-                  div#servCopy
-                    h3 We endeavor to understand your needs and eliminate your worries. Utilize our Services to increase your probability of success.
-                  img(u="image" src="../../../assets/images/home3.jpg")
-          //div.col-md-2
-          div.col-md-2
+        .row.clearfix#slideshow
+          .col-md-2
+          div.col-md-2#icons
+            .row.clearfix
+              .col-md-12
+                img(src="../../../assets/images/capaIcon.png")
+              .col-md-12
+                img(src="../../../assets/images/prodIcon.png")
+              .col-md-12
+                img(src="../../../assets/images/servIcon.png")
+          div.col-md-4#mainImg
+            img(alt = "main image" src="")#img0
+          div.col-md-2#sideImgs
+            .row.clearfix
+              .col-md-12
+                img(alt = "side image 0 here" src="")#img1
+              .col-md-12
+                img(alt = "side image 1 here" src="")#img2
+              .col-md-12
+                img(alt = "side image 2 here" src="")#img3
+          .col-md-2
       div.col-md-1
     span#capaPage.hidden
       div.col-md-1
@@ -100,6 +112,7 @@ div.container-fluid#wrapper
             span.icon-bar
             span.icon-bar
             span.icon-bar
+        
         #navbar-collapse-1.collapse.navbar-collapse.navbar-left.nav
           ul.nav.navbar-nav.leftBar.visible-lg.visible-md
               li.active#navHome
@@ -109,7 +122,7 @@ div.container-fluid#wrapper
               li.active#navContact
                 h3 Contact
               div.circle
-                img.img-rounded#logo(alt="main image" src="../../../assets/images/logo.png")
+                img.img-rounded.logo(alt="main image" src="../../../assets/images/logo_orng.png")
         #navbar-collapse-1.collapse.navbar-collapse.navbar-right
           ul.nav.navbar-nav.rightBar.visible-lg.visible-md
             li.active#navCapa
@@ -118,3 +131,11 @@ div.container-fluid#wrapper
               h3 Products
             li.active#navServ
               h3 Services
+        #navbar-collapse-1.navbar-left.nav
+          ul.nav.navbar-nav.leftBar.visible-sm
+            div.circle
+              img.img-rounded.logo(alt="main image" src="../../../assets/images/logo_orng.png")
+        #navbar-collapse-1.navbar-left.nav
+          ul.nav.navbar-nav.leftBar.visible-xs
+            div.circle
+              img.img-rounded.logo.moveUp(alt="main image" src="../../../assets/images/logo_orng.png")
