@@ -281,4 +281,5 @@ angular.module 'webappApp'
     # return home on button click
     $back.on 'click', () ->
       home()
+      
   init()
