@@ -25,42 +25,43 @@ angular.module 'webappApp'
     if whichPage != which
       # transition from home
       if whichPage == 0
-        whichPage = which
         $('html, body').animate {scrollTop: 0}, 500, () ->
           $('#slide').animate {'height':'135px'}, 800
           $('#tagline, #taglineSM, #copyText, #copyTextSM, #divider, #middle, #bottom').fadeOut 800, () ->
-            $('#homePage').addClass 'hidden'
-            $middle.css 'margin-top', '5px'
-            $middle.css 'height', '1000px'
-            if which == 1
-              $('#capaPage').removeClass 'hidden'
-            else if which == 2
-              $('#prodPage').removeClass 'hidden'
-            else if which == 3
-              $('#servPage').removeClass 'hidden'
-            else if which == 4
-              $('#abouPage').removeClass 'hidden'
-            else if which == 5
-              $('#contPage').removeClass 'hidden'
-            $('#middle, #bottom').fadeIn 800
-            $back.fadeIn 800
+            if $('#tagline:animated, #taglineSM:animated, #copyText:animated, #copyTextSM:animated, #divider:animated, #middle:animated, #bottom:animated').length == 0
+              $('#homePage').addClass 'hidden'
+              $middle.css 'margin-top', '5px'
+              $middle.css 'height', '1000px'
+              if which == 1
+                $('#capaPage').removeClass 'hidden'
+              else if which == 2
+                $('#prodPage').removeClass 'hidden'
+              else if which == 3
+                $('#servPage').removeClass 'hidden'
+              else if which == 4
+                $('#abouPage').removeClass 'hidden'
+              else if which == 5
+                $('#contPage').removeClass 'hidden'
+              $('#middle, #bottom').fadeIn 800
+              $back.fadeIn 800
 
       # transition from sub-page
       else
         $('html, body').animate {scrollTop: 0}, 500, () ->
           $('#middle, #bottom').fadeOut 500, () ->
-            clearPage()
-            if which == 1
-              $('#capaPage').removeClass 'hidden'
-            else if which == 2
-              $('#prodPage').removeClass 'hidden'
-            else if which == 3
-              $('#servPage').removeClass 'hidden'
-            else if which == 4
-              $('#abouPage').removeClass 'hidden'
-            else if which == 5
-              $('#contPage').removeClass 'hidden'
-            $('#middle, #bottom').fadeIn 500
+            if $('#middle:animated, #bottom:animated').length == 0
+              clearPage()
+              if which == 1
+                $('#capaPage').removeClass 'hidden'
+              else if which == 2
+                $('#prodPage').removeClass 'hidden'
+              else if which == 3
+                $('#servPage').removeClass 'hidden'
+              else if which == 4
+                $('#abouPage').removeClass 'hidden'
+              else if which == 5
+                $('#contPage').removeClass 'hidden'
+              $('#middle, #bottom').fadeIn 500
       whichPage = which
 
   home = () ->
