@@ -14,9 +14,16 @@ angular.module 'webappApp'
   $navProd = $('#navProd')
   $navServ = $('#navServ')
   $middle = $('#middle')
+  $img0 = $('#img0')
+  $img1 = $('#img1')
+  $img2 = $('#img2')
+  $img3 = $('#img3')
+  $allImgs = $('#img0, #img1, #img2, #img3')
 
   # other variables
   whichPage = 0
+  whichSlide = 0
+  maxSlide = 7
   # functions
   clearPage = () ->
     $('#capaPage, #prodPage, #servPage, #abouPage, #contPage').addClass 'hidden'
@@ -64,6 +71,7 @@ angular.module 'webappApp'
               $('#middle, #bottom').fadeIn 500
       whichPage = which
 
+  # transition back to home page
   home = () ->
     if whichPage != 0
       $('html, body').animate {scrollTop: 0}, 500, () ->
@@ -76,6 +84,43 @@ angular.module 'webappApp'
           $('#tagline, #copyText, #copyTextSM, #divider, #middle, #bottom').fadeIn 800
           $back.fadeOut 800
           whichPage = 0
+
+  # cycle through slideshow
+  slideShow = () ->
+    $allImgs.stop().fadeOut 1000, () ->
+      if $('#img0:animated, #img1:animated, #img2:animated, #img3:animated').length == 0
+        # switch pics
+        if whichSlide <= maxSlide - 4
+          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 1) + '.jpg'
+          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 2) + '.jpg'
+          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 3) + '.jpg'
+          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 4) + '.jpg'
+          whichSlide += 1
+        else if whichSlide == maxSlide - 3
+          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 1) + '.jpg'
+          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 2) + '.jpg'
+          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 3) + '.jpg'
+          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + 1 + '.jpg'
+          whichSlide += 1
+        else if whichSlide == maxSlide - 2
+          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 1) + '.jpg'
+          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 2) + '.jpg'
+          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + 1 + '.jpg'
+          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + 2 + '.jpg'
+          whichSlide += 1
+        else if whichSlide == maxSlide - 1
+          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 1) + '.jpg'
+          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + 1 + '.jpg'
+          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + 2 + '.jpg'
+          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + 3 + '.jpg'
+          whichSlide += 1
+        else if whichSlide == maxSlide
+          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + 1 + '.jpg'
+          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + 2 + '.jpg'
+          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + 3 + '.jpg'
+          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + 4 + '.jpg'
+          whichSlide = 0
+        $allImgs.stop().fadeIn 1000
 
   # $(document).ready()
   init = () ->
@@ -106,6 +151,10 @@ angular.module 'webappApp'
       setPage 2
     $navServ.on 'click', () ->
       setPage 3
+
+    # slideshow
+    slideShow()
+    window.setInterval slideShow, 5000
 
     ### # # # # # # # # # # # CAPA PAGE # # # # # # # # # # # ###
 
