@@ -398,26 +398,37 @@ span#smallFontSM {
   margin-top: 10px
 }
 
-#slideshow {
+#icons {
+  height: 400px
+}
 
-  #img0, #img1, #img2, #img3 {
-    width: 100%
+#slideShow {
+  height: 400px
+  position: relative
+
+  img {
+    position: absolute
+    width: 100px
+    height: 100px
   }
 
   #img0 {
+    left: 0
+    width: 80%
     height: 400px
   }
 
   #img1, #img2, #img3 {
-    height: 123.333px
+    right: 0
+    width: 20%
+    height: 133.33px
   }
 
-  #sideImgs .col-md-12,
-  #icons .col-md-12 {
-    height: 133.333px
+  #img2 {
+    top: 33.33%
   }
-}
 
-#sideImgs {
-  margin-top: 5px
+  #img3 {
+    top: 66.66%
+  }
 }
