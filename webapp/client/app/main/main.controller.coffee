@@ -19,11 +19,22 @@ angular.module 'webappApp'
   $img2 = $('#img2')
   $img3 = $('#img3')
   $allImgs = $('#img0, #img1, #img2, #img3')
+  $capaRow = $('#capaRow')
+  $prodRow = $('#prodRow')
+  $servRow = $('#servRow')
+  $slideshowBG = $('#slideshowText')
+  $slideshowText = $('#slideshowText h1')
 
   # other variables
   whichPage = 0
   whichSlide = 4
   maxSlide = 7
+
+  # slideshow timer
+  timer = $.timer () ->
+    slideShow()
+  timer.set {time : 4000, autostart : true}
+
   # functions
   clearPage = () ->
     $('#capaPage, #prodPage, #servPage, #abouPage, #contPage').addClass 'hidden'
@@ -95,7 +106,7 @@ angular.module 'webappApp'
       whichSlide = 1
 
 
-  _slideShow = () ->
+  slideShow = () ->
       testBool = false
       $img0.animate {'left': '-80%', }, 500, () ->
         $img1.animate {'right': '20%'}, 500, () ->
@@ -125,8 +136,11 @@ angular.module 'webappApp'
   init = () ->
     # initially hide
     $back.fadeOut 0
+    $slideshowBG.fadeOut 0
 
     ### # # # # # # # # # # # HOME PAGE # # # # # # # # # # # ###
+    # start slideshow
+    timer.play()
 
     # hide/show logo on scroll
     $(window).scroll () ->
@@ -151,8 +165,28 @@ angular.module 'webappApp'
     $navServ.on 'click', () ->
       setPage 3
 
-    # slideshow
-    window.setInterval _slideShow, 4000
+    # slideshow buttons hover events
+    $capaRow.on 'mouseover', () ->
+      $slideshowText.text 'Our collaborative attitude means there\'s nothing we can\'t create. Challenge us! Our Capabilities are unbounded.'
+      timer.pause()
+      $slideshowBG.stop().fadeIn 300
+    $capaRow.on 'mouseleave', () ->
+      $slideshowBG.stop().fadeOut 300
+      timer.play()
+    $prodRow.on 'mouseover', () ->
+      $slideshowText.text 'We make Products that set the industry standard for quality, durability and effect!'
+      timer.pause()
+      $slideshowBG.stop().fadeIn 300
+    $prodRow.on 'mouseleave', () ->
+      $slideshowBG.stop().fadeOut 300
+      timer.play()
+    $servRow.on 'mouseover', () ->
+      $slideshowText.text 'We endeavor to understand your needs and eliminate your worries. Utilize our Services to insure your success.'
+      timer.pause()
+      $slideshowBG.stop().fadeIn 300
+    $servRow.on 'mouseleave', () ->
+      $slideshowBG.stop().fadeOut 300
+      timer.play()
 
     ### # # # # # # # # # # # CAPA PAGE # # # # # # # # # # # ###
 

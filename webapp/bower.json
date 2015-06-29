@@ -16,7 +16,8 @@
     "angular-ui-router": "~0.2.10",
     "jquery-ui": "~1.11.4",
     "jssor": "*",
-    "freewall": "~1.0.5"
+    "freewall": "~1.0.5",
+    "jquery-timer": "*"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",

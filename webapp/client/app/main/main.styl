@@ -407,11 +407,29 @@ span#smallFontSM {
   position: relative
   overflow: hidden
 
+  #slideshowText {
+    position: absolute
+    color: color4
+    margin: 0
+    left: 0
+    z-index: 10
+    height: 400px
+    width: 100%
+    background: rgba(0,0,0,0.7)
+
+    h1 {
+        font-size: 40px
+        font-weight: bolder
+        margin: 20px
+    }
+  }
+
   img {
     position: absolute
   }
 
   #img0 {
+    z-index: 1
     left: 0
     width: 80%
     height: 400px
