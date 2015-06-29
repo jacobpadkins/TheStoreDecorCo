@@ -237,6 +237,8 @@ angular.module 'webappApp'
     $capaRow.on 'mouseleave', () ->
       $slideshowBG.stop().fadeOut 300
       timer.play()
+    $capaRow.on 'click', () ->
+      setPage(1)
 
 
     $prodRow.on 'mouseover', () ->
@@ -253,6 +255,8 @@ angular.module 'webappApp'
       animLoopFlag = false
       $slideshowBG.stop().fadeOut 300
       timer.play()
+    $prodRow.on 'click', () ->
+      setPage(2)
 
 
     $servRow.on 'mouseover', () ->
@@ -269,6 +273,8 @@ angular.module 'webappApp'
       animLoopFlag = false
       $slideshowBG.stop().fadeOut 300
       timer.play()
+    $servRow.on 'click', () ->
+      setPage(3)
 
     ### # # # # # # # # # # # CAPA PAGE # # # # # # # # # # # ###
 
