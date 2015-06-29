@@ -43,21 +43,33 @@ div.container-fluid#wrapper
       div.col-md-1
       div.col-md-10
         .row.clearfix
-          div.col-md-2
-          div.col-md-2#icons
+          div.col-md-1
+          div.col-md-3#icons
             .row.clearfix
-              .col-md-12
-                img(src="../../../assets/images/capaIcon.png")
-              .col-md-12
-                img(src="../../../assets/images/prodIcon.png")
-              .col-md-12
-                img(src="../../../assets/images/servIcon.png")
-          div.col-md-6#slideShow
+              .col-md-12#capaRow
+                .row.clearfix
+                  .col-md-6
+                    h3 Capabilities
+                  .col-md-6
+                    img(src="../../../assets/images/capaIcon.png")
+              .col-md-12#prodRow
+                .row.clearfix
+                  .col-md-6
+                    img(src="../../../assets/images/prodIcon.png")
+                  .col-md-6
+                    h3 Products
+              .col-md-12#servRow
+                .row.clearfix
+                  .col-md-6
+                    h3 Services
+                  .col-md-6
+                    img(src="../../../assets/images/servIcon.png")
+          div.col-md-7#slideShow
             img(alt = "main image" src="../../../assets/images/home_slideshow/img1.jpg")#img0
             img(alt = "side image 0 here" src="../../../assets/images/home_slideshow/img2.jpg")#img1
             img(alt = "side image 1 here" src="../../../assets/images/home_slideshow/img3.jpg")#img2
             img(alt = "side image 2 here" src="../../../assets/images/home_slideshow/img4.jpg")#img3
-          div.col-md-2
+          div.col-md-1
       div.col-md-1
     span#capaPage.hidden
       div.col-md-1

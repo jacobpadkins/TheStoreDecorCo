@@ -152,7 +152,7 @@ angular.module 'webappApp'
       setPage 3
 
     # slideshow
-    window.setInterval _slideShow, 5000
+    window.setInterval _slideShow, 4000
 
     ### # # # # # # # # # # # CAPA PAGE # # # # # # # # # # # ###
 
