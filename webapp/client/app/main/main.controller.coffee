@@ -19,9 +19,9 @@ angular.module 'webappApp'
   $img2 = $('#img2')
   $img3 = $('#img3')
   $allImgs = $('#img0, #img1, #img2, #img3')
-  $capaRow = $('#capaRow')
-  $prodRow = $('#prodRow')
-  $servRow = $('#servRow')
+  $capaRow = $('#capaRow img')
+  $prodRow = $('#prodRow img')
+  $servRow = $('#servRow img')
   $slideshowBG = $('#slideshowText')
   $slideshowText = $('#slideshowText h1')
 
@@ -29,11 +29,28 @@ angular.module 'webappApp'
   whichPage = 0
   whichSlide = 4
   maxSlide = 7
+  whichIcon = 1
+  animLoopFlag = false
 
   # slideshow timer
   timer = $.timer () ->
     slideShow()
   timer.set {time : 4000, autostart : true}
+
+  # capa anim timer
+  capaTimer = $.timer () ->
+    animCapa()
+  capaTimer.set {time : 200, autostart : false}
+
+  # prod anim timer
+  prodTimer = $.timer () ->
+    animProd()
+  prodTimer.set {time : 200, autostart : false}
+
+  # serv anim timer
+  servTimer = $.timer () ->
+    animServ()
+  servTimer.set {time : 200, autostart : false}
 
   # functions
   clearPage = () ->
@@ -132,6 +149,53 @@ angular.module 'webappApp'
     $allImgs = $('#img0, #img1, #img2, #img3')
     $allImgs.removeAttr('style')
 
+  # capabilities icon animation functions
+  animCapa = () ->
+    if whichIcon < 5
+      $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa' + whichIcon + '.png'
+      whichIcon++
+    else
+      $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa1.png'
+      whichIcon = 1
+
+  # products icon animation functions
+  animProd = () ->
+    if animLoopFlag == false
+      if whichIcon < 3
+        $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod' + whichIcon + '.png'
+        whichIcon += 1
+      else
+        $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod3.png'
+        whichIcon = 2
+        animLoopFlag = true
+    else
+      if whichIcon > 1
+        $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod' + whichIcon + '.png'
+        whichIcon -= 1
+      else
+        $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod1.png'
+        whichIcon = 2
+        animLoopFlag = false
+
+  # services icon animation functions
+  animServ = () ->
+    if animLoopFlag == false
+      if whichIcon < 4
+        $servRow.attr 'src', '../../../assets/images/home_slideshow/serv' + whichIcon + '.png'
+        whichIcon += 1
+      else
+        $servRow.attr 'src', '../../../assets/images/home_slideshow/serv4.png'
+        whichIcon = 2
+        animLoopFlag = true
+    else
+      if whichIcon > 1
+        $servRow.attr 'src', '../../../assets/images/home_slideshow/serv' + whichIcon + '.png'
+        whichIcon -= 1
+      else
+        $servRow.attr 'src', '../../../assets/images/home_slideshow/serv1.png'
+        whichIcon = 2
+        animLoopFlag = false
+
   # $(document).ready()
   init = () ->
     # initially hide
@@ -173,18 +237,36 @@ angular.module 'webappApp'
     $capaRow.on 'mouseleave', () ->
       $slideshowBG.stop().fadeOut 300
       timer.play()
+
+
     $prodRow.on 'mouseover', () ->
+      $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod1.png'
+      prodTimer.play()
+      animProd()
       $slideshowText.text 'We make Products that set the industry standard for quality, durability and effect!'
       timer.pause()
       $slideshowBG.stop().fadeIn 300
     $prodRow.on 'mouseleave', () ->
+      prodTimer.pause()
+      $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod0.png'
+      whichIcon = 1
+      animLoopFlag = false
       $slideshowBG.stop().fadeOut 300
       timer.play()
+
+
     $servRow.on 'mouseover', () ->
+      $servRow.attr 'src', '../../../assets/images/home_slideshow/serv1.png'
+      servTimer.play()
+      animServ()
       $slideshowText.text 'We endeavor to understand your needs and eliminate your worries. Utilize our Services to insure your success.'
       timer.pause()
       $slideshowBG.stop().fadeIn 300
     $servRow.on 'mouseleave', () ->
+      servTimer.pause()
+      $servRow.attr 'src', '../../../assets/images/home_slideshow/serv0.png'
+      whichIcon = 1
+      animLoopFlag = false
       $slideshowBG.stop().fadeOut 300
       timer.play()
 

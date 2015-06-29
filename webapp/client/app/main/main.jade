@@ -46,24 +46,11 @@ div.container-fluid#wrapper
           div.col-md-1
           div.col-md-3#icons
             .row.clearfix
-              .col-md-12#capaRow
-                .row.clearfix
-                  .col-md-6
-                    h3 Capabilities
-                  .col-md-6
-                    img(src="../../../assets/images/capaIcon.png")
-              .col-md-12#prodRow
-                .row.clearfix
-                  .col-md-6
-                    img(src="../../../assets/images/prodIcon.png")
-                  .col-md-6
-                    h3 Products
-              .col-md-12#servRow
-                .row.clearfix
-                  .col-md-6
-                    h3 Services
-                  .col-md-6
-                    img(src="../../../assets/images/servIcon.png")
+              .col-md-12.cataRow#capaRow
+              .col-md-12.cataRow#prodRow
+                img(src="../../../assets/images/home_slideshow/prod0.png")
+              .col-md-12.cataRow#servRow
+                img(src="../../../assets/images/home_slideshow/serv0.png")
           div.col-md-7#slideShow
             #slideshowText
               h1
@@ -93,21 +80,35 @@ div.container-fluid#wrapper
       div.col-md-12
         h1 Contact Page
         
-  div.row.clearfix#bottom
-        div.col-md-1
-        div.col-md-1 
+  div.row.clearfix#bottom.visible-lg
+        div.col-md-2 
         div.col-md-8
-          div.wBorder.hundredPercent
-            h3.text-center Request A Quote
-            //textarea.hundredPercent
-        div.col-md-1 
-        div.col-md-1
+          h3.text-center Contact Us
+          div.wBorder.hundredPercent.row.clearfix
+            div.col-md-6#inputColumn
+              .col-md-3
+                .col-md-12 Name:
+                .col-md-12 Company:
+                .col-md-12 Phone:
+                .col-md-12 e-mail: 
+                .col-md-12 City:
+                .col-md-12 State:
+              .col-md-9#inputs
+                input(type="text")
+                input(type="text")
+                input(type="text")
+                input(type="text")
+                input(type="text")
+                #submitButton Submit
+            div.col-md-6
+              textarea.hundredPercent(placeholder=" How can we help you?")
+        div.col-md-2
           
   div.row.clearfix#bottomSmall.hidden
         div.col-md-2
         div.col-md-4 
         div.col-md-4
-          div#wBorderSmall.hundredPercent
+          div#wBorderSmall.hundredPercent.visible-xs.visible-sm.visible-md
             h3.text-center Request A Quote
             textarea.hundredPercent 
         div.col-md-2
