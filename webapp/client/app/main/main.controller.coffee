@@ -22,7 +22,7 @@ angular.module 'webappApp'
 
   # other variables
   whichPage = 0
-  whichSlide = 0
+  whichSlide = 4
   maxSlide = 7
   # functions
   clearPage = () ->
@@ -86,41 +86,40 @@ angular.module 'webappApp'
           whichPage = 0
 
   # cycle through slideshow
-  slideShow = () ->
-    $allImgs.stop().fadeOut 1000, () ->
-      if $('#img0:animated, #img1:animated, #img2:animated, #img3:animated').length == 0
-        # switch pics
-        if whichSlide <= maxSlide - 4
-          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 1) + '.jpg'
-          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 2) + '.jpg'
-          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 3) + '.jpg'
-          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 4) + '.jpg'
-          whichSlide += 1
-        else if whichSlide == maxSlide - 3
-          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 1) + '.jpg'
-          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 2) + '.jpg'
-          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 3) + '.jpg'
-          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + 1 + '.jpg'
-          whichSlide += 1
-        else if whichSlide == maxSlide - 2
-          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 1) + '.jpg'
-          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 2) + '.jpg'
-          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + 1 + '.jpg'
-          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + 2 + '.jpg'
-          whichSlide += 1
-        else if whichSlide == maxSlide - 1
-          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 1) + '.jpg'
-          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + 1 + '.jpg'
-          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + 2 + '.jpg'
-          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + 3 + '.jpg'
-          whichSlide += 1
-        else if whichSlide == maxSlide
-          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + 1 + '.jpg'
-          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + 2 + '.jpg'
-          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + 3 + '.jpg'
-          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + 4 + '.jpg'
-          whichSlide = 0
-        $allImgs.stop().fadeIn 1000
+  nextImg = () ->
+    if whichSlide < maxSlide
+      $img0.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 1) + '.jpg'
+      whichSlide++
+    else
+      $img0.attr 'src', '../../../assets/images/home_slideshow/img1.jpg'
+      whichSlide = 1
+
+
+  _slideShow = () ->
+      testBool = false
+      $img0.animate {'left': '-80%', }, 500, () ->
+        $img1.animate {'right': '20%'}, 500, () ->
+          $img1.animate {'width': '80%', 'height': '400px'}, 500, () ->
+            if $('#img1:animated').length == 0
+              $img2.animate {'top': '0'}, 500, () ->
+                $img3.animate {'top': '33.33%'}, 500, () ->
+                  $img0.fadeOut 0
+                  nextImg()
+                  $img0.animate {'width': '20%', 'height': '133.33px', 'top': '66.66%', 'left': '80%'}, 0, () ->
+                    $img0.fadeIn 500, () ->
+                      resetSlideIds()
+
+  resetSlideIds = () ->
+    $img0.attr 'id', 'img3'
+    $img1.attr 'id', 'img0'
+    $img2.attr 'id', 'img1'
+    $img3.attr 'id', 'img2'
+    $img0 = $('#img0')
+    $img1 = $('#img1')
+    $img2 = $('#img2')
+    $img3 = $('#img3')
+    $allImgs = $('#img0, #img1, #img2, #img3')
+    $allImgs.removeAttr('style')
 
   # $(document).ready()
   init = () ->
@@ -153,8 +152,7 @@ angular.module 'webappApp'
       setPage 3
 
     # slideshow
-    slideShow()
-    window.setInterval slideShow, 5000
+    window.setInterval _slideShow, 5000
 
     ### # # # # # # # # # # # CAPA PAGE # # # # # # # # # # # ###
 
