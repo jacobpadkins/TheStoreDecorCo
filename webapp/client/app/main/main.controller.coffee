@@ -6,6 +6,7 @@ angular.module 'webappApp'
   # cached jQuery variables
   $window = $(window)
   $logo = $('.logo')
+  $logoText = $('#logoText')
   $back = $('.backButton h2')
   $navHome = $('#navHome')
   $navAbout = $('#navAbout')
@@ -19,11 +20,46 @@ angular.module 'webappApp'
   $img2 = $('#img2')
   $img3 = $('#img3')
   $allImgs = $('#img0, #img1, #img2, #img3')
+  $capaRow = $('#capaRow img')
+  $prodRow = $('#prodRow img')
+  $servRow = $('#servRow img')
+  $slideshowBG = $('#slideshowText')
+  $slideshowText = $('#slideshowText h1')
+  $socialYT = $('#socialButtons img:nth-of-type(1)')
+  $socialTW = $('#socialButtons img:nth-of-type(2)')
+  $socialFB = $('#socialButtons img:nth-of-type(3)')
+  $socialGP = $('#socialButtons img:nth-of-type(4)')
+  $socialLN = $('#socialButtons img:nth-of-type(5)')
+  $socialPT = $('#socialButtons img:nth-of-type(6)')
+  $socialIG = $('#socialButtons img:nth-of-type(7)')
 
   # other variables
   whichPage = 0
-  whichSlide = 0
+  whichSlide = 4
   maxSlide = 7
+  whichIcon = 1
+  animLoopFlag = false
+
+  # slideshow timer
+  timer = $.timer () ->
+    slideShow()
+  timer.set {time : 4000, autostart : true}
+
+  # capa anim timer
+  capaTimer = $.timer () ->
+    animCapa()
+  capaTimer.set {time : 200, autostart : false}
+
+  # prod anim timer
+  prodTimer = $.timer () ->
+    animProd()
+  prodTimer.set {time : 200, autostart : false}
+
+  # serv anim timer
+  servTimer = $.timer () ->
+    animServ()
+  servTimer.set {time : 200, autostart : false}
+
   # functions
   clearPage = () ->
     $('#capaPage, #prodPage, #servPage, #abouPage, #contPage').addClass 'hidden'
@@ -34,7 +70,7 @@ angular.module 'webappApp'
       if whichPage == 0
         $('html, body').animate {scrollTop: 0}, 500, () ->
           $('#slide').animate {'height':'135px'}, 800
-          $('#tagline, #taglineSM, #copyText, #copyTextSM, #divider, #middle, #bottom').fadeOut 800, () ->
+          $('#tagline, #taglineSM, .copyText, #copyTextSM, #divider, #middle, #bottom').fadeOut 800, () ->
             if $('#tagline:animated, #taglineSM:animated, #copyText:animated, #copyTextSM:animated, #divider:animated, #middle:animated, #bottom:animated').length == 0
               $('#homePage').addClass 'hidden'
               $middle.css 'margin-top', '5px'
@@ -81,60 +117,112 @@ angular.module 'webappApp'
           $middle.css 'height', '450px'
           clearPage()
           $('#homePage').removeClass 'hidden'
-          $('#tagline, #copyText, #copyTextSM, #divider, #middle, #bottom').fadeIn 800
+          $('#tagline, .copyText, #copyTextSM, #divider, #middle, #bottom').fadeIn 800
           $back.fadeOut 800
           whichPage = 0
 
   # cycle through slideshow
+  nextImg = () ->
+    if whichSlide < maxSlide
+      $img0.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 1) + '.jpg'
+      whichSlide++
+    else
+      $img0.attr 'src', '../../../assets/images/home_slideshow/img1.jpg'
+      whichSlide = 1
+
+
   slideShow = () ->
-    $allImgs.stop().fadeOut 1000, () ->
-      if $('#img0:animated, #img1:animated, #img2:animated, #img3:animated').length == 0
-        # switch pics
-        if whichSlide <= maxSlide - 4
-          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 1) + '.jpg'
-          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 2) + '.jpg'
-          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 3) + '.jpg'
-          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 4) + '.jpg'
-          whichSlide += 1
-        else if whichSlide == maxSlide - 3
-          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 1) + '.jpg'
-          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 2) + '.jpg'
-          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 3) + '.jpg'
-          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + 1 + '.jpg'
-          whichSlide += 1
-        else if whichSlide == maxSlide - 2
-          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 1) + '.jpg'
-          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 2) + '.jpg'
-          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + 1 + '.jpg'
-          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + 2 + '.jpg'
-          whichSlide += 1
-        else if whichSlide == maxSlide - 1
-          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 1) + '.jpg'
-          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + 1 + '.jpg'
-          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + 2 + '.jpg'
-          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + 3 + '.jpg'
-          whichSlide += 1
-        else if whichSlide == maxSlide
-          $img0.attr 'src', '../../../assets/images/home_slideshow/img' + 1 + '.jpg'
-          $img1.attr 'src', '../../../assets/images/home_slideshow/img' + 2 + '.jpg'
-          $img2.attr 'src', '../../../assets/images/home_slideshow/img' + 3 + '.jpg'
-          $img3.attr 'src', '../../../assets/images/home_slideshow/img' + 4 + '.jpg'
-          whichSlide = 0
-        $allImgs.stop().fadeIn 1000
+      testBool = false
+      $img0.animate {'left': '-80%', }, 500, () ->
+        $img1.animate {'right': '20%'}, 500, () ->
+          $img1.animate {'width': '80%', 'height': '400px'}, 500, () ->
+            if $('#img1:animated').length == 0
+              $img2.animate {'top': '0'}, 500, () ->
+                $img3.animate {'top': '33.33%'}, 500, () ->
+                  $img0.fadeOut 0
+                  nextImg()
+                  $img0.animate {'width': '20%', 'height': '133.33px', 'top': '66.66%', 'left': '80%'}, 0, () ->
+                    $img0.fadeIn 500, () ->
+                      resetSlideIds()
+
+  resetSlideIds = () ->
+    $img0.attr 'id', 'img3'
+    $img1.attr 'id', 'img0'
+    $img2.attr 'id', 'img1'
+    $img3.attr 'id', 'img2'
+    $img0 = $('#img0')
+    $img1 = $('#img1')
+    $img2 = $('#img2')
+    $img3 = $('#img3')
+    $allImgs = $('#img0, #img1, #img2, #img3')
+    $allImgs.removeAttr('style')
+
+  # capabilities icon animation functions
+  animCapa = () ->
+    if animLoopFlag == false
+      if whichIcon < 5
+        $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa' + whichIcon + '.png'
+        whichIcon += 1
+      else
+        $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa5.png'
+        whichIcon = 4
+        animLoopFlag = true
+    else
+      if whichIcon > 1
+        $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa' + whichIcon + '.png'
+        whichIcon -= 1
+      else
+        $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa1.png'
+        whichIcon = 2
+        animLoopFlag = false
+
+  # products icon animation functions
+  animProd = () ->
+    if animLoopFlag == false
+      if whichIcon < 3
+        $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod' + whichIcon + '.png'
+        whichIcon += 1
+      else
+        $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod3.png'
+        whichIcon = 2
+        animLoopFlag = true
+    else
+      if whichIcon > 1
+        $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod' + whichIcon + '.png'
+        whichIcon -= 1
+      else
+        $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod1.png'
+        whichIcon = 2
+        animLoopFlag = false
+
+  # services icon animation functions
+  animServ = () ->
+
+    if whichIcon < 4
+      $servRow.attr 'src', '../../../assets/images/home_slideshow/serv' + whichIcon + '.png'
+      whichIcon += 1
+      if whichIcon == 4
+        whichIcon = 1
 
   # $(document).ready()
   init = () ->
     # initially hide
     $back.fadeOut 0
+    $slideshowBG.fadeOut 0
+    $logoText.fadeOut 0
 
     ### # # # # # # # # # # # HOME PAGE # # # # # # # # # # # ###
+    # start slideshow
+    timer.play()
 
     # hide/show logo on scroll
     $(window).scroll () ->
       if $window.scrollTop() > 10
-        $logo.fadeOut()
+        $logo.fadeOut () ->
+          $logoText.fadeIn()
       else
-        $logo.fadeIn 'fast'
+        $logoText.fadeOut 'fast', () ->
+          $logo.fadeIn 'fast'
 
     # navbar listeners
     $logo.on 'click', () ->
@@ -152,13 +240,64 @@ angular.module 'webappApp'
     $navServ.on 'click', () ->
       setPage 3
 
-    # slideshow
-    slideShow()
-    window.setInterval slideShow, 5000
+    # slideshow buttons hover events
+    $capaRow.on 'mouseover', () ->
+      $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa1.png'
+      capaTimer.play()
+      animCapa()
+      $slideshowText.html 'Our collaborative attitude means there\'s nothing we can\'t create. Challenge us! Our <span class="underlined">Capabilities</span> are unbounded.'
+      timer.pause()
+      $slideshowBG.stop().fadeIn 300
+    $capaRow.on 'mouseleave', () ->
+      capaTimer.pause()
+      $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa0.png'
+      whichIcon = 1
+      animLoopFlag = false
+      $slideshowBG.stop().fadeOut 300
+      timer.play()
+    $capaRow.on 'click', () ->
+      setPage(1)
+
+
+    $prodRow.on 'mouseover', () ->
+      $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod1.png'
+      prodTimer.play()
+      animProd()
+      $slideshowText.html 'We make <span class="underlined">Products</span> that set the industry standard for quality, durability and effect!'
+      timer.pause()
+      $slideshowBG.stop().fadeIn 300
+    $prodRow.on 'mouseleave', () ->
+      prodTimer.pause()
+      $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod0.png'
+      whichIcon = 1
+      animLoopFlag = false
+      $slideshowBG.stop().fadeOut 300
+      timer.play()
+    $prodRow.on 'click', () ->
+      setPage(2)
+
+
+    $servRow.on 'mouseover', () ->
+      $servRow.attr 'src', '../../../assets/images/home_slideshow/serv1.png'
+      servTimer.play()
+      animServ()
+      $slideshowText.html 'We endeavor to understand your needs and eliminate your worries. Utilize our <span class="underlined">Services</span> to insure your success.'
+      timer.pause()
+      $slideshowBG.stop().fadeIn 300
+    $servRow.on 'mouseleave', () ->
+      servTimer.pause()
+      $servRow.attr 'src', '../../../assets/images/home_slideshow/serv0.png'
+      whichIcon = 1
+      animLoopFlag = false
+      $slideshowBG.stop().fadeOut 300
+      timer.play()
+    $servRow.on 'click', () ->
+      setPage(3)
 
     ### # # # # # # # # # # # CAPA PAGE # # # # # # # # # # # ###
 
     # return home on button click
     $back.on 'click', () ->
       home()
+
   init()

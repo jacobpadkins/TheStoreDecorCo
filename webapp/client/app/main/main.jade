@@ -15,17 +15,27 @@ div.container-fluid#wrapper
   div.text-center.visible-sm.visible-xs
     #taglineSM
       h1 Your Brand. Your Vision.
-  .visible-sm.visible-md.visible-lg
-    div.row.clearfix#copyText
+  .visible-lg
+    div.row.clearfix.copyText
       div.col-md-1
       div.col-md-10
-        p#topP.text-center
+        p.topP.text-center
           | We are <b>The Store Decor Company!</b> 
         span#smallFont
           p.text-center
             | Focused on fulfilling your vision for that "extraordinary customer experience". Our experienced team understands the challenges you face in a competitive sales environment. We promise to integrate our knowledge and ability into your brand communication strategy to maximize your profitability goals.
       div.col-md-1
-  .visible-xs
+  .visible-md
+    div.row.clearfix.copyText
+      div.col-md-1
+      div.col-md-10
+        p.topP.text-center
+          | We are <b>The Store Decor Company!</b> 
+        span#smallFontM
+          p.text-center
+            | Focused on fulfilling your vision for that "extraordinary customer experience". Our experienced team understands the challenges you face in a competitive sales environment. We promise to integrate our knowledge and ability into your brand communication strategy to maximize your profitability goals.
+      div.col-md-1
+  .visible-sm.visible-xs
     div.row.clearfix#copyTextSM
       div.col-md-1
       div.col-md-10
@@ -42,27 +52,24 @@ div.container-fluid#wrapper
     span#homePage
       div.col-md-1
       div.col-md-10
-        .row.clearfix#slideshow
-          .col-md-2
-          div.col-md-2#icons
+        .row.clearfix.visible-lg.visible-md
+          div.col-md-1
+          div.col-md-3#icons
             .row.clearfix
-              .col-md-12
-                img(src="../../../assets/images/capaIcon.png")
-              .col-md-12
-                img(src="../../../assets/images/prodIcon.png")
-              .col-md-12
-                img(src="../../../assets/images/servIcon.png")
-          div.col-md-4#mainImg
-            img(alt = "main image" src="")#img0
-          div.col-md-2#sideImgs
-            .row.clearfix
-              .col-md-12
-                img(alt = "side image 0 here" src="")#img1
-              .col-md-12
-                img(alt = "side image 1 here" src="")#img2
-              .col-md-12
-                img(alt = "side image 2 here" src="")#img3
-          .col-md-2
+              .col-md-12.cataRow#capaRow
+                img(src="../../../assets/images/home_slideshow/capa0.png")
+              .col-md-12.cataRow#prodRow
+                img(src="../../../assets/images/home_slideshow/prod0.png")
+              .col-md-12.cataRow#servRow
+                img(src="../../../assets/images/home_slideshow/serv0.png")
+          div.col-md-7#slideShow
+            #slideshowText
+              h1
+            img(alt = "main image" src="../../../assets/images/home_slideshow/img1.jpg")#img0
+            img(alt = "side image 0 here" src="../../../assets/images/home_slideshow/img2.jpg")#img1
+            img(alt = "side image 1 here" src="../../../assets/images/home_slideshow/img3.jpg")#img2
+            img(alt = "side image 2 here" src="../../../assets/images/home_slideshow/img4.jpg")#img3
+          div.col-md-1
       div.col-md-1
     span#capaPage.hidden
       div.col-md-1
@@ -84,24 +91,49 @@ div.container-fluid#wrapper
       div.col-md-12
         h1 Contact Page
         
-  div.row.clearfix#bottom
-        div.col-md-1
-        div.col-md-1 
+  div.row.clearfix#bottom.visible-lg
+        div.col-md-2 
         div.col-md-8
-          div.wBorder.hundredPercent
-            h3.text-center Request A Quote
-            //textarea.hundredPercent
-        div.col-md-1 
-        div.col-md-1
+          h3 Contact Us at
+            img#tinyLogo(src="../../../assets/images/logo_transp.png")
+          div.wBorder.hundredPercent.row.clearfix
+            div.col-md-3#inputColumn
+              .col-md-12#inputs
+                input(type="text" placeholder="name")
+                input(type="text" placeholder="company")
+                input(type="text" placeholder="phone")
+                input(type="text" placeholder="e-mail")
+                input(type="text" placeholder="city")
+                input(type="text" placeholder="state")
+            div.col-md-9
+              textarea.hundredPercent(placeholder=" How can we help you?")
+            .row.clearfix
+              .col-md-12
+                #submitButton Submit
+        div.col-md-2
           
   div.row.clearfix#bottomSmall.hidden
         div.col-md-2
         div.col-md-4 
         div.col-md-4
-          div#wBorderSmall.hundredPercent
+          div#wBorderSmall.hundredPercent.visible-xs.visible-sm.visible-md
             h3.text-center Request A Quote
             textarea.hundredPercent 
         div.col-md-2
+          
+  div.row.clearfix#social.visible-lg.visible-md
+    div.col-md-4
+      div#socialButtons
+        img(src="../../../assets/images/social/social_yt0.svg")
+        img(src="../../../assets/images/social/social_tw0.svg")
+        img(src="../../../assets/images/social/social_fb0.svg")
+        img(src="../../../assets/images/social/social_gp0.svg")
+        img(src="../../../assets/images/social/social_ln0.svg")
+        img(src="../../../assets/images/social/social_pt0.svg")
+        img(src="../../../assets/images/social/social_ig0.svg")
+    div.col-md-4
+    div.col-md-4
+      h3 Call Us: 800-831-3267
         
   div.row.clearfix
     .col-md-12.column
@@ -121,6 +153,7 @@ div.container-fluid#wrapper
                 h3 About Us
               li.active#navContact
                 h3 Contact
+              h1#logoText thestoredecor.com
               div.circle
                 img.img-rounded.logo(alt="main image" src="../../../assets/images/logo_orng.png")
         #navbar-collapse-1.collapse.navbar-collapse.navbar-right
