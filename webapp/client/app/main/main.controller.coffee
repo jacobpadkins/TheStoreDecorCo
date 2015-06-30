@@ -6,6 +6,7 @@ angular.module 'webappApp'
   # cached jQuery variables
   $window = $(window)
   $logo = $('.logo')
+  $logoText = $('#logoText')
   $back = $('.backButton h2')
   $navHome = $('#navHome')
   $navAbout = $('#navAbout')
@@ -26,10 +27,10 @@ angular.module 'webappApp'
   $slideshowText = $('#slideshowText h1')
   $socialYT = $('#socialButtons img:nth-of-type(1)')
   $socialTW = $('#socialButtons img:nth-of-type(2)')
-  $socialPT = $('#socialButtons img:nth-of-type(3)')
-  $socialFB = $('#socialButtons img:nth-of-type(4)')
-  $socialGP = $('#socialButtons img:nth-of-type(5)')
-  $socialLN = $('#socialButtons img:nth-of-type(6)')
+  $socialFB = $('#socialButtons img:nth-of-type(3)')
+  $socialGP = $('#socialButtons img:nth-of-type(4)')
+  $socialLN = $('#socialButtons img:nth-of-type(5)')
+  $socialPT = $('#socialButtons img:nth-of-type(6)')
   $socialIG = $('#socialButtons img:nth-of-type(7)')
 
   # other variables
@@ -69,7 +70,7 @@ angular.module 'webappApp'
       if whichPage == 0
         $('html, body').animate {scrollTop: 0}, 500, () ->
           $('#slide').animate {'height':'135px'}, 800
-          $('#tagline, #taglineSM, #copyText, #copyTextSM, #divider, #middle, #bottom').fadeOut 800, () ->
+          $('#tagline, #taglineSM, .copyText, #copyTextSM, #divider, #middle, #bottom').fadeOut 800, () ->
             if $('#tagline:animated, #taglineSM:animated, #copyText:animated, #copyTextSM:animated, #divider:animated, #middle:animated, #bottom:animated').length == 0
               $('#homePage').addClass 'hidden'
               $middle.css 'margin-top', '5px'
@@ -116,7 +117,7 @@ angular.module 'webappApp'
           $middle.css 'height', '450px'
           clearPage()
           $('#homePage').removeClass 'hidden'
-          $('#tagline, #copyText, #copyTextSM, #divider, #middle, #bottom').fadeIn 800
+          $('#tagline, .copyText, #copyTextSM, #divider, #middle, #bottom').fadeIn 800
           $back.fadeOut 800
           whichPage = 0
 
@@ -208,6 +209,7 @@ angular.module 'webappApp'
     # initially hide
     $back.fadeOut 0
     $slideshowBG.fadeOut 0
+    $logoText.fadeOut 0
 
     ### # # # # # # # # # # # HOME PAGE # # # # # # # # # # # ###
     # start slideshow
@@ -216,9 +218,11 @@ angular.module 'webappApp'
     # hide/show logo on scroll
     $(window).scroll () ->
       if $window.scrollTop() > 10
-        $logo.fadeOut()
+        $logo.fadeOut () ->
+          $logoText.fadeIn()
       else
-        $logo.fadeIn 'fast'
+        $logoText.fadeOut 'fast', () ->
+          $logo.fadeIn 'fast'
 
     # navbar listeners
     $logo.on 'click', () ->
@@ -289,42 +293,6 @@ angular.module 'webappApp'
       timer.play()
     $servRow.on 'click', () ->
       setPage(3)
-
-    # social media buttons
-    $socialYT.on 'mouseover', () ->
-      $socialYT.attr 'src', '../../../assets/images/social/social_yt1.svg'
-    $socialYT.on 'mouseleave', () ->
-      $socialYT.attr 'src', '../../../assets/images/social/social_yt0.svg'
-
-    $socialTW.on 'mouseover', () ->
-      $socialTW.attr 'src', '../../../assets/images/social/social_tw1.svg'
-    $socialTW.on 'mouseleave', () ->
-      $socialTW.attr 'src', '../../../assets/images/social/social_tw0.svg'
-
-    $socialFB.on 'mouseover', () ->
-      $socialFB.attr 'src', '../../../assets/images/social/social_fb1.svg'
-    $socialFB.on 'mouseleave', () ->
-      $socialFB.attr 'src', '../../../assets/images/social/social_fb0.svg'
-
-    $socialGP.on 'mouseover', () ->
-      $socialGP.attr 'src', '../../../assets/images/social/social_gp1.svg'
-    $socialGP.on 'mouseleave', () ->
-      $socialGP.attr 'src', '../../../assets/images/social/social_gp0.svg'
-
-    $socialLN.on 'mouseover', () ->
-      $socialLN.attr 'src', '../../../assets/images/social/social_ln1.svg'
-    $socialLN.on 'mouseleave', () ->
-      $socialLN.attr 'src', '../../../assets/images/social/social_ln0.svg'
-
-    $socialPT.on 'mouseover', () ->
-      $socialPT.attr 'src', '../../../assets/images/social/social_pt1.svg'
-    $socialPT.on 'mouseleave', () ->
-      $socialPT.attr 'src', '../../../assets/images/social/social_pt0.svg'
-
-    $socialIG.on 'mouseover', () ->
-      $socialIG.attr 'src', '../../../assets/images/social/social_ig1.svg'
-    $socialIG.on 'mouseleave', () ->
-      $socialIG.attr 'src', '../../../assets/images/social/social_ig0.svg'
 
     ### # # # # # # # # # # # CAPA PAGE # # # # # # # # # # # ###
 

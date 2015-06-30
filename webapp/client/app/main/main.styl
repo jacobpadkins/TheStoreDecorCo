@@ -151,11 +151,12 @@ body {
   height: 450px
 
   h3 {
-    margin-top: 30px
-    margin-bottom: -5px
+    font-size: 30px
+    margin-top: 15px
+    padding-bottom: 13px
     text-align: center
     font-weight: bolder
-    width: 97%
+    width: 90%
   }
 }
 
@@ -170,6 +171,8 @@ body {
   border-color: color4
   border-radius: 20pt
   font-family: 'Montserrat', sans-serif;
+  font-weight: bolder
+  font-size: 15px
 
   #inputColumn {
     margin-top: 30px
@@ -185,13 +188,12 @@ body {
 
   textarea {
     border-radius: 5pt
-    color: color5
+    color: color9
     height: 221px
     width: 95%
     margin-left: 2.5%
     margin-bottom: 3%
     margin-top: 30px
-    background-color: color4
     border: none
   }
 
@@ -217,10 +219,10 @@ body {
 }
 
 #inputs {
-  color: color5
+  color: color9
 }
 
-#copyText {
+.copyText {
   font-family: 'Montserrat', sans-serif;
   color: black
   font-weight: 400
@@ -230,7 +232,7 @@ body {
   background: color4
   overflow: hidden
 
-  p#topP {
+  .topP {
     margin-top: 30px
   }
 
@@ -287,6 +289,14 @@ li.active h3:hover {
 span#smallFont {
   p {
     font-size: 24px
+    color: color9
+  }
+}
+
+span#smallFontM {
+  p {
+    margin-top: 50px
+    font-size: 13px
     color: color9
   }
 }
@@ -519,11 +529,21 @@ span#smallFontSM {
 #social {
   margin-top: 5px
   bottom: 0
+
   .col-md-12 {
     height: 60px
     width: 100%
-    background: color1
+    background: color9
     bottom: 0
+  }
+
+  h3 {
+    font-weight: bolder
+    font-family: 'Montserrat', sans-serif
+    color: color4
+    font-size: 30px
+    right: 10%
+    position: absolute
   }
 }
 
@@ -544,9 +564,43 @@ span#smallFontSM {
 
   img:hover {
     cursor: pointer
+    padding-bottom: 7px
   }
 }
 
 #social .col-md-12 {
   width: 100%
+}
+
+/* do not group these rules */
+*::-webkit-input-placeholder {
+  color: color5
+}
+*:-moz-placeholder {
+  /* FF 4-18 */
+  color: color5
+}
+*::-moz-placeholder {
+  /* FF 19+ */
+  color: color5
+}
+*:-ms-input-placeholder {
+  /* IE 10+ */
+  color: color5
+}
+
+#tinyLogo {
+  height: 75px
+  width: 105px
+  bottom: 83%
+  left: 54%
+  position: absolute
+}
+
+#logoText {
+  position: absolute
+  color: color4
+  font-family: 'Montserrat', sans-serif
+  left: 39%
+  bottom: 0
 }
