@@ -145,15 +145,17 @@ body {
 }
 
 #bottom {
-  bottom: 0
+  //bottom: 0
   color: color4
   background-color: color5
-  height: 300px
+  height: 450px
 
   h3 {
-    margin-top: 5px
+    margin-top: 30px
     margin-bottom: -5px
-
+    text-align: center
+    font-weight: bolder
+    width: 97%
   }
 }
 
@@ -172,13 +174,8 @@ body {
   #inputColumn {
     margin-top: 30px
 
-    div:nth-of-type(1) {
-      div {
-        margin-top: 8px
-      }
-      div:nth-of-type(1) {
-        margin-top: -8px
-      }
+    div {
+      line-height: 30px
     }
   }
 
@@ -189,11 +186,11 @@ body {
   textarea {
     border-radius: 5pt
     color: color5
-    height: 160px
+    height: 221px
     width: 95%
     margin-left: 2.5%
     margin-bottom: 3%
-    margin-top: 4%
+    margin-top: 30px
     background-color: color4
     border: none
   }
@@ -206,9 +203,10 @@ body {
     padding: 5px
     border-radius: 5pt
     width: 95px
-    margin-top: 5px
-    margin-bottom: 10px
-    margin-left: 46.5%
+    margin-top: 20px
+    margin-bottom: 5px
+    margin-left: auto
+    margin-right: auto
   }
 
   #submitButton:hover {
@@ -216,6 +214,10 @@ body {
     color: color4
     background: color1
   }
+}
+
+#inputs {
+  color: color5
 }
 
 #copyText {
@@ -448,6 +450,7 @@ span#smallFontSM {
 
   #slideshowText {
     font-family: 'Montserrat', sans-serif
+    font-style: italic
     position: absolute
     color: color4
     margin: 0
@@ -513,10 +516,37 @@ span#smallFontSM {
   }
 }
 
-#inputColumn .col-md-3 .col-md-12 {
-  height: 28px
+#social {
+  margin-top: 5px
+  bottom: 0
+  .col-md-12 {
+    height: 60px
+    width: 100%
+    background: color1
+    bottom: 0
+  }
 }
 
-#inputs {
-  margin-top: -10px
+.underlined {
+  text-decoration: underline
+}
+
+#socialButtons {
+  left: 0
+  right: 0
+
+  img {
+    padding-left: 10px
+    padding-right: 10px
+    height: 60px
+    width: 60px
+  }
+
+  img:hover {
+    cursor: pointer
+  }
+}
+
+#social .col-md-12 {
+  width: 100%
 }

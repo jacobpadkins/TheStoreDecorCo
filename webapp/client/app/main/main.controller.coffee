@@ -24,6 +24,13 @@ angular.module 'webappApp'
   $servRow = $('#servRow img')
   $slideshowBG = $('#slideshowText')
   $slideshowText = $('#slideshowText h1')
+  $socialYT = $('#socialButtons img:nth-of-type(1)')
+  $socialTW = $('#socialButtons img:nth-of-type(2)')
+  $socialPT = $('#socialButtons img:nth-of-type(3)')
+  $socialFB = $('#socialButtons img:nth-of-type(4)')
+  $socialGP = $('#socialButtons img:nth-of-type(5)')
+  $socialLN = $('#socialButtons img:nth-of-type(6)')
+  $socialIG = $('#socialButtons img:nth-of-type(7)')
 
   # other variables
   whichPage = 0
@@ -151,12 +158,22 @@ angular.module 'webappApp'
 
   # capabilities icon animation functions
   animCapa = () ->
-    if whichIcon < 5
-      $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa' + whichIcon + '.png'
-      whichIcon++
+    if animLoopFlag == false
+      if whichIcon < 5
+        $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa' + whichIcon + '.png'
+        whichIcon += 1
+      else
+        $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa5.png'
+        whichIcon = 4
+        animLoopFlag = true
     else
-      $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa1.png'
-      whichIcon = 1
+      if whichIcon > 1
+        $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa' + whichIcon + '.png'
+        whichIcon -= 1
+      else
+        $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa1.png'
+        whichIcon = 2
+        animLoopFlag = false
 
   # products icon animation functions
   animProd = () ->
@@ -179,22 +196,12 @@ angular.module 'webappApp'
 
   # services icon animation functions
   animServ = () ->
-    if animLoopFlag == false
-      if whichIcon < 4
-        $servRow.attr 'src', '../../../assets/images/home_slideshow/serv' + whichIcon + '.png'
-        whichIcon += 1
-      else
-        $servRow.attr 'src', '../../../assets/images/home_slideshow/serv4.png'
-        whichIcon = 2
-        animLoopFlag = true
-    else
-      if whichIcon > 1
-        $servRow.attr 'src', '../../../assets/images/home_slideshow/serv' + whichIcon + '.png'
-        whichIcon -= 1
-      else
-        $servRow.attr 'src', '../../../assets/images/home_slideshow/serv1.png'
-        whichIcon = 2
-        animLoopFlag = false
+
+    if whichIcon < 4
+      $servRow.attr 'src', '../../../assets/images/home_slideshow/serv' + whichIcon + '.png'
+      whichIcon += 1
+      if whichIcon == 4
+        whichIcon = 1
 
   # $(document).ready()
   init = () ->
@@ -231,10 +238,17 @@ angular.module 'webappApp'
 
     # slideshow buttons hover events
     $capaRow.on 'mouseover', () ->
-      $slideshowText.text 'Our collaborative attitude means there\'s nothing we can\'t create. Challenge us! Our Capabilities are unbounded.'
+      $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa1.png'
+      capaTimer.play()
+      animCapa()
+      $slideshowText.html 'Our collaborative attitude means there\'s nothing we can\'t create. Challenge us! Our <span class="underlined">Capabilities</span> are unbounded.'
       timer.pause()
       $slideshowBG.stop().fadeIn 300
     $capaRow.on 'mouseleave', () ->
+      capaTimer.pause()
+      $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa0.png'
+      whichIcon = 1
+      animLoopFlag = false
       $slideshowBG.stop().fadeOut 300
       timer.play()
     $capaRow.on 'click', () ->
@@ -245,7 +259,7 @@ angular.module 'webappApp'
       $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod1.png'
       prodTimer.play()
       animProd()
-      $slideshowText.text 'We make Products that set the industry standard for quality, durability and effect!'
+      $slideshowText.html 'We make <span class="underlined">Products</span> that set the industry standard for quality, durability and effect!'
       timer.pause()
       $slideshowBG.stop().fadeIn 300
     $prodRow.on 'mouseleave', () ->
@@ -263,7 +277,7 @@ angular.module 'webappApp'
       $servRow.attr 'src', '../../../assets/images/home_slideshow/serv1.png'
       servTimer.play()
       animServ()
-      $slideshowText.text 'We endeavor to understand your needs and eliminate your worries. Utilize our Services to insure your success.'
+      $slideshowText.html 'We endeavor to understand your needs and eliminate your worries. Utilize our <span class="underlined">Services</span> to insure your success.'
       timer.pause()
       $slideshowBG.stop().fadeIn 300
     $servRow.on 'mouseleave', () ->
@@ -276,10 +290,46 @@ angular.module 'webappApp'
     $servRow.on 'click', () ->
       setPage(3)
 
+    # social media buttons
+    $socialYT.on 'mouseover', () ->
+      $socialYT.attr 'src', '../../../assets/images/social/social_yt1.svg'
+    $socialYT.on 'mouseleave', () ->
+      $socialYT.attr 'src', '../../../assets/images/social/social_yt0.svg'
+
+    $socialTW.on 'mouseover', () ->
+      $socialTW.attr 'src', '../../../assets/images/social/social_tw1.svg'
+    $socialTW.on 'mouseleave', () ->
+      $socialTW.attr 'src', '../../../assets/images/social/social_tw0.svg'
+
+    $socialFB.on 'mouseover', () ->
+      $socialFB.attr 'src', '../../../assets/images/social/social_fb1.svg'
+    $socialFB.on 'mouseleave', () ->
+      $socialFB.attr 'src', '../../../assets/images/social/social_fb0.svg'
+
+    $socialGP.on 'mouseover', () ->
+      $socialGP.attr 'src', '../../../assets/images/social/social_gp1.svg'
+    $socialGP.on 'mouseleave', () ->
+      $socialGP.attr 'src', '../../../assets/images/social/social_gp0.svg'
+
+    $socialLN.on 'mouseover', () ->
+      $socialLN.attr 'src', '../../../assets/images/social/social_ln1.svg'
+    $socialLN.on 'mouseleave', () ->
+      $socialLN.attr 'src', '../../../assets/images/social/social_ln0.svg'
+
+    $socialPT.on 'mouseover', () ->
+      $socialPT.attr 'src', '../../../assets/images/social/social_pt1.svg'
+    $socialPT.on 'mouseleave', () ->
+      $socialPT.attr 'src', '../../../assets/images/social/social_pt0.svg'
+
+    $socialIG.on 'mouseover', () ->
+      $socialIG.attr 'src', '../../../assets/images/social/social_ig1.svg'
+    $socialIG.on 'mouseleave', () ->
+      $socialIG.attr 'src', '../../../assets/images/social/social_ig0.svg'
+
     ### # # # # # # # # # # # CAPA PAGE # # # # # # # # # # # ###
 
     # return home on button click
     $back.on 'click', () ->
       home()
-      
+
   init()
