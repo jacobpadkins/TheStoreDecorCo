@@ -53,7 +53,7 @@ div.container-fluid#wrapper
       div.col-md-1
       div.col-md-10
         .row.clearfix.visible-lg.visible-md
-          div.col-md-1
+          div.col-md-2
           div.col-md-3#icons
             .row.clearfix
               .col-md-12.cataRow#capaRow
@@ -62,7 +62,8 @@ div.container-fluid#wrapper
                 img(src="../../../assets/images/home_slideshow/prod0.png")
               .col-md-12.cataRow#servRow
                 img(src="../../../assets/images/home_slideshow/serv0.png")
-          div.col-md-7#slideShow
+          .col-md-1
+          div.col-md-5#slideShow
             #slideshowText
               h1
             img(alt = "main image" src="../../../assets/images/home_slideshow/img1.jpg")#img0
@@ -97,7 +98,7 @@ div.container-fluid#wrapper
           h3 Contact Us at
             img#tinyLogo(src="../../../assets/images/logo_transp.png")
           div.wBorder.hundredPercent.row.clearfix
-            div.col-md-3#inputColumn
+            div.col-md-4#inputColumn
               .col-md-12#inputs
                 input(type="text" placeholder="name")
                 input(type="text" placeholder="company")
@@ -105,7 +106,7 @@ div.container-fluid#wrapper
                 input(type="text" placeholder="e-mail")
                 input(type="text" placeholder="city")
                 input(type="text" placeholder="state")
-            div.col-md-9
+            div.col-md-8
               textarea.hundredPercent(placeholder=" How can we help you?")
             .row.clearfix
               .col-md-12
@@ -122,7 +123,7 @@ div.container-fluid#wrapper
         div.col-md-2
           
   div.row.clearfix#social.visible-lg.visible-md
-    div.col-md-4
+    div.col-md-6
       div#socialButtons
         img(src="../../../assets/images/social/social_yt0.svg")
         img(src="../../../assets/images/social/social_tw0.svg")
@@ -131,8 +132,7 @@ div.container-fluid#wrapper
         img(src="../../../assets/images/social/social_ln0.svg")
         img(src="../../../assets/images/social/social_pt0.svg")
         img(src="../../../assets/images/social/social_ig0.svg")
-    div.col-md-4
-    div.col-md-4
+    div.col-md-6
       h3 Call Us: 800-831-3267
         
   div.row.clearfix
@@ -153,7 +153,6 @@ div.container-fluid#wrapper
                 h3 About Us
               li.active#navContact
                 h3 Contact
-              h1#logoText thestoredecor.com
               div.circle
                 img.img-rounded.logo(alt="main image" src="../../../assets/images/logo_orng.png")
         #navbar-collapse-1.collapse.navbar-collapse.navbar-right
@@ -164,6 +163,10 @@ div.container-fluid#wrapper
               h3 Products
             li.active#navServ
               h3 Services
+        #navbar-collapse-1.collapse.navbar-collapse.navbar-centered
+          ul.nav.navbar-nav.rightBar.visible-lg
+            li.active
+              h1.logoText thestoredecor.com
         #navbar-collapse-1.navbar-left.nav
           ul.nav.navbar-nav.leftBar.visible-sm
             div.circle
