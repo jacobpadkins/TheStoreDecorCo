@@ -1,11 +1,7 @@
 //color variables
 color1 = #1352A5
-color2 = #CBC7B7
 color4 = #F1EFE6
-color3 = #5C5C5C
 color5 = #D85703
-color6 = #0C3265
-color8 = #707070
 color9 = #605F5B
 
 // centered navbar
@@ -87,7 +83,7 @@ body {
   font-style: italic
   font-weight: bolder
   color: color4
-  text-shadow: 2px 2px color3
+  text-shadow: 2px 2px color9
   margin-left: auto
   margin-right: auto
   right: 0
@@ -102,7 +98,7 @@ body {
   font-style: italic
   font-weight: bolder
   color: color4
-  text-shadow: 2px 2px color3
+  text-shadow: 2px 2px color9
   margin-left: auto
   margin-right: auto
   right: 0
@@ -149,10 +145,19 @@ body {
 }
 
 #bottom {
-  bottom: 0
+  //bottom: 0
   color: color4
   background-color: color5
-  height: 300px
+  height: 450px
+
+  h3 {
+    font-size: 30px
+    margin-top: 15px
+    padding-bottom: 13px
+    text-align: center
+    font-weight: bolder
+    width: 90%
+  }
 }
 
 .hundredPercent {
@@ -161,27 +166,63 @@ body {
 }
 
 .wBorder {
-  margin-top: 6px
+  margin-top: 10px
   border: 2px solid
   border-color: color4
   border-radius: 20pt
   font-family: 'Montserrat', sans-serif;
+  font-weight: bolder
+  font-size: 15px
 
-  h3 {
+  #inputColumn {
+    margin-top: 30px
+
+    div {
+      line-height: 30px
+    }
+  }
+
+  h5 {
     color: color4
   }
 
   textarea {
-    height: 215px
+    border-radius: 5pt
+    color: color9
+    height: 221px
     width: 95%
     margin-left: 2.5%
     margin-bottom: 3%
-    background-color: color4
+    margin-top: 30px
     border: none
+  }
+
+  #submitButton {
+    font-weight: bolder
+    font-size: 24px
+    background: color4
+    color: color5
+    padding: 5px
+    border-radius: 5pt
+    width: 95px
+    margin-top: 20px
+    margin-bottom: 5px
+    margin-left: auto
+    margin-right: auto
+  }
+
+  #submitButton:hover {
+    cursor: pointer
+    color: color4
+    background: color1
   }
 }
 
-#copyText {
+#inputs {
+  color: color9
+}
+
+.copyText {
   font-family: 'Montserrat', sans-serif;
   color: black
   font-weight: 400
@@ -191,7 +232,7 @@ body {
   background: color4
   overflow: hidden
 
-  p#topP {
+  .topP {
     margin-top: 30px
   }
 
@@ -252,6 +293,14 @@ span#smallFont {
   }
 }
 
+span#smallFontM {
+  p {
+    margin-top: 50px
+    font-size: 13px
+    color: color9
+  }
+}
+
 span#smallFontSM {
   p {
     margin-top: 50px
@@ -307,7 +356,7 @@ span#smallFontSM {
     padding: 10px
     width: 290px
     font-size: 20px
-    background: color3
+    background: color9
   }
 
   h2:hover {
@@ -398,26 +447,160 @@ span#smallFontSM {
   margin-top: 10px
 }
 
-#slideshow {
+#icons {
+  height: 400px
+}
 
-  #img0, #img1, #img2, #img3 {
+#slideShow {
+  height: 400px
+  position: relative
+  overflow: hidden
+  background: color1
+  border-radius: 10pt
+
+  #slideshowText {
+    font-family: 'Montserrat', sans-serif
+    font-style: italic
+    position: absolute
+    color: color4
+    margin: 0
+    left: 0
+    z-index: 10
+    height: 400px
     width: 100%
+    background: rgba(0,0,0,0.7)
+
+    h1 {
+        font-size: 40px
+        font-weight: bolder
+        margin: 20px
+    }
+  }
+
+  img {
+    position: absolute
   }
 
   #img0 {
+    z-index: 1
+    left: 0
+    width: 80%
     height: 400px
   }
 
   #img1, #img2, #img3 {
-    height: 123.333px
+    right: 0
+    width: 20%
+    height: 133.33px
   }
 
-  #sideImgs .col-md-12,
-  #icons .col-md-12 {
-    height: 133.333px
+  #img2 {
+    top: 33.33%
+  }
+
+  #img3 {
+    top: 66.66%
   }
 }
 
-#sideImgs {
+#icons {
+
+  .col-md-12 {
+    margin-left: -20px
+    height: 133.33px
+    padding: 10px
+  }
+}
+
+.cataRow {
+
+  img {
+    border-radius: 10pt
+    //width: 100%
+    //height: 100px
+    width: 100%
+  }
+
+  img:hover {
+    cursor: pointer
+  }
+}
+
+#social {
   margin-top: 5px
+  bottom: 0
+
+  .col-md-12 {
+    height: 60px
+    width: 100%
+    background: color9
+    bottom: 0
+  }
+
+  h3 {
+    font-weight: bolder
+    font-family: 'Montserrat', sans-serif
+    color: color4
+    font-size: 30px
+    right: 10%
+    position: absolute
+  }
+}
+
+.underlined {
+  text-decoration: underline
+}
+
+#socialButtons {
+  left: 0
+  right: 0
+
+  img {
+    padding-left: 10px
+    padding-right: 10px
+    height: 60px
+    width: 60px
+  }
+
+  img:hover {
+    cursor: pointer
+    padding-bottom: 7px
+  }
+}
+
+#social .col-md-12 {
+  width: 100%
+}
+
+/* do not group these rules */
+*::-webkit-input-placeholder {
+  color: color5
+}
+*:-moz-placeholder {
+  /* FF 4-18 */
+  color: color5
+}
+*::-moz-placeholder {
+  /* FF 19+ */
+  color: color5
+}
+*:-ms-input-placeholder {
+  /* IE 10+ */
+  color: color5
+}
+
+#tinyLogo {
+  height: 75px
+  width: 105px
+  bottom: 83%
+  left: 54%
+  position: absolute
+}
+
+#logoText {
+  position: absolute
+  color: color4
+  font-family: 'Montserrat', sans-serif
+  left: 39%
+  bottom: 0
 }
