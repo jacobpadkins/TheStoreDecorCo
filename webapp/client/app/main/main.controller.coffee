@@ -6,7 +6,7 @@ angular.module 'webappApp'
   # cached jQuery variables
   $window = $(window)
   $logo = $('.logo')
-  $logoText = $('#logoText')
+  $logoText = $('.logoText')
   $back = $('.backButton h2')
   $navHome = $('#navHome')
   $navAbout = $('#navAbout')
@@ -36,7 +36,7 @@ angular.module 'webappApp'
   # other variables
   whichPage = 0
   whichSlide = 4
-  maxSlide = 7
+  maxSlide = 9
   whichIcon = 1
   animLoopFlag = false
 
