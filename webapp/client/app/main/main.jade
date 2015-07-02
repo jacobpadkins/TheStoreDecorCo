@@ -52,25 +52,25 @@ div.container-fluid#wrapper
     span#homePage
       div.col-md-1
       div.col-md-10
-        .row.clearfix.visible-lg.visible-md
+        .row.clearfix.visible-lg
           div.col-md-2
-          div.col-md-3#icons
-            .row.clearfix
-              .col-md-12.cataRow#capaRow
-                img(src="../../../assets/images/home_slideshow/capa0.png")
-              .col-md-12.cataRow#prodRow
-                img(src="../../../assets/images/home_slideshow/prod0.png")
-              .col-md-12.cataRow#servRow
-                img(src="../../../assets/images/home_slideshow/serv0.png")
-          .col-md-1
-          div.col-md-5#slideShow
-            #slideshowText
-              h1
-            img(alt = "main image" src="../../../assets/images/home_slideshow/img1.jpg")#img0
-            img(alt = "side image 0 here" src="../../../assets/images/home_slideshow/img2.jpg")#img1
-            img(alt = "side image 1 here" src="../../../assets/images/home_slideshow/img3.jpg")#img2
-            img(alt = "side image 2 here" src="../../../assets/images/home_slideshow/img4.jpg")#img3
-          div.col-md-1
+          div.col-md-8#slideShowContainer
+            #slideShow
+              #slideshowText
+                h1
+              img(alt = "main image" src="../../../assets/images/home_slideshow/img1.jpg")#img0
+              img(alt = "side image 0 here" src="../../../assets/images/home_slideshow/img2.jpg")#img1
+              img(alt = "side image 1 here" src="../../../assets/images/home_slideshow/img3.jpg")#img2
+              img(alt = "side image 2 here" src="../../../assets/images/home_slideshow/img4.jpg")#img3
+          div.col-md-2
+        .row.clearfix.visible-lg
+          .col-md-2
+          .col-md-8#slideShowButtonContainer
+            .cataRow
+              img#capaRow(src="../../../assets/images/home_slideshow/capa0.png")
+              img#prodRow(src="../../../assets/images/home_slideshow/prod0.png")
+              img#servRow(src="../../../assets/images/home_slideshow/serv0.png")
+          .col-md-2
       div.col-md-1
     span#capaPage.hidden
       div.col-md-1
