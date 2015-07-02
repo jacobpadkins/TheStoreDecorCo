@@ -20,9 +20,9 @@ angular.module 'webappApp'
   $img2 = $('#img2')
   $img3 = $('#img3')
   $allImgs = $('#img0, #img1, #img2, #img3')
-  $capaRow = $('#capaRow img')
-  $prodRow = $('#prodRow img')
-  $servRow = $('#servRow img')
+  $capaRow = $('#capaRow')
+  $prodRow = $('#prodRow')
+  $servRow = $('#servRow')
   $slideshowBG = $('#slideshowText')
   $slideshowText = $('#slideshowText h1')
   $socialYT = $('#socialButtons img:nth-of-type(1)')
@@ -114,7 +114,7 @@ angular.module 'webappApp'
         $('#slide').animate {'height':'500px'}, 800
         $('#middle, #bottom').fadeOut 800, () ->
           $middle.css 'margin-top', ''
-          $middle.css 'height', '450px'
+          $middle.css 'height', '650px'
           clearPage()
           $('#homePage').removeClass 'hidden'
           $('#tagline, .copyText, #copyTextSM, #divider, #middle, #bottom').fadeIn 800
@@ -135,13 +135,13 @@ angular.module 'webappApp'
       testBool = false
       $img0.animate {'left': '-80%', }, 500, () ->
         $img1.animate {'right': '20%'}, 500, () ->
-          $img1.animate {'width': '80%', 'height': '400px'}, 500, () ->
+          $img1.animate {'width': '80%', 'height': '480px'}, 500, () ->
             if $('#img1:animated').length == 0
               $img2.animate {'top': '0'}, 500, () ->
                 $img3.animate {'top': '33.33%'}, 500, () ->
                   $img0.fadeOut 0
                   nextImg()
-                  $img0.animate {'width': '20%', 'height': '133.33px', 'top': '66.66%', 'left': '80%'}, 0, () ->
+                  $img0.animate {'width': '20%', 'height': '33.33%', 'top': '66.66%', 'left': '80%'}, 0, () ->
                     $img0.fadeIn 500, () ->
                       resetSlideIds()
 
