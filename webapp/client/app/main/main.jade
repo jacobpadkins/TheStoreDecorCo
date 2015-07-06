@@ -7,8 +7,6 @@ div.container-fluid#wrapper
           h2 What Can We Do For You?
     .visible-sm.visible-xs
       div.col-md-12.column#slideSM
-        div.backButton
-          h2 What Can We Do For You?
   div.text-center.visible-lg.visible-md
     #tagline 
       h1 Your Brand. Your Vision.
@@ -26,7 +24,7 @@ div.container-fluid#wrapper
             | Focused on fulfilling your vision for that "extraordinary customer experience". Our experienced team understands the challenges you face in a competitive sales environment. We promise to integrate our knowledge and ability into your brand communication strategy to maximize your profitability goals.
       div.col-md-1
   .visible-md
-    div.row.clearfix.copyText
+    div.row.clearfix.copyTextM
       div.col-md-1
       div.col-md-10
         p.topP.text-center
@@ -35,7 +33,17 @@ div.container-fluid#wrapper
           p.text-center
             | Focused on fulfilling your vision for that "extraordinary customer experience". Our experienced team understands the challenges you face in a competitive sales environment. We promise to integrate our knowledge and ability into your brand communication strategy to maximize your profitability goals.
       div.col-md-1
-  .visible-sm.visible-xs
+  .visible-sm
+    div.row.clearfix#copyTextSM1
+      div.col-md-1
+      div.col-md-10
+        p#topPSM1.text-center
+          | We are <b>The Store Decor Company!</b> 
+        span#smallFontSM1
+          p.text-center
+            | Focused on fulfilling your vision for that "extraordinary customer experience". Our experienced team understands the challenges you face in a competitive sales environment. We promise to integrate our knowledge and ability into your brand communication strategy to maximize your profitability goals.
+      div.col-md-1
+  .visible-xs
     div.row.clearfix#copyTextSM
       div.col-md-1
       div.col-md-10
@@ -52,7 +60,7 @@ div.container-fluid#wrapper
     span#homePage
       div.col-md-1
       div.col-md-10
-        .row.clearfix.visible-lg
+        .row.clearfix.visible-lg.visible-md
           div.col-md-2
           div.col-md-8#slideShowContainer
             #slideShow
@@ -63,7 +71,7 @@ div.container-fluid#wrapper
               img(alt = "side image 1 here" src="../../../assets/images/home_slideshow/img3.jpg")#img2
               img(alt = "side image 2 here" src="../../../assets/images/home_slideshow/img4.jpg")#img3
           div.col-md-2
-        .row.clearfix.visible-lg
+        .row.clearfix.visible-lg.visible-md
           .col-md-2
           .col-md-8#slideShowButtonContainer
             .cataRow
@@ -71,6 +79,13 @@ div.container-fluid#wrapper
               img#prodRow(src="../../../assets/images/home_slideshow/prod0.png")
               img#servRow(src="../../../assets/images/home_slideshow/serv0.png")
           .col-md-2
+        .row.visible-sm.visible-xs#smRowContainer
+          .col-md-12
+            img.smCataRow#smCapaRow(src="../../../assets/images/home_slideshow/capa0.png")
+          .col-md-12
+            img.smCataRow#smProdRow(src="../../../assets/images/home_slideshow/prod0.png")
+          .col-md-12
+            img.smCataRow#smServRow(src="../../../assets/images/home_slideshow/serv0.png")
       div.col-md-1
     span#capaPage.hidden
       div.col-md-1
@@ -113,7 +128,7 @@ div.container-fluid#wrapper
                 #submitButton Submit
         div.col-md-2
           
-  div.row.clearfix#bottomSmall.hidden
+  div.row.clearfix#bottomSmall.visible-sm.visible-xs
         div.col-md-2
         div.col-md-4 
         div.col-md-4
@@ -139,7 +154,7 @@ div.container-fluid#wrapper
     .col-md-12.column
       nav.navbar.navbar-default.navbar-fixed-top.navbar-custom(role='navigation')
         .navbar-header
-          button.navbar-toggle.visible-sm.visible-xs(type='button', data-toggle='collapse', data-target='#navbar-collapse-1')
+          button.navbar-toggle.visible-sm.visible-xs#smMenu(type='button', data-toggle='collapse', data-target='#navbar-collapse-1')
             span.sr-only Toggle navigation
             span.icon-bar
             span.icon-bar
@@ -170,7 +185,7 @@ div.container-fluid#wrapper
         #navbar-collapse-1.navbar-left.nav
           ul.nav.navbar-nav.leftBar.visible-sm
             div.circle
-              img.img-rounded.logo(alt="main image" src="../../../assets/images/logo_orng.png")
+              img.img-rounded.logo.moveUp(alt="main image" src="../../../assets/images/logo_orng.png")
         #navbar-collapse-1.navbar-left.nav
           ul.nav.navbar-nav.leftBar.visible-xs
             div.circle
