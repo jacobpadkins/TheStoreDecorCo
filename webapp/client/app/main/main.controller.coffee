@@ -3,7 +3,7 @@
 angular.module 'webappApp'
 .controller 'MainCtrl', ($scope) ->
 
-  # cached jQuery variables
+  # cached jQuery variables for often-used handles
   $window = $(window)
   $logo = $('.logo')
   $logoText = $('.logoText')
@@ -14,6 +14,7 @@ angular.module 'webappApp'
   $navCapa = $('#navCapa')
   $navProd = $('#navProd')
   $navServ = $('#navServ')
+  $allNav = $('#navHome h3, #navAbout h3, #navContact h3, #navCapa h3, #navProd h3, #navServ h3')
   $middle = $('#middle')
   $img0 = $('#img0')
   $img1 = $('#img1')
@@ -32,6 +33,10 @@ angular.module 'webappApp'
   $socialLN = $('#socialButtons img:nth-of-type(5)')
   $socialPT = $('#socialButtons img:nth-of-type(6)')
   $socialIG = $('#socialButtons img:nth-of-type(7)')
+  $smCapaRow = $('#smCapaRow')
+  $smProdRow = $('#smProdRow')
+  $smServRow = $('#smServRow')
+  $smRowContainer = $('#smRowContainer')
 
   # other variables
   whichPage = 0
@@ -64,13 +69,31 @@ angular.module 'webappApp'
   clearPage = () ->
     $('#capaPage, #prodPage, #servPage, #abouPage, #contPage').addClass 'hidden'
 
+  # set navbar highlight to current page
+  highlightNavbar = (which) ->
+    $allNav.css 'border', '3px solid rgba(0,0,0,0)'
+    if which == 0
+      $('#navHome h3').css 'border', '3px solid #D85703'
+    else if which == 1
+      $('#navCapa h3').css 'border', '3px solid #D85703'
+    else if which == 2
+      $('#navProd h3').css 'border', '3px solid #D85703'
+    else if which == 3
+      $('#navServ h3').css 'border', '3px solid #D85703'
+    else if which == 4
+      $('#navAbout h3').css 'border', '3px solid #D85703'
+    else if which == 5
+      $('#navContact h3').css 'border', '3px solid #D85703'
+
   setPage = (which) ->
     if whichPage != which
+      # set navbar highlight
+      highlightNavbar(which)
       # transition from home
       if whichPage == 0
-        $('html, body').animate {scrollTop: 0}, 500, () ->
-          $('#slide').animate {'height':'135px'}, 800
-          $('#tagline, #taglineSM, .copyText, #copyTextSM, #divider, #middle, #bottom').fadeOut 800, () ->
+        $('html, body').animate {scrollTop: 0}, 300, () ->
+          $('#slide, #slideSM').animate {'height':'135px'}, 500
+          $('#tagline, #taglineSM, .copyText, #copyTextSM, #divider, #middle, #bottom').fadeOut 500, () ->
             if $('#tagline:animated, #taglineSM:animated, #copyText:animated, #copyTextSM:animated, #divider:animated, #middle:animated, #bottom:animated').length == 0
               $('#homePage').addClass 'hidden'
               $middle.css 'margin-top', '5px'
@@ -85,13 +108,14 @@ angular.module 'webappApp'
                 $('#abouPage').removeClass 'hidden'
               else if which == 5
                 $('#contPage').removeClass 'hidden'
-              $('#middle, #bottom').fadeIn 800
-              $back.fadeIn 800
+              smMiddleResize()
+              $('#middle, #bottom').fadeIn 500
+              $back.fadeIn 300
 
       # transition from sub-page
       else
-        $('html, body').animate {scrollTop: 0}, 500, () ->
-          $('#middle, #bottom').fadeOut 500, () ->
+        $('html, body').animate {scrollTop: 0}, 300, () ->
+          $('#middle, #bottom').fadeOut 300, () ->
             if $('#middle:animated, #bottom:animated').length == 0
               clearPage()
               if which == 1
@@ -104,21 +128,23 @@ angular.module 'webappApp'
                 $('#abouPage').removeClass 'hidden'
               else if which == 5
                 $('#contPage').removeClass 'hidden'
-              $('#middle, #bottom').fadeIn 500
+              $('#middle, #bottom').fadeIn 300
       whichPage = which
 
   # transition back to home page
   home = () ->
     if whichPage != 0
-      $('html, body').animate {scrollTop: 0}, 500, () ->
-        $('#slide').animate {'height':'500px'}, 800
-        $('#middle, #bottom').fadeOut 800, () ->
+      highlightNavbar(0)
+      $('html, body').animate {scrollTop: 0}, 300, () ->
+        $('#slide, #slideSM').animate {'height':'500px'}, 500
+        $('#middle, #bottom').fadeOut 500, () ->
           $middle.css 'margin-top', ''
           $middle.css 'height', '650px'
           clearPage()
           $('#homePage').removeClass 'hidden'
-          $('#tagline, .copyText, #copyTextSM, #divider, #middle, #bottom').fadeIn 800
-          $back.fadeOut 800
+          smMiddleResize()
+          $('#tagline, .copyText, #copyTextSM, #divider, #middle, #bottom').fadeIn 500
+          $back.fadeOut 500
           whichPage = 0
 
   # cycle through slideshow
@@ -204,12 +230,23 @@ angular.module 'webappApp'
       if whichIcon == 4
         whichIcon = 1
 
+  # resize #middle for mobile layout
+  smMiddleResize = () ->
+    if whichPage == 0
+      if $smRowContainer.css('display') == 'block'
+        $middle.css 'height', $smRowContainer.height() + 30
+      else
+        $middle.css 'height', '650px'
+
   # $(document).ready()
   init = () ->
     # initially hide
     $back.fadeOut 0
     $slideshowBG.fadeOut 0
     $logoText.fadeOut 0
+
+    # highlight home page initially
+    highlightNavbar(0)
 
     ### # # # # # # # # # # # HOME PAGE # # # # # # # # # # # ###
     # start slideshow
@@ -293,6 +330,24 @@ angular.module 'webappApp'
       timer.play()
     $servRow.on 'click', () ->
       setPage(3)
+
+    # sm and xs row click events
+    $smCapaRow.on 'click', () ->
+      setPage(1)
+
+    $smProdRow.on 'click', () ->
+      setPage(2)
+
+    $smServRow.on 'click', () ->
+      setPage(3)
+
+    # small menubar dropdown
+    $('#smMenu').on 'click', () ->
+      alert 'clicked #smMenu'
+
+    # resize listener
+    $window.on 'resize', () ->
+      smMiddleResize()
 
     ### # # # # # # # # # # # CAPA PAGE # # # # # # # # # # # ###
 
