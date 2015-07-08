@@ -60,7 +60,8 @@ angular.module 'webappApp'
               'Prototyping',
               'Specialty Coatings',
               'Thermoforming',
-              'Vinyl Printing & Plotting']
+              'Vinyl Printing & Plotting',
+              'dummy']
 
   # slideshow timer
   timer = $.timer () ->
