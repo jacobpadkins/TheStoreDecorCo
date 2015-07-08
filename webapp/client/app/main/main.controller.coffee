@@ -42,12 +42,13 @@ angular.module 'webappApp'
   $capaList = $('#capaList')
   $capaTiles = $('#capaTiles')
 
-  # other variables
+  # other variables - main page
   whichPage = 0
   whichSlide = 4
   maxSlide = 9
   whichIcon = 1
   animLoopFlag = false
+  # other variables - capa page
   capaCats = ['CNC Cutting / Routing',
               'Custom Boxes & Packaging',
               'Digital Printing - Large / Wide Format',
@@ -119,7 +120,7 @@ angular.module 'webappApp'
               $('#homePage').addClass 'hidden'
               $middle.css 'margin-top', '5px'
               $middle.css 'height', '1000px'
-              $middle.css 'background-color', '#1352A5'
+              #$middle.css 'background-color', '#1352A5'
               if which == 1
                 $('#capaPage').removeClass 'hidden'
                 if popOnce == true
@@ -166,7 +167,7 @@ angular.module 'webappApp'
         $('#middle, #bottom').fadeOut 500, () ->
           $middle.css 'margin-top', ''
           $middle.css 'height', '650px'
-          $middle.css 'background-color', '#F1EFE6'
+          #$middle.css 'background-color', '#F1EFE6'
           clearPage()
           $('#homePage').removeClass 'hidden'
           smMiddleResize()
@@ -274,7 +275,30 @@ angular.module 'webappApp'
 
   # CAPA PAGE FUNCTIONS
   populateCapa = () ->
-    console.log 'populateCapa()'
+    $capaList.empty()
+    # add categories
+    for category in capaCats
+      $capaList.append '<div><h3>' + category + '</h3><div>'
+    $('.list div').css 'height', (100 / capaCats.length) + '%'
+    # add main tiles
+    whichCol = 0
+    whichRow = 0
+    for category in capaCats
+      if whichCol == 0
+        $capaTiles.append '<div class="col0" style="top:' + (299.967 * whichRow) +
+        'px;"><h6>' + category + '</h6><img><div>'
+        whichCol = 1
+      else if whichCol == 1
+        $capaTiles.append '<div class="col1" style="top:' + (299.967 * whichRow) +
+        'px;"><h6>' + category + '</h6><img><div>'
+        whichCol = 2
+      else if whichCol == 2
+        $capaTiles.append '<div class="col2" style="top:' + (299.967 * whichRow) +
+        'px;"><h6>' + category + '</h6><img><div>'
+        whichCol = 0
+        whichRow++
+    for i in [1...20] by 1
+      $('#capaTiles div:nth-of-type(' + i + ') img').attr 'src', '../../../assets/images/tile_placeholders/img' + i + '.jpg'
 
   # $(document).ready()
   init = () ->
@@ -393,6 +417,17 @@ angular.module 'webappApp'
       smMiddleResize()
 
     ### # # # # # # # # # # # CAPA PAGE # # # # # # # # # # # ###
+
+    # tile hover animation
+    $capaTiles.on 'mouseover', 'div img', () ->
+      $(this).stop().animate {'top':'20%'}, 500
+    $capaTiles.on 'mouseleave', 'div img', () ->
+      $(this).stop().animate {'top': '0'}, 500
+
+    # sticky categories
+    $capaList.on 'click', 'div', () ->
+      $('#capaList div').css 'background-color', ''
+      $(this).css 'background-color', '#1352A5'
 
     # return home on button click
     $back.on 'click', () ->

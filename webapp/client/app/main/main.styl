@@ -394,13 +394,43 @@ span#smallFontSM {
   div.col-md-10 {
     background: color5
     border-radius: 20pt
-    height: 95%
+    height: 950px
   }
 }
 
+#capaPage .col-md-10 {
+  width: 1200px
+  left: 50%
+  margin-left: -600px
+  position: absolute
+}
+
 .list {
-  border-right: 5px solid color1
+  border: 5px solid color1
+  border-top-left-radius: 20pt
+  border-bottom-left-radius: 20pt
+  border-right: none
   height: 950px
+  overflow: hidden
+
+  div {
+    width: 114%
+    margin-left: -7%
+    border: 1px solid rgba(0,0,0,0)
+
+    h3 {
+      margin-left: 3%
+      font-size: 20px
+      font-family: 'Montserrat', sans-serif
+      font-weight: bold
+      color: color4
+    }
+  }
+
+  div:hover {
+    background-color: color1
+    cursor: pointer
+  }
 }
 
 .backButton {
@@ -679,9 +709,16 @@ span#smallFontSM {
 }
 
 .logoText {
+  z-index: -1
   margin-top: 5px
   color: color4
   font-family: 'Montserrat', sans-serif
+}
+
+#navCapa,
+#navProd,
+#navServ {
+  z-index: 1
 }
 
 .smCataRow {
@@ -700,4 +737,54 @@ span#smallFontSM {
   height: 5px
   background-color: color4
   bottom: 0
+}
+
+.tiles {
+  overflow-y: scroll
+  overflow-x: hidden
+  position: relative
+  height: 950px
+  border: 5px solid color1
+  border-top-right-radius: 20pt
+  border-bottom-right-radius: 20pt
+
+  .col0, .col1, .col2 {
+    position: absolute
+    width: 33.33%
+    height: 296.633px
+
+    h6 {
+      z-index: -1
+      text-align: center
+      font-family: 'Montserrat', sans-serif
+      font-weight: bold
+      font-size: 18px
+      color: color4
+    }
+
+    img {
+      z-index: 1
+      position: absolute
+      background: black
+      height: 101%
+      width: 100%
+      top: 0
+    }
+  }
+
+  .col0:hover,
+  .col1:hover,
+  .col2:hover {
+    cursor: pointer
+  }
+
+  .col0 {
+    left: 0
+  }
+  .col1 {
+    left: 33.33%
+  }
+  .col2 {
+    left: 66.66%
+  }
 }
