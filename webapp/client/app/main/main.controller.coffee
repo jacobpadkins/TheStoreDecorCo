@@ -14,7 +14,8 @@ angular.module 'webappApp'
   $navCapa = $('#navCapa')
   $navProd = $('#navProd')
   $navServ = $('#navServ')
-  $allNav = $('#navHome h3, #navAbout h3, #navContact h3, #navCapa h3, #navProd h3, #navServ h3')
+  $allNav = $('#navHome h3, #navAbout h3, #navContact h3, #navCapa h3,
+  #navProd h3, #navServ h3')
   $middle = $('#middle')
   $img0 = $('#img0')
   $img1 = $('#img1')
@@ -44,6 +45,18 @@ angular.module 'webappApp'
   maxSlide = 9
   whichIcon = 1
   animLoopFlag = false
+  capaCats = ['CNC Cutting / Routing',
+              'Custom Boxes & Packaging',
+              'Digital Printing - Large / Wide Format',
+              'Foam Sculpture, Molding, & Casting',
+              'Metal Fabrication',
+              'Millwork & Crafting',
+              'Painting',
+              'Print Lamination & Finishing',
+              'Prototyping',
+              'Specialty Coatings',
+              'Thermoforming',
+              'Vinyl Printing & Plotting']
 
   # slideshow timer
   timer = $.timer () ->
@@ -65,7 +78,8 @@ angular.module 'webappApp'
     animServ()
   servTimer.set {time : 200, autostart : false}
 
-  # functions
+  # HOME PAGE FUNCTIONS
+
   clearPage = () ->
     $('#capaPage, #prodPage, #servPage, #abouPage, #contPage').addClass 'hidden'
 
@@ -86,6 +100,7 @@ angular.module 'webappApp'
       $('#navContact h3').css 'border', '3px solid #D85703'
 
   setPage = (which) ->
+    popOnce = true
     if whichPage != which
       # set navbar highlight
       highlightNavbar(which)
@@ -93,13 +108,20 @@ angular.module 'webappApp'
       if whichPage == 0
         $('html, body').animate {scrollTop: 0}, 300, () ->
           $('#slide, #slideSM').animate {'height':'135px'}, 500
-          $('#tagline, #taglineSM, .copyText, #copyTextSM, #divider, #middle, #bottom').fadeOut 500, () ->
-            if $('#tagline:animated, #taglineSM:animated, #copyText:animated, #copyTextSM:animated, #divider:animated, #middle:animated, #bottom:animated').length == 0
+          $('#tagline, #taglineSM, .copyText, .copyTextM, #copyTextSM1,
+          #copyTextSM, #divider, #middle, #bottom').fadeOut 500, () ->
+            if $('#tagline:animated, #taglineSM:animated, #copyText:animated,
+              #copyTextSM:animated, #divider:animated, #middle:animated,
+              #bottom:animated').length == 0
               $('#homePage').addClass 'hidden'
               $middle.css 'margin-top', '5px'
               $middle.css 'height', '1000px'
+              $middle.css 'background-color', '#1352A5'
               if which == 1
                 $('#capaPage').removeClass 'hidden'
+                if popOnce == true
+                  populateCapa()
+                  popOnce = false
               else if which == 2
                 $('#prodPage').removeClass 'hidden'
               else if which == 3
@@ -120,6 +142,7 @@ angular.module 'webappApp'
               clearPage()
               if which == 1
                 $('#capaPage').removeClass 'hidden'
+                populateCapa()
               else if which == 2
                 $('#prodPage').removeClass 'hidden'
               else if which == 3
@@ -140,22 +163,25 @@ angular.module 'webappApp'
         $('#middle, #bottom').fadeOut 500, () ->
           $middle.css 'margin-top', ''
           $middle.css 'height', '650px'
+          $middle.css 'background-color', '#F1EFE6'
           clearPage()
           $('#homePage').removeClass 'hidden'
           smMiddleResize()
-          $('#tagline, .copyText, #copyTextSM, #divider, #middle, #bottom').fadeIn 500
+          $('#tagline, .copyText, .copyTextM, #copyTextSM1, #copyTextSM,
+          #divider, #middle, #bottom').fadeIn 500
           $back.fadeOut 500
           whichPage = 0
 
   # cycle through slideshow
   nextImg = () ->
     if whichSlide < maxSlide
-      $img0.attr 'src', '../../../assets/images/home_slideshow/img' + (whichSlide + 1) + '.jpg'
+
+      $img0.attr 'src', '../../../assets/images/home_slideshow/img' +
+      (whichSlide + 1) + '.jpg'
       whichSlide++
     else
       $img0.attr 'src', '../../../assets/images/home_slideshow/img1.jpg'
       whichSlide = 1
-
 
   slideShow = () ->
       testBool = false
@@ -167,7 +193,8 @@ angular.module 'webappApp'
                 $img3.animate {'top': '33.33%'}, 500, () ->
                   $img0.fadeOut 0
                   nextImg()
-                  $img0.animate {'width': '20%', 'height': '33.33%', 'top': '66.66%', 'left': '80%'}, 0, () ->
+                  $img0.animate {'width': '20%', 'height': '33.33%',
+                  'top': '66.66%', 'left': '80%'}, 0, () ->
                     $img0.fadeIn 500, () ->
                       resetSlideIds()
 
@@ -187,7 +214,8 @@ angular.module 'webappApp'
   animCapa = () ->
     if animLoopFlag == false
       if whichIcon < 5
-        $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa' + whichIcon + '.png'
+        $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa' +
+        whichIcon + '.png'
         whichIcon += 1
       else
         $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa5.png'
@@ -195,7 +223,8 @@ angular.module 'webappApp'
         animLoopFlag = true
     else
       if whichIcon > 1
-        $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa' + whichIcon + '.png'
+        $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa' +
+        whichIcon + '.png'
         whichIcon -= 1
       else
         $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa1.png'
@@ -206,7 +235,8 @@ angular.module 'webappApp'
   animProd = () ->
     if animLoopFlag == false
       if whichIcon < 3
-        $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod' + whichIcon + '.png'
+        $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod' +
+        whichIcon + '.png'
         whichIcon += 1
       else
         $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod3.png'
@@ -214,7 +244,8 @@ angular.module 'webappApp'
         animLoopFlag = true
     else
       if whichIcon > 1
-        $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod' + whichIcon + '.png'
+        $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod' +
+        whichIcon + '.png'
         whichIcon -= 1
       else
         $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod1.png'
@@ -225,7 +256,8 @@ angular.module 'webappApp'
   animServ = () ->
 
     if whichIcon < 4
-      $servRow.attr 'src', '../../../assets/images/home_slideshow/serv' + whichIcon + '.png'
+      $servRow.attr 'src', '../../../assets/images/home_slideshow/serv' +
+      whichIcon + '.png'
       whichIcon += 1
       if whichIcon == 4
         whichIcon = 1
@@ -237,6 +269,10 @@ angular.module 'webappApp'
         $middle.css 'height', $smRowContainer.height() + 30
       else
         $middle.css 'height', '650px'
+
+  # CAPA PAGE FUNCTIONS
+  populateCapa = () ->
+    console.log 'populateCapa()'
 
   # $(document).ready()
   init = () ->
@@ -282,7 +318,9 @@ angular.module 'webappApp'
       $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa1.png'
       capaTimer.play()
       animCapa()
-      $slideshowText.html 'Our collaborative attitude means there\'s nothing we can\'t create. Challenge us! Our <span class="underlined">Capabilities</span> are unbounded.'
+      $slideshowText.html 'Our collaborative attitude means there\'s nothing
+      we can\'t create. Challenge us! Our <span class="underlined">Capabilities
+      </span> are unbounded.'
       timer.pause()
       $slideshowBG.stop().fadeIn 300
     $capaRow.on 'mouseleave', () ->
@@ -300,7 +338,8 @@ angular.module 'webappApp'
       $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod1.png'
       prodTimer.play()
       animProd()
-      $slideshowText.html 'We make <span class="underlined">Products</span> that set the industry standard for quality, durability and effect!'
+      $slideshowText.html 'We make <span class="underlined">Products</span> that
+       set the industry standard for quality, durability and effect!'
       timer.pause()
       $slideshowBG.stop().fadeIn 300
     $prodRow.on 'mouseleave', () ->
@@ -318,7 +357,9 @@ angular.module 'webappApp'
       $servRow.attr 'src', '../../../assets/images/home_slideshow/serv1.png'
       servTimer.play()
       animServ()
-      $slideshowText.html 'We endeavor to understand your needs and eliminate your worries. Utilize our <span class="underlined">Services</span> to insure your success.'
+      $slideshowText.html 'We endeavor to understand your needs and eliminate
+      your worries. Utilize our <span class="underlined">Services</span> to
+      insure your success.'
       timer.pause()
       $slideshowBG.stop().fadeIn 300
     $servRow.on 'mouseleave', () ->
