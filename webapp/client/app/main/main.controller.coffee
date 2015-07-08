@@ -38,6 +38,9 @@ angular.module 'webappApp'
   $smProdRow = $('#smProdRow')
   $smServRow = $('#smServRow')
   $smRowContainer = $('#smRowContainer')
+  # and for capa page
+  $capaList = $('#capaList')
+  $capaTiles = $('#capaTiles')
 
   # other variables
   whichPage = 0
@@ -175,7 +178,6 @@ angular.module 'webappApp'
   # cycle through slideshow
   nextImg = () ->
     if whichSlide < maxSlide
-
       $img0.attr 'src', '../../../assets/images/home_slideshow/img' +
       (whichSlide + 1) + '.jpg'
       whichSlide++
