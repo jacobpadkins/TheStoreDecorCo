@@ -317,10 +317,10 @@ angular.module 'webappApp'
     # hide/show logo on scroll
     $(window).scroll () ->
       if $window.scrollTop() > 10
-        $logo.fadeOut () ->
-          $logoText.fadeIn()
+        $logo.fadeOut 'fast', () ->
+          $logoText.fadeIn 'fast'
       else
-        $logoText.fadeOut 'fast', () ->
+        $logoText.stop().fadeOut 'fast', () ->
           $logo.fadeIn 'fast'
 
     # navbar listeners
