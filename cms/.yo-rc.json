@@ -11,11 +11,13 @@
     "filters": {
       "coffee": true,
       "jade": true,
-      "stylus": true,
+      "sass": true,
       "uirouter": true,
       "bootstrap": true,
       "uibootstrap": true,
-      "mongoose": true
+      "socketio": true,
+      "mongoose": true,
+      "auth": true
     }
   },
   "generator-ng-component": {
@@ -31,7 +33,7 @@
     "extensions": [
       "coffee",
       "jade",
-      "styl"
+      "scss"
     ],
     "directiveSimpleTemplates": "",
     "directiveComplexTemplates": "",

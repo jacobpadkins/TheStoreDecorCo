@@ -72,19 +72,19 @@ angular.module 'webappApp'
 
   # set navbar highlight to current page
   highlightNavbar = (which) ->
-    $allNav.css 'border', '3px solid rgba(0,0,0,0)'
+    $allNav.css 'background-color', 'rgba(0,0,0,0)'
     if which == 0
-      $('#navHome h3').css 'border', '3px solid #D85703'
+      $('#navHome h3').css 'background-color', '#898888'
     else if which == 1
-      $('#navCapa h3').css 'border', '3px solid #D85703'
+      $('#navCapa h3').css 'background-color', '#898888'
     else if which == 2
-      $('#navProd h3').css 'border', '3px solid #D85703'
+      $('#navProd h3').css 'background-color', '#898888'
     else if which == 3
-      $('#navServ h3').css 'border', '3px solid #D85703'
+      $('#navServ h3').css 'background-color', '#898888'
     else if which == 4
-      $('#navAbout h3').css 'border', '3px solid #D85703'
+      $('#navAbout h3').css 'background-color', '#898888'
     else if which == 5
-      $('#navContact h3').css 'border', '3px solid #D85703'
+      $('#navContact h3').css 'background-color', '#898888'
 
   setPage = (which) ->
     popOnce = true
