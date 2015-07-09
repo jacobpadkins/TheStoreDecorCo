@@ -46,8 +46,6 @@ angular.module 'webappApp'
   whichPage = 0
   whichSlide = 4
   maxSlide = 9
-  whichIcon = 1
-  animLoopFlag = false
   # other variables - capa page
   capaCats = ['CNC Cutting / Routing',
               'Custom Boxes & Packaging',
@@ -66,21 +64,6 @@ angular.module 'webappApp'
   timer = $.timer () ->
     slideShow()
   timer.set {time : 4000, autostart : true}
-
-  # capa anim timer
-  capaTimer = $.timer () ->
-    animCapa()
-  capaTimer.set {time : 200, autostart : false}
-
-  # prod anim timer
-  prodTimer = $.timer () ->
-    animProd()
-  prodTimer.set {time : 200, autostart : false}
-
-  # serv anim timer
-  servTimer = $.timer () ->
-    animServ()
-  servTimer.set {time : 200, autostart : false}
 
   # HOME PAGE FUNCTIONS
 
@@ -213,58 +196,6 @@ angular.module 'webappApp'
     $allImgs = $('#img0, #img1, #img2, #img3')
     $allImgs.removeAttr('style')
 
-  # capabilities icon animation functions
-  animCapa = () ->
-    if animLoopFlag == false
-      if whichIcon < 5
-        $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa' +
-        whichIcon + '.png'
-        whichIcon += 1
-      else
-        $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa5.png'
-        whichIcon = 4
-        animLoopFlag = true
-    else
-      if whichIcon > 1
-        $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa' +
-        whichIcon + '.png'
-        whichIcon -= 1
-      else
-        $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa1.png'
-        whichIcon = 2
-        animLoopFlag = false
-
-  # products icon animation functions
-  animProd = () ->
-    if animLoopFlag == false
-      if whichIcon < 3
-        $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod' +
-        whichIcon + '.png'
-        whichIcon += 1
-      else
-        $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod3.png'
-        whichIcon = 2
-        animLoopFlag = true
-    else
-      if whichIcon > 1
-        $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod' +
-        whichIcon + '.png'
-        whichIcon -= 1
-      else
-        $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod1.png'
-        whichIcon = 2
-        animLoopFlag = false
-
-  # services icon animation functions
-  animServ = () ->
-
-    if whichIcon < 4
-      $servRow.attr 'src', '../../../assets/images/home_slideshow/serv' +
-      whichIcon + '.png'
-      whichIcon += 1
-      if whichIcon == 4
-        whichIcon = 1
-
   # resize #middle for mobile layout
   smMiddleResize = () ->
     if whichPage == 0
@@ -341,19 +272,14 @@ angular.module 'webappApp'
 
     # slideshow buttons hover events
     $capaRow.on 'mouseover', () ->
-      $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa1.png'
-      capaTimer.play()
-      animCapa()
+      $capaRow.attr 'src', '../../../assets/images/home_slideshow/capabilities-animated.gif'
       $slideshowText.html 'Our collaborative attitude means there\'s nothing
       we can\'t create. Challenge us! Our <span class="underlined">Capabilities
       </span> are unbounded.'
       timer.pause()
       $slideshowBG.stop().fadeIn 300
     $capaRow.on 'mouseleave', () ->
-      capaTimer.pause()
       $capaRow.attr 'src', '../../../assets/images/home_slideshow/capa0.png'
-      whichIcon = 1
-      animLoopFlag = false
       $slideshowBG.stop().fadeOut 300
       timer.play()
     $capaRow.on 'click', () ->
@@ -361,18 +287,13 @@ angular.module 'webappApp'
 
 
     $prodRow.on 'mouseover', () ->
-      $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod1.png'
-      prodTimer.play()
-      animProd()
+      $prodRow.attr 'src', '../../../assets/images/home_slideshow/products-animated.gif'
       $slideshowText.html 'We make <span class="underlined">Products</span> that
        set the industry standard for quality, durability and effect!'
       timer.pause()
       $slideshowBG.stop().fadeIn 300
     $prodRow.on 'mouseleave', () ->
-      prodTimer.pause()
       $prodRow.attr 'src', '../../../assets/images/home_slideshow/prod0.png'
-      whichIcon = 1
-      animLoopFlag = false
       $slideshowBG.stop().fadeOut 300
       timer.play()
     $prodRow.on 'click', () ->
@@ -380,19 +301,14 @@ angular.module 'webappApp'
 
 
     $servRow.on 'mouseover', () ->
-      $servRow.attr 'src', '../../../assets/images/home_slideshow/serv1.png'
-      servTimer.play()
-      animServ()
+      $servRow.attr 'src', '../../../assets/images/home_slideshow/services-animated.gif'
       $slideshowText.html 'We endeavor to understand your needs and eliminate
       your worries. Utilize our <span class="underlined">Services</span> to
       insure your success.'
       timer.pause()
       $slideshowBG.stop().fadeIn 300
     $servRow.on 'mouseleave', () ->
-      servTimer.pause()
       $servRow.attr 'src', '../../../assets/images/home_slideshow/serv0.png'
-      whichIcon = 1
-      animLoopFlag = false
       $slideshowBG.stop().fadeOut 300
       timer.play()
     $servRow.on 'click', () ->
