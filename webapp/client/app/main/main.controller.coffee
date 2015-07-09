@@ -255,8 +255,6 @@ angular.module 'webappApp'
           $logo.fadeIn 'fast'
 
     # navbar listeners
-    $logo.on 'click', () ->
-      home()
     $navHome.on 'click', () ->
       home()
     $navAbout.on 'click', () ->
