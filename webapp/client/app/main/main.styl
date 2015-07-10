@@ -303,8 +303,8 @@ li.active h3 {
   color: color4
   font-family: 'Montserrat', sans-serif
   padding: 3px
-  margin-left: 15px
-  margin-right: 15px
+  margin-left: 8px
+  margin-right: 8px
   margin-top: 10px
   font-size: 18px
   font-weight: 700
@@ -737,38 +737,43 @@ span#smallFontSM {
 }
 
 .tiles {
-  overflow-y: scroll
-  overflow-x: hidden
   position: relative
   height: 950px
 
-  .col0, .col1, .col2 {
+  .col0, .col1, .col2, .col3 {
     position: absolute
-    width: 33.33%
-    height: 296.633px
+    width: 25%
+    height: 160px
+    background-color: color5
 
     h6 {
       z-index: -1
       text-align: center
       font-family: 'Montserrat', sans-serif
       font-weight: bold
-      font-size: 18px
-      color: color9
+      font-size: 14px
+      color: color4
     }
 
     img {
       z-index: 1
+      filter: grayscale(100%);
       position: absolute
       background: black
-      height: 101%
+      height: 100%
       width: 100%
       top: 0
+    }
+
+    img:hover {
+      filter: grayscale(0%);
     }
   }
 
   .col0:hover,
   .col1:hover,
-  .col2:hover {
+  .col2:hover,
+  .col3:hover {
     cursor: pointer
   }
 
@@ -776,9 +781,12 @@ span#smallFontSM {
     left: 0
   }
   .col1 {
-    left: 33.33%
+    left: 25%
   }
   .col2 {
-    left: 66.66%
+    left: 50%
+  }
+  .col3 {
+    left: 75%
   }
 }

@@ -47,18 +47,18 @@ angular.module 'webappApp'
   whichSlide = 4
   maxSlide = 9
   # other variables - capa page
-  capaCats = ['CNC Cutting / Routing',
-              'Custom Boxes & Packaging',
-              'Digital Printing - Large / Wide Format',
-              'Foam Sculpture, Molding, & Casting',
+  capaCats = ['CNC Cutting & Routing',
+              'Custom Packaging',
+              'Digital Printing',
+              'Foam Sculpture',
               'Metal Fabrication',
               'Millwork & Crafting',
               'Painting',
-              'Print Lamination & Finishing',
+              'Print Lamination',
               'Prototyping',
               'Specialty Coatings',
               'Thermoforming',
-              'Vinyl Printing & Plotting']
+              'Vinyl Graphics']
 
   # slideshow timer
   timer = $.timer () ->
@@ -215,24 +215,42 @@ angular.module 'webappApp'
       $capaList.append '<div><h3>' + category + '</h3><div>'
     #$('.list div').css 'height', (100 / capaCats.length) + '%'
     # add main tiles
+
     whichCol = 0
     whichRow = 0
     for category in capaCats
       if whichCol == 0
-        $capaTiles.append '<div class="col0" style="top:' + (299.967 * whichRow) +
+        $capaTiles.append '<div class="col0" style="top:' + (160 * whichRow) +
         'px;"><h6>' + category + '</h6><img><div>'
         whichCol = 1
       else if whichCol == 1
-        $capaTiles.append '<div class="col1" style="top:' + (299.967 * whichRow) +
+        $capaTiles.append '<div class="col1" style="top:' + (160 * whichRow) +
         'px;"><h6>' + category + '</h6><img><div>'
         whichCol = 2
       else if whichCol == 2
-        $capaTiles.append '<div class="col2" style="top:' + (299.967 * whichRow) +
+        $capaTiles.append '<div class="col2" style="top:' + (160 * whichRow) +
+        'px;"><h6>' + category + '</h6><img><div>'
+        whichCol = 3
+      else if whichCol == 3
+        $capaTiles.append '<div class="col3" style="top:' + (160 * whichRow) +
         'px;"><h6>' + category + '</h6><img><div>'
         whichCol = 0
         whichRow++
-    for i in [1...20] by 1
-      $('#capaTiles div:nth-of-type(' + i + ') img').attr 'src', '../../../assets/images/tile_placeholders/img' + i + '.jpg'
+
+    i = 1
+    #  set your counter to 1
+
+    myLoop = ->
+      setTimeout (->
+        $('#capaTiles div:nth-of-type(' + parseInt(i) + ') img').attr 'src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg'
+        i++
+        if i < 13
+          myLoop()
+        return
+      ), 300
+      return
+
+    myLoop()
 
   # $(document).ready()
   init = () ->
