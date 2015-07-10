@@ -69,10 +69,13 @@ angular.module 'webappApp'
 
   clearPage = () ->
     $('#capaPage, #prodPage, #servPage, #abouPage, #contPage').addClass 'hidden'
+    # clear capa
+    $capaList.empty()
+    $capaTiles.empty()
 
   # set navbar highlight to current page
   highlightNavbar = (which) ->
-    $allNav.css 'background-color', 'rgba(0,0,0,0)'
+    $allNav.css 'background-color', ''
     if which == 0
       $('#navHome h3').css 'background-color', '#898888'
     else if which == 1
@@ -210,7 +213,7 @@ angular.module 'webappApp'
     # add categories
     for category in capaCats
       $capaList.append '<div><h3>' + category + '</h3><div>'
-    $('.list div').css 'height', (100 / capaCats.length) + '%'
+    #$('.list div').css 'height', (100 / capaCats.length) + '%'
     # add main tiles
     whichCol = 0
     whichRow = 0
@@ -246,7 +249,7 @@ angular.module 'webappApp'
     timer.play()
 
     # hide/show logo on scroll
-    $(window).scroll () ->
+    $window.scroll () ->
       if $window.scrollTop() > 10
         $logo.fadeOut 'fast', () ->
           $logoText.fadeIn 'fast'
@@ -254,9 +257,20 @@ angular.module 'webappApp'
         $logoText.stop().fadeOut 'fast', () ->
           $logo.fadeIn 'fast'
 
+      # capa page fixed #capaList
+      if whichPage == 1
+        if $window.scrollTop() < 10
+          $capaList.css 'position', ''
+          $capaList.css 'top', ''
+        else if $window.scrollTop() > 540
+          $capaList.css 'position', 'absolute'
+          $capaList.css 'top', '540px'
+        else
+          $capaList.css 'position', 'fixed'
+          $capaList.height($capaList.height())
+          $capaList.css 'top', ''
+
     # navbar listeners
-    $logo.on 'click', () ->
-      home()
     $navHome.on 'click', () ->
       home()
     $navAbout.on 'click', () ->
@@ -341,9 +355,9 @@ angular.module 'webappApp'
       $(this).stop().animate {'top': '0'}, 500
 
     # sticky categories
-    $capaList.on 'click', 'div', () ->
-      $('#capaList div').css 'background-color', ''
-      $(this).css 'background-color', '#1352A5'
+    $capaList.on 'click', 'div h3', () ->
+      $('#capaList div h3').css 'color', '#605F5B'
+      $(this).css 'color', '#1352A5'
 
     # return home on button click
     $back.on 'click', () ->
