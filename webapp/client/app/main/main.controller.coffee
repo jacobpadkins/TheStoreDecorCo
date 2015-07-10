@@ -257,19 +257,6 @@ angular.module 'webappApp'
         $logoText.stop().fadeOut 'fast', () ->
           $logo.fadeIn 'fast'
 
-      # capa page fixed #capaList
-      if whichPage == 1
-        if $window.scrollTop() < 10
-          $capaList.css 'position', ''
-          $capaList.css 'top', ''
-        else if $window.scrollTop() > 540
-          $capaList.css 'position', 'absolute'
-          $capaList.css 'top', '540px'
-        else
-          $capaList.css 'position', 'fixed'
-          $capaList.height($capaList.height())
-          $capaList.css 'top', ''
-
     # navbar listeners
     $navHome.on 'click', () ->
       home()
