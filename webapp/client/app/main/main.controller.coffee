@@ -364,6 +364,11 @@ angular.module 'webappApp'
       $('#capaList div h3').css 'color', '#605F5B'
       $(this).css 'color', '#1352A5'
 
+    $capaList.on 'mouseover', 'div h3', () ->
+      $(this).stop().animate {'font-size':'15'}, 'fast'
+    $capaList.on 'mouseleave', 'div h3', () ->
+      $(this).stop().animate {'font-size':'12'}, 'fast'
+
     # return home on button click
     $back.on 'click', () ->
       home()
