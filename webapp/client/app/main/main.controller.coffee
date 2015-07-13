@@ -7,7 +7,7 @@ angular.module 'webappApp'
   $window = $(window)
   $logo = $('.logo')
   $logoText = $('.logoText')
-  $back = $('.backButton h2')
+  #$back = $('.backButton h2')
   $navHome = $('#navHome')
   $navAbout = $('#navAbout')
   $navContact = $('#navContact')
@@ -59,6 +59,7 @@ angular.module 'webappApp'
               'Specialty Coatings',
               'Thermoforming',
               'Vinyl Graphics']
+  capaWhichCate = 13
 
   # slideshow timer
   timer = $.timer () ->
@@ -105,7 +106,7 @@ angular.module 'webappApp'
               #bottom:animated').length == 0
               $('#homePage').addClass 'hidden'
               $middle.css 'margin-top', '5px'
-              $middle.css 'height', '1000px'
+              $middle.css 'height', '550px'
               #$middle.css 'background-color', '#1352A5'
               if which == 1
                 $('#capaPage').removeClass 'hidden'
@@ -122,7 +123,7 @@ angular.module 'webappApp'
                 $('#contPage').removeClass 'hidden'
               smMiddleResize()
               $('#middle, #bottom').fadeIn 500
-              $back.fadeIn 300
+              #$back.fadeIn 300
 
       # transition from sub-page
       else
@@ -159,7 +160,7 @@ angular.module 'webappApp'
           smMiddleResize()
           $('#tagline, .copyText, .copyTextM, #copyTextSM1, #copyTextSM,
           #divider, #middle, #bottom').fadeIn 500
-          $back.fadeOut 500
+          #$back.fadeOut 500
           whichPage = 0
 
   # cycle through slideshow
@@ -255,7 +256,7 @@ angular.module 'webappApp'
   # $(document).ready()
   init = () ->
     # initially hide
-    $back.fadeOut 0
+    #$back.fadeOut 0
     $slideshowBG.fadeOut 0
     $logoText.fadeOut 0
 
@@ -355,22 +356,28 @@ angular.module 'webappApp'
 
     # tile hover animation
     $capaTiles.on 'mouseover', 'div img', () ->
-      $(this).stop().animate {'top':'20%'}, 500
+      $(this).stop().animate {'top':'20%'}, 200
     $capaTiles.on 'mouseleave', 'div img', () ->
-      $(this).stop().animate {'top': '0'}, 500
+      $(this).stop().animate {'top': '0'}, 200
 
     # sticky categories
-    $capaList.on 'click', 'div h3', () ->
-      $('#capaList div h3').css 'color', '#605F5B'
-      $(this).css 'color', '#1352A5'
+    $capaList.on 'click', 'div', () ->
+      capaWhichCate = ($(this).index() + 1);
+      $('#capaList div h3').not('#capaList div:nth-of-type(' + capaWhichCate + ') h3').css 'color', '#605F5B'
+      $('#capaList div h3').not('#capaList div:nth-of-type(' + capaWhichCate + ') h3').stop().animate {'font-size':'12'}, 200
 
-    $capaList.on 'mouseover', 'div h3', () ->
-      $(this).stop().animate {'font-size':'15'}, 'fast'
-    $capaList.on 'mouseleave', 'div h3', () ->
-      $(this).stop().animate {'font-size':'12'}, 'fast'
+    $capaList.on 'mouseover', 'div', () ->
+      $(this).children('h3').stop().animate {'font-size':'15'}, 200
+      $(this).children('h3').css 'color', '#1352A5'
+      $('#capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'20%'}, 200
+    $capaList.on 'mouseleave', 'div', () ->
+      if ($(this).index() + 1) != capaWhichCate
+        $(this).children('h3').css 'color', '#605F5B'
+        $(this).children('h3').stop().animate {'font-size':'12'}, 200
+      $('#capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top': '0'}, 200
 
     # return home on button click
-    $back.on 'click', () ->
-      home()
+    #$back.on 'click', () ->
+    #  home()
 
   init()
