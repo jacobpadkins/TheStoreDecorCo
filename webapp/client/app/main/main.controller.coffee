@@ -238,6 +238,9 @@ angular.module 'webappApp'
         whichCol = 0
         whichRow++
 
+    for i in [1...(capaCats.length+1)]
+      $('#capaTiles div:nth-of-type(' + parseInt(i) + ') img').attr 'src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg'
+    ###
     i = 1
     #  set your counter to 1
 
@@ -252,6 +255,7 @@ angular.module 'webappApp'
       return
 
     myLoop()
+    ###
 
   # $(document).ready()
   init = () ->
