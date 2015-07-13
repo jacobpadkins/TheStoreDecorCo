@@ -7,7 +7,6 @@ angular.module 'webappApp'
   $window = $(window)
   $logo = $('.logo')
   $logoText = $('.logoText')
-  #$back = $('.backButton h2')
   $navHome = $('#navHome')
   $navAbout = $('#navAbout')
   $navContact = $('#navContact')
@@ -41,6 +40,9 @@ angular.module 'webappApp'
   # and for capa page
   $capaList = $('#capaList')
   $capaTiles = $('#capaTiles')
+  # and for prod page
+  $prodList = $('#prodList')
+  $prodTiles = $('#prodTiles')
 
   # other variables - main page
   whichPage = 0
@@ -60,6 +62,23 @@ angular.module 'webappApp'
               'Thermoforming',
               'Vinyl Graphics']
   capaWhichCate = 13
+  # other variables - prod page
+  prodCats = ['Dummy1',
+              'Dummy2',
+              'Dummy3',
+              'Dummy4',
+              'Dummy5',
+              'Dummy6',
+              'Dummy7',
+              'Dummy8',
+              'Dummy9',
+              'Dummy10',
+              'Dummy11',
+              'Dummy12',
+              'Dummy13',
+              'Dummy14',
+              'Dummy15']
+  prodWhichCate = 16
 
   # slideshow timer
   timer = $.timer () ->
@@ -73,6 +92,9 @@ angular.module 'webappApp'
     # clear capa
     $capaList.empty()
     $capaTiles.empty()
+    # clear prod
+    $prodList.empty()
+    $prodTiles.empty()
 
   # set navbar highlight to current page
   highlightNavbar = (which) ->
@@ -106,15 +128,19 @@ angular.module 'webappApp'
               #bottom:animated').length == 0
               $('#homePage').addClass 'hidden'
               $middle.css 'margin-top', '5px'
-              $middle.css 'height', '550px'
               #$middle.css 'background-color', '#1352A5'
               if which == 1
+                $middle.css 'height', '550px'
                 $('#capaPage').removeClass 'hidden'
                 if popOnce == true
                   populateCapa()
                   popOnce = false
               else if which == 2
+                $middle.css 'height', '710px'
                 $('#prodPage').removeClass 'hidden'
+                if popOnce == true
+                  populateProd()
+                  popOnce = false
               else if which == 3
                 $('#servPage').removeClass 'hidden'
               else if which == 4
@@ -132,10 +158,13 @@ angular.module 'webappApp'
             if $('#middle:animated, #bottom:animated').length == 0
               clearPage()
               if which == 1
+                $middle.css 'height', '550px'
                 $('#capaPage').removeClass 'hidden'
                 populateCapa()
               else if which == 2
+                $middle.css 'height', '710px'
                 $('#prodPage').removeClass 'hidden'
+                populateProd()
               else if which == 3
                 $('#servPage').removeClass 'hidden'
               else if which == 4
@@ -213,9 +242,7 @@ angular.module 'webappApp'
     $capaList.empty()
     # add categories
     for category in capaCats
-      $capaList.append '<div><h3>' + category + '</h3><div>'
-    #$('.list div').css 'height', (100 / capaCats.length) + '%'
-    # add main tiles
+      $capaList.append '<div><h3>' + category + '</h3></div>'
 
     whichCol = 0
     whichRow = 0
@@ -240,22 +267,38 @@ angular.module 'webappApp'
 
     for i in [1...(capaCats.length+1)]
       $('#capaTiles div:nth-of-type(' + parseInt(i) + ') img').attr 'src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg'
-    ###
-    i = 1
-    #  set your counter to 1
 
-    myLoop = ->
-      setTimeout (->
-        $('#capaTiles div:nth-of-type(' + parseInt(i) + ') img').attr 'src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg'
-        i++
-        if i < 13
-          myLoop()
-        return
-      ), 300
-      return
 
-    myLoop()
-    ###
+  # PROD PAGE FUNCTIONS
+  populateProd = () ->
+    $prodList.empty()
+    # add categories
+    for category in prodCats
+      $prodList.append '<div><h3>' + category + '</h3></div>'
+
+    whichCol = 0
+    whichRow = 0
+    for category in prodCats
+      if whichCol == 0
+        $prodTiles.append '<div class="col0" style="top:' + (160 * whichRow) +
+        'px;"><h6>' + category + '</h6><img><div>'
+        whichCol = 1
+      else if whichCol == 1
+        $prodTiles.append '<div class="col1" style="top:' + (160 * whichRow) +
+        'px;"><h6>' + category + '</h6><img><div>'
+        whichCol = 2
+      else if whichCol == 2
+        $prodTiles.append '<div class="col2" style="top:' + (160 * whichRow) +
+        'px;"><h6>' + category + '</h6><img><div>'
+        whichCol = 3
+      else if whichCol == 3
+        $prodTiles.append '<div class="col3" style="top:' + (160 * whichRow) +
+        'px;"><h6>' + category + '</h6><img><div>'
+        whichCol = 0
+        whichRow++
+
+    for i in [1...(prodCats.length+1)]
+      $('#prodTiles div:nth-of-type(' + parseInt(i) + ') img').attr 'src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg'
 
   # $(document).ready()
   init = () ->
@@ -361,8 +404,10 @@ angular.module 'webappApp'
     # tile hover animation
     $capaTiles.on 'mouseover', 'div img', () ->
       $(this).stop().animate {'top':'20%'}, 200
+      $(this).css '-webkit-filter', 'grayscale(0%)'
     $capaTiles.on 'mouseleave', 'div img', () ->
       $(this).stop().animate {'top': '0'}, 200
+      $(this).css '-webkit-filter', 'grayscale(100%)'
 
     # sticky categories
     $capaList.on 'click', 'div', () ->
@@ -374,14 +419,40 @@ angular.module 'webappApp'
       $(this).children('h3').stop().animate {'font-size':'15'}, 200
       $(this).children('h3').css 'color', '#1352A5'
       $('#capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'20%'}, 200
+      $('#capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').css '-webkit-filter', 'grayscale(0%)'
     $capaList.on 'mouseleave', 'div', () ->
       if ($(this).index() + 1) != capaWhichCate
         $(this).children('h3').css 'color', '#605F5B'
         $(this).children('h3').stop().animate {'font-size':'12'}, 200
-      $('#capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top': '0'}, 200
+      $('#capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'0'}, 200
+      $('#capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').css '-webkit-filter', 'grayscale(100%)'
 
-    # return home on button click
-    #$back.on 'click', () ->
-    #  home()
+    ### # # # # # # # # # # # PROD PAGE # # # # # # # # # # # ###
+
+    # tile hover animation
+    $prodTiles.on 'mouseover', 'div img', () ->
+      $(this).stop().animate {'top':'20%'}, 200
+      $(this).css '-webkit-filter', 'grayscale(0%)'
+    $prodTiles.on 'mouseleave', 'div img', () ->
+      $(this).stop().animate {'top': '0'}, 200
+      $(this).css '-webkit-filter', 'grayscale(100%)'
+
+    # sticky categories
+    $prodList.on 'click', 'div', () ->
+      prodWhichCate = ($(this).index() + 1);
+      $('#prodList div h3').not('#prodList div:nth-of-type(' + prodWhichCate + ') h3').css 'color', '#605F5B'
+      $('#prodList div h3').not('#prodList div:nth-of-type(' + prodWhichCate + ') h3').stop().animate {'font-size':'12'}, 200
+
+    $prodList.on 'mouseover', 'div', () ->
+      $(this).children('h3').stop().animate {'font-size':'15'}, 200
+      $(this).children('h3').css 'color', '#1352A5'
+      $('#prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'20%'}, 200
+      $('#prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').css '-webkit-filter', 'grayscale(0%)'
+    $prodList.on 'mouseleave', 'div', () ->
+      if ($(this).index() + 1) != prodWhichCate
+        $(this).children('h3').css 'color', '#605F5B'
+        $(this).children('h3').stop().animate {'font-size':'12'}, 200
+      $('#prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'0'}, 200
+      $('#prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').css '-webkit-filter', 'grayscale(100%)'
 
   init()
