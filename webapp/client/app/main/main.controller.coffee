@@ -131,7 +131,7 @@ angular.module 'webappApp'
               $middle.css 'margin-top', '5px'
               #$middle.css 'background-color', '#1352A5'
               if which == 1
-                $middle.css 'height', '550px'
+                $middle.css 'height', '800px'
                 $('#capaPage').removeClass 'hidden'
                 if popOnce == true
                   populateCapa()
@@ -159,7 +159,7 @@ angular.module 'webappApp'
             if $('#middle:animated, #bottom:animated').length == 0
               clearPage()
               if which == 1
-                $middle.css 'height', '550px'
+                $middle.css 'height', '800px'
                 $('#capaPage').removeClass 'hidden'
                 populateCapa()
               else if which == 2
