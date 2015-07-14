@@ -7,6 +7,7 @@ angular.module 'webappApp'
   $window = $(window)
   $logo = $('.logo')
   $logoText = $('.logoText')
+  $tagline = $('#tagline h1')
   $navHome = $('#navHome')
   $navAbout = $('#navAbout')
   $navContact = $('#navContact')
@@ -121,9 +122,9 @@ angular.module 'webappApp'
       if whichPage == 0
         $('html, body').animate {scrollTop: 0}, 300, () ->
           $('#slide, #slideSM').animate {'height':'135px'}, 500
-          $('#tagline, #taglineSM, .copyText, .copyTextM, #copyTextSM1,
-          #copyTextSM, #divider, #middle, #bottom').fadeOut 500, () ->
-            if $('#tagline:animated, #taglineSM:animated, #copyText:animated,
+          $('.copyText, .copyTextM, #copyTextSM1, #copyTextSM, #divider,
+          #middle, #bottom').fadeOut 500, () ->
+            if $('#tagline:animated, #copyText:animated,
               #copyTextSM:animated, #divider:animated, #middle:animated,
               #bottom:animated').length == 0
               $('#homePage').addClass 'hidden'
@@ -187,10 +188,10 @@ angular.module 'webappApp'
           clearPage()
           $('#homePage').removeClass 'hidden'
           smMiddleResize()
-          $('#tagline, .copyText, .copyTextM, #copyTextSM1, #copyTextSM,
+          $('.copyText, .copyTextM, #copyTextSM1, #copyTextSM,
           #divider, #middle, #bottom').fadeIn 500
-          #$back.fadeOut 500
           whichPage = 0
+          $tagline.text 'Your Brand. Your Vision.'
 
   # cycle through slideshow
   nextImg = () ->
@@ -268,6 +269,7 @@ angular.module 'webappApp'
     for i in [1...(capaCats.length+1)]
       $('#capaTiles div:nth-of-type(' + parseInt(i) + ') img').attr 'src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg'
 
+    $tagline.text 'Capabilities'
 
   # PROD PAGE FUNCTIONS
   populateProd = () ->
@@ -300,10 +302,11 @@ angular.module 'webappApp'
     for i in [1...(prodCats.length+1)]
       $('#prodTiles div:nth-of-type(' + parseInt(i) + ') img').attr 'src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg'
 
+    $tagline.text 'Products'
+
   # $(document).ready()
   init = () ->
     # initially hide
-    #$back.fadeOut 0
     $slideshowBG.fadeOut 0
     $logoText.fadeOut 0
 
@@ -324,6 +327,8 @@ angular.module 'webappApp'
         $logo.fadeIn 'fast'
 
     # navbar listeners
+    $logo.on 'click', () ->
+      home()
     $navHome.on 'click', () ->
       home()
     $navAbout.on 'click', () ->
