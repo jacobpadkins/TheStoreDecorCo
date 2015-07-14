@@ -122,7 +122,7 @@ angular.module 'webappApp'
       if whichPage == 0
         $('html, body').animate {scrollTop: 0}, 300, () ->
           $('#slide, #slideSM').animate {'height':'135px'}, 500
-          $('.copyText, .copyTextM, #copyTextSM1, #copyTextSM, #divider,
+          $('#tagline, .copyText, .copyTextM, #copyTextSM1, #copyTextSM, #divider,
           #middle, #bottom').fadeOut 500, () ->
             if $('#tagline:animated, #copyText:animated,
               #copyTextSM:animated, #divider:animated, #middle:animated,
@@ -190,7 +190,7 @@ angular.module 'webappApp'
           smMiddleResize()
           $('#bottom').css 'background-color', '#D85703'
           $('#social').css 'background-color', '#605F5B'
-          $('.copyText, .copyTextM, #copyTextSM1, #copyTextSM,
+          $('#tagline, .copyText, .copyTextM, #copyTextSM1, #copyTextSM,
           #divider, #middle, #bottom').fadeIn 500
           whichPage = 0
           $tagline.text 'Your Brand. Your Vision.'
@@ -239,6 +239,9 @@ angular.module 'webappApp'
         $middle.css 'height', $smRowContainer.height() + 30
       else
         $middle.css 'height', '650px'
+    else if whichPage == 1
+      # do stuff here
+      console.log 'capa page resize'
 
   # CAPA PAGE FUNCTIONS
   populateCapa = () ->
@@ -274,8 +277,6 @@ angular.module 'webappApp'
     for i in [1...(capaCats.length+1)]
       $('#capaTiles div:nth-of-type(' + parseInt(i) + ') img').attr 'src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg'
 
-    $tagline.text 'Capabilities'
-
   # PROD PAGE FUNCTIONS
   populateProd = () ->
     $prodList.empty()
@@ -306,8 +307,6 @@ angular.module 'webappApp'
 
     for i in [1...(prodCats.length+1)]
       $('#prodTiles div:nth-of-type(' + parseInt(i) + ') img').attr 'src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg'
-
-    $tagline.text 'Products'
 
   # $(document).ready()
   init = () ->
