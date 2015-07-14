@@ -329,6 +329,8 @@ angular.module 'webappApp'
     # navbar listeners
     $logo.on 'click', () ->
       home()
+    $logoText.on 'click', () ->
+      home()
     $navHome.on 'click', () ->
       home()
     $navAbout.on 'click', () ->
