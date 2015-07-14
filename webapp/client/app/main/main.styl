@@ -36,25 +36,6 @@ body {
 }
 
 #colCapa,
-#colServ,
-#colProd {
-  height: 350px
-
-  img {
-    background: black
-    margin-top: 10px
-    height: 100%
-    width: 100%
-    border: 2px solid color5
-    border-radius: 10pt
-    position: relative
-  }
-
-  img:hover {
-  }
-}
-
-#colCapa,
 #colProd {
   margin-top: -10px
 }
@@ -489,6 +470,7 @@ span#smallFontSM {
 }
 
 #slideShowContainer {
+  margin-top: 16px
   position: relative
   height: 480px
   width: 100%
@@ -496,12 +478,14 @@ span#smallFontSM {
 
 #slideShow {
   left: 50%
-  margin-left: -400px
+  margin-left: -405px
   height: 480px
-  width: 800px
+  width: 810px
   position: absolute
-  overflow: hidden
   background: color1
+  border-top-left-radius: 20pt
+  border-top-right-radius: 20pt
+  overflow: hidden
 
   #slideshowText {
     font-family: 'Montserrat', sans-serif
@@ -563,12 +547,15 @@ span#smallFontSM {
   position: relative
 
   .cataRow {
-    margin-top: 20px
+    margin-top: 4px
     margin-left: -405px
     left: 50%
     position: absolute
     width: 812px
     height: 100%
+    border-bottom-left-radius: 20pt
+    border-bottom-right-radius: 20pt
+    overflow: hidden
 
     img {
       width: 266.66px
