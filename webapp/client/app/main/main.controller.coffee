@@ -188,6 +188,8 @@ angular.module 'webappApp'
           clearPage()
           $('#homePage').removeClass 'hidden'
           smMiddleResize()
+          $('#bottom').css 'background-color', '#D85703'
+          $('#social').css 'background-color', '#605F5B'
           $('.copyText, .copyTextM, #copyTextSM1, #copyTextSM,
           #divider, #middle, #bottom').fadeIn 500
           whichPage = 0
@@ -241,6 +243,9 @@ angular.module 'webappApp'
   # CAPA PAGE FUNCTIONS
   populateCapa = () ->
     $capaList.empty()
+    # swap colors
+    $('#bottom').css 'background-color', '#605F5B'
+    $('#social').css 'background-color', '#D85703'
     # add categories
     for category in capaCats
       $capaList.append '<div><h3>' + category + '</h3></div>'
