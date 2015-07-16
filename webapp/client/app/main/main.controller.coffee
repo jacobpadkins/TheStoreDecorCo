@@ -129,15 +129,16 @@ angular.module 'webappApp'
               #bottom:animated').length == 0
               $('#homePage').addClass 'hidden'
               $middle.css 'margin-top', '5px'
-              #$middle.css 'background-color', '#1352A5'
+              $('#bottom').css 'background-color', '#605F5B'
+              $('#social').css 'background-color', '#D85703'
+              $('#socialDiv').removeClass 'hidden'
+              middleResize(which)
               if which == 1
-                $middle.css 'height', '800px'
                 $('#capaPage').removeClass 'hidden'
                 if popOnce == true
                   populateCapa()
                   popOnce = false
               else if which == 2
-                $middle.css 'height', '710px'
                 $('#prodPage').removeClass 'hidden'
                 if popOnce == true
                   populateProd()
@@ -148,7 +149,6 @@ angular.module 'webappApp'
                 $('#abouPage').removeClass 'hidden'
               else if which == 5
                 $('#contPage').removeClass 'hidden'
-              smMiddleResize()
               $('#middle, #bottom').fadeIn 500
               #$back.fadeIn 300
 
@@ -158,12 +158,12 @@ angular.module 'webappApp'
           $('#middle, #bottom').fadeOut 300, () ->
             if $('#middle:animated, #bottom:animated').length == 0
               clearPage()
+              $('#socialDiv').removeClass 'hidden'
+              middleResize(which)
               if which == 1
-                $middle.css 'height', '800px'
                 $('#capaPage').removeClass 'hidden'
                 populateCapa()
               else if which == 2
-                $middle.css 'height', '710px'
                 $('#prodPage').removeClass 'hidden'
                 populateProd()
               else if which == 3
@@ -187,9 +187,9 @@ angular.module 'webappApp'
           #$middle.css 'background-color', '#F1EFE6'
           clearPage()
           $('#homePage').removeClass 'hidden'
-          smMiddleResize()
           $('#bottom').css 'background-color', '#D85703'
           $('#social').css 'background-color', '#605F5B'
+          $('#socialDiv').addClass 'hidden'
           $('#tagline, .copyText, .copyTextM, #copyTextSM1, #copyTextSM,
           #divider, #middle, #bottom').fadeIn 500
           whichPage = 0
@@ -233,22 +233,35 @@ angular.module 'webappApp'
     $allImgs.removeAttr('style')
 
   # resize #middle for mobile layout
-  smMiddleResize = () ->
-    if whichPage == 0
-      if $smRowContainer.css('display') == 'block'
-        $middle.css 'height', $smRowContainer.height() + 30
-      else
+  middleResize = (which) ->
+    # xs
+    if $(window).width() < 768
+      if which == 1
+        $middle.css 'height', '950px'
+      else if which == 2
+        $middle.css 'height', '1107px'
+    # sm
+    else if $(window).width() >= 768 and $(window).width() <= 992
+      if which == 1
+        $middle.css 'height', '725px'
+      else if which == 2
+        $middle.css 'height', '881px'
+    # md
+    else if $(window).width() > 992 and $(window).width() <= 1200
+      if which == 1
+        $middle.css 'height', '700px'
+      else if which == 2
+        $middle.css 'height', '856px'
+    # lg
+    else
+      if which == 1
         $middle.css 'height', '650px'
-    else if whichPage == 1
-      # do stuff here
-      console.log 'capa page resize'
+      else if which == 2
+        $middle.css 'height', '826px'
 
   # CAPA PAGE FUNCTIONS
   populateCapa = () ->
     $capaList.empty()
-    # swap colors
-    $('#bottom').css 'background-color', '#605F5B'
-    $('#social').css 'background-color', '#D85703'
     # add categories
     for category in capaCats
       $capaList.append '<div><h3>' + category + '</h3></div>'
@@ -408,7 +421,7 @@ angular.module 'webappApp'
 
     # resize listener
     $window.on 'resize', () ->
-      smMiddleResize()
+      middleResize(whichPage)
 
     ### # # # # # # # # # # # CAPA PAGE # # # # # # # # # # # ###
 
