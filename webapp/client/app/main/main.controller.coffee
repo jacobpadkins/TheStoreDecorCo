@@ -266,7 +266,7 @@ angular.module 'webappApp'
       else if which == 2
         $middle.css 'height', '826px'
       else if which == 3
-        $middle.css 'height', '1750px'
+        $middle.css 'height', '2350px'
 
   # CAPA PAGE FUNCTIONS
   populateCapa = () ->
