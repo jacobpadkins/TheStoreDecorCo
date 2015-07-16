@@ -234,30 +234,39 @@ angular.module 'webappApp'
 
   # resize #middle for mobile layout
   middleResize = (which) ->
+    console.log which
     # xs
     if $(window).width() < 768
       if which == 1
         $middle.css 'height', '950px'
       else if which == 2
         $middle.css 'height', '1107px'
+      else if which == 3
+        $middle.css 'height', '4850px'
     # sm
     else if $(window).width() >= 768 and $(window).width() <= 992
       if which == 1
         $middle.css 'height', '725px'
       else if which == 2
         $middle.css 'height', '881px'
+      else if which == 3
+        $middle.css 'height', '4060px'
     # md
     else if $(window).width() > 992 and $(window).width() <= 1200
       if which == 1
         $middle.css 'height', '700px'
       else if which == 2
         $middle.css 'height', '856px'
+      else if which == 3
+        $middle.css 'height', '2275px'
     # lg
     else
       if which == 1
         $middle.css 'height', '650px'
       else if which == 2
         $middle.css 'height', '826px'
+      else if which == 3
+        $middle.css 'height', '1750px'
 
   # CAPA PAGE FUNCTIONS
   populateCapa = () ->
