@@ -44,6 +44,11 @@ angular.module 'webappApp'
   # and for prod page
   $prodList = $('#prodList')
   $prodTiles = $('#prodTiles')
+  # and for serv page
+  $servResponse = $('#servPage .col-md-12:nth-of-type(5) .col-md-8,
+                     #servPage .col-md-12:nth-of-type(6) .col-md-8,
+                     #servPage .col-md-12:nth-of-type(7) .col-md-8,
+                     #servPage .col-md-12:nth-of-type(8) .col-md-8')
 
   # other variables - main page
   whichPage = 0
@@ -242,7 +247,8 @@ angular.module 'webappApp'
       else if which == 2
         $middle.css 'height', '1107px'
       else if which == 3
-        $middle.css 'height', '4850px'
+        $middle.css 'height', '4230px'
+        $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
     # sm
     else if $(window).width() >= 768 and $(window).width() <= 992
       if which == 1
@@ -250,7 +256,8 @@ angular.module 'webappApp'
       else if which == 2
         $middle.css 'height', '881px'
       else if which == 3
-        $middle.css 'height', '4060px'
+        $middle.css 'height', '2790px'
+        $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
     # md
     else if $(window).width() > 992 and $(window).width() <= 1200
       if which == 1
@@ -258,7 +265,8 @@ angular.module 'webappApp'
       else if which == 2
         $middle.css 'height', '856px'
       else if which == 3
-        $middle.css 'height', '2275px'
+        $middle.css 'height', '2530px'
+        $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
     # lg
     else
       if which == 1
@@ -267,6 +275,7 @@ angular.module 'webappApp'
         $middle.css 'height', '826px'
       else if which == 3
         $middle.css 'height', '2350px'
+        $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
 
   # CAPA PAGE FUNCTIONS
   populateCapa = () ->
