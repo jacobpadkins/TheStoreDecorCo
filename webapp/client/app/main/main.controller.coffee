@@ -49,6 +49,11 @@ angular.module 'webappApp'
                      #servPage .col-md-12:nth-of-type(6) .col-md-8,
                      #servPage .col-md-12:nth-of-type(7) .col-md-8,
                      #servPage .col-md-12:nth-of-type(8) .col-md-8')
+  # and for the about page
+  $about1Button = $('#aboutButton1')
+  $about2Button = $('#aboutButton2')
+  $aboutCopy1 = $('#aboutPage1')
+  $aboutCopy2 = $('#aboutPage2')
 
   # other variables - main page
   whichPage = 0
@@ -85,6 +90,8 @@ angular.module 'webappApp'
               'Dummy14',
               'Dummy15']
   prodWhichCate = 16
+  # other variables - about page
+  aboutWhich = 0
 
   # slideshow timer
   timer = $.timer () ->
@@ -242,8 +249,10 @@ angular.module 'webappApp'
     console.log which
     # xs
     if $(window).width() < 768
-      if which == 1
-        $middle.css 'height', '950px'
+      if which == 0
+        $middle.css 'height', '500px'
+      else if which == 1
+        $middle.css 'height', '820px'
       else if which == 2
         $middle.css 'height', '1107px'
       else if which == 3
@@ -251,7 +260,9 @@ angular.module 'webappApp'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
     # sm
     else if $(window).width() >= 768 and $(window).width() <= 992
-      if which == 1
+      if which == 0
+        $middle.css 'height', '680px'
+      else if which == 1
         $middle.css 'height', '725px'
       else if which == 2
         $middle.css 'height', '881px'
@@ -260,7 +271,9 @@ angular.module 'webappApp'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
     # md
     else if $(window).width() > 992 and $(window).width() <= 1200
-      if which == 1
+      if which == 0
+        $middle.css 'height', '650px'
+      else if which == 1
         $middle.css 'height', '700px'
       else if which == 2
         $middle.css 'height', '856px'
@@ -269,7 +282,9 @@ angular.module 'webappApp'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
     # lg
     else
-      if which == 1
+      if which == 0
+        $middle.css 'height', '650px'
+      else if which == 1
         $middle.css 'height', '650px'
       else if which == 2
         $middle.css 'height', '826px'
@@ -344,6 +359,7 @@ angular.module 'webappApp'
     # initially hide
     $slideshowBG.fadeOut 0
     $logoText.fadeOut 0
+    $aboutCopy2.fadeOut 0
 
     # highlight home page initially
     highlightNavbar(0)
@@ -437,6 +453,7 @@ angular.module 'webappApp'
     $('#smMenu').on 'click', () ->
       alert 'clicked #smMenu'
 
+    middleResize(whichPage)
     # resize listener
     $window.on 'resize', () ->
       middleResize(whichPage)
@@ -496,5 +513,20 @@ angular.module 'webappApp'
         $(this).children('h3').stop().animate {'font-size':'12'}, 200
       $('#prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'0'}, 200
       $('#prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').css '-webkit-filter', 'grayscale(100%)'
+
+    ### # # # # # # # # # # # PROD PAGE # # # # # # # # # # # ###
+    $about1Button.on 'click', () ->
+      console.log "clicked 1"
+      if aboutWhich != 0
+        $aboutCopy2.fadeOut 'fast'
+        $aboutCopy1.fadeIn 'fast'
+        aboutWhich = 0
+
+    $about2Button.on 'click', () ->
+      console.log 'clicked 2'
+      if aboutWhich != 1
+        $aboutCopy1.fadeOut 'fast'
+        $aboutCopy2.fadeIn 'fast'
+        aboutWhich = 1
 
   init()
