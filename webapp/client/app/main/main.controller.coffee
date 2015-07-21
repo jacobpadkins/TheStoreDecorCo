@@ -190,7 +190,7 @@ angular.module 'webappApp'
   home = () ->
     if whichPage != 0
       highlightNavbar(0)
-      $('html, body').manimate {scrollTop: 0}, 300, () ->
+      $('html, body').animate {scrollTop: 0}, 300, () ->
         $('#slide, #slideSM').animate {'height':'500px'}, 500
         $('#middle, #bottom').fadeOut 500, () ->
           $middle.css 'margin-top', ''
