@@ -6,7 +6,6 @@ angular.module 'webappApp'
   # cached jQuery variables for often-used handles
   $window = $(window)
   $logo = $('.logo')
-  $logoText = $('.logoText')
   $tagline = $('#tagline h1')
   $navHome = $('#navHome')
   $navAbout = $('#navAbout')
@@ -256,8 +255,12 @@ angular.module 'webappApp'
       else if which == 2
         $middle.css 'height', '1107px'
       else if which == 3
-        $middle.css 'height', '4230px'
+        $middle.css 'height', '4030px'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
+      else if which == 4
+        $middle.css 'height', '650px'
+      else if which == 5
+        $middle.css 'height', '200px'
     # sm
     else if $(window).width() >= 768 and $(window).width() <= 992
       if which == 0
@@ -267,8 +270,12 @@ angular.module 'webappApp'
       else if which == 2
         $middle.css 'height', '881px'
       else if which == 3
-        $middle.css 'height', '2790px'
+        $middle.css 'height', '2590px'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
+      else if which == 4
+        $middle.css 'height', '650px'
+      else if which == 5
+        $middle.css 'height', '200px'
     # md
     else if $(window).width() > 992 and $(window).width() <= 1200
       if which == 0
@@ -280,6 +287,10 @@ angular.module 'webappApp'
       else if which == 3
         $middle.css 'height', '2530px'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
+      else if which == 4
+        $middle.css 'height', '650px'
+      else if which == 5
+        $middle.css 'height', '200px'
     # lg
     else
       if which == 0
@@ -291,6 +302,10 @@ angular.module 'webappApp'
       else if which == 3
         $middle.css 'height', '2350px'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
+      else if which == 4
+        $middle.css 'height', '650px'
+      else if which == 5
+        $middle.css 'height', '200px'
 
   # CAPA PAGE FUNCTIONS
   populateCapa = () ->
@@ -321,7 +336,7 @@ angular.module 'webappApp'
         whichRow++
 
     for i in [1...(capaCats.length+1)]
-      $('#capaTiles div:nth-of-type(' + parseInt(i) + ') img').attr 'src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg'
+      $('#capaTiles div:nth-of-type(' + parseInt(i) + ') img').attr('src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg').addClass 'grayscale'
 
   # PROD PAGE FUNCTIONS
   populateProd = () ->
@@ -352,13 +367,12 @@ angular.module 'webappApp'
         whichRow++
 
     for i in [1...(prodCats.length+1)]
-      $('#prodTiles div:nth-of-type(' + parseInt(i) + ') img').attr 'src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg'
+      $('#prodTiles div:nth-of-type(' + parseInt(i) + ') img').attr('src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg').addClass 'grayscale'
 
   # $(document).ready()
   init = () ->
     # initially hide
     $slideshowBG.fadeOut 0
-    $logoText.fadeOut 0
     $aboutPage2.fadeOut 0
 
     middleResize(whichPage)
@@ -374,15 +388,11 @@ angular.module 'webappApp'
     $window.scroll () ->
       if $window.scrollTop() > 10
         $logo.fadeOut 'fast'
-        $logoText.fadeIn 'fast'
       else
-        $logoText.stop().fadeOut 'fast'
         $logo.fadeIn 'fast'
 
     # navbar listeners
     $logo.on 'click', () ->
-      home()
-    $logoText.on 'click', () ->
       home()
     $navHome.on 'click', () ->
       home()
@@ -464,10 +474,10 @@ angular.module 'webappApp'
     # tile hover animation
     $capaTiles.on 'mouseover', 'div img', () ->
       $(this).stop().animate {'top':'20%'}, 200
-      $(this).css '-webkit-filter', 'grayscale(0%)'
+      $(this).addClass 'grayscale-disabled'
     $capaTiles.on 'mouseleave', 'div img', () ->
       $(this).stop().animate {'top': '0'}, 200
-      $(this).css '-webkit-filter', 'grayscale(100%)'
+      $(this).removeClass 'grayscale-disabled'
 
     # sticky categories
     $capaList.on 'click', 'div', () ->
@@ -479,23 +489,23 @@ angular.module 'webappApp'
       $(this).children('h3').stop().animate {'font-size':'15'}, 200
       $(this).children('h3').css 'color', '#1352A5'
       $('#capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'20%'}, 200
-      $('#capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').css '-webkit-filter', 'grayscale(0%)'
+      $('#capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').addClass 'grayscale-disabled'
     $capaList.on 'mouseleave', 'div', () ->
       if ($(this).index() + 1) != capaWhichCate
         $(this).children('h3').css 'color', '#605F5B'
         $(this).children('h3').stop().animate {'font-size':'12'}, 200
       $('#capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'0'}, 200
-      $('#capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').css '-webkit-filter', 'grayscale(100%)'
+      $('#capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').removeClass 'grayscale-disabled'
 
     ### # # # # # # # # # # # PROD PAGE # # # # # # # # # # # ###
 
     # tile hover animation
     $prodTiles.on 'mouseover', 'div img', () ->
       $(this).stop().animate {'top':'20%'}, 200
-      $(this).css '-webkit-filter', 'grayscale(0%)'
+      $(this).addClass 'grayscale-disabled'
     $prodTiles.on 'mouseleave', 'div img', () ->
       $(this).stop().animate {'top': '0'}, 200
-      $(this).css '-webkit-filter', 'grayscale(100%)'
+      $(this).removeClass 'grayscale-disabled'
 
     # sticky categories
     $prodList.on 'click', 'div', () ->
@@ -507,13 +517,13 @@ angular.module 'webappApp'
       $(this).children('h3').stop().animate {'font-size':'15'}, 200
       $(this).children('h3').css 'color', '#1352A5'
       $('#prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'20%'}, 200
-      $('#prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').css '-webkit-filter', 'grayscale(0%)'
+      $('#prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').addClass 'grayscale-disabled'
     $prodList.on 'mouseleave', 'div', () ->
       if ($(this).index() + 1) != prodWhichCate
         $(this).children('h3').css 'color', '#605F5B'
         $(this).children('h3').stop().animate {'font-size':'12'}, 200
       $('#prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'0'}, 200
-      $('#prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').css '-webkit-filter', 'grayscale(100%)'
+      $('#prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').removeClass 'grayscale-disabled'
 
     ### # # # # # # # # # # # PROD PAGE # # # # # # # # # # # ###
     $aboutButton1.on 'click', () ->

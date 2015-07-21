@@ -704,7 +704,6 @@ span#smallFontSM {
 
     img {
       z-index: 1
-      filter: grayscale(100%);
       position: absolute
       background: black
       height: 100%
@@ -788,8 +787,14 @@ span#smallFontSM {
         margin-top: 30px
       }
     }
+    .col-md-12:nth-of-type(2) {
+      height: 900px
+    }
+    .col-md-12:nth-of-type(3) {
+      height: 680px
+    }
     .col-md-12:nth-of-type(4) {
-      height: 400px
+      height: 330px
       h1 {
         top: 0px
       }
@@ -813,6 +818,28 @@ span#smallFontSM {
       }
       .col-md-4 {
         visibility: hidden
+      }
+    }
+    div.col-md-12:nth-of-type(5) {
+      height: 375px
+      p {
+        top: 80px
+      }
+    }
+    div.col-md-12:nth-of-type(6) {
+      p {
+        top: 120px
+      }
+    }
+    div.col-md-12:nth-of-type(7) {
+      height: 325px
+      p {
+        top: 80px
+      }
+    }
+    div.col-md-12:nth-of-type(8) {
+      p {
+        top: 130px
       }
     }
     img {
@@ -856,6 +883,9 @@ span#smallFontSM {
         margin-top: 30px
       }
     }
+    .col-md-12:nth-of-type(3) {
+      height: 480px
+    }
     .col-md-12:nth-of-type(4) {
       height: 230px
       h1 {
@@ -865,20 +895,41 @@ span#smallFontSM {
         top: 120px
       }
     }
+    .col-md-12:nth-of-type(5) {
+      height: 200px
+      p {
+        top: 80px
+      }
+    }
+    .col-md-12:nth-of-type(6) {
+      height: 230px
+      p {
+        top: 120px
+      }
+    }
+    .col-md-12:nth-of-type(7) {
+      height: 180px
+      p {
+        top: 80px
+      }
+    }
+    .col-md-12:nth-of-type(8) {
+      height: 230px
+      p {
+        top: 120px
+      }
+    }
     .col-md-12:nth-of-type(5),
     .col-md-12:nth-of-type(6),
     .col-md-12:nth-of-type(7),
     .col-md-12:nth-of-type(8) {
-      height: 230px
       img {
         visibility: hidden
       }
       h1 {
         top: 0px
       }
-      p {
-        top: 120px
-      }
+
       .col-md-4 {
         visibility: hidden
       }
@@ -909,6 +960,9 @@ span#smallFontSM {
 
 // MD
 @media (max-width: 1199px) and (min-width: 992px) {
+  .tiles {
+
+  }
   #capaCopy {
     height: 150px
   }
@@ -939,6 +993,11 @@ span#smallFontSM {
         padding-right: 20px
         position: relative
       }
+      img {
+        position: relative
+        bottom: 20px
+        left: 15px
+      }
     }
     img {
       float: left
@@ -964,6 +1023,21 @@ span#smallFontSM {
       height: 350px
       h2 {
         margin-top: 30px
+      }
+    }
+    .col-md-12:nth-of-type(5),
+    .col-md-12:nth-of-type(6),
+    .col-md-12:nth-of-type(7),
+    .col-md-12:nth-of-type(8) {
+      h1, p {
+        left: 2%
+        padding-right: 20px
+        position: relative
+      }
+      img {
+        position: relative
+        bottom: 20px
+        left: 15px
       }
     }
     img {
@@ -1066,4 +1140,12 @@ span#smallFontSM {
   #aboutPage1 {
     margin-top: 40px
   }
+}
+
+img.grayscale {
+  filter: grayscale(100%)
+}
+
+img.grayscale.grayscale-disabled {
+  filter: grayscale(0%)
 }
