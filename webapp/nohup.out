@@ -153,3 +153,129 @@ Total 1.3s
 [36mCompleted in 4.462s at Wed Jul 22 2015 11:24:17 GMT-0500 (CDT)[39m - Waiting...
 [32m>> [39mFile ".tmp/app/app.css" changed.
 [36mCompleted in 0.000s at Wed Jul 22 2015 11:24:18 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile "client/app/main/main.styl" changed.
+[4mRunning "injector:stylus" (injector) task[24m
+[90mMissing option `template`, using `dest` as template instead[39m
+Injecting [32mstyl[39m files [90m(2 files)[39m
+[32m>> [39mNothing changed
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 17:31:17 UTC)
+loading tasks    161ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 86%
+injector:stylus   26ms  ▇▇▇▇▇▇▇ 14%
+Total 188ms
+
+[4mRunning "stylus:server" (stylus) task[24m
+[32m>> [39m1 file created.
+
+[4mRunning "autoprefixer:dist" (autoprefixer) task[24m
+File .tmp/app/app.css created.
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 17:31:18 UTC)
+loading tasks      163ms  ▇▇▇▇▇▇ 14%
+stylus:server      650ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 54%
+autoprefixer:dist  388ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 32%
+Total 1.2s
+
+[36mCompleted in 3.956s at Wed Jul 22 2015 12:31:19 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile ".tmp/app/app.css" changed.
+[32m>> [39mFile "client/app/main/main.styl" changed.
+[4mRunning "injector:stylus" (injector) task[24m
+[90mMissing option `template`, using `dest` as template instead[39m
+Injecting [32mstyl[39m files [90m(2 files)[39m
+[32m>> [39mNothing changed
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 17:31:42 UTC)
+loading tasks    156ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 85%
+injector:stylus   27ms  ▇▇▇▇▇▇▇ 15%
+Total 184ms
+
+[4mRunning "stylus:server" (stylus) task[24m
+[32m>> [39m1 file created.
+
+[4mRunning "autoprefixer:dist" (autoprefixer) task[24m
+File .tmp/app/app.css created.
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 17:31:42 UTC)
+loading tasks      164ms  ▇▇▇▇▇▇ 14%
+stylus:server      647ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 55%
+autoprefixer:dist  368ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 31%
+Total 1.2s
+
+[36mCompleted in 3.986s at Wed Jul 22 2015 12:31:44 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile ".tmp/app/app.css" changed.
+[32m>> [39mFile "client/app/main/main.styl" changed.
+[4mRunning "injector:stylus" (injector) task[24m
+[90mMissing option `template`, using `dest` as template instead[39m
+Injecting [32mstyl[39m files [90m(2 files)[39m
+[32m>> [39mNothing changed
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 17:31:52 UTC)
+loading tasks    136ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 87%
+injector:stylus   20ms  ▇▇▇▇▇▇ 13%
+Total 156ms
+
+[4mRunning "stylus:server" (stylus) task[24m
+[32m>> [39m1 file created.
+
+[4mRunning "autoprefixer:dist" (autoprefixer) task[24m
+File .tmp/app/app.css created.
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 17:31:53 UTC)
+loading tasks      146ms  ▇▇▇▇▇ 11%
+stylus:server      805ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 59%
+autoprefixer:dist  422ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 31%
+Total 1.4s
+
+[36mCompleted in 4.073s at Wed Jul 22 2015 12:31:54 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile ".tmp/app/app.css" changed.
+[36mCompleted in 0.000s at Wed Jul 22 2015 12:31:55 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile "client/app/main/main.styl" changed.
+[4mRunning "injector:stylus" (injector) task[24m
+[90mMissing option `template`, using `dest` as template instead[39m
+Injecting [32mstyl[39m files [90m(2 files)[39m
+[32m>> [39mNothing changed
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 17:31:57 UTC)
+loading tasks    139ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 85%
+injector:stylus   23ms  ▇▇▇▇▇▇▇ 14%
+Total 163ms
+
+[4mRunning "stylus:server" (stylus) task[24m
+[32m>> [39m1 file created.
+
+[4mRunning "autoprefixer:dist" (autoprefixer) task[24m
+File .tmp/app/app.css created.
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 17:31:58 UTC)
+loading tasks      147ms  ▇▇▇▇▇▇ 13%
+stylus:server      643ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 56%
+autoprefixer:dist  365ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 32%
+Total 1.2s
+
+[36mCompleted in 3.725s at Wed Jul 22 2015 12:31:59 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile ".tmp/app/app.css" changed.
+[36mCompleted in 0.000s at Wed Jul 22 2015 12:31:59 GMT-0500 (CDT)[39m - Waiting...
