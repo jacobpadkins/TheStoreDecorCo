@@ -279,3 +279,347 @@ Total 1.2s
 [36mCompleted in 3.725s at Wed Jul 22 2015 12:31:59 GMT-0500 (CDT)[39m - Waiting...
 [32m>> [39mFile ".tmp/app/app.css" changed.
 [36mCompleted in 0.000s at Wed Jul 22 2015 12:31:59 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile "client/app/main/main.styl" changed.
+[4mRunning "injector:stylus" (injector) task[24m
+[90mMissing option `template`, using `dest` as template instead[39m
+Injecting [32mstyl[39m files [90m(2 files)[39m
+[32m>> [39mNothing changed
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 17:50:24 UTC)
+loading tasks    147ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 87%
+injector:stylus   21ms  ▇▇▇▇▇▇ 12%
+Total 169ms
+
+[4mRunning "stylus:server" (stylus) task[24m
+[32m>> [39m1 file created.
+
+[4mRunning "autoprefixer:dist" (autoprefixer) task[24m
+File .tmp/app/app.css created.
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 17:50:25 UTC)
+loading tasks      144ms  ▇▇▇▇▇▇ 12%
+stylus:server      627ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 54%
+autoprefixer:dist  386ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 33%
+Total 1.2s
+
+[36mCompleted in 3.757s at Wed Jul 22 2015 12:50:26 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile ".tmp/app/app.css" changed.
+[36mCompleted in 0.000s at Wed Jul 22 2015 12:50:26 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile "client/app/main/main.jade" changed.
+[4mRunning "jade:compile" (jade) task[24m
+File .tmp/app/main/main.html created.
+File .tmp/components/modal/modal.html created.
+File .tmp/components/navbar/navbar.html created.
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 17:58:39 UTC)
+loading tasks  220ms  ▇▇▇▇▇▇▇▇▇ 18%
+jade:compile   998ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 82%
+Total 1.2s
+
+[36mCompleted in 1.619s at Wed Jul 22 2015 12:58:40 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile ".tmp/app/main/main.html" changed.
+[32m>> [39mFile ".tmp/components/modal/modal.html" changed.
+[32m>> [39mFile ".tmp/components/navbar/navbar.html" changed.
+[36mCompleted in 0.000s at Wed Jul 22 2015 12:58:40 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile "client/app/main/main.jade" changed.
+[4mRunning "jade:compile" (jade) task[24m
+File .tmp/app/main/main.html created.
+File .tmp/components/modal/modal.html created.
+File .tmp/components/navbar/navbar.html created.
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 17:58:57 UTC)
+loading tasks  157ms  ▇▇▇▇▇▇▇ 15%
+jade:compile   921ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 85%
+Total 1.1s
+
+[36mCompleted in 1.531s at Wed Jul 22 2015 12:58:58 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile ".tmp/components/navbar/navbar.html" changed.
+[32m>> [39mFile ".tmp/components/modal/modal.html" changed.
+[32m>> [39mFile ".tmp/app/main/main.html" changed.
+[36mCompleted in 0.000s at Wed Jul 22 2015 12:58:59 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile "client/app/main/main.jade" changed.
+[4mRunning "jade:compile" (jade) task[24m
+File .tmp/app/main/main.html created.
+File .tmp/components/modal/modal.html created.
+File .tmp/components/navbar/navbar.html created.
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 18:00:27 UTC)
+loading tasks  128ms  ▇▇▇▇▇▇▇ 13%
+jade:compile   850ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 87%
+Total 979ms
+
+[36mCompleted in 1.416s at Wed Jul 22 2015 13:00:28 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile ".tmp/app/main/main.html" changed.
+[32m>> [39mFile ".tmp/components/navbar/navbar.html" changed.
+[32m>> [39mFile ".tmp/components/modal/modal.html" changed.
+[36mCompleted in 0.000s at Wed Jul 22 2015 13:00:28 GMT-0500 (CDT)[39m - Waiting...
+[90mGET /app/bootstrap.css.map [33m404 [90m729ms[0m
+[32m>> [39mFile "client/app/main/main.styl" changed.
+[4mRunning "injector:stylus" (injector) task[24m
+[90mMissing option `template`, using `dest` as template instead[39m
+Injecting [32mstyl[39m files [90m(2 files)[39m
+[32m>> [39mNothing changed
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 18:02:44 UTC)
+loading tasks    178ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 84%
+injector:stylus   32ms  ▇▇▇▇▇▇▇ 15%
+Total 211ms
+
+[4mRunning "stylus:server" (stylus) task[24m
+[32m>> [39m1 file created.
+
+[4mRunning "autoprefixer:dist" (autoprefixer) task[24m
+File .tmp/app/app.css created.
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 18:02:45 UTC)
+loading tasks      172ms  ▇▇▇▇▇▇ 12%
+stylus:server      761ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 55%
+autoprefixer:dist  455ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 33%
+Total 1.4s
+
+[36mCompleted in 4.566s at Wed Jul 22 2015 13:02:46 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile ".tmp/app/app.css" changed.
+[32m>> [39mFile "client/app/main/main.styl" changed.
+[4mRunning "injector:stylus" (injector) task[24m
+[90mMissing option `template`, using `dest` as template instead[39m
+Injecting [32mstyl[39m files [90m(2 files)[39m
+[32m>> [39mNothing changed
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 18:02:56 UTC)
+loading tasks    163ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 87%
+injector:stylus   23ms  ▇▇▇▇▇▇ 12%
+Total 187ms
+
+[4mRunning "stylus:server" (stylus) task[24m
+[32m>> [39m1 file created.
+
+[4mRunning "autoprefixer:dist" (autoprefixer) task[24m
+File .tmp/app/app.css created.
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 18:02:56 UTC)
+loading tasks      215ms  ▇▇▇▇▇▇▇▇ 17%
+stylus:server      674ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 53%
+autoprefixer:dist  375ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇ 30%
+Total 1.3s
+
+[36mCompleted in 4.431s at Wed Jul 22 2015 13:02:58 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile ".tmp/app/app.css" changed.
+[36mCompleted in 0.000s at Wed Jul 22 2015 13:02:58 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile "client/app/main/main.styl" changed.
+[4mRunning "injector:stylus" (injector) task[24m
+[90mMissing option `template`, using `dest` as template instead[39m
+Injecting [32mstyl[39m files [90m(2 files)[39m
+[32m>> [39mNothing changed
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 18:04:21 UTC)
+loading tasks    158ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 84%
+injector:stylus   28ms  ▇▇▇▇▇▇▇ 15%
+Total 187ms
+
+[4mRunning "stylus:server" (stylus) task[24m
+[32m>> [39m1 file created.
+
+[4mRunning "autoprefixer:dist" (autoprefixer) task[24m
+File .tmp/app/app.css created.
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 18:04:22 UTC)
+loading tasks      148ms  ▇▇▇▇▇▇ 13%
+stylus:server      637ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 55%
+autoprefixer:dist  368ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 32%
+Total 1.2s
+
+[36mCompleted in 3.934s at Wed Jul 22 2015 13:04:23 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile ".tmp/app/app.css" changed.
+[36mCompleted in 0.000s at Wed Jul 22 2015 13:04:23 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile "client/app/main/main.styl" changed.
+[4mRunning "injector:stylus" (injector) task[24m
+[90mMissing option `template`, using `dest` as template instead[39m
+Injecting [32mstyl[39m files [90m(2 files)[39m
+[32m>> [39mNothing changed
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 18:04:37 UTC)
+loading tasks    172ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 85%
+injector:stylus   29ms  ▇▇▇▇▇▇▇ 14%
+Total 202ms
+
+[4mRunning "stylus:server" (stylus) task[24m
+[32m>> [39m1 file created.
+
+[4mRunning "autoprefixer:dist" (autoprefixer) task[24m
+File .tmp/app/app.css created.
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 18:04:38 UTC)
+loading tasks      163ms  ▇▇▇▇▇▇ 13%
+stylus:server      672ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 53%
+autoprefixer:dist  437ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 34%
+Total 1.3s
+
+[36mCompleted in 4.223s at Wed Jul 22 2015 13:04:39 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile ".tmp/app/app.css" changed.
+[36mCompleted in 0.000s at Wed Jul 22 2015 13:04:39 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile "client/app/main/main.styl" changed.
+[4mRunning "injector:stylus" (injector) task[24m
+[90mMissing option `template`, using `dest` as template instead[39m
+Injecting [32mstyl[39m files [90m(2 files)[39m
+[32m>> [39mNothing changed
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 18:04:51 UTC)
+loading tasks    145ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 88%
+injector:stylus   19ms  ▇▇▇▇▇▇ 12%
+Total 165ms
+
+[4mRunning "stylus:server" (stylus) task[24m
+[32m>> [39m1 file created.
+
+[4mRunning "autoprefixer:dist" (autoprefixer) task[24m
+File .tmp/app/app.css created.
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 18:04:51 UTC)
+loading tasks      151ms  ▇▇▇▇▇▇ 13%
+stylus:server      661ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 56%
+autoprefixer:dist  358ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 31%
+Total 1.2s
+
+[36mCompleted in 3.668s at Wed Jul 22 2015 13:04:53 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile ".tmp/app/app.css" changed.
+[32m>> [39mFile "client/app/main/main.styl" changed.
+[4mRunning "injector:stylus" (injector) task[24m
+[90mMissing option `template`, using `dest` as template instead[39m
+Injecting [32mstyl[39m files [90m(2 files)[39m
+[32m>> [39mNothing changed
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 18:05:14 UTC)
+loading tasks    185ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 89%
+injector:stylus   21ms  ▇▇▇▇▇ 10%
+Total 207ms
+
+[4mRunning "stylus:server" (stylus) task[24m
+[32m>> [39m1 file created.
+
+[4mRunning "autoprefixer:dist" (autoprefixer) task[24m
+File .tmp/app/app.css created.
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 18:05:15 UTC)
+loading tasks      168ms  ▇▇▇▇▇▇▇ 14%
+stylus:server      644ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 54%
+autoprefixer:dist  373ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 31%
+Total 1.2s
+
+[36mCompleted in 3.911s at Wed Jul 22 2015 13:05:16 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile ".tmp/app/app.css" changed.
+[36mCompleted in 0.000s at Wed Jul 22 2015 13:05:16 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile "client/app/main/main.styl" changed.
+[4mRunning "injector:stylus" (injector) task[24m
+[90mMissing option `template`, using `dest` as template instead[39m
+Injecting [32mstyl[39m files [90m(2 files)[39m
+[32m>> [39mNothing changed
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 18:07:02 UTC)
+loading tasks    172ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 86%
+injector:stylus   27ms  ▇▇▇▇▇▇▇ 13%
+Total 201ms
+
+[4mRunning "stylus:server" (stylus) task[24m
+[32m>> [39m1 file created.
+
+[4mRunning "autoprefixer:dist" (autoprefixer) task[24m
+File .tmp/app/app.css created.
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 18:07:03 UTC)
+loading tasks      212ms  ▇▇▇▇▇▇▇ 16%
+stylus:server      709ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 53%
+autoprefixer:dist  423ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 31%
+Total 1.3s
+
+[36mCompleted in 4.674s at Wed Jul 22 2015 13:07:04 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile ".tmp/app/app.css" changed.
+[36mCompleted in 0.000s at Wed Jul 22 2015 13:07:04 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile "client/app/main/main.styl" changed.
+[4mRunning "injector:stylus" (injector) task[24m
+[90mMissing option `template`, using `dest` as template instead[39m
+Injecting [32mstyl[39m files [90m(2 files)[39m
+[32m>> [39mNothing changed
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 18:07:13 UTC)
+loading tasks    150ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 87%
+injector:stylus   22ms  ▇▇▇▇▇▇ 13%
+Total 173ms
+
+[4mRunning "stylus:server" (stylus) task[24m
+[32m>> [39m1 file created.
+
+[4mRunning "autoprefixer:dist" (autoprefixer) task[24m
+File .tmp/app/app.css created.
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2015-07-22 18:07:14 UTC)
+loading tasks      176ms  ▇▇▇▇▇▇ 12%
+stylus:server      799ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 55%
+autoprefixer:dist  488ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 33%
+Total 1.5s
+
+[36mCompleted in 4.427s at Wed Jul 22 2015 13:07:15 GMT-0500 (CDT)[39m - Waiting...
+[32m>> [39mFile ".tmp/app/app.css" changed.
+[36mCompleted in 0.000s at Wed Jul 22 2015 13:07:15 GMT-0500 (CDT)[39m - Waiting...
