@@ -773,9 +773,31 @@ span#smallFontSM {
   }
   #capaCopy {
     height: 270px
+    top: 1030px
+  }
+  .tiles.tilesSM {
+    .col0, .col1, .col2, .col3 {
+      width: 20%
+      overflow: hidden
+      img {
+        top: 20%
+        position: relative
+        filter: grayscale(0%)
+      }
+    }
+    .col0, .col1 {
+      left: 30%
+    }
+    .col2, .col3 {
+      left: 50%
+    }
+    .col0, .col2 {
+      margin-top: 480px
+    }
   }
   #prodCopy {
     height: 400px
+    top: 1150px
   }
   #servPage {
     .col-md-12 {
@@ -870,9 +892,31 @@ span#smallFontSM {
 @media (max-width: 991px) and (min-width: 768px) {
   #capaCopy {
     height: 175px
+    top: 1030px
+  }
+  .tiles.tilesSM {
+    .col0, .col1, .col2, .col3 {
+      width: 20%
+      overflow: hidden
+      img {
+        top: 20%
+        position: relative
+        filter: grayscale(0%)
+      }
+    }
+    .col0, .col1 {
+      left: 30%
+    }
+    .col2, .col3 {
+      left: 50%
+    }
+    .col0, .col2 {
+      margin-top: 480px
+    }
   }
   #prodCopy {
     height: 175px
+    top: 1190px
   }
   #servPage {
     .col-md-12 {
@@ -961,12 +1005,6 @@ span#smallFontSM {
 
 // MD
 @media (max-width: 1199px) and (min-width: 992px) {
-  .tiles {
-
-  }
-  #capaCopy {
-    height: 150px
-  }
   #prodCopy {
     height: 150px
   }
@@ -1019,9 +1057,9 @@ span#smallFontSM {
   #servPage {
     .col-md-12 {
       height: 250px
-      .col-md-8 {
-        width: 1000px
-      }
+    }
+    .col-md-8 {
+      width: 1000px
     }
     .col-md-12:nth-of-type(1) {
       height: 350px
@@ -1042,12 +1080,9 @@ span#smallFontSM {
     .col-md-12:nth-of-type(6),
     .col-md-12:nth-of-type(7),
     .col-md-12:nth-of-type(8) {
-      .col-md-8 {
-        width: 800px
-      }
       h1, p {
         left: 2%
-        padding-right: 50px
+        padding-right: 10%
         position: relative
       }
       img {

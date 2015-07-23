@@ -39,10 +39,10 @@ angular.module 'webappApp'
   $smRowContainer = $('#smRowContainer')
   # and for capa page
   $capaList = $('#capaList')
-  $capaTiles = $('#capaTiles')
+  $capaTiles = $('.capaTiles')
   # and for prod page
   $prodList = $('#prodList')
-  $prodTiles = $('#prodTiles')
+  $prodTiles = $('.prodTiles')
   # and for serv page
   $servResponse = $('#servPage .col-md-12:nth-of-type(5) .col-md-8,
                      #servPage .col-md-12:nth-of-type(6) .col-md-8,
@@ -194,7 +194,7 @@ angular.module 'webappApp'
         $('#slide, #slideSM').animate {'height':'500px'}, 500
         $('#middle, #bottom').fadeOut 500, () ->
           $middle.css 'margin-top', ''
-          $middle.css 'height', '650px'
+          middleResize(0)
           #$middle.css 'background-color', '#F1EFE6'
           clearPage()
           $('#homePage').removeClass 'hidden'
@@ -251,9 +251,9 @@ angular.module 'webappApp'
       if which == 0
         $middle.css 'height', '275px'
       else if which == 1
-        $middle.css 'height', '950px'
+        $middle.css 'height', '1205px'
       else if which == 2
-        $middle.css 'height', '1107px'
+        $middle.css 'height', '1395px'
       else if which == 3
         $middle.css 'height', '4030px'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
@@ -267,7 +267,7 @@ angular.module 'webappApp'
       if which == 0
         $middle.css 'height', '255px'
       else if which == 1
-        $middle.css 'height', '725px'
+        $middle.css 'height', '1365px'
       else if which == 2
         $middle.css 'height', '881px'
       else if which == 3
@@ -340,7 +340,7 @@ angular.module 'webappApp'
         whichRow++
 
     for i in [1...(capaCats.length+1)]
-      $('#capaTiles div:nth-of-type(' + parseInt(i) + ') img').attr('src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg').addClass 'grayscale'
+      $('.capaTiles div:nth-of-type(' + parseInt(i) + ') img').attr('src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg').addClass 'grayscale'
 
   # PROD PAGE FUNCTIONS
   populateProd = () ->
@@ -371,7 +371,7 @@ angular.module 'webappApp'
         whichRow++
 
     for i in [1...(prodCats.length+1)]
-      $('#prodTiles div:nth-of-type(' + parseInt(i) + ') img').attr('src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg').addClass 'grayscale'
+      $('.prodTiles div:nth-of-type(' + parseInt(i) + ') img').attr('src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg').addClass 'grayscale'
 
   # $(document).ready()
   init = () ->
@@ -492,14 +492,14 @@ angular.module 'webappApp'
     $capaList.on 'mouseover', 'div', () ->
       $(this).children('h3').stop().animate {'font-size':'15'}, 200
       $(this).children('h3').css 'color', '#1352A5'
-      $('#capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'20%'}, 200
-      $('#capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').addClass 'grayscale-disabled'
+      $('.capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'20%'}, 200
+      $('.capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').addClass 'grayscale-disabled'
     $capaList.on 'mouseleave', 'div', () ->
       if ($(this).index() + 1) != capaWhichCate
         $(this).children('h3').css 'color', '#605F5B'
         $(this).children('h3').stop().animate {'font-size':'12'}, 200
-      $('#capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'0'}, 200
-      $('#capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').removeClass 'grayscale-disabled'
+      $('.capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'0'}, 200
+      $('.capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').removeClass 'grayscale-disabled'
 
     ### # # # # # # # # # # # PROD PAGE # # # # # # # # # # # ###
 
@@ -520,14 +520,14 @@ angular.module 'webappApp'
     $prodList.on 'mouseover', 'div', () ->
       $(this).children('h3').stop().animate {'font-size':'15'}, 200
       $(this).children('h3').css 'color', '#1352A5'
-      $('#prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'20%'}, 200
-      $('#prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').addClass 'grayscale-disabled'
+      $('.prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'20%'}, 200
+      $('.prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').addClass 'grayscale-disabled'
     $prodList.on 'mouseleave', 'div', () ->
       if ($(this).index() + 1) != prodWhichCate
         $(this).children('h3').css 'color', '#605F5B'
         $(this).children('h3').stop().animate {'font-size':'12'}, 200
-      $('#prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'0'}, 200
-      $('#prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').removeClass 'grayscale-disabled'
+      $('.prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'0'}, 200
+      $('.prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').removeClass 'grayscale-disabled'
 
     ### # # # # # # # # # # # PROD PAGE # # # # # # # # # # # ###
     $aboutButton1.on 'click', () ->

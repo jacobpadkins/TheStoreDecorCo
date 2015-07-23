@@ -85,12 +85,18 @@ div.container-fluid#wrapper
       div.row.clearfix.visible-lg.visible-md
         div.col-md-1
         div.col-md-10
+          div.row.clearfix
+            div.list.col-md-2
+              #capaList
+            div.tiles.col-md-8.capaTiles
+            .col-md-2
+      div.col-md-12.visible-sm.visible-xs
+        div.row.clearfix
+          div.col-md-1
+          div.col-md-10
             div.row.clearfix
-              div.list.col-md-2
-                #capaList.visible-lg
-              div.tiles.col-md-8#capaTiles
-              .col-md-2
-        div.col-md-1
+              div.tiles.tilesSM.col-md-12.capaTiles
+          div.col-md-1
       div.row.clearfix
         #capaCopy.col-md-12
           p.text-center
@@ -100,14 +106,21 @@ div.container-fluid#wrapper
             | best assurance for success in the retail graphics industry. If you can dream it, we 
             | will discover how to build it!
     span#prodPage.hidden
-      div.col-md-1
-      div.col-md-10.visible-lg.visible-md
+      div.row.clearfix.visible-lg.visible-md
+        div.col-md-1
+        div.col-md-10
           div.row.clearfix
             div.list.col-md-2
-              #prodList.visible-lg
-            div.tiles.col-md-8#prodTiles
+              #prodList
+            div.tiles.col-md-8.prodTiles
             .col-md-2
-      div.col-md-1
+      div.col-md-12.visible-sm.visible-xs
+        div.row.clearfix
+          div.col-md-1
+          div.col-md-10
+            div.row.clearfix
+              div.tiles.tilesSM.col-md-12.prodTiles
+          div.col-md-1
       div.row.clearfix
         #prodCopy.col-md-12
           p.text-center
