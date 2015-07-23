@@ -251,9 +251,9 @@ angular.module 'webappApp'
       if which == 0
         $middle.css 'height', '275px'
       else if which == 1
-        $middle.css 'height', '1205px'
+        $middle.css 'height', '1305px'
       else if which == 2
-        $middle.css 'height', '1395px'
+        $middle.css 'height', '1555px'
       else if which == 3
         $middle.css 'height', '4030px'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
@@ -267,9 +267,9 @@ angular.module 'webappApp'
       if which == 0
         $middle.css 'height', '255px'
       else if which == 1
-        $middle.css 'height', '1365px'
+        $middle.css 'height', '1185px'
       else if which == 2
-        $middle.css 'height', '881px'
+        $middle.css 'height', '1370px'
       else if which == 3
         $middle.css 'height', '2590px'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
@@ -287,7 +287,7 @@ angular.module 'webappApp'
       else if which == 2
         $middle.css 'height', '856px'
       else if which == 3
-        $middle.css 'height', '2530px'
+        $middle.css 'height', '2230px'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
       else if which == 4
@@ -303,7 +303,7 @@ angular.module 'webappApp'
       else if which == 2
         $middle.css 'height', '826px'
       else if which == 3
-        $middle.css 'height', '2050px'
+        $middle.css 'height', '1750px'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
       else if which == 4
