@@ -48,11 +48,6 @@ angular.module 'webappApp'
                      #servPage .col-md-12:nth-of-type(6) .col-md-8,
                      #servPage .col-md-12:nth-of-type(7) .col-md-8,
                      #servPage .col-md-12:nth-of-type(8) .col-md-8')
-  # and for about page
-  $aboutButton1 = $('#aboutButton1')
-  $aboutButton2 = $('#aboutButton2')
-  $aboutPage1 = $('#aboutPage1')
-  $aboutPage2 = $('#aboutPage2')
 
   # other variables - main page
   whichPage = 0
@@ -89,8 +84,6 @@ angular.module 'webappApp'
               'Dummy14',
               'Dummy15']
   prodWhichCate = 16
-  # other variables - about page
-  aboutWhich = 0
 
   # slideshow timer
   timer = $.timer () ->
@@ -259,9 +252,9 @@ angular.module 'webappApp'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
       else if which == 4
-        $middle.css 'height', '650px'
+        $middle.css('height', $('#aboutContainer').height())
       else if which == 5
-        $middle.css 'height', '450px'
+        $middle.css 'height', '650px'
     # sm
     else if $(window).width() >= 768 and $(window).width() <= 992
       if which == 0
@@ -275,9 +268,9 @@ angular.module 'webappApp'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
       else if which == 4
-        $middle.css 'height', '650px'
+        $middle.css('height', $('#aboutContainer').height())
       else if which == 5
-        $middle.css 'height', '450px'
+        $middle.css 'height', '650px'
     # md
     else if $(window).width() > 992 and $(window).width() <= 1200
       if which == 0
@@ -291,9 +284,9 @@ angular.module 'webappApp'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
       else if which == 4
-        $middle.css 'height', '650px'
+        $middle.css('height', $('#aboutContainer').height())
       else if which == 5
-        $middle.css 'height', '450px'
+        $middle.css 'height', '650px'
     # lg
     else
       if which == 0
@@ -307,9 +300,9 @@ angular.module 'webappApp'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
       else if which == 4
-        $middle.css 'height', '650px'
+        $middle.css('height', $('#aboutContainer').height())
       else if which == 5
-        $middle.css 'height', '450px'
+        $middle.css 'height', '650px'
 
   # CAPA PAGE FUNCTIONS
   populateCapa = () ->
@@ -377,7 +370,6 @@ angular.module 'webappApp'
   init = () ->
     # initially hide
     $slideshowBG.fadeOut 0
-    $aboutPage2.fadeOut 0
 
     middleResize(whichPage)
 
@@ -528,18 +520,5 @@ angular.module 'webappApp'
         $(this).children('h3').stop().animate {'font-size':'12'}, 200
       $('.prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'0'}, 200
       $('.prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').removeClass 'grayscale-disabled'
-
-    ### # # # # # # # # # # # PROD PAGE # # # # # # # # # # # ###
-    $aboutButton1.on 'click', () ->
-      if aboutWhich != 0
-        $aboutPage2.fadeOut 'fast'
-        $aboutPage1.fadeIn 'fast'
-        aboutWhich = 0
-    $aboutButton2.on 'click', () ->
-      if aboutWhich != 1
-        $aboutPage1.fadeOut 'fast'
-        $aboutPage2.fadeIn 'fast'
-        aboutWhich = 1
-
 
   init()
