@@ -261,7 +261,7 @@ angular.module 'webappApp'
       else if which == 4
         $middle.css 'height', '650px'
       else if which == 5
-        $middle.css 'height', '200px'
+        $middle.css 'height', '450px'
     # sm
     else if $(window).width() >= 768 and $(window).width() <= 992
       if which == 0
@@ -277,7 +277,7 @@ angular.module 'webappApp'
       else if which == 4
         $middle.css 'height', '650px'
       else if which == 5
-        $middle.css 'height', '200px'
+        $middle.css 'height', '450px'
     # md
     else if $(window).width() > 992 and $(window).width() <= 1200
       if which == 0
@@ -293,7 +293,7 @@ angular.module 'webappApp'
       else if which == 4
         $middle.css 'height', '650px'
       else if which == 5
-        $middle.css 'height', '200px'
+        $middle.css 'height', '450px'
     # lg
     else
       if which == 0
@@ -309,7 +309,7 @@ angular.module 'webappApp'
       else if which == 4
         $middle.css 'height', '650px'
       else if which == 5
-        $middle.css 'height', '200px'
+        $middle.css 'height', '450px'
 
   # CAPA PAGE FUNCTIONS
   populateCapa = () ->
