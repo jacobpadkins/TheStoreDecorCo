@@ -252,7 +252,7 @@ angular.module 'webappApp'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
       else if which == 4
-        $middle.css('height', $('#aboutContainer').height())
+        $middle.css('height', $('#aboutContainer').height() + 30)
       else if which == 5
         $middle.css 'height', '650px'
     # sm
@@ -268,7 +268,7 @@ angular.module 'webappApp'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
       else if which == 4
-        $middle.css('height', $('#aboutContainer').height())
+        $middle.css('height', $('#aboutContainer').height() + 30)
       else if which == 5
         $middle.css 'height', '650px'
     # md
@@ -284,7 +284,7 @@ angular.module 'webappApp'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
       else if which == 4
-        $middle.css('height', $('#aboutContainer').height())
+        $middle.css('height', $('#aboutContainer').height() + 30)
       else if which == 5
         $middle.css 'height', '650px'
     # lg
@@ -300,7 +300,7 @@ angular.module 'webappApp'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
       else if which == 4
-        $middle.css('height', $('#aboutContainer').height())
+        $middle.css('height', $('#aboutContainer').height() + 30)
       else if which == 5
         $middle.css 'height', '650px'
 
