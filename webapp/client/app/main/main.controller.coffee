@@ -136,7 +136,6 @@ angular.module 'webappApp'
               $('#bottom').css 'background-color', '#605F5B'
               $('#social').css 'background-color', '#D85703'
               $('#socialDiv').removeClass 'hidden'
-              middleResize(which)
               if which == 1
                 $('#capaPage').removeClass 'hidden'
                 if popOnce == true
@@ -154,6 +153,7 @@ angular.module 'webappApp'
               else if which == 5
                 $('#contPage').removeClass 'hidden'
               $('#middle, #bottom').fadeIn 500
+              middleResize(which)
               #$back.fadeIn 300
 
       # transition from sub-page
@@ -177,6 +177,7 @@ angular.module 'webappApp'
               else if which == 5
                 $('#contPage').removeClass 'hidden'
               $('#middle, #bottom').fadeIn 300
+              middleResize(which)
       whichPage = which
 
   # transition back to home page
@@ -316,25 +317,25 @@ angular.module 'webappApp'
     for category in capaCats
       if whichCol == 0
         $capaTiles.append '<div class="col0" style="top:' + (160 * whichRow) +
-        'px;"><h6>' + category + '</h6><img><div>'
+        'px;"><a href="" rel="lightbox">' + category + '</a><img><div>'
         whichCol = 1
       else if whichCol == 1
         $capaTiles.append '<div class="col1" style="top:' + (160 * whichRow) +
-        'px;"><h6>' + category + '</h6><img><div>'
+        'px;"><a href="" rel="lightbox">' + category + '</a><img><div>'
         whichCol = 2
       else if whichCol == 2
         $capaTiles.append '<div class="col2" style="top:' + (160 * whichRow) +
-        'px;"><h6>' + category + '</h6><img><div>'
+        'px;"><a href="" rel="lightbox">' + category + '</a><img><div>'
         whichCol = 3
       else if whichCol == 3
         $capaTiles.append '<div class="col3" style="top:' + (160 * whichRow) +
-        'px;"><h6>' + category + '</h6><img><div>'
+        'px;"><a href="" rel="lightbox">' + category + '</a><img><div>'
         whichCol = 0
         whichRow++
 
     for i in [1...(capaCats.length+1)]
       $('.capaTiles div:nth-of-type(' + parseInt(i) + ') img').attr('src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg').addClass 'grayscale'
-
+      $('.capaTiles div:nth-of-type(' + parseInt(i) + ') a').attr('href', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg')
   # PROD PAGE FUNCTIONS
   populateProd = () ->
     $prodList.empty()
@@ -347,25 +348,25 @@ angular.module 'webappApp'
     for category in prodCats
       if whichCol == 0
         $prodTiles.append '<div class="col0" style="top:' + (160 * whichRow) +
-        'px;"><h6>' + category + '</h6><img><div>'
+        'px;"><a href="" rel="lightbox">' + category + '</a><img><div>'
         whichCol = 1
       else if whichCol == 1
         $prodTiles.append '<div class="col1" style="top:' + (160 * whichRow) +
-        'px;"><h6>' + category + '</h6><img><div>'
+        'px;"><a href="" rel="lightbox">' + category + '</a><img><div>'
         whichCol = 2
       else if whichCol == 2
         $prodTiles.append '<div class="col2" style="top:' + (160 * whichRow) +
-        'px;"><h6>' + category + '</h6><img><div>'
+        'px;"><a href="" rel="lightbox">' + category + '</a><img><div>'
         whichCol = 3
       else if whichCol == 3
         $prodTiles.append '<div class="col3" style="top:' + (160 * whichRow) +
-        'px;"><h6>' + category + '</h6><img><div>'
+        'px;"><a href="" rel="lightbox">' + category + '</a><img><div>'
         whichCol = 0
         whichRow++
 
     for i in [1...(prodCats.length+1)]
       $('.prodTiles div:nth-of-type(' + parseInt(i) + ') img').attr('src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg').addClass 'grayscale'
-
+      $('.prodTiles div:nth-of-type(' + parseInt(i) + ') a').attr('href', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg')
   # $(document).ready()
   init = () ->
     # initially hide
@@ -475,12 +476,19 @@ angular.module 'webappApp'
       $(this).stop().animate {'top': '0'}, 200
       $(this).removeClass 'grayscale-disabled'
 
+    # tile click lightbox
+    $capaTiles.on 'click', 'div img', () ->
+      $(this).siblings('a').click()
+
     # sticky categories
+    ###
     $capaList.on 'click', 'div', () ->
       capaWhichCate = ($(this).index() + 1);
       $('#capaList div h3').not('#capaList div:nth-of-type(' + capaWhichCate + ') h3').css 'color', '#605F5B'
       $('#capaList div h3').not('#capaList div:nth-of-type(' + capaWhichCate + ') h3').stop().animate {'font-size':'12'}, 200
+    ###
 
+    # list -> tile hover animation
     $capaList.on 'mouseover', 'div', () ->
       $(this).children('h3').stop().animate {'font-size':'15'}, 200
       $(this).children('h3').css 'color', '#1352A5'
@@ -493,6 +501,10 @@ angular.module 'webappApp'
       $('.capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'0'}, 200
       $('.capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').removeClass 'grayscale-disabled'
 
+    # list -> tile click animation
+    $capaList.on 'click', 'div', () ->
+      $('.capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') a').click()
+
     ### # # # # # # # # # # # PROD PAGE # # # # # # # # # # # ###
 
     # tile hover animation
@@ -503,12 +515,19 @@ angular.module 'webappApp'
       $(this).stop().animate {'top': '0'}, 200
       $(this).removeClass 'grayscale-disabled'
 
+    # tile click lightbox
+    $prodTiles.on 'click', 'div img', () ->
+      $(this).siblings('a').click()
+
     # sticky categories
+    ###
     $prodList.on 'click', 'div', () ->
       prodWhichCate = ($(this).index() + 1);
       $('#prodList div h3').not('#prodList div:nth-of-type(' + prodWhichCate + ') h3').css 'color', '#605F5B'
       $('#prodList div h3').not('#prodList div:nth-of-type(' + prodWhichCate + ') h3').stop().animate {'font-size':'12'}, 200
+    ###
 
+    # list -> tile hover animation
     $prodList.on 'mouseover', 'div', () ->
       $(this).children('h3').stop().animate {'font-size':'15'}, 200
       $(this).children('h3').css 'color', '#1352A5'
@@ -520,5 +539,9 @@ angular.module 'webappApp'
         $(this).children('h3').stop().animate {'font-size':'12'}, 200
       $('.prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'0'}, 200
       $('.prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').removeClass 'grayscale-disabled'
+
+    # list -> tile click animation
+    $prodList.on 'click', 'div', () ->
+      $('.prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') a').click()
 
   init()
