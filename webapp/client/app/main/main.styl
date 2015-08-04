@@ -772,6 +772,9 @@ span#smallFontSM {
     width: 70%
     height: 50%
   }
+  #slidemenu {
+    right: 0
+  }
   #capaCopy {
     height: 305px
     top: 1000px
@@ -894,6 +897,9 @@ span#smallFontSM {
     height: 175px
     top: 1030px
   }
+  #slidemenu {
+    left: 0
+  }
   .tiles.tilesSM {
     .col0, .col1, .col2, .col3 {
       width: 20%
@@ -1008,6 +1014,9 @@ span#smallFontSM {
   #prodCopy {
     height: 150px
   }
+  #slidemenu {
+    visibility: hidden
+  }
   #servPage {
     .col-md-12 {
       height: 340px
@@ -1046,6 +1055,9 @@ span#smallFontSM {
 @media (min-width: 1200px) {
   #capaCopy {
     height: 100px
+  }
+  #slidemenu {
+    visibility: hidden
   }
   #prodCopy {
     height: 120px
@@ -1225,5 +1237,24 @@ div#shipping {
   }
   p {
     font-size: 16px
+  }
+}
+
+#slidemenu {
+  z-index: 1000
+  position: absolute
+  background-color: color9
+  height: 100%
+  width: 200px
+
+  h1:nth-of-type(1) {
+    margin-top: 120px
+  }
+
+  h1 {
+    font-family: 'Montserrat', sans-serif
+    color: color4
+    font-size: 24px
+    padding-left: 10px
   }
 }

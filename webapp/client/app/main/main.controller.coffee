@@ -6,6 +6,13 @@ angular.module 'webappApp'
   # cached jQuery variables for often-used handles
   $window = $(window)
   $logo = $('.logo')
+  $slidemenu = $('#slidemenu')
+  $slideHome = $('#slideHome')
+  $slideCapa = $('#slideCapa')
+  $slideProd = $('#slideProd')
+  $slideServ = $('#slideServ')
+  $slideAbou = $('#slideAbou')
+  $slideCont = $('#slideCont')
   $tagline = $('#tagline h1')
   $navHome = $('#navHome')
   $navAbout = $('#navAbout')
@@ -50,6 +57,7 @@ angular.module 'webappApp'
                      #servPage .col-md-12:nth-of-type(8) .col-md-8')
 
   # other variables - main page
+  slidemenuShown = false
   whichPage = 0
   whichSlide = 4
   maxSlide = 9
@@ -253,7 +261,7 @@ angular.module 'webappApp'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
       else if which == 4
-        $middle.css('height', $('#aboutContainer').height() + 30)
+        $middle.css('height', $('#aboutContainer').height() + 60)
       else if which == 5
         $middle.css 'height', '650px'
     # sm
@@ -269,7 +277,7 @@ angular.module 'webappApp'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
       else if which == 4
-        $middle.css('height', $('#aboutContainer').height() + 30)
+        $middle.css('height', $('#aboutContainer').height() + 60)
       else if which == 5
         $middle.css 'height', '650px'
     # md
@@ -285,7 +293,7 @@ angular.module 'webappApp'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
       else if which == 4
-        $middle.css('height', $('#aboutContainer').height() + 30)
+        $middle.css('height', $('#aboutContainer').height() + 60)
       else if which == 5
         $middle.css 'height', '650px'
     # lg
@@ -301,7 +309,7 @@ angular.module 'webappApp'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
       else if which == 4
-        $middle.css('height', $('#aboutContainer').height() + 30)
+        $middle.css('height', $('#aboutContainer').height() + 60)
       else if which == 5
         $middle.css 'height', '650px'
 
@@ -336,6 +344,7 @@ angular.module 'webappApp'
     for i in [1...(capaCats.length+1)]
       $('.capaTiles div:nth-of-type(' + parseInt(i) + ') img').attr('src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg').addClass 'grayscale'
       $('.capaTiles div:nth-of-type(' + parseInt(i) + ') a').attr('href', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg')
+
   # PROD PAGE FUNCTIONS
   populateProd = () ->
     $prodList.empty()
@@ -367,6 +376,7 @@ angular.module 'webappApp'
     for i in [1...(prodCats.length+1)]
       $('.prodTiles div:nth-of-type(' + parseInt(i) + ') img').attr('src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg').addClass 'grayscale'
       $('.prodTiles div:nth-of-type(' + parseInt(i) + ') a').attr('href', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg')
+
   # $(document).ready()
   init = () ->
     # initially hide
@@ -460,7 +470,30 @@ angular.module 'webappApp'
 
     # small menubar dropdown
     $('#smMenu').on 'click', () ->
-      alert 'clicked #smMenu'
+      if $slidemenu.hasClass 'hidden'
+        $slidemenu.removeClass 'hidden'
+      else
+        $slidemenu.addClass 'hidden'
+
+    # slide listeners
+    $slideHome.on 'click', () ->
+      $slidemenu.addClass 'hidden'
+      home()
+    $slideAbou.on 'click', () ->
+      $slidemenu.addClass 'hidden'
+      setPage 4
+    $slideCont.on 'click', () ->
+      $slidemenu.addClass 'hidden'
+      setPage 5
+    $slideCapa.on 'click', () ->
+      $slidemenu.addClass 'hidden'
+      setPage 1
+    $slideProd.on 'click', () ->
+      $slidemenu.addClass 'hidden'
+      setPage 2
+    $slideServ.on 'click', () ->
+      $slidemenu.addClass 'hidden'
+      setPage 3
 
     # resize listener
     $window.on 'resize', () ->
