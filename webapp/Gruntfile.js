@@ -1,4 +1,3 @@
-// Generated on 2015-06-10 using generator-angular-fullstack 2.0.13
 'use strict';
 
 module.exports = function (grunt) {
@@ -634,7 +633,7 @@ module.exports = function (grunt) {
       return grunt.task.run([
         'clean:server',
         'env:all',
-        'injector:stylus', 
+        'injector:stylus',
         'concurrent:server',
         'injector',
         'wiredep',
@@ -646,7 +645,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'env:all',
-      'injector:stylus', 
+      'injector:stylus',
       'concurrent:server',
       'injector',
       'wiredep',
@@ -676,7 +675,7 @@ module.exports = function (grunt) {
       return grunt.task.run([
         'clean:server',
         'env:all',
-        'injector:stylus', 
+        'injector:stylus',
         'concurrent:test',
         'injector',
         'autoprefixer',
@@ -689,7 +688,7 @@ module.exports = function (grunt) {
         'clean:server',
         'env:all',
         'env:test',
-        'injector:stylus', 
+        'injector:stylus',
         'concurrent:test',
         'injector',
         'wiredep',
@@ -707,7 +706,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'injector:stylus', 
+    'injector:stylus',
     'concurrent:dist',
     'injector',
     'wiredep',
