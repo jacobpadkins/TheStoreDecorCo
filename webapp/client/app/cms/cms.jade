@@ -1,9 +1,8 @@
 #cms
-  .row
-    .col-md-4
-      p Welcome to The Store Decor CMS
-      img
-    .col-md-8
-  .row
-    .col-md-6
-    .col-md-6
+  #wrapper
+    p Welcome to The Store Decor CMS
+    div#preview_wrapper
+      img#file_preview
+    form(action="api/cms/upload" method="POST" enctype="multipart/form-data")
+      input(type="file" name="file_to_upload")#file_select
+      input(type="button" value="upload")#file_upload

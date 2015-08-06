@@ -6,7 +6,41 @@ color9 = #605F5B
 
 #cms {
   height: 100%
+  width: 100%
   background-color: color1
   font-family: 'Montserrat', sans-serif
   color: color4
+  #wrapper {
+    border-left: solid 5px color4
+    border-right: solid 5px color4
+    background-color: color1
+    width: 1024px
+    position: absolute
+    left: 50%
+    margin-left: -512px
+    p {
+      width: 100%
+      text-align: center
+      font-size: 32px
+    }
+    #preview_wrapper {
+      width: 800px
+      margin-left: 112px
+      height: 600px
+      background-color: black
+      #file_preview {
+        width: inherit
+        height: inherit
+      }
+    }
+    #file_select {
+      margin-left: 112px
+      width: 800px
+    }
+    #file_upload {
+      margin-left: 112px
+      width: 210px
+      color: color9
+    }
+  }
 }

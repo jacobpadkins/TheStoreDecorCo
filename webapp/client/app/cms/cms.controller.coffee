@@ -3,28 +3,21 @@
 angular.module 'webappApp'
 .controller 'CmsCtrl', ($scope, $http) ->
 
+  set_preview = (input) ->
+    if input.files and input.files[0]
+      reader = new FileReader()
+      reader.onload = (e) ->
+        $('#file_preview').attr 'src', e.target.result
+      reader.readAsDataURL(input.files[0])
+
   # basically $(document).ready()
   init = () ->
 
-    $http({
-      url: 'api/cms/addCapa',
-      method: 'POST',
-      params: {capability: "test_capa2"}
-    })
+    $('#file_select').change () ->
+      set_preview(this)
 
-    $http({
-      url: 'api/cms/getCapas',
-      method: 'GET',
-    }).success( (response) ->
-      console.log response
-    )
-
-    $http({
-      url: 'api/cms',
-      method: 'GET',
-      params: {message: 'GET is working', password: '$toreDecor15'}
-    }).success( (response) ->
-      $('p').text response.object.message
-    )
+    $('#file_upload').on 'click', () ->
+      if $('#file_select').val()
+        $('form').submit()
 
   init()

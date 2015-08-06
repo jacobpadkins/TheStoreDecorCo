@@ -2,8 +2,15 @@
 
 var _ = require('lodash');
 var mongo = require('mongodb').MongoClient;
-var db;
+var path = require('path');
+var fs = require('fs');
+var os = require('os');
+var http = require('http');
+var inspect = require('util').inspect;
+var Busboy = require('busboy');
+
 var password = '$toreDecor15';
+var db;
 
 mongo.connect('mongodb://localhost/cms', function(err, database) {
   if (!err) {
@@ -17,21 +24,6 @@ mongo.connect('mongodb://localhost/cms', function(err, database) {
     });
   }
 });
-
-exports.get = function(req, res) {
-  if (req.query.password === password) {
-    res.writeHead(200, { "Content-Type": "application/json" });
-    var test_object = { message: req.query.message };
-    var json = JSON.stringify({ object: test_object });
-    res.end(json);
-  }
-  else {
-    res.writeHead(200, { "Content-Type": "application/json" });
-    var test_object = { message: "wrong password" };
-    var json = JSON.stringify({ object: test_object });
-    res.end(json);
-  }
-};
 
 // returns JSON array of Capabilities
 exports.getCapas = function(req, res) {
@@ -59,9 +51,29 @@ exports.addCapa = function(req, res) {
   );
 };
 
+// add a product
 exports.addProd = function(req, res) {
   db.collection('data').update(
     { name: 'data', },
     { $addToSet: { Products: req.query.capability }}
   );
+};
+
+// upload a file
+exports.upload = function(req, res) {
+  if (req.method === 'POST') {
+    var busboy = new Busboy({ headers: req.headers });
+    busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+      var saveTo = path.join(__dirname + '/' + path.basename(filename));
+      file.pipe(fs.createWriteStream(saveTo));
+    });
+    busboy.on('finish', function() {
+      res.writeHead(200, { 'Connection': 'close' });
+      res.end("upload complete");
+    });
+    return req.pipe(busboy);
+  }
+  res.writeHead(404);
+  res.end();
+  //res.redirect("back");
 };
