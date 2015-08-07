@@ -60,6 +60,7 @@ angular.module 'webappApp'
   slidemenuShown = false
   whichPage = 0
   whichSlide = 4
+  whichMainSlide = 2
   maxSlide = 9
   # other variables - capa page
   capaCats = ['CNC Cutting & Routing',
@@ -76,21 +77,21 @@ angular.module 'webappApp'
               'Vinyl Graphics']
   capaWhichCate = 13
   # other variables - prod page
-  prodCats = ['Dummy1',
-              'Dummy2',
-              'Dummy3',
-              'Dummy4',
-              'Dummy5',
-              'Dummy6',
-              'Dummy7',
-              'Dummy8',
-              'Dummy9',
-              'Dummy10',
-              'Dummy11',
-              'Dummy12',
-              'Dummy13',
-              'Dummy14',
-              'Dummy15']
+  prodCats = ['Product1',
+              'Product2',
+              'Product3',
+              'Product4',
+              'Product5',
+              'Product6',
+              'Product7',
+              'Product8',
+              'Product9',
+              'Product10',
+              'Product11',
+              'Product12',
+              'Product13',
+              'Product14',
+              'Product15']
   prodWhichCate = 16
 
   # slideshow timer
@@ -98,7 +99,27 @@ angular.module 'webappApp'
     slideShow()
   timer.set {time : 4000, autostart : true}
 
+  timer_main = $.timer () ->
+    swapMainSlide()
+  timer_main.set {time: 8000, autostart: true}
+
   # HOME PAGE FUNCTIONS
+
+  swapMainSlide = () ->
+    $('#slide, #slideSM #tagline').fadeOut 500, () ->
+      if whichMainSlide == 1
+        $('#slide, #slideSM').css 'background-image', 'url(../../../assets/images/slide1.jpg)'
+        $('#tagline h1').text 'Your Brand. Your Vision.'
+        whichMainSlide = 2
+      else if whichMainSlide == 2
+        $('#slide, #slideSM').css 'background-image', 'url(../../../assets/images/slide2.jpg)'
+        $('#tagline h1').text 'Brand Eloquence.'
+        whichMainSlide = 3
+      else if whichMainSlide == 3
+        $('#slide, #slideSM').css 'background-image', 'url(../../../assets/images/slide3.jpg)'
+        $('#tagline h1').text 'Immersive Store Experiences.'
+        whichMainSlide = 1
+      $('#slide, #slideSM #tagline').fadeIn 500, () ->
 
   clearPage = () ->
     $('#capaPage, #prodPage, #servPage, #abouPage, #contPage').addClass 'hidden'
@@ -128,6 +149,8 @@ angular.module 'webappApp'
   setPage = (which) ->
     popOnce = true
     if whichPage != which
+      timer.stop()
+      timer_main.stop()
       # set navbar highlight
       highlightNavbar(which)
       # transition from home
@@ -191,6 +214,8 @@ angular.module 'webappApp'
   # transition back to home page
   home = () ->
     if whichPage != 0
+      timer.play()
+      timer_main.play()
       highlightNavbar(0)
       $('html, body').animate {scrollTop: 0}, 300, () ->
         $('#slide, #slideSM').animate {'height':'500px'}, 500
@@ -251,7 +276,7 @@ angular.module 'webappApp'
     # xs
     if $(window).width() < 768
       if which == 0
-        $middle.css 'height', '275px'
+        $middle.css 'height', '430px'
       else if which == 1
         $middle.css 'height', '1305px'
       else if which == 2
@@ -267,7 +292,7 @@ angular.module 'webappApp'
     # sm
     else if $(window).width() >= 768 and $(window).width() <= 992
       if which == 0
-        $middle.css 'height', '255px'
+        $middle.css 'height', '405px'
       else if which == 1
         $middle.css 'height', '1185px'
       else if which == 2
@@ -390,6 +415,7 @@ angular.module 'webappApp'
     ### # # # # # # # # # # # HOME PAGE # # # # # # # # # # # ###
     # start slideshow
     timer.play()
+    timer_main.play()
 
     # hide/show logo on scroll
     $window.scroll () ->
@@ -503,11 +529,13 @@ angular.module 'webappApp'
 
     # tile hover animation
     $capaTiles.on 'mouseover', 'div img', () ->
-      $(this).stop().animate {'top':'20%'}, 200
-      $(this).addClass 'grayscale-disabled'
+      if $(window).width() > 992
+        $(this).stop().animate {'top':'20%'}, 200
+        $(this).addClass 'grayscale-disabled'
     $capaTiles.on 'mouseleave', 'div img', () ->
-      $(this).stop().animate {'top': '0'}, 200
-      $(this).removeClass 'grayscale-disabled'
+      if $(window).width() > 992
+        $(this).stop().animate {'top': '0'}, 200
+        $(this).removeClass 'grayscale-disabled'
 
     # tile click lightbox
     $capaTiles.on 'click', 'div img', () ->
@@ -542,11 +570,13 @@ angular.module 'webappApp'
 
     # tile hover animation
     $prodTiles.on 'mouseover', 'div img', () ->
-      $(this).stop().animate {'top':'20%'}, 200
-      $(this).addClass 'grayscale-disabled'
+      if $(window).width() > 992
+        $(this).stop().animate {'top':'20%'}, 200
+        $(this).addClass 'grayscale-disabled'
     $prodTiles.on 'mouseleave', 'div img', () ->
-      $(this).stop().animate {'top': '0'}, 200
-      $(this).removeClass 'grayscale-disabled'
+      if $(window).width() > 992
+        $(this).stop().animate {'top': '0'}, 200
+        $(this).removeClass 'grayscale-disabled'
 
     # tile click lightbox
     $prodTiles.on 'click', 'div img', () ->

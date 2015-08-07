@@ -15,7 +15,7 @@ div.container-fluid#wrapper
     .column.visible-lg.visible-md
       div.col-md-12#slide
     .visible-sm.visible-xs
-      div.col-md-12.column#slideSM
+      div.col-md-12#slideSM
   div.text-center.visible-lg.visible-md
     #tagline 
       h1 Your Brand. Your Vision.
@@ -92,6 +92,10 @@ div.container-fluid#wrapper
             img.smCataRow#smProdRow(src="../../../assets/images/home_slideshow/prod0.png")
           .col-md-12
             img.smCataRow#smServRow(src="../../../assets/images/home_slideshow/serv0.png")
+          .col-md-12
+            img.smCataRow#smServRow(src="../../../assets/images/home_slideshow/about.png")
+          .col-md-12
+            img.smCataRow#smServRow(src="../../../assets/images/home_slideshow/contact.png")
       div.col-md-1
     span#capaPage.hidden
       div.row.clearfix.visible-lg.visible-md
@@ -385,34 +389,25 @@ div.container-fluid#wrapper
           iframe(width="101%" height="450" frameborder="0" style="border:0;" src="https://www.google.com/maps/embed/v1/place?q=5050%20Boyd%20Blvd%2C%20Rowlett%2C%20TX%2075088&key=AIzaSyAH_jO5nL1kcE5nsba_T1rv1_Zp6CaMHp4" allowfullscreen)
         .col-md-1
   div.row.clearfix#bottom
-    .visible-lg.visible-md
-      div.col-md-2 
-      div.col-md-8
-        h3 Contact Us at
-          img#tinyLogo(src="../../../assets/images/logo_transp.png")
-        div.wBorder.hundredPercent.row.clearfix
-          div.col-md-4#inputColumn
-            .col-md-12#inputs
-              input(type="text" placeholder="name")
-              input(type="text" placeholder="company")
-              input(type="text" placeholder="phone")
-              input(type="text" placeholder="e-mail")
-              input(type="text" placeholder="city")
-              input(type="text" placeholder="state")
-          div.col-md-8
-            textarea.hundredPercent(placeholder=" How can we help you?")
-          .row.clearfix
-            .col-md-12
-              #submitButton Submit
-      div.col-md-2
-    .visible-sm.visible-xs
-      div.col-md-2
-      div.col-md-4 
-      div.col-md-4
-        div#wBorderSmall.hundredPercent.visible-xs.visible-sm.visible-md
-          h3.text-center Request A Quote
-          textarea.hundredPercent 
-      div.col-md-2
+    div.col-md-2 
+    div.col-md-8
+      h3 Contact Us at
+        img#tinyLogo(src="../../../assets/images/logo_transp.png")
+      div.wBorder.hundredPercent.row.clearfix
+        div.col-md-4#inputColumn
+          .col-md-12#inputs
+            input(type="text" placeholder="name")
+            input(type="text" placeholder="company")
+            input(type="text" placeholder="phone")
+            input(type="text" placeholder="e-mail")
+            input(type="text" placeholder="city")
+            input(type="text" placeholder="state")
+        div.col-md-8
+          textarea.hundredPercent(placeholder=" How can we help you?")
+        .row.clearfix
+          .col-md-12
+            #submitButton Submit
+    div.col-md-2
 
   
   div.row.clearfix

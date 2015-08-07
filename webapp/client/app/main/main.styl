@@ -46,7 +46,6 @@ body {
   // uncomment for production
   background-image: url("/assets/images/slide1.jpg")
   background-position: 0px -105px
-  //background-image: url("../../../assets/images/slide1.jpg")
   background-size: cover
   height: 500px
 }
@@ -55,10 +54,9 @@ body {
   margin-top: 50px
   margin-bottom: 5px
   // uncomment for production
-  background-image: url("/assets/images/slide1SM.jpg")
-  //background-image: url("../../../assets/images/slide1SM.jpg")
+  background-image: url("/assets/images/slide1.jpg")
   background-size: cover
-  height: 500px
+  height: 250px
 }
 
 #tagline h1 {
@@ -768,6 +766,19 @@ span#smallFontSM {
 
 // XS
 @media (max-width: 767px) {
+  .tiles {
+    a {
+      z-index: 1000
+      background-color: rgba(0,0,0,.5)
+    }
+  }
+  #bottom {
+    height: 680px
+    #tinyLogo {
+      left: 67%
+      top: -3%
+    }
+  }
   .logo {
     width: 70%
     height: 50%
@@ -893,6 +904,18 @@ span#smallFontSM {
 
 // SM
 @media (max-width: 991px) and (min-width: 768px) {
+  .tiles {
+    a {
+      z-index: 1000
+    }
+  }
+  #bottom {
+    height: 550px
+    #tinyLogo {
+      left: 67%
+      top: -3%
+    }
+  }
   #capaCopy {
     height: 175px
     top: 1030px
