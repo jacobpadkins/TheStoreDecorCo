@@ -43,6 +43,8 @@ angular.module 'webappApp'
   $smCapaRow = $('#smCapaRow')
   $smProdRow = $('#smProdRow')
   $smServRow = $('#smServRow')
+  $smAbouRow = $('#smAbouRow')
+  $smContRow = $('#smContRow')
   $smRowContainer = $('#smRowContainer')
   # and for capa page
   $capaList = $('#capaList')
@@ -289,6 +291,8 @@ angular.module 'webappApp'
         $middle.css('height', $('#aboutContainer').height() + 60)
       else if which == 5
         $middle.css 'height', '650px'
+      # resize slidemenu
+      $slidemenu.height($(window).height())
     # sm
     else if $(window).width() >= 768 and $(window).width() <= 992
       if which == 0
@@ -305,6 +309,8 @@ angular.module 'webappApp'
         $middle.css('height', $('#aboutContainer').height() + 60)
       else if which == 5
         $middle.css 'height', '650px'
+      # resize slidemenu
+      $slidemenu.height($(window).height())
     # md
     else if $(window).width() > 992 and $(window).width() <= 1200
       if which == 0
@@ -404,9 +410,15 @@ angular.module 'webappApp'
 
   # $(document).ready()
   init = () ->
+    # back handler
+    window.onbeforeload = (e) ->
+      msg = "do you really want to leave?"
+      e.returnValue = msg
+      return msg
     # initially hide
     $slideshowBG.fadeOut 0
 
+    # resize #middle
     middleResize(whichPage)
 
     # highlight home page initially
@@ -494,12 +506,24 @@ angular.module 'webappApp'
     $smServRow.on 'click', () ->
       setPage(3)
 
+    $smAbouRow.on 'click', () ->
+      setPage(4)
+
+    $smContRow.on 'click', () ->
+      setPage(5)
+
     # small menubar dropdown
     $('#smMenu').on 'click', () ->
       if $slidemenu.hasClass 'hidden'
         $slidemenu.removeClass 'hidden'
       else
         $slidemenu.addClass 'hidden'
+
+    # small menubar click outside hide
+    $(document).on 'click', (e) ->
+      if !$(e.target).closest('#slidemenu').length and !$(e.target).closest('#smMenu').length
+        if !$slidemenu.hasClass 'hidden'
+          $slidemenu.addClass 'hidden'
 
     # slide listeners
     $slideHome.on 'click', () ->
