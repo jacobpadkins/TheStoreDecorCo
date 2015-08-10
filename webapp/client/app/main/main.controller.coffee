@@ -88,12 +88,12 @@ angular.module 'webappApp'
               'Product7',
               'Product8',
               'Product9',
-              'Product10',
-              'Product11',
-              'Product12',
-              'Product13',
-              'Product14',
-              'Product15']
+              'Product_10',
+              'Product_11',
+              'Product_12',
+              'Product_13',
+              'Product_14',
+              'Product_15']
   prodWhichCate = 16
 
   # slideshow timer
@@ -290,7 +290,7 @@ angular.module 'webappApp'
       else if which == 4
         $middle.css('height', $('#aboutContainer').height() + 60)
       else if which == 5
-        $middle.css 'height', '650px'
+        $middle.css 'height', '580px'
       # resize slidemenu
       $slidemenu.height($(window).height())
     # sm
@@ -308,7 +308,7 @@ angular.module 'webappApp'
       else if which == 4
         $middle.css('height', $('#aboutContainer').height() + 60)
       else if which == 5
-        $middle.css 'height', '650px'
+        $middle.css 'height', '580px'
       # resize slidemenu
       $slidemenu.height($(window).height())
     # md
@@ -326,7 +326,7 @@ angular.module 'webappApp'
       else if which == 4
         $middle.css('height', $('#aboutContainer').height() + 60)
       else if which == 5
-        $middle.css 'height', '650px'
+        $middle.css 'height', '580px'
     # lg
     else
       if which == 0
@@ -342,7 +342,7 @@ angular.module 'webappApp'
       else if which == 4
         $middle.css('height', $('#aboutContainer').height() + 60)
       else if which == 5
-        $middle.css 'height', '650px'
+        $middle.css 'height', '580px'
 
   # CAPA PAGE FUNCTIONS
   populateCapa = () ->
@@ -410,11 +410,7 @@ angular.module 'webappApp'
 
   # $(document).ready()
   init = () ->
-    # back handler
-    window.onbeforeload = (e) ->
-      msg = "do you really want to leave?"
-      e.returnValue = msg
-      return msg
+
     # initially hide
     $slideshowBG.fadeOut 0
 
@@ -514,6 +510,8 @@ angular.module 'webappApp'
 
     # small menubar dropdown
     $('#smMenu').on 'click', () ->
+      $('#slidemenu h1').css 'color', '#F1EFE6'
+      $('#slidemenu h1:nth-of-type(' + (whichPage + 1) + ')').css 'color', '#F26522'
       if $slidemenu.hasClass 'hidden'
         $slidemenu.removeClass 'hidden'
       else
@@ -556,22 +554,19 @@ angular.module 'webappApp'
       if $(window).width() > 992
         $(this).stop().animate {'top':'20%'}, 200
         $(this).addClass 'grayscale-disabled'
+        $('#capaList div h3:contains("' + $(this).siblings('a').text() + '")').stop().animate {'font-size':'15'}, 200
+        $('#capaList div h3:contains("' + $(this).siblings('a').text() + '")').css 'color', '#1352A5'
+        console.log $(this).siblings('a').text()
     $capaTiles.on 'mouseleave', 'div img', () ->
       if $(window).width() > 992
         $(this).stop().animate {'top': '0'}, 200
         $(this).removeClass 'grayscale-disabled'
+        $('#capaList div h3:contains("' + $(this).siblings('a').text() + '")').stop().animate {'font-size':'12'}, 200
+        $('#capaList div h3:contains("' + $(this).siblings('a').text() + '")').css 'color', '#605F5B'
 
     # tile click lightbox
     $capaTiles.on 'click', 'div img', () ->
       $(this).siblings('a').click()
-
-    # sticky categories
-    ###
-    $capaList.on 'click', 'div', () ->
-      capaWhichCate = ($(this).index() + 1);
-      $('#capaList div h3').not('#capaList div:nth-of-type(' + capaWhichCate + ') h3').css 'color', '#605F5B'
-      $('#capaList div h3').not('#capaList div:nth-of-type(' + capaWhichCate + ') h3').stop().animate {'font-size':'12'}, 200
-    ###
 
     # list -> tile hover animation
     $capaList.on 'mouseover', 'div', () ->
@@ -597,22 +592,18 @@ angular.module 'webappApp'
       if $(window).width() > 992
         $(this).stop().animate {'top':'20%'}, 200
         $(this).addClass 'grayscale-disabled'
+        $('#prodList div h3:contains("' + $(this).siblings('a').text() + '")').stop().animate {'font-size':'15'}, 200
+        $('#prodList div h3:contains("' + $(this).siblings('a').text() + '")').css 'color', '#1352A5'
     $prodTiles.on 'mouseleave', 'div img', () ->
       if $(window).width() > 992
         $(this).stop().animate {'top': '0'}, 200
         $(this).removeClass 'grayscale-disabled'
+        $('#prodList div h3:contains("' + $(this).siblings('a').text() + '")').stop().animate {'font-size':'12'}, 200
+        $('#prodList div h3:contains("' + $(this).siblings('a').text() + '")').css 'color', '#605F5B'
 
     # tile click lightbox
     $prodTiles.on 'click', 'div img', () ->
       $(this).siblings('a').click()
-
-    # sticky categories
-    ###
-    $prodList.on 'click', 'div', () ->
-      prodWhichCate = ($(this).index() + 1);
-      $('#prodList div h3').not('#prodList div:nth-of-type(' + prodWhichCate + ') h3').css 'color', '#605F5B'
-      $('#prodList div h3').not('#prodList div:nth-of-type(' + prodWhichCate + ') h3').stop().animate {'font-size':'12'}, 200
-    ###
 
     # list -> tile hover animation
     $prodList.on 'mouseover', 'div', () ->

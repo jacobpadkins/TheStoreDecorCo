@@ -112,10 +112,8 @@ body {
 }
 
 #bottom {
-  //bottom: 0
   color: color4
   background-color: color5
-  height: 450px
 
   h3 {
     font-size: 30px
@@ -125,64 +123,47 @@ body {
     font-weight: bolder
     width: 100%
   }
+
+  #contWrapper {
+    height: 100%
+    width: 100%
+    line-height: 35px
+    color: color9
+
+    input {
+      width: 100%
+    }
+
+    textarea {
+      width: 100%
+      height: 255px
+    }
+
+    #submitButton {
+      width: 95px
+      background-color: white
+      color: color5
+      height: 33px
+      border-radius: 2pt
+      font-size: 24px
+      font-weight: bolder
+      padding-left: 7px
+      position: absolute
+      left: 50%
+      margin-left: -47.5px
+    }
+
+    #submitButton:hover {
+      background-color: color1
+      color: white
+      cursor: pointer
+    }
+  }
 }
 
 .hundredPercent {
   width: 100%
   height: 100%
-}
-
-.wBorder {
-  margin-top: 10px
-  border: 2px solid
-  border-color: color4
-  border-radius: 20pt
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bolder
-  font-size: 15px
-
-  #inputColumn {
-    margin-top: 30px
-
-    div {
-      line-height: 30px
-    }
-  }
-
-  h5 {
-    color: color4
-  }
-
-  textarea {
-    border-radius: 5pt
-    color: color9
-    height: 221px
-    width: 95%
-    margin-left: 2.5%
-    margin-bottom: 3%
-    margin-top: 30px
-    border: none
-  }
-
-  #submitButton {
-    font-weight: bolder
-    font-size: 24px
-    background: color4
-    color: color5
-    padding: 5px
-    border-radius: 5pt
-    width: 97px
-    margin-top: 20px
-    margin-bottom: 5px
-    margin-left: auto
-    margin-right: auto
-  }
-
-  #submitButton:hover {
-    cursor: pointer
-    color: color4
-    background: color1
-  }
 }
 
 #inputs {
@@ -403,34 +384,6 @@ span#smallFontSM {
 
 .hidden {
   display: none
-}
-
-#bottomSmall {
-  color: color4
-  background-color: color9
-  height: 320px
-  margin-bottom: 10px
-}
-
-#wBorderSmall {
-  margin-top: 10px
-  border: 2px solid
-  border-color: color4
-  border-radius: 20pt
-  font-family: 'Montserrat', sans-serif;
-
-  h3 {
-    color: color4
-  }
-
-  textarea {
-    height: 190px
-    width: 90%
-    margin-left: 5%
-    margin-bottom: 8%
-    background-color: color4
-    border: none
-  }
 }
 
 #slider1_container {
@@ -766,6 +719,11 @@ span#smallFontSM {
 
 // XS
 @media (max-width: 767px) {
+  #inputColumn {
+    input {
+      width: 100%
+    }
+  }
   #tinyLogo {
     margin-top: 10px
     width: 100px
@@ -778,7 +736,7 @@ span#smallFontSM {
     }
   }
   #bottom {
-    height: 680px
+    height: 650px
   }
   .circle {
     width: 1px
@@ -916,11 +874,7 @@ span#smallFontSM {
     }
   }
   #bottom {
-    height: 550px
-    #tinyLogo {
-      left: 67%
-      top: -3%
-    }
+    height: 640px
   }
   #capaCopy {
     height: 175px
@@ -958,7 +912,7 @@ span#smallFontSM {
       height: 590px
     }
     .col-md-12:nth-of-type(1) {
-      height: 130px
+      height: 150px
       p {
         top: 0
       }
@@ -1040,6 +994,17 @@ span#smallFontSM {
 
 // MD
 @media (max-width: 1199px) and (min-width: 992px) {
+  #submitButton {
+    margin-top: 265px
+  }
+  #bottom {
+    height: 390px
+  }
+  #inputColumn {
+    input {
+      width: 100%
+    }
+  }
   #slide {
     height: 300px
   }
@@ -1054,7 +1019,7 @@ span#smallFontSM {
       height: 340px
     }
     .col-md-12:nth-of-type(1) {
-      height: 150px
+      height: 175px
     }
     .col-md-12:nth-of-type(4) {
       height: 180px
@@ -1085,6 +1050,12 @@ span#smallFontSM {
 
 // LG
 @media (min-width: 1200px) {
+  #submitButton {
+    margin-top: 265px
+  }
+  #bottom {
+    height: 390px
+  }
   #capaCopy {
     height: 100px
   }
