@@ -132,11 +132,21 @@ body {
 
     input {
       width: 100%
+      font-size: 18px
+    }
+
+    input:focus {
+      border: 3px solid color9
     }
 
     textarea {
+      font-size: 18px
       width: 100%
       height: 255px
+    }
+
+    textarea:focus {
+      border: 3px solid color9
     }
 
     #submitButton {
@@ -719,6 +729,9 @@ span#smallFontSM {
 
 // XS
 @media (max-width: 767px) {
+  #bubbleDiv {
+    margin-top: 280px
+  }
   #inputColumn {
     input {
       width: 100%
@@ -868,6 +881,9 @@ span#smallFontSM {
 
 // SM
 @media (max-width: 991px) and (min-width: 768px) {
+  #bubbleDiv {
+    margin-top: 280px
+  }
   .tiles {
     a {
       z-index: 1000
@@ -994,6 +1010,9 @@ span#smallFontSM {
 
 // MD
 @media (max-width: 1199px) and (min-width: 992px) {
+  #bubbleDiv {
+    margin-top: 55px
+  }
   #submitButton {
     margin-top: 265px
   }
@@ -1050,6 +1069,9 @@ span#smallFontSM {
 
 // LG
 @media (min-width: 1200px) {
+  #bubbleDiv {
+    margin-top: 55px
+  }
   #submitButton {
     margin-top: 265px
   }
@@ -1261,5 +1283,17 @@ div#shipping {
     color: color4
     font-size: 24px
     padding-left: 10px
+  }
+}
+
+#bubbleDiv {
+  position: absolute
+  height: 11px
+  width: 200px
+  margin-right: 10px
+  z-index: 900
+  .bubble {
+    padding: 5px
+    cursor: pointer
   }
 }

@@ -6,6 +6,7 @@ angular.module 'webappApp'
   # cached jQuery variables for often-used handles
   $window = $(window)
   $logo = $('.logo')
+  $bubbleDiv = $('#bubbleDiv')
   $slidemenu = $('#slidemenu')
   $slideHome = $('#slideHome')
   $slideCapa = $('#slideCapa')
@@ -62,8 +63,16 @@ angular.module 'webappApp'
   slidemenuShown = false
   whichPage = 0
   whichSlide = 4
-  whichMainSlide = 2
+  whichMainSlide = 1
   maxSlide = 9
+  mainSlidePics = ['slide1.jpg',
+                   'slide2.jpg',
+                   'slide3.jpg',
+                   'slide4.jpg']
+  mainSlideTaglines = ['Your Brand. Your Vision.',
+                       'Brand Eloquence.',
+                       'Immersive Store Experiences.',
+                       'Destination Decor.']
   # other variables - capa page
   capaCats = ['CNC Cutting & Routing',
               'Custom Packaging',
@@ -103,24 +112,20 @@ angular.module 'webappApp'
 
   timer_main = $.timer () ->
     swapMainSlide()
-  timer_main.set {time: 8000, autostart: true}
+  timer_main.set {time: 4000, autostart: true}
 
   # HOME PAGE FUNCTIONS
 
   swapMainSlide = () ->
+    $('.bubble').attr 'src', '../../../assets/images/home_slideshow/dot_empty.png'
+    $('#bubbleDiv img:nth-of-type(' + (whichMainSlide+1) + ')').attr 'src', '../../../assets/images/home_slideshow/dot_full.png'
     $('#slide, #slideSM #tagline').fadeOut 500, () ->
-      if whichMainSlide == 1
-        $('#slide, #slideSM').css 'background-image', 'url(../../../assets/images/slide1.jpg)'
-        $('#tagline h1').text 'Your Brand. Your Vision.'
-        whichMainSlide = 2
-      else if whichMainSlide == 2
-        $('#slide, #slideSM').css 'background-image', 'url(../../../assets/images/slide2.jpg)'
-        $('#tagline h1').text 'Brand Eloquence.'
-        whichMainSlide = 3
-      else if whichMainSlide == 3
-        $('#slide, #slideSM').css 'background-image', 'url(../../../assets/images/slide3.jpg)'
-        $('#tagline h1').text 'Immersive Store Experiences.'
-        whichMainSlide = 1
+        $('#slide, #slideSM').css 'background-image', 'url(../../../assets/images/' + mainSlidePics[whichMainSlide] + ')'
+        $('#tagline h1').text mainSlideTaglines[whichMainSlide]
+        if whichMainSlide < mainSlidePics.length - 1
+          whichMainSlide += 1
+        else
+          whichMainSlide = 0
       $('#slide, #slideSM #tagline').fadeIn 500, () ->
 
   clearPage = () ->
@@ -159,7 +164,7 @@ angular.module 'webappApp'
       if whichPage == 0
         $('html, body').animate {scrollTop: 0}, 300, () ->
           $('#slide, #slideSM').animate {'height':'135px'}, 500
-          $('#tagline, .copyText, .copyTextM, #copyTextSM1, #copyTextSM, #divider,
+          $('#tagline, #bubbleDiv, .copyText, .copyTextM, #copyTextSM1, #copyTextSM, #divider,
           #middle, #bottom').fadeOut 500, () ->
             if $('#tagline:animated, #copyText:animated,
               #copyTextSM:animated, #divider:animated, #middle:animated,
@@ -220,7 +225,8 @@ angular.module 'webappApp'
       timer_main.play()
       highlightNavbar(0)
       $('html, body').animate {scrollTop: 0}, 300, () ->
-        $('#slide, #slideSM').animate {'height':'500px'}, 500
+        $('#slide').animate {'height':'500px'}, 500
+        $('#slideSM').animate {'height':'250px'}, 500
         $('#middle, #bottom').fadeOut 500, () ->
           $middle.css 'margin-top', ''
           middleResize(0)
@@ -230,7 +236,7 @@ angular.module 'webappApp'
           $('#bottom').css 'background-color', '#D85703'
           $('#social').css 'background-color', '#605F5B'
           $('#socialDiv').addClass 'hidden'
-          $('#tagline, .copyText, .copyTextM, #copyTextSM1, #copyTextSM,
+          $('#tagline, #bubbleDiv, .copyText, .copyTextM, #copyTextSM1, #copyTextSM,
           #divider, #middle, #bottom').fadeIn 500
           whichPage = 0
           $tagline.text 'Your Brand. Your Vision.'
@@ -547,6 +553,13 @@ angular.module 'webappApp'
     $window.on 'resize', () ->
       middleResize(whichPage)
 
+    # slideshow bubbles
+    $bubbleDiv.on 'click', 'img', () ->
+      if !$(this).is(':first-child')
+        whichMainSlide = $(this).index() - 1
+      else
+        whichMainSlide = $bubbleDiv.length
+      swapMainSlide()
     ### # # # # # # # # # # # CAPA PAGE # # # # # # # # # # # ###
 
     # tile hover animation
