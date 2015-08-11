@@ -555,11 +555,15 @@ angular.module 'webappApp'
 
     # slideshow bubbles
     $bubbleDiv.on 'click', 'img', () ->
+      timer_main.reset()
+      oldWhichMainSlide = whichMainSlide
       if !$(this).is(':first-child')
-        whichMainSlide = $(this).index() - 1
+        whichMainSlide = $(this).index()
       else
-        whichMainSlide = $bubbleDiv.length
-      swapMainSlide()
+        whichMainSlide = $bubbleDiv.length - 1
+      if oldWhichMainSlide != whichMainSlide
+        swapMainSlide()
+
     ### # # # # # # # # # # # CAPA PAGE # # # # # # # # # # # ###
 
     # tile hover animation
