@@ -55,7 +55,18 @@ exports.post_images = function(req, res) {
 
 // deletes an image
 exports.delete_images = function(req, res) {
-  res.send('DELETE images: ' + req.query.message);
+  var exists = true;
+  fs.open(__dirname + '/../../../client/assets/images/uploads/' + req.query.filename, 'r',
+    function(err, fd) {
+      if (err && err.code == 'ENOENT')
+      {
+        return;
+      }
+      else {
+        fs.unlink(__dirname + '/../../../client/assets/images/uploads/' + req.query.filename);
+      }
+      res.send(200);
+    })
 };
 
 // returns JSON array of Capabilities
