@@ -69,10 +69,10 @@ angular.module 'webappApp'
                    'slide2.jpg',
                    'slide3.jpg',
                    'slide4.jpg']
-  mainSlideTaglines = ['Your Brand. Your Vision.',
-                       'Brand Eloquence.',
-                       'Immersive Store Experiences.',
-                       'Destination Decor.']
+  mainSlideTaglines = ['YOUR BRAND. YOUR VISION.',
+                       'BRAND ELOQUENCE.',
+                       'IMMERSIVE STORE EXPERIENCES.',
+                       'DESTINATION DECOR.']
   # other variables - capa page
   capaCats = ['CNC Cutting & Routing',
               'Custom Packaging',
@@ -119,7 +119,7 @@ angular.module 'webappApp'
   swapMainSlide = () ->
     $('.bubble').attr 'src', '../../../assets/images/home_slideshow/dot_empty.png'
     $('#bubbleDiv img:nth-of-type(' + (whichMainSlide+1) + ')').attr 'src', '../../../assets/images/home_slideshow/dot_full.png'
-    $('#slide, #slideSM #tagline').fadeOut 500, () ->
+    $('#slide, #slideSM #tagline').stop().fadeOut 500, () ->
         $('#slide, #slideSM').css 'background-image', 'url(../../../assets/images/' + mainSlidePics[whichMainSlide] + ')'
         $('#tagline h1').text mainSlideTaglines[whichMainSlide]
         if whichMainSlide < mainSlidePics.length - 1
@@ -555,11 +555,14 @@ angular.module 'webappApp'
 
     # slideshow bubbles
     $bubbleDiv.on 'click', 'img', () ->
+      timer_main.reset()
+      oldWhichMainSlide = whichMainSlide
       if !$(this).is(':first-child')
-        whichMainSlide = $(this).index() - 1
+        whichMainSlide = $(this).index()
       else
-        whichMainSlide = $bubbleDiv.length
+        whichMainSlide = $bubbleDiv.length - 1
       swapMainSlide()
+
     ### # # # # # # # # # # # CAPA PAGE # # # # # # # # # # # ###
 
     # tile hover animation
