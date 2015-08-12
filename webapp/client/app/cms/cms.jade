@@ -1,8 +1,12 @@
 #cms
-  #wrapper
+  #wrapper_top
     p Welcome to The Store Decor CMS
     div#preview_wrapper
       img#file_preview
-    form(action="api/cms/upload" method="POST" enctype="multipart/form-data")
+    form(action="api/cms/images" method="POST" enctype="multipart/form-data")
       input(type="file" name="file_to_upload")#file_select
       input(type="button" value="upload")#file_upload
+  #wrapper_bottom
+    #images_col
+    #capas_col
+    #prods_col

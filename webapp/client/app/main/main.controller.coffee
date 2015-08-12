@@ -112,7 +112,7 @@ angular.module 'webappApp'
 
   timer_main = $.timer () ->
     swapMainSlide()
-  timer_main.set {time: 4000, autostart: true}
+  timer_main.set {time: 8000, autostart: true}
 
   # HOME PAGE FUNCTIONS
 

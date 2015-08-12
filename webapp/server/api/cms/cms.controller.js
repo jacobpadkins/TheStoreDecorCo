@@ -8,6 +8,7 @@ var os = require('os');
 var http = require('http');
 var inspect = require('util').inspect;
 var Busboy = require('busboy');
+var glob = require('glob');
 
 var password = '$toreDecor15';
 var db;
@@ -25,8 +26,40 @@ mongo.connect('mongodb://localhost/cms', function(err, database) {
   }
 });
 
+// returns object containing data for all images
+exports.get_images = function(req, res) {
+  glob('client/assets/images/uploads/*', function(err, files) {
+    for (var i = 0; i < files.length; i++) {
+      files[i] = path.basename(files[i]);
+    }
+    res.send(files)
+  });
+};
+
+// upload a file
+exports.post_images = function(req, res) {
+  if (req.method === 'POST') {
+    var busboy = new Busboy({ headers: req.headers });
+    busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+      var saveTo = path.join(__dirname + '../../../../client/assets/images/uploads/' + path.basename(filename));
+      file.pipe(fs.createWriteStream(saveTo));
+    });
+    busboy.on('finish', function() {
+      res.redirect("back");
+    });
+    return req.pipe(busboy);
+  }
+  res.writeHead(404);
+  res.end();
+};
+
+// deletes an image
+exports.delete_images = function(req, res) {
+  res.send('DELETE images: ' + req.query.message);
+};
+
 // returns JSON array of Capabilities
-exports.getCapas = function(req, res) {
+exports.get_capa = function(req, res) {
   res.writeHead(200, { "Content-Type": "application/json" });
   db.collection('data').findOne({name:'data'}, function(err, doc) {
     var json = JSON.stringify(doc.Capabilities);
@@ -35,7 +68,7 @@ exports.getCapas = function(req, res) {
 };
 
 // returns JSON array of Products
-exports.getProds = function(req, res) {
+exports.get_prod = function(req, res) {
   res.writeHead(200, { "Content-Type": "application/json" });
   db.collection('data').findOne({name:'data'}, function(err, doc) {
     var json = JSON.stringify(doc.Products);
@@ -44,7 +77,7 @@ exports.getProds = function(req, res) {
 };
 
 // add a capability
-exports.addCapa = function(req, res) {
+exports.post_capa = function(req, res) {
   db.collection('data').update(
     { name: 'data', },
     { $addToSet: { Capabilities: req.query.capability }}
@@ -52,28 +85,29 @@ exports.addCapa = function(req, res) {
 };
 
 // add a product
-exports.addProd = function(req, res) {
+exports.post_prod = function(req, res) {
   db.collection('data').update(
     { name: 'data', },
     { $addToSet: { Products: req.query.capability }}
   );
 };
 
-// upload a file
-exports.upload = function(req, res) {
-  if (req.method === 'POST') {
-    var busboy = new Busboy({ headers: req.headers });
-    busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
-      var saveTo = path.join(__dirname + '/' + path.basename(filename));
-      file.pipe(fs.createWriteStream(saveTo));
-    });
-    busboy.on('finish', function() {
-      res.writeHead(200, { 'Connection': 'close' });
-      res.end("upload complete");
-    });
-    return req.pipe(busboy);
-  }
-  res.writeHead(404);
-  res.end();
-  //res.redirect("back");
+// deletes a capability alltogether
+exports.delete_capa = function(req, res) {
+  res.send('DELETE capa: ' + req.query.message);
+};
+
+// deletes a product alltogether
+exports.delete_prod = function(req, res) {
+  res.send('DELETE prod: ' + req.query.message);
+};
+
+// sets big/small slideshow || color/b&w rep flags for an image
+exports.post_flags = function(req, res) {
+  res.send('POST flags: ' + req.query.message);
+};
+
+// deletes big/small slideshow || color/b&w rep flags for an image
+exports.delete_flags = function(req, res) {
+  res.send('DELETE flags: ' + req.query.message);
 };

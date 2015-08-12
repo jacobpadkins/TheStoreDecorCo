@@ -10,10 +10,11 @@ color9 = #605F5B
   background-color: color1
   font-family: 'Montserrat', sans-serif
   color: color4
-  #wrapper {
-    border-left: solid 5px color4
-    border-right: solid 5px color4
+  #wrapper_top {
+    margin-top: 20px
+    border: solid 5px color4
     background-color: color1
+    height: 430px
     width: 1024px
     position: absolute
     left: 50%
@@ -24,23 +25,80 @@ color9 = #605F5B
       font-size: 32px
     }
     #preview_wrapper {
-      width: 800px
-      margin-left: 112px
-      height: 600px
+      margin-left: 10px
+      width: 400px
+      height: 300px
       background-color: black
       #file_preview {
-        width: inherit
-        height: inherit
+        max-height: 100%
+        max-width: 100%
       }
     }
     #file_select {
-      margin-left: 112px
+      margin-left: 10px
       width: 800px
     }
     #file_upload {
-      margin-left: 112px
-      width: 210px
+      margin-left: 10px
+      width: 250px
       color: color9
+    }
+  }
+  #wrapper_bottom {
+    border-left: solid 5px color4
+    border-right: solid 5px color4
+    border-bottom: solid 5px color4
+    background-color: color1
+    margin-top: 450px
+    height: 400px
+    width: 1024px
+    position: absolute
+    left: 50%
+    margin-left: -512px
+    #images_col,
+    #capas_col,
+    #prods_col {
+      height: 400px
+      float: left
+    }
+    #images_col {
+      width: 514px
+      border-right: solid 5px color4
+      overflow-x: hidden
+      overflow-y: scroll
+      .image {
+        width: 100%
+        .x_box {
+          width: 20px
+          height: 20px
+          position: absolute
+        }
+        .x_box:hover {
+          cursor: pointer
+        }
+        .x_mark {
+          width: 20px
+          height: 20px
+          background-image: url("/assets/images/red_cross.png")
+          span {
+            white-space: nowrap
+            margin-left: 25px
+          }
+        }
+        .x_mark:hover {
+          cursor: default
+        }
+      }
+      .image:hover {
+        background: color5
+      }
+    }
+    #capas_col {
+      width: 255px
+      border-right: solid 5px color4
+    }
+    #prods_col {
+      width: 255px
     }
   }
 }
