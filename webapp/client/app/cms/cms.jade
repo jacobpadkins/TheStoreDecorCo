@@ -6,17 +6,13 @@
     form(action="api/cms/images" method="POST" enctype="multipart/form-data")
       input(type="file" name="file_to_upload")#file_select
       input(type="button" value="upload")#file_upload
-    p Add A Capa. Category
+    p Add Capa. Category
     input(type="button" value="+")#capa_button
     input(type="text" style="color:black;")#capa_input
-    p Add A Prod. Category
+    p Add Prod. Category
     input(type="button" value="+")#prod_button 
     input(type="text" style="color:black;")#prod_input
   #wrapper_bottom
     #images_col
     #capas_col
-      .capa
-        .x_box
-        .x_mark
-          span capability
     #prods_col

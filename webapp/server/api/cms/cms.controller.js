@@ -87,6 +87,7 @@ exports.post_capa = function(req, res) {
     { name: 'data', },
     { $addToSet: { Capabilities: req.query.category }}
   );
+  res.send(200);
 };
 
 // deletes a capability alltogether
@@ -109,11 +110,16 @@ exports.post_prod = function(req, res) {
     { name: 'data', },
     { $addToSet: { Products: req.query.category }}
   );
+  res.send(200);
 };
 
 // deletes a product alltogether
 exports.delete_prod = function(req, res) {
-  res.send('DELETE prod: ' + req.query.message);
+  db.collection('data').update(
+    { name: 'data', },
+    { $pull: { Products: req.query.category }}
+  );
+  res.send(200);
 };
 
 // sets big/small slideshow || color/b&w rep flags for an image
