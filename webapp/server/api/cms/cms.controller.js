@@ -41,9 +41,11 @@ exports.post_images = function(req, res) {
   if (req.method === 'POST') {
     var busboy = new Busboy({ headers: req.headers });
     busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
-      var saveTo = path.join(__dirname + '../../../../client/assets/images/uploads/' + path.basename(filename));
+      var saveTo = path.join(__dirname + '../../../../client/assets/images/uploads/'
+        + path.basename(filename));
       file.pipe(fs.createWriteStream(saveTo));
-      var img_doc = { filename: path.basename(filename), 'Capabilities': [], 'Products': [] };
+      var img_doc = { filename: path.basename(filename), 'Capabilities': [],
+        'Products': [], 'Flags': [] };
       db.collection('images').insert(img_doc);
     });
     busboy.on('finish', function() {
@@ -53,6 +55,40 @@ exports.post_images = function(req, res) {
   }
   res.writeHead(404);
   res.end();
+};
+
+// all-purpose data updating function (not lazy api design, I swear!)
+exports.put_images = function(req, res) {
+  if (req.query.operation == 1) {
+    if (req.query.category === 'capa') {
+      db.collection('images').update(
+        { filename: req.query.file, },
+        { $addToSet: { Capabilities: req.query.name }}
+      );
+    }
+    else if (req.query.category === 'prod')
+    {
+      db.collection('images').update(
+        { filename: req.query.file, },
+        { $addToSet: { Products: req.query.name }}
+      );
+    }
+  }
+  else if (req.query.operation == 0) {
+    if (req.query.category === 'capa') {
+      db.collection('images').update(
+        { filename: req.query.file, },
+        { $pull: { Capabilities: req.query.name }}
+      );
+    }
+    else if (req.query.category === 'prod')
+    {
+      db.collection('images').update(
+        { filename: req.query.file, },
+        { $pull: { Products: req.query.name }}
+      );
+    }
+  }
 };
 
 // deletes an image
@@ -69,7 +105,8 @@ exports.delete_images = function(req, res) {
         db.collection('images').remove({filename: req.query.filename});
       }
       res.send(200);
-    })
+    }
+  );
 };
 
 // returns JSON array of Capabilities
@@ -92,7 +129,11 @@ exports.post_capa = function(req, res) {
 
 // deletes a capability alltogether
 exports.delete_capa = function(req, res) {
-  res.send('DELETE capa: ' + req.query.message);
+  db.collection('data').update(
+    { name: 'data', },
+    { $pull: { Capabilities: req.query.category }}
+  );
+  res.send(200);
 };
 
 // returns JSON array of Products
@@ -122,12 +163,27 @@ exports.delete_prod = function(req, res) {
   res.send(200);
 };
 
-// sets big/small slideshow || color/b&w rep flags for an image
-exports.post_flags = function(req, res) {
-  res.send('POST flags: ' + req.query.message);
+// returns flags array for passed filename
+exports.get_flags = function(req, res) {
+  res.writeHead(200, { "Content-Type": "application/json" });
+  db.collection('images').findOne({filename: req.query.file}, function(err, doc) {
+    var json = JSON.stringify(doc.Flags);
+    res.end(json);
+  });
 };
 
-// deletes big/small slideshow || color/b&w rep flags for an image
-exports.delete_flags = function(req, res) {
-  res.send('DELETE flags: ' + req.query.message);
+// sets big/small slideshow || color/b&w rep flags for an image
+exports.put_flags = function(req, res) {
+  if (req.query.operation == 1) {
+    db.collection('images').update(
+      { filename: req.query.file, },
+      { $addToSet: { Flags: req.query.flag }}
+    );
+  }
+  else if (req.query.operation == 0) {
+    db.collection('images').update(
+      { filename: req.query.file, },
+      { $pull: { Flags: req.query.flag }}
+    );
+  }
 };

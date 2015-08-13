@@ -4,6 +4,8 @@ angular.module 'webappApp'
 .controller 'CmsCtrl', ($scope, $http) ->
 
   route = 'api/cms'
+  selected_file = ''
+  selected = false
 
   set_preview = (input) ->
     if input.files and input.files[0]
@@ -38,6 +40,9 @@ angular.module 'webappApp'
       while i < response.length
         $('#capas_col').append '<div class="capa">
                                  <div class="x_box"></div>
+                                 <input type="checkbox">
+                                 <input type="checkbox">
+                                 <input type="checkbox">
                                  <div class="x_mark">
                                   <span>' + response[i] + '</span>
                                  </div>
@@ -51,6 +56,9 @@ angular.module 'webappApp'
       while i < response.length
         $('#prods_col').append '<div class="prod">
                                  <div class="x_box"></div>
+                                 <input type="checkbox">
+                                 <input type="checkbox">
+                                 <input type="checkbox">
                                  <div class="x_mark">
                                   <span>' + response[i] + '</span>
                                  </div>
@@ -97,6 +105,13 @@ angular.module 'webappApp'
     }).success () ->
       populate_categories()
 
+  all_purpose_category_tag_manipulation_function = (_operation, _file, _category, _name) ->
+    $http({
+      url: route + '/images',
+      method: 'PUT',
+      params: {operation: _operation, file: _file, category: _category, name: _name}
+    })
+
   # basically $(document).ready()
   init = () ->
 
@@ -105,6 +120,8 @@ angular.module 'webappApp'
 
     # preview on selecting an image
     $('#file_select').change () ->
+      selected_file = ''
+      selected = false
       set_preview(this)
 
     # upload file submit event
@@ -114,8 +131,24 @@ angular.module 'webappApp'
 
     # display preview on hover
     $('#images_col').on 'mouseover', '.image', () ->
-      if !$('#file_select').val()
+      if !$('#file_select').val() and !selected
         $('#file_preview').attr 'src', '../../../assets/images/uploads/' + $(this).children('.x_mark').children('span').text()
+
+    # clear display image on mouseleave
+    $('#images_col').on 'mouseleave', '.image', () ->
+      if !$('#file_select').val() and !selected
+        $('#file_preview').attr 'src', ''
+
+    # change selected image on click
+    $('#images_col').on 'click', '.image', () ->
+      $('#images_col .image').css 'background-color', ''
+      if $(this).children('.x_mark').children('span').text() != selected_file
+        selected_file = $(this).children('.x_mark').children('span').text()
+        $(this).css 'background-color', '#F26522'
+        selected = true
+      else
+        selected = false
+        selected_file = ''
 
     # delete image on clicking cross
     $('#images_col').on 'click', '.image .x_box', () ->
@@ -140,6 +173,5 @@ angular.module 'webappApp'
     # delete a product category
     $('#prods_col').on 'click', '.prod .x_box', () ->
       delete_prod($(this).siblings('.x_mark').children('span').text())
-
 
   init()
