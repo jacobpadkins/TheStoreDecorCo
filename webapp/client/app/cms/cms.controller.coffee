@@ -28,6 +28,10 @@ angular.module 'webappApp'
                                  </div>'
         i += 1
 
+  populate_categories = () ->
+    $('#capas_col, #prods_col').empty()
+
+
   delete_image = (file) ->
     $http({
       url: route + '/images',
@@ -55,8 +59,15 @@ angular.module 'webappApp'
       if !$('#file_select').val()
         $('#file_preview').attr 'src', '../../../assets/images/uploads/' + $(this).children('.x_mark').children('span').text()
 
-    #delete image on clicking cross
+    # delete image on clicking cross
     $('#images_col').on 'click', '.image .x_box', () ->
       delete_image($(this).siblings('.x_mark').children('span').text())
+
+    # add a capability category
+    $('#capa_button').on 'click', () ->
+      if $('#capa_input').val()
+        console.log($('#capa_input').val())
+        $('#capa_input').val('')
+
 
   init()

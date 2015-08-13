@@ -43,6 +43,8 @@ exports.post_images = function(req, res) {
     busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
       var saveTo = path.join(__dirname + '../../../../client/assets/images/uploads/' + path.basename(filename));
       file.pipe(fs.createWriteStream(saveTo));
+      var img_doc = { filename: path.basename(filename), 'Capabilities': [], 'Products': [] };
+      db.collection('images').insert(img_doc);
     });
     busboy.on('finish', function() {
       res.redirect("back");
@@ -64,6 +66,7 @@ exports.delete_images = function(req, res) {
       }
       else {
         fs.unlink(__dirname + '/../../../client/assets/images/uploads/' + req.query.filename);
+        db.collection('images').remove({filename: req.query.filename});
       }
       res.send(200);
     })
@@ -78,6 +81,19 @@ exports.get_capa = function(req, res) {
   });
 };
 
+// add a capability
+exports.post_capa = function(req, res) {
+  db.collection('data').update(
+    { name: 'data', },
+    { $addToSet: { Capabilities: req.query.category }}
+  );
+};
+
+// deletes a capability alltogether
+exports.delete_capa = function(req, res) {
+  res.send('DELETE capa: ' + req.query.message);
+};
+
 // returns JSON array of Products
 exports.get_prod = function(req, res) {
   res.writeHead(200, { "Content-Type": "application/json" });
@@ -87,25 +103,12 @@ exports.get_prod = function(req, res) {
   });
 };
 
-// add a capability
-exports.post_capa = function(req, res) {
-  db.collection('data').update(
-    { name: 'data', },
-    { $addToSet: { Capabilities: req.query.capability }}
-  );
-};
-
 // add a product
 exports.post_prod = function(req, res) {
   db.collection('data').update(
     { name: 'data', },
-    { $addToSet: { Products: req.query.capability }}
+    { $addToSet: { Products: req.query.category }}
   );
-};
-
-// deletes a capability alltogether
-exports.delete_capa = function(req, res) {
-  res.send('DELETE capa: ' + req.query.message);
 };
 
 // deletes a product alltogether

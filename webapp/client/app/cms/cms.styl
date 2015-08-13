@@ -19,10 +19,22 @@ color9 = #605F5B
     position: absolute
     left: 50%
     margin-left: -512px
-    p {
+    p:nth-of-type(1) {
       width: 100%
       text-align: center
       font-size: 32px
+    }
+    p:nth-of-type(2) {
+      margin-left: 530px
+      margin-top: -50px
+      position: absolute
+      font-size: 22px
+    }
+    p:nth-of-type(3) {
+      margin-left: 780px
+      margin-top: -50px
+      position: absolute
+      font-size: 22px
     }
     #preview_wrapper {
       margin-left: 10px
@@ -42,6 +54,36 @@ color9 = #605F5B
       margin-left: 10px
       width: 250px
       color: color9
+    }
+    #capa_button {
+      width: 40px
+      height: 26px
+      position: absolute
+      margin-left: 520px
+      margin-top: -20px
+      color: color9
+    }
+    #capa_input {
+      color = color9
+      position: absolute
+      margin-left: 570px
+      margin-top: -20px
+      width: 180px
+    }
+    #prod_button {
+      width: 40px
+      height: 26px
+      position: absolute
+      margin-left: 770px
+      margin-top: -20px
+      color: color9
+    }
+    #prod_input {
+      color = color9
+      position: absolute
+      margin-left: 820px
+      margin-top: -20px
+      width: 180px
     }
   }
   #wrapper_bottom {
@@ -68,26 +110,6 @@ color9 = #605F5B
       overflow-y: scroll
       .image {
         width: 100%
-        .x_box {
-          width: 20px
-          height: 20px
-          position: absolute
-        }
-        .x_box:hover {
-          cursor: pointer
-        }
-        .x_mark {
-          width: 20px
-          height: 20px
-          background-image: url("/assets/images/red_cross.png")
-          span {
-            white-space: nowrap
-            margin-left: 25px
-          }
-        }
-        .x_mark:hover {
-          cursor: default
-        }
       }
       .image:hover {
         background: color5
@@ -101,4 +123,25 @@ color9 = #605F5B
       width: 255px
     }
   }
+}
+
+.x_box {
+  width: 20px
+  height: 20px
+  position: absolute
+}
+.x_box:hover {
+  cursor: pointer
+}
+.x_mark {
+  width: 20px
+  height: 20px
+  background-image: url("/assets/images/red_cross.png")
+  span {
+    white-space: nowrap
+    margin-left: 25px
+  }
+}
+.x_mark:hover {
+  cursor: default
 }
