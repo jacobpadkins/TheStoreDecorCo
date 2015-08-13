@@ -24,6 +24,8 @@ angular.module 'webappApp'
       while i < response.length
         $('#images_col').append '<div class="image">
                                   <div class="x_box"></div>
+                                  <input type="checkbox" name="Big_Slide">
+                                  <input type="checkbox" name="Small_Slide">
                                   <div class="x_mark">
                                    <span>' + response[i] + '</span>
                                   </div>
@@ -40,9 +42,9 @@ angular.module 'webappApp'
       while i < response.length
         $('#capas_col').append '<div class="capa">
                                  <div class="x_box"></div>
-                                 <input type="checkbox">
-                                 <input type="checkbox">
-                                 <input type="checkbox">
+                                 <input type="checkbox" name="is_a">
+                                 <input type="checkbox" name="rep_color">
+                                 <input type="checkbox" name="rep_bw">
                                  <div class="x_mark">
                                   <span>' + response[i] + '</span>
                                  </div>
@@ -56,9 +58,9 @@ angular.module 'webappApp'
       while i < response.length
         $('#prods_col').append '<div class="prod">
                                  <div class="x_box"></div>
-                                 <input type="checkbox">
-                                 <input type="checkbox">
-                                 <input type="checkbox">
+                                 <input type="checkbox" name="is_a">
+                                 <input type="checkbox" name="rep_color">
+                                 <input type="checkbox" name="rep_bw">
                                  <div class="x_mark">
                                   <span>' + response[i] + '</span>
                                  </div>
@@ -105,12 +107,35 @@ angular.module 'webappApp'
     }).success () ->
       populate_categories()
 
-  all_purpose_category_tag_manipulation_function = (_operation, _file, _category, _name) ->
+  # (1/0 - adding/removing, filename, capa/prod, name of category)
+  lazy_func = (op, fi, ca, na) ->
     $http({
       url: route + '/images',
       method: 'PUT',
-      params: {operation: _operation, file: _file, category: _category, name: _name}
+      params: {operation: op, file: fi, category: ca, name: na}
     })
+
+  set_categories = (file) ->
+    $http({
+      url: route + '/images/tags',
+      method: 'GET',
+      params: {name: file}
+    }).success (response) ->
+      i = 0
+      while i < response.Capabilities.length
+        $('#capas_col span:contains("' + response.Capabilities[i] + '")').parent('.x_mark').siblings('input[name="is_a"]').prop 'checked', 'true'
+        i++
+      i = 0
+      while i < response.Products.length
+        $('#prods_col span:contains("' + response.Products[i] + '")').parent('.x_mark').siblings('input[name="is_a"]').prop 'checked', 'true'
+        i++
+      i = 0
+      while i < response.Flags.length
+        $('input[name="' + response.Flags[i] + '"]').prop 'checked', 'true'
+        i++
+
+  clear_categories = () ->
+    $('input:checked').removeAttr 'checked'
 
   # basically $(document).ready()
   init = () ->
@@ -140,11 +165,13 @@ angular.module 'webappApp'
         $('#file_preview').attr 'src', ''
 
     # change selected image on click
-    $('#images_col').on 'click', '.image', () ->
+    $('#images_col').on 'click', '.image .x_mark span', () ->
       $('#images_col .image').css 'background-color', ''
-      if $(this).children('.x_mark').children('span').text() != selected_file
-        selected_file = $(this).children('.x_mark').children('span').text()
-        $(this).css 'background-color', '#F26522'
+      clear_categories()
+      if $(this).text() != selected_file
+        selected_file = $(this).text()
+        $(this).parent('.x_mark').parent('.image').css 'background-color', '#F26522'
+        set_categories($(this).text())
         selected = true
       else
         selected = false
@@ -173,5 +200,21 @@ angular.module 'webappApp'
     # delete a product category
     $('#prods_col').on 'click', '.prod .x_box', () ->
       delete_prod($(this).siblings('.x_mark').children('span').text())
+
+    # change flags on checkbox changes - images_col
+    $('#images_col').on 'change', 'input', () ->
+      if selected and $(this).attr('name') != 'is_a'
+        if $(this).is ':checked'
+          lazy_func(1, $(this).siblings('.x_mark').children('span').text(), 'flag', $(this).attr('name'))
+        else if !$(this).is ':checked'
+          lazy_func(0, $(this).siblings('.x_mark').children('span').text(), 'flag', $(this).attr('name'))
+
+    # change flags on checkbox changes - images_col
+    $('#capas_col, #prods_col').on 'change', 'input', () ->
+      if selected and $(this).attr('name') != 'is_a'
+        if $(this).is ':checked'
+          lazy_func(1, selected_file, 'flag', $(this).attr('name'))
+        else if !$(this).is ':checked'
+          lazy_func(0, selected_file, 'flag', $(this).attr('name'))
 
   init()

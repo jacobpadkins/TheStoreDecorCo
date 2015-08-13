@@ -8,7 +8,6 @@ var os = require('os');
 var http = require('http');
 var inspect = require('util').inspect;
 var Busboy = require('busboy');
-var glob = require('glob');
 
 var password = '$toreDecor15';
 var db;
@@ -28,11 +27,23 @@ mongo.connect('mongodb://localhost/cms', function(err, database) {
 
 // returns object containing data for all images
 exports.get_images = function(req, res) {
-  glob('client/assets/images/uploads/*', function(err, files) {
-    for (var i = 0; i < files.length; i++) {
-      files[i] = path.basename(files[i]);
+  db.collection('images').find({}, {filename:'true'}).toArray(function(err, results) {
+    var files = [];
+    for (var i = 0; i < results.length; i++) {
+      files.push(results[i].filename);
     }
-    res.send(files)
+    res.send(files);
+  });
+};
+
+exports.get_images_tags = function(req, res) {
+  var tags = { Capabilities: [], Products: [], Flags: [] };
+  db.collection('images').findOne({filename:req.query.name}, function(err, doc) {
+    tags.Capabilities = doc.Capabilities;
+    tags.Products = doc.Products;
+    tags.Flags = doc.Flags;
+    console.log(tags);
+    res.send(tags);
   });
 };
 
@@ -73,6 +84,13 @@ exports.put_images = function(req, res) {
         { $addToSet: { Products: req.query.name }}
       );
     }
+    else if (req.query.category === 'flag')
+    {
+      db.collection('images').update(
+        { filename: req.query.file, },
+        { $addToSet: { Flags: req.query.name }}
+      );
+    }
   }
   else if (req.query.operation == 0) {
     if (req.query.category === 'capa') {
@@ -86,6 +104,13 @@ exports.put_images = function(req, res) {
       db.collection('images').update(
         { filename: req.query.file, },
         { $pull: { Products: req.query.name }}
+      );
+    }
+    else if (req.query.category === 'flag')
+    {
+      db.collection('images').update(
+        { filename: req.query.file, },
+        { $pull: { Flags: req.query.name }}
       );
     }
   }
@@ -161,29 +186,4 @@ exports.delete_prod = function(req, res) {
     { $pull: { Products: req.query.category }}
   );
   res.send(200);
-};
-
-// returns flags array for passed filename
-exports.get_flags = function(req, res) {
-  res.writeHead(200, { "Content-Type": "application/json" });
-  db.collection('images').findOne({filename: req.query.file}, function(err, doc) {
-    var json = JSON.stringify(doc.Flags);
-    res.end(json);
-  });
-};
-
-// sets big/small slideshow || color/b&w rep flags for an image
-exports.put_flags = function(req, res) {
-  if (req.query.operation == 1) {
-    db.collection('images').update(
-      { filename: req.query.file, },
-      { $addToSet: { Flags: req.query.flag }}
-    );
-  }
-  else if (req.query.operation == 0) {
-    db.collection('images').update(
-      { filename: req.query.file, },
-      { $pull: { Flags: req.query.flag }}
-    );
-  }
 };

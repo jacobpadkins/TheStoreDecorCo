@@ -25,12 +25,15 @@ color9 = #605F5B
       font-size: 32px
     }
     p:nth-of-type(2) {
+      position: absolute
+    }
+    p:nth-of-type(3) {
       margin-left: 530px
       margin-top: -50px
       position: absolute
       font-size: 22px
     }
-    p:nth-of-type(3) {
+    p:nth-of-type(4) {
       margin-left: 780px
       margin-top: -50px
       position: absolute
@@ -111,9 +114,6 @@ color9 = #605F5B
       .image {
         width: 100%
       }
-      .image:hover {
-        background: color5
-      }
     }
     #capas_col {
       overflow-x: hidden
@@ -126,6 +126,7 @@ color9 = #605F5B
       overflow-y: scroll
       width: 245px
     }
+    #images_col,
     #capas_col,
     #prods_col {
       input {
@@ -156,11 +157,27 @@ color9 = #605F5B
   width: 20px
   height: 20px
   background-image: url("/assets/images/red_cross.png")
-  span {
-    white-space: nowrap
-    margin-left: 85px
-  }
 }
 .x_mark:hover {
   cursor: default
+}
+
+span:hover {
+  color: black
+}
+
+#images_col {
+  span {
+    margin-left: 65px
+  }
+  span:hover {
+    cursor: pointer
+  }
+}
+
+#capas_col,
+#prods_col {
+  span {
+    margin-left: 85px
+  }
 }
