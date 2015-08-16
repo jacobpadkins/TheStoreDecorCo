@@ -208,13 +208,13 @@ angular.module 'webappApp'
 
     # change flags on checkbox changes - images_col
     $('#images_col').on 'change', 'input', () ->
-      if selected and $(this).attr('name') != 'is_a'
+      if selected and $(this).attr('name') != 'is_a' #TODO: why did I put this here. . . .?
         if $(this).is ':checked'
           lazy_func(1, $(this).siblings('.x_mark').children('span').text(), 'flag', $(this).attr('name'))
         else if !$(this).is ':checked'
           lazy_func(0, $(this).siblings('.x_mark').children('span').text(), 'flag', $(this).attr('name'))
 
-    # change flags on checkbox changes - images_col
+    # change flags on checkbox changes - capas_col/prods_col
     $('#capas_col, #prods_col').on 'change', 'input', () ->
       if selected and $(this).attr('name') != 'is_a'
         if $(this).attr('name') == 'rep_color'
@@ -229,5 +229,10 @@ angular.module 'webappApp'
             lazy_func(1, selected_file, 'flag', flag_obj)
           else if !$(this).is ':checked'
             lazy_func(0, selected_file, 'flag', flag_obj)
+      else
+        if $('#capas_col').has($(this)).length
+          console.log 'it\'s a capability'
+        else if $('#prods_col').has($(this)).length
+          console.log 'it\s a product'
 
   init()
