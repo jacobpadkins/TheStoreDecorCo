@@ -131,7 +131,12 @@ angular.module 'webappApp'
         i++
       i = 0
       while i < response.Flags.length
-        $('input[name="' + response.Flags[i] + '"]').prop 'checked', 'true'
+        if response.Flags[i] == 'Small_Slide' or response.Flags[i] == 'Big_Slide'
+          $('#images_col span:contains("' + file + '")').parent('.x_mark').siblings('input[name="' + response.Flags[i] + '"]').prop 'checked', 'true'
+        else
+          flag_obj = JSON.parse(response.Flags[i])
+          flag_key = Object.keys(flag_obj)
+          $('#capas_col, #prods_col').find('span:contains("' + flag_obj[flag_key[0]] + '")').parent('.x_mark').siblings('input[name="' + flag_key[0] + '"]').prop 'checked', 'true'
         i++
 
   clear_categories = () ->

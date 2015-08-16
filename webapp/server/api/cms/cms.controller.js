@@ -8,7 +8,6 @@ var os = require('os');
 var http = require('http');
 var inspect = require('util').inspect;
 var Busboy = require('busboy');
-
 var password = '$toreDecor15';
 var db;
 
