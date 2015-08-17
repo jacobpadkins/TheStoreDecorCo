@@ -229,10 +229,16 @@ angular.module 'webappApp'
             lazy_func(1, selected_file, 'flag', flag_obj)
           else if !$(this).is ':checked'
             lazy_func(0, selected_file, 'flag', flag_obj)
-      else
+      else if selected and $(this).attr('name') == 'is_a'
         if $('#capas_col').has($(this)).length
-          console.log 'it\'s a capability'
+          if $(this).is ':checked'
+            lazy_func(1, selected_file, 'capa', $(this).siblings('.x_mark').children('span').text())
+          else if !$(this).is ':checked'
+            lazy_func(0, selected_file, 'capa', $(this).siblings('.x_mark').children('span').text())
         else if $('#prods_col').has($(this)).length
-          console.log 'it\s a product'
+          if $(this).is ':checked'
+            lazy_func(1, selected_file, 'prod', $(this).siblings('.x_mark').children('span').text())
+          else if !$(this).is ':checked'
+            lazy_func(0, selected_file, 'prod', $(this).siblings('.x_mark').children('span').text())
 
   init()

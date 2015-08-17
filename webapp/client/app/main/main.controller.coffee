@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module 'webappApp'
-.controller 'MainCtrl', ($scope) ->
+.controller 'MainCtrl', ($scope, $http) ->
 
   # cached jQuery variables for often-used handles
   $window = $(window)
@@ -64,45 +64,17 @@ angular.module 'webappApp'
   whichPage = 0
   whichSlide = 4
   whichMainSlide = 1
-  maxSlide = 9
-  mainSlidePics = ['slide1.jpg',
-                   'slide2.jpg',
-                   'slide3.jpg',
-                   'slide4.jpg']
+  mainSlidePics = []
+  smallSlidePics = []
   mainSlideTaglines = ['YOUR BRAND. YOUR VISION.',
                        'BRAND ELOQUENCE.',
                        'IMMERSIVE STORE EXPERIENCES.',
                        'DESTINATION DECOR.']
   # other variables - capa page
-  capaCats = ['CNC Cutting & Routing',
-              'Custom Packaging',
-              'Digital Printing',
-              'Foam Sculpture',
-              'Metal Fabrication',
-              'Millwork & Crafting',
-              'Painting',
-              'Print Lamination',
-              'Prototyping',
-              'Specialty Coatings',
-              'Thermoforming',
-              'Vinyl Graphics']
+  capaCats = []
   capaWhichCate = 13
   # other variables - prod page
-  prodCats = ['Product1',
-              'Product2',
-              'Product3',
-              'Product4',
-              'Product5',
-              'Product6',
-              'Product7',
-              'Product8',
-              'Product9',
-              'Product_10',
-              'Product_11',
-              'Product_12',
-              'Product_13',
-              'Product_14',
-              'Product_15']
+  prodCats = []
   prodWhichCate = 16
 
   # slideshow timer
@@ -113,6 +85,39 @@ angular.module 'webappApp'
   timer_main = $.timer () ->
     swapMainSlide()
   timer_main.set {time: 8000, autostart: true}
+
+  database = () ->
+    console.log 'populating from db'
+    $http({
+      url: 'api/cms/images/website',
+      method: 'GET',
+    }).success (response) ->
+      # populate categories
+      capaCats = response.capas
+      prodCats = response.prods
+      # populate small slideshow
+      i = 0
+      while i < response.imgs.length
+        if $.inArray('Small_Slide', response.imgs[i].Flags) != -1
+          smallSlidePics.push(response.imgs[i].filename)
+        i++
+      $img0.attr 'src', '../../../assets/images/uploads/' + smallSlidePics[0]
+      $img1.attr 'src', '../../../assets/images/uploads/' + smallSlidePics[1]
+      $img2.attr 'src', '../../../assets/images/uploads/' + smallSlidePics[2]
+      $img3.attr 'src', '../../../assets/images/uploads/' + smallSlidePics[3]
+      # populate main slideshow
+      i = 0
+      while i < response.imgs.length
+        if $.inArray('Big_Slide', response.imgs[i].Flags) != -1
+          mainSlidePics.push(response.imgs[i].filename)
+        i++
+      $('#slide, #slideSM').css 'background-image', 'url(../../../assets/images/' + mainSlidePics[0] + ')'
+      i = 1
+      while i < mainSlidePics.length
+        $bubbleDiv.append '<img class="bubble" src="../../../assets/images/home_slideshow/dot_empty.png">'
+        i++
+      # populate hidden lightbox anchors
+      
 
   # HOME PAGE FUNCTIONS
 
@@ -243,12 +248,11 @@ angular.module 'webappApp'
 
   # cycle through slideshow
   nextImg = () ->
-    if whichSlide < maxSlide
-      $img0.attr 'src', '../../../assets/images/home_slideshow/img' +
-      (whichSlide + 1) + '.jpg'
+    if whichSlide < smallSlidePics.length
+      $img0.attr 'src', '../../../assets/images/uploads/' + smallSlidePics[whichSlide]
       whichSlide++
     else
-      $img0.attr 'src', '../../../assets/images/home_slideshow/img1.jpg'
+      $img0.attr 'src', '../../../assets/images/uploads/' + smallSlidePics[0]
       whichSlide = 1
 
   slideShow = () ->
@@ -416,6 +420,8 @@ angular.module 'webappApp'
 
   # $(document).ready()
   init = () ->
+    # pull info from database & populate images
+    database()
 
     # initially hide
     $slideshowBG.fadeOut 0

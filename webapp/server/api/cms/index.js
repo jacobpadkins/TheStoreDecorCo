@@ -6,6 +6,7 @@ var router = express.Router();
 
 router.get('/images', controller.get_images);
 router.get('/images/tags', controller.get_images_tags);
+router.get('/images/website', controller.get_images_website);
 router.post('/images', controller.post_images);
 router.put('/images', controller.put_images);
 router.delete('/images', controller.delete_images);

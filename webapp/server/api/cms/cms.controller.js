@@ -46,6 +46,19 @@ exports.get_images_tags = function(req, res) {
   });
 };
 
+exports.get_images_website = function(req, res) {
+  var website_obj = {capas: [], prods: [], imgs: []};
+  db.collection('images').find({}, {filename:'true', Capabilities:'true', Products:'true', Flags:'true'}).toArray(function(err, results) {
+    website_obj.imgs = results;
+    console.log(results);
+    db.collection('data').findOne({name:'data'}, function(err, doc) {
+      website_obj.capas = doc.Capabilities;
+      website_obj.prods = doc.Products;
+      res.send(website_obj);
+    });
+  });
+};
+
 // upload a file
 exports.post_images = function(req, res) {
   if (req.method === 'POST') {
