@@ -141,7 +141,7 @@ angular.module 'webappApp'
     $('.bubble').attr 'src', '../../../assets/images/home_slideshow/dot_empty.png'
     $('#bubbleDiv img:nth-of-type(' + (whichMainSlide+1) + ')').attr 'src', '../../../assets/images/home_slideshow/dot_full.png'
     $('#slide, #slideSM #tagline').stop().fadeOut 500, () ->
-        $('#slide, #slideSM').css 'background-image', 'url(../../../assets/images/' + mainSlidePics[whichMainSlide] + ')'
+        $('#slide, #slideSM').css 'background-image', 'url(../../../assets/images/uploads/' + mainSlidePics[whichMainSlide] + ')'
         $('#tagline h1').text mainSlideTaglines[whichMainSlide]
         if whichMainSlide < mainSlidePics.length - 1
           whichMainSlide += 1
