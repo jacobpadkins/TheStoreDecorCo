@@ -126,7 +126,7 @@ angular.module 'webappApp'
       $img2.attr 'src', '../../../assets/images/uploads/' + smallSlidePics[2]
       $img3.attr 'src', '../../../assets/images/uploads/' + smallSlidePics[3]
 
-      $('#slide, #slideSM').css 'background-image', 'url(../../../assets/images/' + mainSlidePics[0] + ')'
+      $('#slide, #slideSM').css 'background-image', 'url(../../../assets/images/uploads/' + mainSlidePics[0] + ')'
       i = 1
       while i < mainSlidePics.length
         $bubbleDiv.append '<img class="bubble" src="../../../assets/images/home_slideshow/dot_empty.png">'
