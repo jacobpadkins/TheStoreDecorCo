@@ -175,6 +175,7 @@ angular.module 'webappApp'
       clear_categories()
       if $(this).text() != selected_file
         selected_file = $(this).text()
+        $('#file_preview').attr 'src', '../../../assets/images/uploads/' + $(this).text()
         $(this).parent('.x_mark').parent('.image').css 'background-color', '#F26522'
         set_categories($(this).text())
         selected = true

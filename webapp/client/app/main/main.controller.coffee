@@ -87,7 +87,6 @@ angular.module 'webappApp'
   timer_main.set {time: 8000, autostart: true}
 
   database = () ->
-    console.log 'populating from db'
     $http({
       url: 'api/cms/images/website',
       method: 'GET',
@@ -95,29 +94,46 @@ angular.module 'webappApp'
       # populate categories
       capaCats = response.capas
       prodCats = response.prods
-      # populate small slideshow
+      # populate small and main slideshows & populate hidden lightbox anchors
       i = 0
       while i < response.imgs.length
-        if $.inArray('Small_Slide', response.imgs[i].Flags) != -1
+        index = $.inArray('Small_Slide', response.imgs[i].Flags)
+        if  index != -1
           smallSlidePics.push(response.imgs[i].filename)
+          response.imgs[i].Flags.splice(index, 1)
+        index = $.inArray('Big_Slide', response.imgs[i].Flags)
+        if  index != -1
+          mainSlidePics.push(response.imgs[i].filename)
+          response.imgs[i].Flags.splice(index, 1)
+        j = 0
+        while j < response.imgs[i].Capabilities.length
+          lightbox_str = 'lightbox[' + response.imgs[i].Capabilities[j] + ']'
+          $(wrapper).append '<a href="../../../assets/images/uploads/' + response.imgs[i].filename + '" rel="' + lightbox_str + '"></a>'
+          j++
+        j = 0
+        while j < response.imgs[i].Products.length
+          lightbox_str = 'lightbox[' + response.imgs[i].Products[j] + ']'
+          $(wrapper).append '<a href="../../../assets/images/uploads/' + response.imgs[i].filename + '" rel="' + lightbox_str + '"></a>'
+          j++
+        j = 0
+        while j < response.imgs[i].Flags.length
+          flag_keys = Object.keys(response.imgs[i].Flags[j])
+          console.log response.imgs[i].Flags[j]
+          j++
         i++
       $img0.attr 'src', '../../../assets/images/uploads/' + smallSlidePics[0]
       $img1.attr 'src', '../../../assets/images/uploads/' + smallSlidePics[1]
       $img2.attr 'src', '../../../assets/images/uploads/' + smallSlidePics[2]
       $img3.attr 'src', '../../../assets/images/uploads/' + smallSlidePics[3]
-      # populate main slideshow
-      i = 0
-      while i < response.imgs.length
-        if $.inArray('Big_Slide', response.imgs[i].Flags) != -1
-          mainSlidePics.push(response.imgs[i].filename)
-        i++
+
       $('#slide, #slideSM').css 'background-image', 'url(../../../assets/images/' + mainSlidePics[0] + ')'
       i = 1
       while i < mainSlidePics.length
         $bubbleDiv.append '<img class="bubble" src="../../../assets/images/home_slideshow/dot_empty.png">'
         i++
-      # populate hidden lightbox anchors
-      
+      # set category length var
+      capaWhichCate = response.capas.length + 1
+      prodWhichCate = response.prods.length + 1
 
   # HOME PAGE FUNCTIONS
 
@@ -366,19 +382,19 @@ angular.module 'webappApp'
     for category in capaCats
       if whichCol == 0
         $capaTiles.append '<div class="col0" style="top:' + (160 * whichRow) +
-        'px;"><a href="" rel="lightbox">' + category + '</a><img><div>'
+        'px;"><a href="" rel="lightbox[' + category + ']">' + category + '</a><img><div>'
         whichCol = 1
       else if whichCol == 1
         $capaTiles.append '<div class="col1" style="top:' + (160 * whichRow) +
-        'px;"><a href="" rel="lightbox">' + category + '</a><img><div>'
+        'px;"><a href="" rel="lightbox[' + category + ']">' + category + '</a><img><div>'
         whichCol = 2
       else if whichCol == 2
         $capaTiles.append '<div class="col2" style="top:' + (160 * whichRow) +
-        'px;"><a href="" rel="lightbox">' + category + '</a><img><div>'
+        'px;"><a href="" rel="lightbox[' + category + ']">' + category + '</a><img><div>'
         whichCol = 3
       else if whichCol == 3
         $capaTiles.append '<div class="col3" style="top:' + (160 * whichRow) +
-        'px;"><a href="" rel="lightbox">' + category + '</a><img><div>'
+        'px;"><a href="" rel="lightbox[' + category + ']">' + category + '</a><img><div>'
         whichCol = 0
         whichRow++
 
@@ -398,19 +414,19 @@ angular.module 'webappApp'
     for category in prodCats
       if whichCol == 0
         $prodTiles.append '<div class="col0" style="top:' + (160 * whichRow) +
-        'px;"><a href="" rel="lightbox">' + category + '</a><img><div>'
+        'px;"><a href="" rel="lightbox[' + category + ']">' + category + '</a><img><div>'
         whichCol = 1
       else if whichCol == 1
         $prodTiles.append '<div class="col1" style="top:' + (160 * whichRow) +
-        'px;"><a href="" rel="lightbox">' + category + '</a><img><div>'
+        'px;"><a href="" rel="lightbox[' + category + ']">' + category + '</a><img><div>'
         whichCol = 2
       else if whichCol == 2
         $prodTiles.append '<div class="col2" style="top:' + (160 * whichRow) +
-        'px;"><a href="" rel="lightbox">' + category + '</a><img><div>'
+        'px;"><a href="" rel="lightbox[' + category + ']">' + category + '</a><img><div>'
         whichCol = 3
       else if whichCol == 3
         $prodTiles.append '<div class="col3" style="top:' + (160 * whichRow) +
-        'px;"><a href="" rel="lightbox">' + category + '</a><img><div>'
+        'px;"><a href="" rel="lightbox[' + category + ']">' + category + '</a><img><div>'
         whichCol = 0
         whichRow++
 
