@@ -382,25 +382,25 @@ angular.module 'webappApp'
     for category in capaCats
       if whichCol == 0
         $capaTiles.append '<div class="col0" style="top:' + (160 * whichRow) +
-        'px;"><a href="" rel="lightbox[' + category + ']">' + category + '</a><img><div>'
+        'px;"><a href="">' + category + '</a><img><div>'
         whichCol = 1
       else if whichCol == 1
         $capaTiles.append '<div class="col1" style="top:' + (160 * whichRow) +
-        'px;"><a href="" rel="lightbox[' + category + ']">' + category + '</a><img><div>'
+        'px;"><a href="">' + category + '</a><img><div>'
         whichCol = 2
       else if whichCol == 2
         $capaTiles.append '<div class="col2" style="top:' + (160 * whichRow) +
-        'px;"><a href="" rel="lightbox[' + category + ']">' + category + '</a><img><div>'
+        'px;"><a href="">' + category + '</a><img><div>'
         whichCol = 3
       else if whichCol == 3
         $capaTiles.append '<div class="col3" style="top:' + (160 * whichRow) +
-        'px;"><a href="" rel="lightbox[' + category + ']">' + category + '</a><img><div>'
+        'px;"><a href="">' + category + '</a><img><div>'
         whichCol = 0
         whichRow++
 
-    for i in [1...(capaCats.length+1)]
-      $('.capaTiles div:nth-of-type(' + parseInt(i) + ') img').attr('src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg').addClass 'grayscale'
-      $('.capaTiles div:nth-of-type(' + parseInt(i) + ') a').attr('href', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg')
+    #for i in [1...(capaCats.length+1)]
+      #$('.capaTiles div:nth-of-type(' + parseInt(i) + ') img').attr('src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg').addClass 'grayscale'
+      #$('.capaTiles div:nth-of-type(' + parseInt(i) + ') a').attr('href', '../../../assets/images/uploads/img' + parseInt(i) + '.jpg')
 
   # PROD PAGE FUNCTIONS
   populateProd = () ->
@@ -589,14 +589,14 @@ angular.module 'webappApp'
 
     # tile hover animation
     $capaTiles.on 'mouseover', 'div img', () ->
-      if $(window).width() > 992
+      if $window.width() > 992
         $(this).stop().animate {'top':'20%'}, 200
         $(this).addClass 'grayscale-disabled'
         $('#capaList div h3:contains("' + $(this).siblings('a').text() + '")').stop().animate {'font-size':'15'}, 200
         $('#capaList div h3:contains("' + $(this).siblings('a').text() + '")').css 'color', '#1352A5'
         console.log $(this).siblings('a').text()
     $capaTiles.on 'mouseleave', 'div img', () ->
-      if $(window).width() > 992
+      if $window.width() > 992
         $(this).stop().animate {'top': '0'}, 200
         $(this).removeClass 'grayscale-disabled'
         $('#capaList div h3:contains("' + $(this).siblings('a').text() + '")').stop().animate {'font-size':'12'}, 200
@@ -604,7 +604,7 @@ angular.module 'webappApp'
 
     # tile click lightbox
     $capaTiles.on 'click', 'div img', () ->
-      $(this).siblings('a').click()
+      $('#wrapper a[rel="lightbox[' + $(this).siblings('a').text() + ']"]:nth-of-type(1)').click()
 
     # list -> tile hover animation
     $capaList.on 'mouseover', 'div', () ->
@@ -627,13 +627,13 @@ angular.module 'webappApp'
 
     # tile hover animation
     $prodTiles.on 'mouseover', 'div img', () ->
-      if $(window).width() > 992
+      if $window.width() > 992
         $(this).stop().animate {'top':'20%'}, 200
         $(this).addClass 'grayscale-disabled'
         $('#prodList div h3:contains("' + $(this).siblings('a').text() + '")').stop().animate {'font-size':'15'}, 200
         $('#prodList div h3:contains("' + $(this).siblings('a').text() + '")').css 'color', '#1352A5'
     $prodTiles.on 'mouseleave', 'div img', () ->
-      if $(window).width() > 992
+      if $window.width() > 992
         $(this).stop().animate {'top': '0'}, 200
         $(this).removeClass 'grayscale-disabled'
         $('#prodList div h3:contains("' + $(this).siblings('a').text() + '")').stop().animate {'font-size':'12'}, 200
@@ -641,7 +641,7 @@ angular.module 'webappApp'
 
     # tile click lightbox
     $prodTiles.on 'click', 'div img', () ->
-      $(this).siblings('a').click()
+      $('#wrapper a[rel="lightbox[' + $(this).siblings('a').text() + ']"]:nth-of-type(1)').click()
 
     # list -> tile hover animation
     $prodList.on 'mouseover', 'div', () ->
