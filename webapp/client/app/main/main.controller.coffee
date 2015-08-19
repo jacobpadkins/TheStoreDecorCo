@@ -438,7 +438,7 @@ angular.module 'webappApp'
 
     for i in [1...(prodCats.length+1)]
       bw_image = $('#capaList div:nth-of-type(' + parseInt(i) + ') h3').text()
-      $('.capaTiles div:nth-of-type(' + parseInt(i) + ') img').attr('src', '../../../assets/images/uploads/' + bwPics[bw_image])
+      $('.prodTiles div:nth-of-type(' + parseInt(i) + ') img').attr('src', '../../../assets/images/uploads/' + bwPics[bw_image])
 
   # $(document).ready()
   init = () ->
