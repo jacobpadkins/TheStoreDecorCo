@@ -77,6 +77,10 @@ angular.module 'webappApp'
   prodCats = []
   prodWhichCate = 16
 
+  # color/bw pics arrays
+  colorPics = {}
+  bwPics = {}
+
   # slideshow timer
   timer = $.timer () ->
     slideShow()
@@ -117,8 +121,11 @@ angular.module 'webappApp'
           j++
         j = 0
         while j < response.imgs[i].Flags.length
-          flag_keys = Object.keys(response.imgs[i].Flags[j])
-          console.log response.imgs[i].Flags[j]
+          flag_obj = JSON.parse(response.imgs[i].Flags[j])
+          if flag_obj["rep_color"] != undefined
+            colorPics[flag_obj["rep_color"]] = response.imgs[i].filename
+          if flag_obj["rep_bw"] != undefined
+            bwPics[flag_obj["rep_bw"]] = response.imgs[i].filename
           j++
         i++
       $img0.attr 'src', '../../../assets/images/uploads/' + smallSlidePics[0]
@@ -300,7 +307,6 @@ angular.module 'webappApp'
 
   # resize #middle for mobile layout
   middleResize = (which) ->
-    console.log which
     # xs
     if $(window).width() < 768
       if which == 0
@@ -398,9 +404,9 @@ angular.module 'webappApp'
         whichCol = 0
         whichRow++
 
-    #for i in [1...(capaCats.length+1)]
-      #$('.capaTiles div:nth-of-type(' + parseInt(i) + ') img').attr('src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg').addClass 'grayscale'
-      #$('.capaTiles div:nth-of-type(' + parseInt(i) + ') a').attr('href', '../../../assets/images/uploads/img' + parseInt(i) + '.jpg')
+    for i in [1...(capaCats.length+1)]
+      bw_image = $('#capaList div:nth-of-type(' + parseInt(i) + ') h3').text()
+      $('.capaTiles div:nth-of-type(' + parseInt(i) + ') img').attr('src', '../../../assets/images/uploads/' + bwPics[bw_image])
 
   # PROD PAGE FUNCTIONS
   populateProd = () ->
@@ -431,8 +437,8 @@ angular.module 'webappApp'
         whichRow++
 
     for i in [1...(prodCats.length+1)]
-      $('.prodTiles div:nth-of-type(' + parseInt(i) + ') img').attr('src', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg').addClass 'grayscale'
-      $('.prodTiles div:nth-of-type(' + parseInt(i) + ') a').attr('href', '../../../assets/images/tile_placeholders/img' + parseInt(i) + '.jpg')
+      bw_image = $('#capaList div:nth-of-type(' + parseInt(i) + ') h3').text()
+      $('.capaTiles div:nth-of-type(' + parseInt(i) + ') img').attr('src', '../../../assets/images/uploads/' + bwPics[bw_image])
 
   # $(document).ready()
   init = () ->
@@ -591,14 +597,15 @@ angular.module 'webappApp'
     $capaTiles.on 'mouseover', 'div img', () ->
       if $window.width() > 992
         $(this).stop().animate {'top':'20%'}, 200
-        $(this).addClass 'grayscale-disabled'
+        color_image = $('#capaList div:nth-of-type(' + (parseInt($(this).parent('div').index()) + parseInt(1)) + ') h3').text()
+        $(this).attr 'src', '../../../assets/images/uploads/' + colorPics[color_image]
         $('#capaList div h3:contains("' + $(this).siblings('a').text() + '")').stop().animate {'font-size':'15'}, 200
         $('#capaList div h3:contains("' + $(this).siblings('a').text() + '")').css 'color', '#1352A5'
-        console.log $(this).siblings('a').text()
     $capaTiles.on 'mouseleave', 'div img', () ->
       if $window.width() > 992
         $(this).stop().animate {'top': '0'}, 200
-        $(this).removeClass 'grayscale-disabled'
+        bw_image = $('#capaList div:nth-of-type(' + (parseInt($(this).parent('div').index()) + parseInt(1)) + ') h3').text()
+        $(this).attr 'src', '../../../assets/images/uploads/' + bwPics[bw_image]
         $('#capaList div h3:contains("' + $(this).siblings('a').text() + '")').stop().animate {'font-size':'12'}, 200
         $('#capaList div h3:contains("' + $(this).siblings('a').text() + '")').css 'color', '#605F5B'
 
@@ -629,7 +636,7 @@ angular.module 'webappApp'
     $prodTiles.on 'mouseover', 'div img', () ->
       if $window.width() > 992
         $(this).stop().animate {'top':'20%'}, 200
-        $(this).addClass 'grayscale-disabled'
+        #
         $('#prodList div h3:contains("' + $(this).siblings('a').text() + '")').stop().animate {'font-size':'15'}, 200
         $('#prodList div h3:contains("' + $(this).siblings('a').text() + '")').css 'color', '#1352A5'
     $prodTiles.on 'mouseleave', 'div img', () ->
