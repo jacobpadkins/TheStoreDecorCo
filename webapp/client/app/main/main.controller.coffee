@@ -636,13 +636,14 @@ angular.module 'webappApp'
     $prodTiles.on 'mouseover', 'div img', () ->
       if $window.width() > 992
         $(this).stop().animate {'top':'20%'}, 200
-        #
+        color_image = $('#prodList div:nth-of-type(' + (parseInt($(this).parent('div').index()) + parseInt(1)) + ') h3').text()
+        $(this).attr 'src', '../../../assets/images/uploads/' + colorPics[color_image]
         $('#prodList div h3:contains("' + $(this).siblings('a').text() + '")').stop().animate {'font-size':'15'}, 200
         $('#prodList div h3:contains("' + $(this).siblings('a').text() + '")').css 'color', '#1352A5'
     $prodTiles.on 'mouseleave', 'div img', () ->
       if $window.width() > 992
         $(this).stop().animate {'top': '0'}, 200
-        $(this).removeClass 'grayscale-disabled'
+        bw_image = $('#prodList div:nth-of-type(' + (parseInt($(this).parent('div').index()) + parseInt(1)) + ') h3').text()
         $('#prodList div h3:contains("' + $(this).siblings('a').text() + '")').stop().animate {'font-size':'12'}, 200
         $('#prodList div h3:contains("' + $(this).siblings('a').text() + '")').css 'color', '#605F5B'
 
