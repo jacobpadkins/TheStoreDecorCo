@@ -312,9 +312,11 @@ angular.module 'webappApp'
       if which == 0
         $middle.css 'height', '430px'
       else if which == 1
-        $middle.css 'height', '1305px'
+        $middle.css 'height', (capaCats.length / 2)*250
+        $('#capaCopy').css 'top', (capaCats.length / 2)*200
       else if which == 2
-        $middle.css 'height', '1555px'
+        $middle.css 'height', (prodCats.length / 2)*250
+        $('#prodCopy').css 'top', (prodCats.length / 2)*200
       else if which == 3
         $middle.css 'height', '4030px'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
@@ -330,9 +332,11 @@ angular.module 'webappApp'
       if which == 0
         $middle.css 'height', '405px'
       else if which == 1
-        $middle.css 'height', '1185px'
+        $middle.css 'height', (capaCats.length / 2)*250
+        $('#capaCopy').css 'top', (capaCats.length / 2)*200
       else if which == 2
-        $middle.css 'height', '1370px'
+        $middle.css 'height', (prodCats.length / 2)*250
+        $('#prodCopy').css 'top', (prodCats.length / 2)*200
       else if which == 3
         $middle.css 'height', '2590px'
         $servResponse.addClass('.col-md-8').removeClass 'col-md-12'
@@ -348,9 +352,11 @@ angular.module 'webappApp'
       if which == 0
         $middle.css 'height', '650px'
       else if which == 1
-        $middle.css 'height', '700px'
+        $middle.css 'height', (capaCats.length / 4)*250
+        $('#capaCopy').css 'top', (capaCats.length / 4)*200
       else if which == 2
-        $middle.css 'height', '856px'
+        $middle.css 'height', (prodCats.length / 4)*250
+        $('#prodCopy').css 'top', (prodCats.length / 4)*200
       else if which == 3
         $middle.css 'height', '2230px'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
@@ -364,9 +370,11 @@ angular.module 'webappApp'
       if which == 0
         $middle.css 'height', '650px'
       else if which == 1
-        $middle.css 'height', '650px'
+        $middle.css 'height', (capaCats.length / 4)*250
+        $('#capaCopy').css 'top', (capaCats.length / 4)*200
       else if which == 2
-        $middle.css 'height', '826px'
+        $middle.css 'height', (prodCats.length / 4)*250
+        $('#prodCopy').css 'top', ((prodCats.length / 4)*200)
       else if which == 3
         $middle.css 'height', '1750px'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
