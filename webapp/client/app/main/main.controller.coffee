@@ -414,6 +414,7 @@ angular.module 'webappApp'
     $prodList.empty()
     # add categories
     for category in prodCats
+      console.log category
       $prodList.append '<div><h3>' + category + '</h3></div>'
 
     whichCol = 0
@@ -438,7 +439,7 @@ angular.module 'webappApp'
         whichRow++
 
     for i in [1...(prodCats.length+1)]
-      bw_image = $('#capaList div:nth-of-type(' + parseInt(i) + ') h3').text()
+      bw_image = $('#prodList div:nth-of-type(' + parseInt(i) + ') h3').text()
       $('.prodTiles div:nth-of-type(' + parseInt(i) + ') img').attr('src', '../../../assets/images/uploads/' + bwPics[bw_image])
 
   # $(document).ready()
