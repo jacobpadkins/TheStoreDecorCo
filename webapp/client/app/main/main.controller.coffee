@@ -628,13 +628,15 @@ angular.module 'webappApp'
       $(this).children('h3').stop().animate {'font-size':'15'}, 200
       $(this).children('h3').css 'color', '#1352A5'
       $('.capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'20%'}, 200
-      $('.capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').addClass 'grayscale-disabled'
+      color_image = $(this).children('h3').text()
+      $('.capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').attr 'src', '../../../assets/images/uploads/' + colorPics[color_image]
     $capaList.on 'mouseleave', 'div', () ->
       if ($(this).index() + 1) != capaWhichCate
         $(this).children('h3').css 'color', '#605F5B'
         $(this).children('h3').stop().animate {'font-size':'12'}, 200
       $('.capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'0'}, 200
-      $('.capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').removeClass 'grayscale-disabled'
+      bw_image = $(this).children('h3').text()
+      $('.capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').attr 'src', '../../../assets/images/uploads/' + bwPics[bw_image]
 
     # list -> tile click animation
     $capaList.on 'click', 'div', () ->
@@ -654,6 +656,7 @@ angular.module 'webappApp'
       if $window.width() > 992
         $(this).stop().animate {'top': '0'}, 200
         bw_image = $('#prodList div:nth-of-type(' + (parseInt($(this).parent('div').index()) + parseInt(1)) + ') h3').text()
+        $(this).attr 'src', '../../../assets/images/uploads/' + bwPics[bw_image]
         $('#prodList div h3:contains("' + $(this).siblings('a').text() + '")').stop().animate {'font-size':'12'}, 200
         $('#prodList div h3:contains("' + $(this).siblings('a').text() + '")').css 'color', '#605F5B'
 
@@ -666,13 +669,15 @@ angular.module 'webappApp'
       $(this).children('h3').stop().animate {'font-size':'15'}, 200
       $(this).children('h3').css 'color', '#1352A5'
       $('.prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'20%'}, 200
-      $('.prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').addClass 'grayscale-disabled'
+      color_image = $(this).children('h3').text()
+      $('.capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').attr 'src', '../../../assets/images/uploads/' + colorPics[color_image]
     $prodList.on 'mouseleave', 'div', () ->
       if ($(this).index() + 1) != prodWhichCate
         $(this).children('h3').css 'color', '#605F5B'
         $(this).children('h3').stop().animate {'font-size':'12'}, 200
       $('.prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').stop().animate {'top':'0'}, 200
-      $('.prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').removeClass 'grayscale-disabled'
+      bw_image = $(this).children('h3').text()
+      $('.capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').attr 'src', '../../../assets/images/uploads/' + bwPics[bw_image]
 
     # list -> tile click animation
     $prodList.on 'click', 'div', () ->
