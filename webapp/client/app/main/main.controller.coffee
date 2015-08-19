@@ -410,6 +410,7 @@ angular.module 'webappApp'
 
   # PROD PAGE FUNCTIONS
   populateProd = () ->
+    console.log prodCats
     $prodList.empty()
     # add categories
     for category in prodCats
