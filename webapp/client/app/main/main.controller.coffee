@@ -621,7 +621,7 @@ angular.module 'webappApp'
 
     # tile click lightbox
     $capaTiles.on 'click', 'div img', () ->
-      $('#wrapper a[rel="lightbox[' + $(this).siblings('a').text() + ']"]:nth-of-type(1)').click()
+      $('#wrapper a[rel="lightbox[' + $(this).siblings('a').text() + ']"]').click()
 
     # list -> tile hover animation
     $capaList.on 'mouseover', 'div', () ->
@@ -662,7 +662,7 @@ angular.module 'webappApp'
 
     # tile click lightbox
     $prodTiles.on 'click', 'div img', () ->
-      $('#wrapper a[rel="lightbox[' + $(this).siblings('a').text() + ']"]:nth-of-type(1)').click()
+      $('#wrapper a[rel="lightbox[' + $(this).siblings('a').text() + ']"]').click()
 
     # list -> tile hover animation
     $prodList.on 'mouseover', 'div', () ->
