@@ -312,10 +312,10 @@ angular.module 'webappApp'
       if which == 0
         $middle.css 'height', '430px'
       else if which == 1
-        $middle.css 'height', (capaCats.length / 2)*160 + 200
+        $middle.css 'height', (capaCats.length / 2)*160 + 300
         $('#capaCopy').css 'top', ((capaCats.length / 2)*160) + 50
       else if which == 2
-        $middle.css 'height', (prodCats.length / 2)*160 + 200
+        $middle.css 'height', (prodCats.length / 2)*160 + 300
         $('#prodCopy').css 'top', ((prodCats.length / 2)*160) + 50
       else if which == 3
         $middle.css 'height', '4030px'
@@ -352,10 +352,10 @@ angular.module 'webappApp'
       if which == 0
         $middle.css 'height', '650px'
       else if which == 1
-        $middle.css 'height', (capaCats.length / 4)*160 + 200
+        $middle.css 'height', (capaCats.length / 4)*160 + 220
         $('#capaCopy').css 'top', ((capaCats.length / 4)*160) + 100
       else if which == 2
-        $middle.css 'height', (prodCats.length / 4)*160 + 200
+        $middle.css 'height', (prodCats.length / 4)*160 + 220
         $('#prodCopy').css 'top', ((prodCats.length / 4)*160) + 100
       else if which == 3
         $middle.css 'height', '2230px'
@@ -370,10 +370,10 @@ angular.module 'webappApp'
       if which == 0
         $middle.css 'height', '650px'
       else if which == 1
-        $middle.css 'height', (capaCats.length / 4)*160 + 200
+        $middle.css 'height', (capaCats.length / 4)*160 + 220
         $('#capaCopy').css 'top', ((capaCats.length / 4)*160) + 100
       else if which == 2
-        $middle.css 'height', (prodCats.length / 4)*160 + 200
+        $middle.css 'height', (prodCats.length / 4)*160 + 220
         $('#prodCopy').css 'top', ((prodCats.length / 4)*160) + 100
       else if which == 3
         $middle.css 'height', '1750px'
