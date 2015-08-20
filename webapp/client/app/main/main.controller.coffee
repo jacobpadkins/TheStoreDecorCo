@@ -621,7 +621,7 @@ angular.module 'webappApp'
 
     # tile click lightbox
     $capaTiles.on 'click', 'div img', () ->
-      $('#wrapper a[rel="lightbox[' + $(this).siblings('a').text() + ']"]').click()
+      $('#wrapper a[rel="lightbox[' + $(this).siblings('a').text() + ']"]').first().click()
 
     # list -> tile hover animation
     $capaList.on 'mouseover', 'div', () ->
@@ -640,7 +640,7 @@ angular.module 'webappApp'
 
     # list -> tile click animation
     $capaList.on 'click', 'div', () ->
-      $('.capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') a').click()
+      $('.capaTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').click()
 
     ### # # # # # # # # # # # PROD PAGE # # # # # # # # # # # ###
 
@@ -662,7 +662,7 @@ angular.module 'webappApp'
 
     # tile click lightbox
     $prodTiles.on 'click', 'div img', () ->
-      $('#wrapper a[rel="lightbox[' + $(this).siblings('a').text() + ']"]').click()
+      $('#wrapper a[rel="lightbox[' + $(this).siblings('a').text() + ']"]').first().click()
 
     # list -> tile hover animation
     $prodList.on 'mouseover', 'div', () ->
@@ -681,6 +681,6 @@ angular.module 'webappApp'
 
     # list -> tile click animation
     $prodList.on 'click', 'div', () ->
-      $('.prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') a').click()
+      $('.prodTiles div:nth-of-type(' + ($(this).index() + 1) + ') img').click()
 
   init()
