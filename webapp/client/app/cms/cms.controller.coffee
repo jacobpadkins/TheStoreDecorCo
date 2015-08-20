@@ -20,6 +20,7 @@ angular.module 'webappApp'
       url: route + '/images',
       method: 'GET'
     }).success (response) ->
+      response.sort()
       i = 0
       while i < response.length
         $('#images_col').append '<div class="image">
@@ -38,6 +39,7 @@ angular.module 'webappApp'
       url: route + '/capa',
       method: 'GET'
     }).success (response) ->
+      response.sort()
       i = 0
       while i < response.length
         $('#capas_col').append '<div class="capa">
@@ -54,6 +56,7 @@ angular.module 'webappApp'
       url: route + '/prod',
       method: 'GET'
     }).success (response) ->
+      response.sort()
       i = 0
       while i < response.length
         $('#prods_col').append '<div class="prod">

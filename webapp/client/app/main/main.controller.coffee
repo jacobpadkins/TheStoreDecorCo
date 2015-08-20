@@ -386,6 +386,7 @@ angular.module 'webappApp'
 
   # CAPA PAGE FUNCTIONS
   populateCapa = () ->
+    capaCats.sort()
     $capaList.empty()
     # add categories
     for category in capaCats
@@ -418,7 +419,7 @@ angular.module 'webappApp'
 
   # PROD PAGE FUNCTIONS
   populateProd = () ->
-    console.log prodCats
+    prodCats.sort()
     $prodList.empty()
     # add categories
     for category in prodCats
