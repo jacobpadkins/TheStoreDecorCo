@@ -312,10 +312,10 @@ angular.module 'webappApp'
       if which == 0
         $middle.css 'height', '430px'
       else if which == 1
-        $middle.css 'height', (capaCats.length / 2)*160 + 300
+        $middle.css 'height', (capaCats.length / 2)*160 + 320
         $('#capaCopy').css 'top', ((capaCats.length / 2)*160) + 50
       else if which == 2
-        $middle.css 'height', (prodCats.length / 2)*160 + 300
+        $middle.css 'height', (prodCats.length / 2)*160 + 320
         $('#prodCopy').css 'top', ((prodCats.length / 2)*160) + 50
       else if which == 3
         $middle.css 'height', '4030px'
@@ -332,10 +332,10 @@ angular.module 'webappApp'
       if which == 0
         $middle.css 'height', '405px'
       else if which == 1
-        $middle.css 'height', (capaCats.length / 2)*160 + 200
+        $middle.css 'height', (capaCats.length / 2)*160 + 220
         $('#capaCopy').css 'top', ((capaCats.length / 2)*160) + 50
       else if which == 2
-        $middle.css 'height', (prodCats.length / 2)*160 + 200
+        $middle.css 'height', (prodCats.length / 2)*160 + 220
         $('#prodCopy').css 'top', ((prodCats.length / 2)*160) + 50
       else if which == 3
         $middle.css 'height', '2590px'
@@ -352,11 +352,11 @@ angular.module 'webappApp'
       if which == 0
         $middle.css 'height', '650px'
       else if which == 1
-        $middle.css 'height', (capaCats.length / 4)*160 + 220
-        $('#capaCopy').css 'top', ((capaCats.length / 4)*160) + 100
+        $middle.css 'height', (capaCats.length / 4)*160 + 270
+        $('#capaCopy').css 'top', ((capaCats.length / 4)*160) + 150
       else if which == 2
-        $middle.css 'height', (prodCats.length / 4)*160 + 220
-        $('#prodCopy').css 'top', ((prodCats.length / 4)*160) + 100
+        $middle.css 'height', (prodCats.length / 4)*160 + 270
+        $('#prodCopy').css 'top', ((prodCats.length / 4)*160) + 150
       else if which == 3
         $middle.css 'height', '2230px'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
@@ -370,11 +370,11 @@ angular.module 'webappApp'
       if which == 0
         $middle.css 'height', '650px'
       else if which == 1
-        $middle.css 'height', (capaCats.length / 4)*160 + 220
-        $('#capaCopy').css 'top', ((capaCats.length / 4)*160) + 100
+        $middle.css 'height', (capaCats.length / 4)*160 + 270
+        $('#capaCopy').css 'top', ((capaCats.length / 4)*160) + 150
       else if which == 2
-        $middle.css 'height', (prodCats.length / 4)*160 + 220
-        $('#prodCopy').css 'top', ((prodCats.length / 4)*160) + 100
+        $middle.css 'height', (prodCats.length / 4)*160 + 270
+        $('#prodCopy').css 'top', ((prodCats.length / 4)*160) + 150
       else if which == 3
         $middle.css 'height', '1750px'
         $servResponse.addClass('.col-md-12').removeClass 'col-md-8'
@@ -477,6 +477,8 @@ angular.module 'webappApp'
 
     # navbar listeners
     $logo.on 'click', () ->
+      home()
+    $('#tinyLogo').on 'click', () ->
       home()
     $navHome.on 'click', () ->
       home()
