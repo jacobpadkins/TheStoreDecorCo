@@ -8,7 +8,7 @@ var os = require('os');
 var http = require('http');
 var inspect = require('util').inspect;
 var Busboy = require('busboy');
-var password = 'password'; // change this on production!
+var password = 'Decor$tore15'; // change this on production!
 var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport();
 var db;
@@ -214,7 +214,9 @@ exports.delete_prod = function(req, res) {
 };
 
 exports.post_email = function(req, res) {
-  var text_string = 'name: ' + req.query.name + '\n'
+  var text_string = 'someone filled out the contact for at: '
+	      + getDateTime() + '\n'
+              + 'name: ' + req.query.name + '\n'
               + 'company: ' + req.query.company + '\n'
               + 'phone: ' + req.query.phone + '\n'
               + 'e-mail: ' + req.query.email + '\n'
@@ -229,3 +231,27 @@ exports.post_email = function(req, res) {
   });
   res.send(200);
 };
+
+function getDateTime() {
+
+    var date = new Date();
+
+    var hour = date.getHours();
+    hour = (hour < 10 ? "0" : "") + hour;
+
+    var min  = date.getMinutes();
+    min = (min < 10 ? "0" : "") + min;
+
+    var sec  = date.getSeconds();
+    sec = (sec < 10 ? "0" : "") + sec;
+
+    var year = date.getFullYear();
+
+    var month = date.getMonth() + 1;
+    month = (month < 10 ? "0" : "") + month;
+
+    var day  = date.getDate();
+    day = (day < 10 ? "0" : "") + day;
+
+    return year + ":" + month + ":" + day + ":" + hour + ":" + min + ":" + sec;
+}
