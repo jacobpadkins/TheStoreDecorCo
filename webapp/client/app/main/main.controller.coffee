@@ -429,19 +429,19 @@ angular.module 'webappApp'
     for category in prodCats
       if whichCol == 0
         $prodTiles.append '<div class="col0" style="top:' + (160 * whichRow) +
-        'px;"><a href="" rel="lightbox[' + category + ']">' + category + '</a><img><div>'
+        'px;"><a href="">' + category + '</a><img><div>'
         whichCol = 1
       else if whichCol == 1
         $prodTiles.append '<div class="col1" style="top:' + (160 * whichRow) +
-        'px;"><a href="" rel="lightbox[' + category + ']">' + category + '</a><img><div>'
+        'px;"><a href="">' + category + '</a><img><div>'
         whichCol = 2
       else if whichCol == 2
         $prodTiles.append '<div class="col2" style="top:' + (160 * whichRow) +
-        'px;"><a href="" rel="lightbox[' + category + ']">' + category + '</a><img><div>'
+        'px;"><a href="">' + category + '</a><img><div>'
         whichCol = 3
       else if whichCol == 3
         $prodTiles.append '<div class="col3" style="top:' + (160 * whichRow) +
-        'px;"><a href="" rel="lightbox[' + category + ']">' + category + '</a><img><div>'
+        'px;"><a href="">' + category + '</a><img><div>'
         whichCol = 0
         whichRow++
 
