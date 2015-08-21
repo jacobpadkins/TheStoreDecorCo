@@ -74,7 +74,7 @@ angular.module 'webappApp'
     $http({
       url: route + '/images',
       method: 'DELETE',
-      params: {filename: file}
+      params: {filename: file, password: $('#password').val()}
     }).success () ->
       populate_images()
 
@@ -82,7 +82,7 @@ angular.module 'webappApp'
     $http({
       url: route + '/capa',
       method: 'POST',
-      params: {category: capa}
+      params: {category: capa, password: $('#password').val()}
     }).success () ->
       populate_categories()
 
@@ -90,7 +90,7 @@ angular.module 'webappApp'
     $http({
       url: route + '/capa',
       method: 'DELETE',
-      params: {category: capa}
+      params: {category: capa, password: $('#password').val()}
     }).success () ->
       populate_categories()
 
@@ -98,7 +98,7 @@ angular.module 'webappApp'
     $http({
       url: route + '/prod',
       method: 'POST',
-      params: {category: prod}
+      params: {category: prod, password: $('#password').val()}
     }).success () ->
       populate_categories()
 
@@ -106,7 +106,7 @@ angular.module 'webappApp'
     $http({
       url: route + '/prod',
       method: 'DELETE',
-      params: {category: prod}
+      params: {category: prod, password: $('#password').val()}
     }).success () ->
       populate_categories()
 
@@ -115,7 +115,7 @@ angular.module 'webappApp'
     $http({
       url: route + '/images',
       method: 'PUT',
-      params: {operation: op, file: fi, category: ca, name: na}
+      params: {operation: op, file: fi, category: ca, name: na, password: $('#password').val()}
     })
 
   set_categories = (file) ->

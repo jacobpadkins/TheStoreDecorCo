@@ -8,7 +8,7 @@ var os = require('os');
 var http = require('http');
 var inspect = require('util').inspect;
 var Busboy = require('busboy');
-var password = '$toreDecor15';
+var password = 'password'; // change this on production!
 var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport();
 var db;
@@ -83,68 +83,72 @@ exports.post_images = function(req, res) {
 
 // all-purpose data updating function (not lazy api design, I swear!)
 exports.put_images = function(req, res) {
-  if (req.query.operation == 1) {
-    if (req.query.category === 'capa') {
-      db.collection('images').update(
-        { filename: req.query.file, },
-        { $addToSet: { Capabilities: req.query.name }}
-      );
+  if (req.query.password === password) {
+    if (req.query.operation == 1) {
+      if (req.query.category === 'capa') {
+        db.collection('images').update(
+          { filename: req.query.file, },
+          { $addToSet: { Capabilities: req.query.name }}
+        );
+      }
+      else if (req.query.category === 'prod')
+      {
+        db.collection('images').update(
+          { filename: req.query.file, },
+          { $addToSet: { Products: req.query.name }}
+        );
+      }
+      else if (req.query.category === 'flag')
+      {
+        db.collection('images').update(
+          { filename: req.query.file, },
+          { $addToSet: { Flags: req.query.name }}
+        );
+      }
     }
-    else if (req.query.category === 'prod')
-    {
-      db.collection('images').update(
-        { filename: req.query.file, },
-        { $addToSet: { Products: req.query.name }}
-      );
-    }
-    else if (req.query.category === 'flag')
-    {
-      db.collection('images').update(
-        { filename: req.query.file, },
-        { $addToSet: { Flags: req.query.name }}
-      );
-    }
-  }
-  else if (req.query.operation == 0) {
-    if (req.query.category === 'capa') {
-      db.collection('images').update(
-        { filename: req.query.file, },
-        { $pull: { Capabilities: req.query.name }}
-      );
-    }
-    else if (req.query.category === 'prod')
-    {
-      db.collection('images').update(
-        { filename: req.query.file, },
-        { $pull: { Products: req.query.name }}
-      );
-    }
-    else if (req.query.category === 'flag')
-    {
-      db.collection('images').update(
-        { filename: req.query.file, },
-        { $pull: { Flags: req.query.name }}
-      );
+    else if (req.query.operation == 0) {
+      if (req.query.category === 'capa') {
+        db.collection('images').update(
+          { filename: req.query.file, },
+          { $pull: { Capabilities: req.query.name }}
+        );
+      }
+      else if (req.query.category === 'prod')
+      {
+        db.collection('images').update(
+          { filename: req.query.file, },
+          { $pull: { Products: req.query.name }}
+        );
+      }
+      else if (req.query.category === 'flag')
+      {
+        db.collection('images').update(
+          { filename: req.query.file, },
+          { $pull: { Flags: req.query.name }}
+        );
+      }
     }
   }
 };
 
 // deletes an image
 exports.delete_images = function(req, res) {
-  var exists = true;
-  fs.open(__dirname + '/../../../client/assets/images/uploads/' + req.query.filename, 'r',
-    function(err, fd) {
-      if (err && err.code == 'ENOENT')
-      {
-        return;
+  if (req.query.password === password) {
+    var exists = true;
+    fs.open(__dirname + '/../../../client/assets/images/uploads/' + req.query.filename, 'r',
+      function(err, fd) {
+        if (err && err.code == 'ENOENT')
+        {
+          return;
+        }
+        else {
+          fs.unlink(__dirname + '/../../../client/assets/images/uploads/' + req.query.filename);
+          db.collection('images').remove({filename: req.query.filename});
+        }
+        res.send(200);
       }
-      else {
-        fs.unlink(__dirname + '/../../../client/assets/images/uploads/' + req.query.filename);
-        db.collection('images').remove({filename: req.query.filename});
-      }
-      res.send(200);
-    }
-  );
+    );
+  }
 };
 
 // returns JSON array of Capabilities
@@ -158,20 +162,24 @@ exports.get_capa = function(req, res) {
 
 // add a capability
 exports.post_capa = function(req, res) {
-  db.collection('data').update(
-    { name: 'data', },
-    { $addToSet: { Capabilities: req.query.category }}
-  );
-  res.send(200);
+  if (req.query.password === password) {
+    db.collection('data').update(
+      { name: 'data', },
+      { $addToSet: { Capabilities: req.query.category }}
+    );
+    res.send(200);
+  }
 };
 
 // deletes a capability alltogether
 exports.delete_capa = function(req, res) {
-  db.collection('data').update(
-    { name: 'data', },
-    { $pull: { Capabilities: req.query.category }}
-  );
-  res.send(200);
+  if (req.query.password === password) {
+    db.collection('data').update(
+      { name: 'data', },
+      { $pull: { Capabilities: req.query.category }}
+    );
+    res.send(200);
+  }
 };
 
 // returns JSON array of Products
@@ -185,20 +193,24 @@ exports.get_prod = function(req, res) {
 
 // add a product
 exports.post_prod = function(req, res) {
-  db.collection('data').update(
-    { name: 'data', },
-    { $addToSet: { Products: req.query.category }}
-  );
-  res.send(200);
+  if (req.query.password === password) {
+    db.collection('data').update(
+      { name: 'data', },
+      { $addToSet: { Products: req.query.category }}
+    );
+    res.send(200);
+  }
 };
 
 // deletes a product alltogether
 exports.delete_prod = function(req, res) {
-  db.collection('data').update(
-    { name: 'data', },
-    { $pull: { Products: req.query.category }}
-  );
-  res.send(200);
+  if (req.query.password === password) {
+    db.collection('data').update(
+      { name: 'data', },
+      { $pull: { Products: req.query.category }}
+    );
+    res.send(200);
+  }
 };
 
 exports.post_email = function(req, res) {
@@ -211,7 +223,7 @@ exports.post_email = function(req, res) {
               + 'info: \n\n' + req.query.info + '\n';
   transporter.sendMail({
     from: 'website@TheStoreDecor.com',
-    to: 'gotsdc@gmail.com',
+    to: 'vision@thestoredecor.com',
     subject: 'Contact Us Form Submission',
     text: text_string
   });
