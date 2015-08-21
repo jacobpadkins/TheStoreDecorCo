@@ -463,6 +463,26 @@ angular.module 'webappApp'
     # highlight home page initially
     highlightNavbar(0)
 
+    #contact us Submission
+    $('#submitButton').on 'click', () ->
+      $http({
+        url: 'api/cms/email',
+        method: 'POST',
+        params: {
+          name: $('#input_name').val(),
+          company: $('#input_company').val(),
+          phone: $('#input_phone').val(),
+          email: $('#input_email').val(),
+          city: $('#input_city').val(),
+          state: $('#input_state').val(),
+          info: $('#input_info').val()
+        }
+      }).success () ->
+        $('#contWrapper').fadeOut 500, () ->
+          $('#contWrapper').empty()
+          $('#contWrapper').append '<h3>Thank you for your interest! We will get back to you as soon as possible.</h3>'
+          $('#contWrapper').fadeIn 500
+
     ### # # # # # # # # # # # HOME PAGE # # # # # # # # # # # ###
     # start slideshow
     timer.play()

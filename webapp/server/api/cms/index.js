@@ -16,5 +16,6 @@ router.delete('/capa', controller.delete_capa);
 router.get('/prod', controller.get_prod);
 router.post('/prod', controller.post_prod);
 router.delete('/prod', controller.delete_prod);
+router.post('/email', controller.post_email);
 
 module.exports = router;

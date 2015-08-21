@@ -9,6 +9,8 @@ var http = require('http');
 var inspect = require('util').inspect;
 var Busboy = require('busboy');
 var password = '$toreDecor15';
+var nodemailer = require('nodemailer');
+var transporter = nodemailer.createTransport();
 var db;
 
 mongo.connect('mongodb://localhost/cms', function(err, database) {
@@ -196,5 +198,22 @@ exports.delete_prod = function(req, res) {
     { name: 'data', },
     { $pull: { Products: req.query.category }}
   );
+  res.send(200);
+};
+
+exports.post_email = function(req, res) {
+  var text_string = 'name: ' + req.query.name + '\n'
+              + 'company: ' + req.query.company + '\n'
+              + 'phone: ' + req.query.phone + '\n'
+              + 'e-mail: ' + req.query.email + '\n'
+              + 'city: ' + req.query.city + '\n'
+              + 'state: ' + req.query.state + '\n'
+              + 'info: \n\n' + req.query.info + '\n';
+  transporter.sendMail({
+    from: 'website@TheStoreDecor.com',
+    to: 'gotsdc@gmail.com',
+    subject: 'Contact Us Form Submission',
+    text: text_string
+  });
   res.send(200);
 };
